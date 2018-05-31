@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<cli>
+  <group id="plugin-throughput-library" name="Plugin Commands: Throughput Library">
+    <description>
+      The tplib commands allow you to test your application's network throughput 
+    </description>
+  </group>
+  <command cli="plugin tplib start" functionName="emberAfPluginThroughputLibraryStartTx" group="plugin-throughput-library">
+    <description>
+      Start the throughput test.
+    </description>
+  </command>
+  <command cli="plugin tplib stop" functionName="emberAfPluginThroughputLibraryStopTest" group="plugin-throughput-library">
+    <description>
+      Abort the test while running.
+    </description>
+  </command>
+  <command cli="plugin tplib print-result" functionName="emberAfPluginThroughputLibraryPrintResult" group="plugin-throughput-library">
+    <description>
+      Show the results of the last test.
+    </description>
+  </command>
+  <command cli="plugin tplib set-destination" functionName="emberAfPluginThroughputLibrarySetDestination" group="plugin-throughput-library">
+    <description>
+      Set the destination nodeId
+    </description>
+	<arg name="nodeId" type="INT16U" description="Destination nodeId" />
+  </command>
+  <command cli="plugin tplib set-interval" functionName="emberAfPluginThroughputLibrarySetInterval" group="plugin-throughput-library">
+    <description>
+      Set the interval 
+    </description>
+	<arg name="interval" type="INT8U" description="Interval in ms" />
+  </command> 
+  <command cli="plugin tplib set-timeout" functionName="emberAfPluginThroughputLibrarySetTestTimeout" group="plugin-throughput-library">
+    <description>
+      Set the test timeout 
+    </description>
+	<arg name="interval" type="INT32U" description="Timeout in ms" />
+  </command>   
+  <command cli="plugin tplib set-count" functionName="emberAfPluginThroughputLibrarySetTestCount" group="plugin-throughput-library">
+    <description>
+      Set the number of packets to send 
+    </description>
+	<arg name="count" type="INT8U" description="Packets to send" />
+  </command>
+  <command cli="plugin tplib set-inflight" functionName="emberAfPluginThroughputLibrarySetInFlightCount" group="plugin-throughput-library">
+    <description>
+      Set the number of packets in flight during the test.
+    </description>
+    <arg name="inflight_count" type="INT8U" description="Packets in flight" />
+  </command>
+  <command cli="plugin tplib set-packet-size" functionName="emberAfPluginThroughputLibrarySetPacketSize" group="plugin-throughput-library">
+    <description>
+      Set the packet length
+    </description>
+	<arg name="packet" type="INT8U" description="Packet length in bytes" />
+  </command>
+  <command cli="plugin tplib set-aps-ack-off" functionName="emberAfPluginThroughputLibrarySetApsAckOff" group="plugin-throughput-library">
+    <description>
+      Turn off APS acks
+    </description>
+  </command>  
+  <command cli="plugin tplib set-aps-ack-on" functionName="emberAfPluginThroughputLibrarySetApsAckOn" group="plugin-throughput-library">
+    <description>
+      Turn on APS acks
+    </description>
+  </command> 
+  <command cli="plugin tplib get-test-params" functionName="emberAfPluginThroughputLibraryGetTestParams" group="plugin-throughput-library">
+    <description>
+      Print all the test parameters
+    </description>
+  </command>
+  <command cli="plugin tplib clear-counters" functionName="emberAfPluginThroughputLibraryClearCounters" group="plugin-throughput-library">
+    <description>
+      Clear all the stack counters 
+    </description>
+  </command>
+</cli>

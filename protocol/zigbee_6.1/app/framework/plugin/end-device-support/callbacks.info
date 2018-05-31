@@ -1,0 +1,10 @@
+/** @brief Poll Completed
+ *
+ * This function is called by the End Device Support plugin after a poll is
+ * completed.
+ *
+ * @param status Return status of a completed poll operation Ver.: always
+ */
+void emberAfPluginEndDeviceSupportPollCompletedCallback(EmberStatus status)
+{
+}

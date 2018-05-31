@@ -1,0 +1,900 @@
+===============================================================================
+===============================================================================
+					Thread Test App CLI Documentation
+===============================================================================
+===============================================================================
+
+This document is a reference guide to all of the cli commands available in the
+thread-test-app. You can retreive this list of commands by typing 'help'
+
+===============================================================================
+========================== THREAD TEST APP COMMANDS ===========================
+===============================================================================
+print_frame_counter 
+- Params: void 
+- Purpose: Prints Network frame counter
+
+start_island <string>
+- Params: string islandId
+- Purpose: Start a new island command with the ID of islandId 
+
+set_island_id <string> 
+- Params: string islandId
+- Purpose: sets the ID of the current island to islandId
+
+set_prefix <string>
+- Params: string prefix
+- Purpose: Sets the multicast address prefix to the given prefix
+
+add_rip_entry <uint16_t> <string> <uint8_t> *
+- Params: uint16_t shortId, string eui64, uint8_t nextHop
+- Purpose: Adds a EUI entry to the Rip table with the EUI and nextHop
+
+use_eui_interface
+- Params: void 
+- Purpose: forces the EUI interface to be used
+
+add_parent <uint16_t> <string>
+- Params: uint16_t emParentId, string eui64
+- Purpose: Adds a parent with ID emParentId to the Rip table
+
+print_rip 
+- Params: void
+- Purpose: Prints the Rip Table
+
+set_meshcop_port <uint16_t>  
+- Params: uint16_t emUpdCommissionPort
+- Purpose: Sets the Udp commission port to the given port number
+
+set_thread_mgmt_port <uint16_t>  
+- Params: uint16_t emStackCoapPort
+- Purpose: Sets the thread management CoAP port to the given port number
+
+com_remove 
+- Params: void
+- Purpose: Removes the commissioner and stops commissioning
+
+config_node <uint8_t> <int8_t> <uint8_t> <uint16_t> <string> <uint16_t> <string> <uint8_t> * 
+- Params: uint8_t channel, uint8_t power, uint8_t nodeType, 
+		  uint16_t panId, string networkId, uint16_t nodeId, 
+		  string prefix, uint8_t enableMleAds
+- Purpose: Configures a node with nodeId with all of the given parameters
+
+setup_node <uint8_t> <int8_t> <uint8_t> <uint16_t> <string> <string> 
+- Params: uint8_t channel, uint8_t power, uint8_t nodeType, uint16_t panId,
+		  string networkId, string prefix 
+- Purpose: Sets up a new node with the given parameters
+
+mle_data_request <string> <uint8_t> 
+- Params: string destIp, uint8_t type
+- Purpose: Sends a mle data request to the destination ID of the given type
+
+mle_attach_request 
+- Params: void
+- Purpose: Attached a new mle with the reason that API requested it
+
+ignore_parent_requests <uint8_t> 
+- Params: uint8_t emIgnoreParentRequests
+- Purpose: Ignores a given number of parent requests
+
+ignore_child_updates <uint8_t> * 
+- Params: uint8_t emberIgnoreChildUpdates
+- Purpose: Ignore child requests 0 if no, >1 if yes
+
+remove_router <string> 
+- Params: string eui64
+- Purpose: Remove a router with the given EUI
+
+remove_router_by_short_id <uint16_t> 
+- Params: uint16_t shortId
+- Purpose: Remove the router with the given shortId
+
+remove_prefix <string> 
+- Params: string prefix
+- Purpose: Remove the given prefix
+
+udp_unicast <uint16_t> <uint16_t> <uint8_t> <string> <string> <uint16_t> *  
+- Params: uint16_t sourcePort, uint16_t destPort, uint8_t sourceType,
+		  string destIp, string string, uint16_t hopLimit, uint16_t length
+- Purpose: Send a UDP unicast message "string" with the given parameters
+
+icmp_unicast <uint8_t> <string> <uint16_t> *  
+- Params: uint8_t sourceType, string destination, uint16_t hopLimit, 
+		  uint16_t length 
+- Purpose: Sent a ICMP unicast message with the given parameters to the destination
+
+add_source_filter <uint16_t> *  
+- Params: uint16_t macSourceFilter *
+- Purpose: Adds all of the given mac source filters up to the MAX_FILTERS number
+
+blacklist_eui <string> * 
+- Params: string eui64
+- Purpose: Blacklists and does not allow messages from all of the given eui64 names
+
+whitelist_eui <string> * 
+- Params: string eui64 *
+- Purpose: Whitelists and allows messages from all of the given eui64 names
+
+clear_filters 
+- Params: void 
+- Purpose: clears all of the mac source filters
+
+print_filters 
+- Params: void
+- Purpose: Prints all of the current filters which includes the blacklisted EUI’s, whitelisted EUI’s, and mac source filters
+
+set_lq <string> <uint8_t> 
+- Params: string eui64, uint8_t linkQuality
+- Purpose: Sets the link quality of the given eui64 to the given Link Quality between 0 and 3
+
+set_router_response_lq <uint8_t>  
+- Params: uint8_t linkQuality
+- Purpose: Force the link quality of the response to be linkQuality and less than 3
+
+address_query <string> 
+- Params: string address
+- Purpose: Sends an address query to a given IP address
+
+jpake_server <uint16_t> <string>  
+- Params: uint16_t emUdpJoinPort, string key
+- Purpose: Starts a new JPAKE server
+
+jpake_client <string> <uint16_t> <string>  	
+- Params: string serverEui64, uint16_t emUdpJoinPort, string key
+- Purpose: Starts a new JPAKE client
+
+jpake_port <uint16_t> 
+- Params: uint16_t emUdpJoinPort
+- Purpose: sets the port of the JPAKE connection
+
+set_dtls_timeout <uint16_t> 
+- Params: uint16_t emDtlsRetryTimeout
+- Purpose: Sets the timeout of the DTLS
+
+set_jpake_delay <uint32_t> 
+- Params: uint32_t emJpakeDelayMs
+- Purpose: Sets the delay of the JPAKE to a given number of milliseconds
+
+address_cache <string> <uint16_t> 
+- Params: string mlId, uin16_t shortId
+- Purpose: Adds the given mlId and shortId to the Address cache
+
+print_address_cache <string>  
+- Params: string mlId
+- Purpose: Prints the address data for the given MlID
+
+clear_address_cache 
+- Params: void
+- Purpose: Clears the address cache
+
+parse_ip <string> 
+- Params: string ipAddr
+- Purpose: Takes in an IP address as a string and parses it into a IP format and prints it
+
+print_multicast 
+- Params: void 
+- Purpose: Prints the current Multicast table
+
+version 
+- Params: void
+- Purpose: Prints the current thread test app version, build, and change numbers
+
+print_child 
+- Params: void
+- Purpose: Prints the current child table
+
+set_max_child_count <uint8_t> 
+- Params: uint8_t emMaxEndDeviceChildren
+- Purpose: Sets the max number of children to the given number
+
+force_child_timeout <uint32_t> 
+- Params: uint32_t emForceChildTimeoutSec
+- Purpose: sets the child timeout to a given number of seconds
+
+get_child_timeout 
+- Params: void 
+- Purpose: Returns the current child timeout value
+
+force_fragment_delay <uint16_t>  
+- Params: uint16_t emForceJoinBetterIslandDelayMS
+- Purpose: This forces an artificial delay when a node loses its leader and after it tries to find a dark router, but before it tries to join a better island. For interop testing.
+
+request_router_id <uint8_t> 
+- Params: uint8_t routerId
+- Purpose: This causes the node to request a specific router/short ID in the address solicit to the parent. For interop testing only.
+
+force_router_id_timeout_ms <uint32_t>  
+- Params: uint32_t emForceRouterIdBlacklistTimeoutMs
+- Purpose: This forces an artificial timeout value for blacklisting a router ID after we've expired it. During this timeout, any other router requesting this blacklisted ID won't get it.  For interop testing.
+
+blink <uint8_t> 
+- Params: uint8_t toggleOn
+- Purpose: Toggle the blink event. 1 for ON, 0 for OFF
+
+ping_default_payload <uint16_t> 
+- Params: uint16_t emDefaultEchoReplyPayloadSize
+- Purpose: Sets all of the ping reply default payload size to the given value
+
+receive_raw_packet <string> <uint16_t> * 
+- Params: string bytes, uint16_t offset, uint16_t totalLength
+- Purpose: Receives a raw packet of size totalLength
+
+set_sequence <uint16_t> 
+- Params: uint16_t sequenceNumber
+- Purpose: Sets the network key sequence number to the given sequence number
+
+data_poll <uint32_t> <uint8_t> * 
+- Params: uint32_t dataPollPeriod, uint8_t goToDeepSleep
+- Purpose: Sets the the data polling period ton the given number of milliseconds
+
+deep_sleep <uint8_t> * 
+- Params: uint8_t sleep
+- Purpose: Turn off/on deep sleep functionality with 1 for ON, 0 for OFF
+
+set_shared_key <string> 
+- Params: string sharedKeyString
+- Purpose: sets the shared key to the given string
+
+reset_network 
+- Params: void
+- Purpose: 
+
+network_state 
+- Params: void
+- Purpose: Resets the network state
+
+change_node_type <uint8_t> 
+- Params: uint8_t newType
+- Purpose: Sets the node type to the given type 
+
+ms_tick 
+- Params: void
+- Purpose: Prints the current MS tick
+
+print_network_data 
+- Params: void
+- Purpose: Prints the current network data
+
+print_network_data_tlv <uint8_t> <uint8_t> 
+- Params: uint8_t type, uint8_t index
+- Purpose: Prints the current TLV network data
+
+network_fragmentation <uint8_t> *  
+- Params: uint8_t emNetworkFragmentationEnabled
+- Purpose: Turn off/on network fragmentation 1 for On, 0 for OFF
+
+force_wrong_beacon 
+- Params: void
+- Purpose: Stub?
+
+filter_parent_request <string>  
+- Params: string eui64
+- Purpose: Sets so that parent requests can only be accepted from the given EUI
+
+accept_parent_request <uint8_t> 
+- Params: uint8_t acceptParentRequest
+- Purpose: Turn on/off accepting parent requests 1 for ON, 0 for OFF
+
+accept_dhcp_solicit <uint8_t> 
+- Params: uin8_t emAcceptDhcpSolicit
+- Purpose: Turn on/off soliciting DHCP 1 for ON, 0 for OFF
+
+send_address_solicit <uint16_t> * 
+- Params: uint16_t emPreviousNodeId
+- Purpose: Sends an address solicitation
+
+send_address_release 
+- Params: void 
+- Purpose: Sends an address release message
+
+udp_listen <uint16_t> 
+- Params: uint16_t port
+- Purpose: Listens for UDP messages on the given port 
+
+increment_leader_data 
+- Params: void
+- Purpose: If leader increment the leaders data version numbers
+
+increment_sequence 
+- Params: void
+- Purpose: Increment the network key sequence number
+
+set_mac_frame_counter <uint32_t> 
+- Params: uint32_t newFrameCounter
+- Purpose: Sets the network frame counter to the given new frame
+
+assign_router_ids_in_order <uint8_t> 
+- Params: uint8_t emAssignRouterIdsInOrder
+- Purpose: Toggle on/off assigning the router ID's in order
+
+set_router_selection_parameters <uint8_t> <uint8_t> <uint8_t> 
+- Params: uint8_t emRouterUpgradeThreshold, uint8_t emRouterDowngradeThreshold, 
+		  uint8_t emMinDowngradeNeighbors
+- Purpose: Sets the given router selection parameters
+
+set_multicast_params <uint8_t> <uint8_t> 
+- Params: uint8_t emMulticastParentCount, uint8_t emTrickleMulticastInterval
+- Purpose: Sets the given multicast parameters
+
+refresh 
+- Params: void 
+- Purpose: Resets the network state and resets the chip
+
+force_slaac_address <string> 
+- Params: string ipAddress
+- Purpose: Sets emForceSlaacAddress to true and sets the forced address to the given IP
+
+unset_force_slaac_address 
+- Params: void
+- Purpose: sets emForceSlaacAddress to false and clears the forced address
+
+need_all_network_data <uint8_t> 
+- Params: uint8_t yesno
+- Purpose: Toggle needing all network data on/off, 1 for ON, 0 for OFF
+
+print_child_addresses 
+- Params: void
+- Purpose: Prints the all of the child addresses
+
+native_petition 
+- Params: void
+- Purpose: Sets the external commissioner
+
+native_keep_alive <uint8_t>  
+- Params: uint8_t accept
+- Purpose: Toggle keep alive 1 for ON, 0 for OFF
+
+set_prov_url <string> 
+- Params: string emProvisioningURL 
+- Purpose: Sets the provisioning URL to the given string
+
+set_security_eui <string> 
+- Params: string emSecurityExtendedId
+- Purpose: Sets the EUI security extended ID
+
+use_mle_discovery <uint8_t> *  
+- Params: uint8_t emUseMleDiscovery
+- Purpose: Toggles the use of MLE discovery 1 for ON, 0 for OFF
+
+randomize_mac_extended_id <uint8_t> 
+- Params: uint8_t emRandomizeMacExtendedIdCommand
+- Purpose: Toggles the use of random MAX extended ID, 1 for ON, 0 for OFF
+
+set_fragment_timeout <uint32_t> 
+- Params: uint32_t emLeaderTimeoutMs
+- Purpose: Sets the fragment leader timeout value to the given number of milliseconds
+
+set_coap_ack_timeout <uint32_t> 
+- Params: uint32_t emCoapAckTimeoutMs
+- Purpose: Sets the CoAP ACK timeout value to the given number of milliseconds
+
+get_coap_ack_timeout
+- Params: void
+- Purpose: Prints the CoAP ACK timeout value
+
+print_eui_hash 
+- Params: void
+- Purpose: Prints all of the EUI’s and their hashes
+
+get_coap_diagnostics <string> <string> 
+- Params: string destination, string tlvs
+- Purpose: Gets the CoAP diagnostic info from the given destination
+
+query_coap_diagnostics <string> <string> 
+- Params: string tlvs, string destination
+- Purpose: Sends a CoAP diagnostic info query to the given destination
+
+reset_coap_diagnostics <string> <string> 
+- Params: string tlvs, string destination
+- Purpose: Reset all of the CoAP diagnostic information
+
+attach_to_network 
+- Params: void
+- Purpose: Attaches to a network
+
+print_channel_mask <uint8_t> 
+- Params: uint8_t channel
+- Purpose: Prints the mask for the given channel
+
+send_announce_begin <string> <uint16_t> <uint8_t> <uint8_t> <uint16_t> 
+- Params: string destination, uint16_t channelPage, uint8_t mask, 
+		  uint8_t count, uint8_t period
+- Purpose: Sends a Management begin announcement message with the given parameters
+
+send_announce <uint8_t> <uint8_t> <uint16_t> <uint32_t> <uint16_t> <uint8_t> <uint16_t> 
+- Params: uint8_t txChannel, uint8_t channelPage, uint16_t channel, 
+		  uint32_t seconds, uint16_t ticks, uint8_t authoritative, uint16_t panId
+- Purpose: Sends an MLE announcement with all of the given parameters. Authoritative is a boolean argument with 1 for ON, 0 for OFF
+
+set_dataset_timestamp <uint8_t> <uint32_t> <uint16_t> <uint8_t> 
+- Params: uint8_t active, uint32_t seconds, uint16_t ticks, uint8_t authoritative
+- Purpose: Sets the timestamp of the data set to the given seconds and ticks. Also sets it active if Active is true. 1 for true, 0 for false. Authoritative is also boolean.
+
+send_pan_id_scan_request <string> <uint32_t> <uint16_t> 
+- Params: string destination, uint32_t channelMask, uint16_t panId
+- Purpose: Sends a Pan ID scan request to the 
+
+send_energy_scan_request <string> <uint32_t> <uint8_t> <uint16_t> <uint16_t> 
+- Params: string destination, uint32_t channelMask, uint8_t scanCount,
+		  uint16_t scanPeriod, uint16_t scanDuration
+- Purpose: Sends an energy scan request with the given parameters
+
+com_pan_id_scan_request <string> <uint8_t> <uint16_t> 
+- Params: string destination, uint8_t channelMask, uint16_t panId 
+- Purpose: Sends a Pan Id scan request with the given parameters
+
+com_energy_scan_request <string> <uint8_t> <uint8_t> <uint16_t> <uint16_t> 
+- Params: string destination, uint32_t channelMask, uint8_t scanCount,
+		  uint16_t scanPeriod, uint16_t scanDuration
+- Purpose: Sends an energy scan request with the given parameters
+
+get_active_dataset <string> <string> 
+- Params: string destination, string tlvs
+- Purpose: Gets the active management dataset
+
+get_pending_dataset <string> <string> 
+- Params: string destination, string tlvs
+- Purpose: Gets the pending management dataset
+
+set_active_dataset <string> <uint16_t> * 
+- Params: string tlvs, uint16_t shortDest
+- Purpose: Sets the active management dataset if this node is the leader
+
+set_pending_dataset <string> <uint16_t> * 
+- Params: string tlvs, uint16_t shortDest
+- Purpose: erts the pending management dataset if this node is the leader
+
+set_active_dataset_bytes <string> 
+- Params: string tlvs
+- Purpose: Unmarshalls the current active dataset and sets the active dataset
+
+get_raw_active_dataset <string> <string>  
+- Params: string destination, string tlvs
+- Purpose: Sets the raw active management dataset if this node is the leader
+
+get_raw_pending_dataset <string> <string> 
+- Params: string destination, string tlvs
+- Purpose: Sets the raw pending management dataset if the node is the leader
+
+display_network_data 
+- Params: void
+- Purpose: Prints the current logged network data
+
+com_get <string> <string> * 
+- Params: string bytes, string destination
+- Purpose: Submits a CoAP get message
+
+com_set <string> <string> * 
+- Params: string tlvs, string destination
+- Purpose: Sends a CoAP set message
+
+print_session_id 
+- Params: void 
+- Purpose: Prints the current session ID
+
+set_min_delay_timer <uint32_t> 
+- Params: uint32_t emMinDelayTimer
+- Purpose: Sets the minimum delay timer 
+
+get_channel 
+- Params: void
+- Purpose: Prints the current phy radio channel
+
+get_pan_id 
+- Params: void
+- Purpose: Prints the current pan ID
+
+am_i_leader 
+- Params: void
+- Purpose: Prints whether this node is the leader or not
+
+print_timestamp <string> 
+- Params: string name
+- Purpose: Prints the current time
+
+print_active_dataset 
+- Params: void
+- Purpose: Prints the current active dataset
+
+print_pending_dataset 
+- Params: void
+- Purpose: Prints the current pending dataset
+
+print_raw_active_dataset 
+- Params: void
+- Purpose: Prints the current raw active dataset
+
+print_raw_pending_dataset 
+- Params: void
+- Purpose: Prints the current raw pending dataset
+
+send_discovery_request <uint8_t> 
+- Params: uint8_t joinerFlag
+- Purpose: Sends an MLE discovery request
+
+set_router_selection_jitter_ms <uint32_t> 
+- Params: uint32_t emRouterSelectionJitterMs
+- Purpose: Sets the router selection jitter timer to the given number of milliseconds
+
+stretch_pskc <string> 
+- Params: string passphrase
+- Purpose: Stretches the PSKC TLV
+
+set_heap_size <uint32_t> 
+- Params: uint32_t newSize
+- Purpose: Resizes the heap to the given new size
+
+set_radio_idle_mode <uint8_t> 
+- Params: uint8_t mode
+- Purpose: Toggle on/off of the radio idle mode, 1 for ON, 0 for OFF
+
+set_mac_idle_mode <uint8_t> 
+- Params: uint_8 mode
+- Purpose: Toggle on/off of the radio idle mode, 1 for ON, 0 for OFF
+
+===============================================================================
+============================ APPLICATION COMMANDS =============================
+===============================================================================
+
+udp_send <uint16_t> <uint16_t> <string> <string> <uint16_t> * 
+- Params: uint16_t destination, uint16_t sourcePort, string destinationPort,
+		  string payload, 
+- Purpose: Sends a UDP message payload with to the given destination from the given sourcePort
+
+udp_storm <string> <uint16_t> <uint16_t> <uint16_t> 
+- Params: string stormDestination, uint16_t stormTotalPackets, uint16_t stormPayloadLength,
+		  uint16_t stormTxDelayMs
+- Purpose: Sends a UDP storm with the given parameters
+
+toggle_udp_print <uint8_t> 
+- Params: uint8_t udpPrint
+- Purpose: Use turn off/on UDP printing. 1 for ON, 0 for OFF
+
+===============================================================================
+============================== COMMON COMMANDS ================================
+===============================================================================
+status  
+- Params: void
+- Purpose: Prints all of the relevant information about the current setup
+
+form_pan <uint8_t> <int8_t> <uint8_t> <uint16_t> <string> <string> * 
+- Params: uint8_t channel, uint8_t power, uint8_t type, uint16_t panId, string networkId *
+- Purpose: Forms a pan with the given parameters
+
+print_keys 
+- Params: void
+- Purpose: Print all of the network and MLE keys
+
+ping <string> <uint16_t> * 
+- Params: string destIp, uint16_t id, uint16_t sequence, uint16_t length, uint16_t hopLimit
+- Purpose: Only required command is destIp. Sends an IP ping to the given destination IP
+
+help 
+- Params: void
+- Purpose: Prints the help message
+
+set_channel <uint8_t> 
+- Params: uint8_t channel
+- Purpose: Sets the Radio Phy channel to the given channel
+
+set_pan_id <uint16_t> 
+- Params: uint16_t panId
+- Purpose: Sets the Pan ID to the given number
+
+print_rip 
+- Params: void
+- Purpose: Prints all of the current RIP table entries
+
+print_counters <uint8_t> *  
+- Params: uint8_t type
+- Purpose: If there are no arguments to this command then all of the counters will be printed. If there is it will print the counter corresponding to the number provided.
+
+clear_counters 
+- Params: void
+- Purpose: Clears all of the counters values
+
+reboot 
+- Params: void 
+- Purpose: Resets the micro
+
+reset_micro 
+- Params: void 
+- Purpose: Resets the micro
+
+set_eui <string> 
+- Params: string eui64
+- Purpose: Sets the eui and then prints it
+
+print_heap_space 
+- Params: void
+- Purpose: Prints the space available in the heap
+
+log <uint8_t> <string> * 
+- Params: uint8_t port, string all
+- Purpose: Turn on logging for the given port. If you wish to turn on all types of logging use 'all' as the second argument. Otherwise you can turn on individual types of logging for each port
+
+log_off <uint8_t> <string> *  
+- Params: uint8_t port, string all
+- Purpose: Turn off logging for the given port. If you wish to turn off all types of logging use 'all' as the second argument. Otherwise you can turn off individual types of logging for each port
+
+log_config <uint8_t> 
+- Params: uint8_t port
+- Purpose: Print the log configuration for the given port
+
+key_switch 
+- Params: void
+- Purpose: Uses the API call to switch to the next active network key in the network key sequence
+
+===============================================================================
+============================ COMMON TEST COMMANDS =============================
+===============================================================================
+
+option... 
+- Params: void
+- Purpose: Prints the following option table commands
+
+  mac_encryption <uint8_t>  
+- Params: uint8_t value
+- Purpose: Toggle on/off mac encryption. 1 for ON, 0 for OFF
+
+  uart_in <uint8_t>  
+- Params: uint8_t value
+- Purpose: Toggle on/off uart in 1 for ON, 0 for OFF
+
+  bad_mle_mic <uint8_t>  
+- Params: uint8_t value
+- Purpose: Toggle on/off bad MLE mic. 1 for ON, 0 for OFF
+
+  bad_mle_hop <uint8_t>  
+- Params: uint8_t value
+- Purpose: Toggle on/off bad MLE hop. 1 for ON, 0 for OFF
+
+  enable_cca <uint8_t>  
+- Params: uint8_t value
+- Purpose: Toggle on/off cca 1 for ON, 0 for OFF
+
+  force_dark <uint8_t>  
+- Params: uint8_t value
+- Purpose: Toggle on/off force dark. 1 for ON, 0 for OFF
+
+  reject_coap_solicit <uint8_t>  
+- Params: uint8_t value
+- Purpose: Toggle on/off rejecting coap solicit. 1 for ON, 0 for OFF
+
+  enable_routing <uint8_t> 
+- Params: uint8_t value
+- Purpose: Toggle on/off enabling routing. 1 for ON, 0 for OFF
+
+  long_id_only <uint8_t> 
+- Params: uint8_t value
+- Purpose: Toggle on/off long ID only. 1 for ON, 0 for OFF
+
+ping_short <uint16_t> 
+- Params: uint16_t destIp
+- Purpose: Sends an IP ping to the given destination IP.
+
+set_node_type <uint8_t> 
+- Params: uint8_t newType
+- Purpose: Sets the node type to the given type
+
+send_mac <string> <uint16_t> * 
+- Params: string bytes, uint16_t offset, uint16_t totalLength
+- Purpose: Sends the MAC header
+
+set_child_table_size <uint8_t> 
+- Params: size
+- Purpose: Sets the emberChildTableSize to the given size
+
+purge_mac_queue 
+- Params: void
+- Purpose: Purges the MAC indirect queue
+
+set_beacon <string> 
+- Params: string emBeaconPayloadSize
+- Purpose: Sets the beacon payload size to the given value
+
+scan <uint8_t> <uint32_t> <uint8_t> 
+- Params: uint8_t scanType, uint32_t scanChannels, uint8_t scanDuration
+- Purpose: Starts a scan of scanType on the given channel for the specified duration
+
+poll <uint16_t> 
+- Params: uint16_t emParentId
+- Purpose: MAC request polls the given parent ID
+
+poll_long <string> 
+- Params: string eui64
+- Purpose: MAC request polls the long parent ID given by the eui
+
+force_parent <string> 
+- Params: string eui64
+- Purpose: Attempts to force the parent to be the given eui
+
+set_key <string> <uint8_t> 
+- Params: string bytes, uint8_t keySequence
+- Purpose: Sets the network master key to the given key sequence
+
+set_frame_counter <uint32_t> 
+- Params: uint32_t emNextNwkFrameCounter
+- Purpose: Sets the next network frame counter
+
+set_mac_retries <uint8_t> 
+- Params: uint8_t emMacMaxAckRetries
+- Purpose: Sets the number of Mac max acknowledgement retries
+
+add_child <uint8_t> <uint16_t> <string> 
+- Params: uint8_t isSleepy, uint16_t shortID, string longID
+- Purpose: Initializes and adds a new child to the child table. isSleepy is a boolean argument, 1 for TRUE, 0 for FALSE
+
+power <int8_t> 
+- Params: int8_t power
+- Purpose: Attempts to set the radio power to the given value and then prints the actual current power level.
+
+set_context <uint8_t> <string> <uint8_t> <uint8_t> <uint16_t> 
+- Params: uint8_t contextId, string prefix, uint8_t prefixLengthInBits, 
+		  uint8_t compress, uint16_t lifetime
+- Purpose: Adds context with the given parameters. compress is a boolean argument, 1 for TRUE, 0 for FALSE
+
+delete_context <uint8_t> 
+- Params: uint8_t id
+- Purpose: Removes the context with the given context ID
+
+print_context 
+- Params: void
+- Purpose: Prints the current context table
+
+print_neighbor 
+- Params: void
+- Purpose: Prints the current Rip Neighbor table
+
+reset_reboot_flag 
+- Params: void
+- Purpose: Resets the reboot flag
+
+node_rebooted 
+- Params: void
+- Purpose: Prints the status of the node reboot flag
+
+===============================================================================
+======================== NETWORK MANAGEMENT COMMANDS ==========================
+===============================================================================
+
+join_commissioned <int8_t> <uint8_t> 
+- Params: int8_t radioTxPower, uint8_t nodeType
+- Purpose: Joins the commissioned 
+
+form <uint8_t> <int8_t> <uint8_t> <string> <string> * 
+- Params: uint8_t channel, int8_t radioTxPower, uint8_t nodeType, string networkId,
+		  string ulaPrefix, string legacyUla
+- Purpose: Forms a network with the given parameters
+
+join <uint8_t> <int8_t> <uint8_t> <string> <string> <uint16_t> <string> <string>
+- Params: uint8_t channel, int8_t radioTxPower, uint8_t nodeType, string networkId
+		  uint16_t extendedPanId, string panId, string joinKey
+- Purpose: Creates a EmberNetworkParameters and Joins the network with the given parameters
+
+resume 
+- Params: void
+- Purpose: Resumes the network
+
+print_ip_addresses  
+- Params: void
+- Purpose: Prints all of the stored IP addresses
+
+gateway <uint8_t> <uint8_t> <string> <uint32_t> <uint32_t> 
+- Params: uint8_t borerRouterFlags, uint8_t isStable, string prefix, 
+		  uint32_t preferredLifetime, uint32_t validLifeTime
+- Purpose: Configures a gateway with the given parameters
+
+external_route <uint8_t> <string> 
+- Params: uint8_t channel, string prefix
+- Purpose: Configures an external route
+
+print_global_prefixes 
+- Params: void
+- Purpose: Prints the available global prefixes
+
+print_global_addresses <string> * 
+- Params: string prefix
+- Purpose: Prints the available global addresses
+
+print_dhcp_clients 
+- Params: void
+- Purpose: Prints the DHCP clients
+
+resign_address <string> 
+- Params: string address
+- Purpose: Resigns the given global address
+
+reset_network 
+- Params: void
+- Purpose: Resets the network
+
+set_join_key <string> <string> * 
+- Params: string key, string eui64 
+- Purpose: Sets the join key for the given EUI
+
+allow_commissioner <uint8_t> 
+- Params: uint8_t on
+- Purpose: Toggle on/off the allowing of a native commissioner. 1 for ON, 0 for OFF
+
+set_commissioner_key <string> 
+- Params: string key
+- Purpose: Sets the commissioner key 
+
+configure <uint8_t> <uint32_t> <string> <string> <string> <string> <uint32_t> *  
+- Params: uint8_t preferredChannel, uint32_t fallbackChannelMask, string networkId,
+		  string ulaPrefix, string extendedPanId, string key, uint32_t panId, 
+		  uint32_t keySequence
+- Purpose: Configures and commissions a network with the given parameters
+
+com_petition <string> * 
+- Params: string commissionerId
+- Purpose: Node will become commissioner with the given commissionerId
+
+com_join_mode <uint8_t> <uint8_t> 
+- Params: uint8_t mode, uint8_t length
+- Purpose: Sets the joining mode of the network 
+
+com_add_steering <string> 
+- Params: string eui64
+- Purpose: Adds the EUI to the steering data
+
+com_steering  
+- Params: void 
+- Purpose: Sends the steering data
+
+get_commissioner_status 
+- Params: void
+- Purpose: Gets the commissioner's status
+
+network_state  
+- Params: void
+- Purpose: Prints the current network state
+
+energy_scan <uint8_t> <uint8_t> *  
+- Params: uint8_t channel, uint8_t duration
+- Purpose: Starts an energy scan on the given channel. Optionally give a duration to perform the scan for.
+
+active_scan <uint8_t> <uint8_t> * 
+- Params: uint8_t channel, uint8_t duration
+- Purpose: Starts an active scan on the given channel, Optionally give a duration to perform the scan for.
+
+stop_scan 
+- Params: void
+- Purpose: Stops the scan
+
+get_mfg_token <uint8_t> 
+- Params: uint8_t tokenID
+- Purpose: Gets the Mfg token with the given token ID
+
+set_mfg_token <uint8_t> <string> 
+- Params: uint8_t tokenId, string tokenData
+- Purpose: Sets the Mfg token with ID of tokenId to tokenData
+
+get_ctune 
+- Params: void
+- Purpose: Gets the ctune
+
+set_ctune <uint32_t> 
+- Params: uint32_t tune
+- Purpose: Sets the ctune
+
+set_rho <uint8_t> 
+- Params: uint8_t enable
+- Purpose: Toggle on/off of the Radio Hold. 1 for ON, 0 for OFF.
+
+get_pta  
+- Params: void
+- Purpose: Gets the status of the PTA enable
+
+set_pta <uint8_t> 
+- Params: uint8_t enabled 
+- Purpose: Toggle the PTA enable. 1 for ON, 0 for OFF.
+
+get_antenna_mode 
+- Params: void
+- Purpose: Gets the antenna mode
+
+set_antenna_mode <uint8_t> 
+- Params: uint8_t mode
+- Purpose: Sets the antenna mode to the given mode type

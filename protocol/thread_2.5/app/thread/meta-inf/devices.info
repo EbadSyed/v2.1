@@ -1,0 +1,234 @@
+# Architectures.
+
+device "EFR32" {
+  prohibited:accelerometer-led        # EMHAL-1094.
+  prohibited:bootload-cli
+  prohibited:host-network-management
+  prohibited:i2c-driver               # EMHAL-1095.
+  prohibited:infrared-led             # EMHAL-1093.
+  prohibited:key-matrix               # EMHAL-1096.
+  prohibited:microphone-codec-msadpcm # EMHAL-1097.
+  prohibited:microphone-imaadpcm      # EMHAL-1134.
+  prohibited:stm32f103ret-library
+  prohibited:unix-library
+}
+
+device "EM3xx" {
+  prohibited:bootload-cli
+  prohibited:glib
+  prohibited:host-network-management
+  prohibited:psstore
+  prohibited:stm32f103ret-library
+  prohibited:unix-library
+}
+
+device "Unix" {
+  recommended:unix-library
+
+  prohibited:accelerometer-led
+  prohibited:adc
+  prohibited:antenna
+  prohibited:ash-v3
+  prohibited:ash-v3-stub
+  prohibited:button
+  prohibited:button-press
+  prohibited:buzzer
+  prohibited:dhcp-library
+  prohibited:dhcp-stub-library
+  prohibited:diagnostic
+  prohibited:ext-device
+  prohibited:glib
+  prohibited:hal-library
+  prohibited:hal-ncp-library
+  prohibited:heartbeat
+  prohibited:heartbeat-node-type
+  prohibited:i2c-driver
+  prohibited:idle-sleep
+  prohibited:infrared-led
+  prohibited:key-matrix
+  prohibited:led
+  prohibited:mbedtls-library
+  prohibited:mbedtls-custom-library
+  prohibited:mbedtls-dotdot-library
+  prohibited:mfglib-stub-library
+  prohibited:microphone-codec-msadpcm
+  prohibited:ncp-library
+  prohibited:psstore
+  prohibited:rail-library
+  prohibited:sim-eeprom1
+  prohibited:sim-eeprom2
+  prohibited:sim-eeprom2-1to2-upgrade
+  prohibited:sim-eeprom2-1to2-upgrade-stub
+  prohibited:stm32f103ret-library
+  prohibited:thread-stack
+  prohibited:thread-mbedtls-stack
+}
+
+# Configurations.
+
+device "SoC" {
+  required:rail-library
+  required:serial
+  required:thread-stack
+
+  # TODO: Consolidate hal-library and hal-ncp-library.
+  required:hal-library
+  prohibited:hal-ncp-library
+
+  recommended:adc
+  recommended:antenna-stub
+  recommended:button
+  recommended:buzzer
+  recommended:cli
+  recommended:coap-cli
+  recommended:command-interpreter2
+  recommended:debug-channel-stub
+  recommended:debug-print
+  recommended:dhcp-client
+  recommended:dhcp-library
+  recommended:diagnostic
+  recommended:dtls-auth-params
+  recommended:heartbeat
+  recommended:icmp-cli
+  recommended:led
+  recommended:main
+  recommended:mbedtls-library
+  recommended:mfglib-library
+  recommended:network-management-cli
+  recommended:sim-eeprom1
+  recommended:slaac-client
+  recommended:udp-cli
+
+  prohibited:ash-v3
+  prohibited:ash-v3-stub
+  prohibited:host-network-management
+  prohibited:ncp-library
+  prohibited:ncp-spi-link
+  prohibited:ncp-uart-link
+}
+
+device "NCP" {
+  required:mbedtls-library
+  required:ncp-library
+  required:rail-library
+  required:thread-stack
+
+  # TODO: Consolidate hal-library and hal-ncp-library.
+  required:hal-ncp-library
+  prohibited:hal-library
+
+  # TODO: Remove serial files from ncp-library and use the plugin.
+  prohibited:serial
+
+  recommended:adc
+  recommended:antenna-stub
+  recommended:button-stub
+  recommended:buzzer-stub
+  recommended:command-interpreter2
+  recommended:debug-channel-stub
+  recommended:debug-print
+  recommended:dhcp-library
+  recommended:diagnostic
+  recommended:dtls-auth-params
+  recommended:led-stub
+  recommended:mfglib-library
+  recommended:sim-eeprom1
+
+  prohibited:address-configuration-debug
+  prohibited:button-press
+  prohibited:cli
+  prohibited:coap-cli
+  prohibited:coap-debug
+  prohibited:coap-dispatch
+  prohibited:debug-print
+  prohibited:dhcp-client
+  prohibited:global-address-prefix-debug
+  prohibited:heartbeat
+  prohibited:heartbeat-node-type
+  prohibited:host-network-management
+  prohibited:icmp-cli
+  prohibited:icmp-debug
+  prohibited:idle-sleep
+  prohibited:main
+  prohibited:network-management-cli
+  prohibited:polling
+  prohibited:scan-debug
+  prohibited:slaac-client
+  prohibited:stm32f103ret-library
+  prohibited:udp-cli
+  prohibited:udp-debug
+  prohibited:unix-library
+  prohibited:version-debug
+}
+
+device "NCP SPI" {
+  required:ash-v3-stub
+  required:mbedtls-library
+  required:ncp-spi-link
+
+  prohibited:ash-v3
+  prohibited:ncp-uart-link
+}
+
+device "NCP UART" {
+  required:ash-v3
+  required:mbedtls-library
+  required:ncp-uart-link
+
+  prohibited:ash-v3-stub
+  prohibited:ncp-spi-link
+}
+
+device "Host" {
+  recommended:bootload-cli
+  recommended:cli
+  recommended:coap-cli
+  recommended:command-interpreter2
+  recommended:debug-print
+  recommended:dhcp-client
+  recommended:host-network-management
+  recommended:icmp-cli
+  recommended:main
+  recommended:mfglib-library
+  recommended:network-management-cli
+  recommended:serial
+  recommended:slaac-client
+  recommended:udp-cli
+
+  prohibited:antenna
+  prohibited:antenna-stub
+  prohibited:ash-v3
+  prohibited:ash-v3-stub
+  prohibited:dhcp-library
+  prohibited:dhcp-stub-library
+  prohibited:idle-sleep
+  prohibited:ncp-library
+  prohibited:rail-library
+  prohibited:thread-stack
+  prohibited:thread-mbedtls-stack
+}
+
+# Node types.
+
+device "Router" {
+  prohibited:polling
+}
+
+device "End Device" {
+  prohibited:polling
+}
+
+device "Sleepy End Device" {
+  recommended:idle-sleep
+  recommended:polling
+}
+
+# Application layers.
+
+device "ZCL/IP" {
+  required:coap-dispatch
+  recommended:mbedtls-library
+  required:zcl-core
+
+  prohibited:coap-debug
+}

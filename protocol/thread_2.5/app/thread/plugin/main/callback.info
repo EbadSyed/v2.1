@@ -1,0 +1,22 @@
+#include PLATFORM_HEADER
+#include CONFIGURATION_HEADER
+#include EMBER_AF_API_STACK
+
+/** @brief Mark Application Buffers
+ *
+ * This function is called when the application must mark its buffers.  Buffers
+ * that are not marked will be reclaimed by the stack.
+ */
+void emberAfMarkApplicationBuffersCallback(void)
+{
+}
+
+/** @brief Network Status
+ *
+ * This function is called when the network status changes.
+ */
+void emberAfNetworkStatusCallback(EmberNetworkStatus newNetworkStatus,
+                                  EmberNetworkStatus oldNetworkStatus,
+                                  EmberJoinFailureReason reason)
+{
+}

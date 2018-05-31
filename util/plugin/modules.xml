@@ -1,0 +1,13 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<model:MDescriptors xmlns:model="http://www.silabs.com/ss/Studio.ecore">
+  <descriptors name="SDK.HAL.CS5463.BASE" label="CS5463" propertyScope="module">
+    <description>CS5463 Power Meter</description>
+    <properties key="module.clientModelURI" value="./plugin-afv2/power-meter-cs5463/cs5463.slsproj"/>
+    <properties key="module.category" value="HAL Config"/>
+  </descriptors>
+  <descriptors name="SDK.HAL.LNA.BASE" label="LNA" propertyScope="module">
+    <description>External LNA</description>
+    <properties key="module.clientModelURI" value="./plugin-common/module-lna/lna.slsproj"/>
+    <properties key="module.category" value="HAL Config"/>
+  </descriptors>
+</model:MDescriptors>

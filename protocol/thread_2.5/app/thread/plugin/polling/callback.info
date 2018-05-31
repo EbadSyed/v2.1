@@ -1,0 +1,17 @@
+#include PLATFORM_HEADER
+
+/** @brief Ok To Long Poll
+ *
+ * This function is called by the Polling plugin to determine if the node can
+ * wait an extended period of time between polls.  Generally, a node can poll
+ * infrequently when it does not expect to receive data, via its parent, from
+ * other nodes in the network.  When data is expected, the node must poll more
+ * frequently to avoid having its parent discard stale data due to the MAC
+ * indirect transmission timeout (::EMBER_INDIRECT_TRANSMISSION_TIMEOUT).  The
+ * application should return true if it is not expecting data or false
+ * otherwise.
+ */
+bool emberAfPluginPollingOkToLongPollCallback(void)
+{
+  return true;
+}

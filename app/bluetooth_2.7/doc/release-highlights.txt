@@ -1,0 +1,6 @@
+
+What's new in Bluetooth 2.7.0.0:
+  * LE Long range connection establishment
+  * New Bluetooth Over-the-Air update mechanism
+  * Bluetooth stack delivered as libraries
+

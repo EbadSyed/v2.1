@@ -1,0 +1,21 @@
+#include PLATFORM_HEADER
+#include CONFIGURATION_HEADER
+#include EMBER_AF_API_STACK
+
+/** @brief Callback for incoming requests.
+ *
+ * For more information, see stack/include/coap.h
+ *
+ * `info` can be passed as-is when sending an immediate response from within
+ * the call to `emberCoapRequestHandler()`.  To send a delayed response, the
+ * `info` data must be copied to a more permanent
+ * location using `emberSaveRequestInfo()`.
+ */
+void emberCoapRequestHandler(EmberCoapCode code,
+                             uint8_t *uri,
+                             EmberCoapReadOptions *options,
+                             const uint8_t *payload,
+                             uint16_t payloadLength,
+                             const EmberCoapRequestInfo *info)
+{
+}

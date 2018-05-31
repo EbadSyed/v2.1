@@ -1,0 +1,25 @@
+#include PLATFORM_HEADER
+#include CONFIGURATION_HEADER
+#include EMBER_AF_API_STACK
+
+/** @brief The radio calibration callback function.
+ *
+ * The Voltage Controlled Oscillator (VCO) can drift with
+ * temperature changes.  During every call to ::emberTick(), the stack will
+ * check to see if the VCO has drifted.  If the VCO has drifted, the stack
+ * will call ::emberRadioNeedsCalibratingHandler() to inform the application
+ * that it should perform calibration of the current channel as soon as
+ * possible.  Calibration can take up to 150ms.  The default callback function
+ * implementation provided here performs calibration immediately.  If the
+ * application wishes, it can define its own callback by defining
+ * ::EMBER_APPLICATION_HAS_CUSTOM_RADIO_CALIBRATION_CALLBACK in its
+ * CONFIGURATION_HEADER.  It can then failsafe any critical processes or
+ * peripherals before calling ::emberCalibrateCurrentChannel().  The
+ * application must call ::emberCalibrateCurrentChannel() in
+ * response to this callback to maintain expected radio performance.
+ */
+void emberRadioNeedsCalibratingHandler(void)
+{
+  // TODO: Failsafe any critical processes or peripherals.
+  emberCalibrateCurrentChannel();
+}

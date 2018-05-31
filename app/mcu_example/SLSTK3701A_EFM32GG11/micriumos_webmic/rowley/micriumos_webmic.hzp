@@ -1,0 +1,178 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="micriumos_webmic" version="2">
+  <project Name="micriumos_webmic">
+    <configuration Name="Common" Target="EFM32GG11B820F2048GL192" arm_architecture="v7M" arm_core_type="Cortex-M4" arm_fp_abi="SoftFP" arm_fpu_type="FPv4-SP-D16" arm_gcc_target="arm-unknown-eabi" arm_linker_heap_size="128" arm_linker_process_stack_size="0" arm_linker_stack_size="1024" arm_simulator_memory_simulation_filename="$(TargetsDir)/EFM32/EFM32SimulatorMemory.dll" arm_simulator_memory_simulation_parameter="EFM32GG11B820F2048GL192;FLASH=0x00000000:0x200000;RAM=0x20000000:0x80000" arm_target_debug_interface_type="ADIv5" arm_target_flash_loader_file_path="$(TargetsDir)/EFM32/Release/Loader_Giant11_rpc.elf" arm_target_loader_parameter="14318180" c_preprocessor_definitions="USE_PROCESS_STACK;STARTUP_FROM_RESET" c_user_include_directories="$(ProjectDir)/..;$(ProjectDir)/../../../../../platform/CMSIS/Include;$(ProjectDir)/../../../../../platform/Device/SiliconLabs/EFM32GG11B/Include;$(ProjectDir)/../../../../../platform/emlib/inc;$(ProjectDir)/../../../../../platform/emdrv;$(ProjectDir)/../../../../../platform/emdrv/common/inc;$(ProjectDir)/../../../../../platform/emdrv/dmadrv/inc;$(ProjectDir)/../../../../../hardware/kit/common/bsp;$(ProjectDir)/../../../../../hardware/kit/common/drivers;$(ProjectDir)/../../../../../hardware/kit/SLSTK3701A_EFM32GG11/config;$(ProjectDir)/../../../../../util/micrium/Micrium_OS;$(ProjectDir)/../../../../../util/micrium/Micrium_OS/bsp/siliconlabs/generic/include;$(ProjectDir)/../../../../../util/micrium/Ports;$(ProjectDir)/../cfg;$(ProjectDir)/../../../../../platform/middleware/glib;$(ProjectDir)/../../../../../platform/middleware/glib/glib;$(ProjectDir)/../../../../../platform/middleware/glib/dmd;$(ProjectDir)/..;$(ProjectDir)/../libs/include;$(ProjectDir)/../../../../../util/micrium/Tools/SystemView/SEGGER" link_include_startup_code="No" linker_additional_files="$(TargetsDir)/EFM32/lib/libefm32$(LibExt)$(LIB)" linker_additional_options="" linker_memory_map_file="$(TargetsDir)/EFM32/EFM32GG11B820F2048GL192_MemoryMap.xml" linker_output_format="bin" linker_printf_fmt_level="long" linker_printf_width_precision_supported="Yes" oscillator_frequency="14.31818MHz" project_directory="" project_type="Executable" property_groups_file_path="$(TargetsDir)/EFM32/EFM32_propertyGroups.xml"/>
+    <configuration Name="Flash" Placement="Flash" arm_target_flash_loader_file_path="$(TargetsDir)/EFM32/Release/Loader_Giant11_rpc.elf" arm_target_flash_loader_type="LIBMEM RPC Loader" linker_section_placement_file="$(StudioDir)/targets/Cortex_M/flash_placement.xml" target_reset_script="FLASHReset()"/>
+    <configuration Name="RAM" Placement="RAM" linker_section_placement_file="$(StudioDir)/targets/Cortex_M/ram_placement.xml" target_reset_script="SRAMReset()"/>
+    <folder Name="CMSIS">
+      <file file_name="../../../../../platform/Device/SiliconLabs/EFM32GG11B/Source/system_efm32gg11b.c"/>
+      <file file_name="../../../../../util/micrium/Ports/CMSIS/GCC/cmsis_wrapper.s"/>
+    </folder>
+    <folder Name="bsp">
+      <file file_name="../../../../../hardware/kit/common/bsp/bsp_stk_leds.c"/>
+      <file file_name="../../../../../hardware/kit/common/bsp/bsp_trace.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/bsp/siliconlabs/generic/source/bsp_cpu.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/bsp/siliconlabs/generic/source/bsp_os.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/bsp/siliconlabs/generic/source/bsp_net_ether_gem.c"/>
+    </folder>
+    <folder Name="emlib">
+      <file file_name="../../../../../platform/emlib/src/em_assert.c"/>
+      <file file_name="../../../../../platform/emlib/src/em_core.c"/>
+      <file file_name="../../../../../platform/emlib/src/em_cmu.c"/>
+      <file file_name="../../../../../platform/emlib/src/em_ebi.c"/>
+      <file file_name="../../../../../platform/emlib/src/em_emu.c"/>
+      <file file_name="../../../../../platform/emlib/src/em_gpio.c"/>
+      <file file_name="../../../../../platform/emlib/src/em_system.c"/>
+      <file file_name="../../../../../platform/emlib/src/em_usart.c"/>
+      <file file_name="../../../../../platform/emlib/src/em_prs.c"/>
+      <file file_name="../../../../../platform/emlib/src/em_rtcc.c"/>
+      <file file_name="../../../../../platform/emlib/src/em_ldma.c"/>
+    </folder>
+    <folder Name="common">
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/common/source/collections/bitmap.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/common/source/collections/slist.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/common/source/common/common.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/common/source/kal/kal_kernel.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/common/source/lib/lib_ascii.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/common/source/lib/lib_math.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/common/source/lib/lib_mem.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/common/source/lib/lib_str.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/common/source/platform_mgr/platform_mgr.c"/>
+    </folder>
+    <folder Name="cpu">
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/cpu/source/cpu_core.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/ports/source/gnu/armv7m_cpu_a.S"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/ports/source/gnu/armv7m_cpu_c.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/ports/source/generic/armv7m_cpu_int.c"/>
+    </folder>
+    <folder Name="drivers">
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/drivers/net/source/net_drv_ether_gem.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/drivers/net/source/net_drv_phy_generic.c"/>
+      <file file_name="../../../../../hardware/kit/common/drivers/retargetio.c"/>
+      <file file_name="../../../../../hardware/kit/common/drivers/retargetserial.c"/>
+      <file file_name="../../../../../hardware/kit/common/drivers/display.c"/>
+      <file file_name="../../../../../hardware/kit/common/drivers/displayls013b7dh06.c"/>
+      <file file_name="../../../../../hardware/kit/common/drivers/displaypalemlib.c"/>
+      <file file_name="../../../../../hardware/kit/common/drivers/udelay.c"/>
+      <file file_name="../../../../../platform/emdrv/dmadrv/inc/dmadrv.h"/>
+      <file file_name="../../../../../platform/emdrv/dmadrv/src/dmadrv.c"/>
+    </folder>
+    <folder Name="glib">
+      <file file_name="../../../../../platform/middleware/glib/dmd/display/dmd_display.c"/>
+      <file file_name="../../../../../platform/middleware/glib/glib/glib.c"/>
+      <file file_name="../../../../../platform/middleware/glib/glib/glib_bitmap.c"/>
+      <file file_name="../../../../../platform/middleware/glib/glib/glib_string.c"/>
+      <file file_name="../../../../../platform/middleware/glib/glib/glib_line.c"/>
+      <file file_name="../../../../../platform/middleware/glib/glib/glib_rectangle.c"/>
+      <file file_name="../../../../../platform/middleware/glib/glib/glib_font_normal_8x8.c"/>
+      <file file_name="../../../../../platform/middleware/glib/glib/glib_font_narrow_6x8.c"/>
+      <file file_name="../../../../../platform/middleware/glib/glib/glib_font_number_16x20.c"/>
+    </folder>
+    <folder Name="kernel">
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/kernel/source/os_core.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/kernel/source/os_cfg_app.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/kernel/source/os_dbg.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/kernel/source/os_flag.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/kernel/source/os_msg.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/kernel/source/os_mutex.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/kernel/source/os_prio.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/kernel/source/os_sem.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/kernel/source/os_stat.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/kernel/source/os_task.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/kernel/source/os_tick.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/kernel/source/os_time.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/kernel/source/os_tmr.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/kernel/source/os_var.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/ports/source/gnu/armv7m_os_cpu_a.S"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/ports/source/gnu/armv7m_os_cpu_c.c"/>
+    </folder>
+    <folder Name="net">
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_app.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_arp.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_ascii.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_bsd.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_buf.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_cache.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_conn.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_ctr.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_icmp.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_icmpv4.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_icmpv6.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_if.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_if_802x.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_if_ether.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_ip.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_ipv4.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_ipv6.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_mldp.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_ndp.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_sock.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_stat.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_task.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_tcp.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_tmr.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_udp.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/tcpip/net_util.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/util/net_svc_task.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/dhcp/dhcp_client.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/dns/dns_client.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/dns/dns_client_cache.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/dns/dns_client_req.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/dns/dns_client_task.c"/>
+    </folder>
+    <folder Name="mic">
+      <file file_name="../mic/mic_config.h"/>
+      <file file_name="../mic/mic_i2s.h"/>
+      <file file_name="../mic/mic_i2s.c"/>
+    </folder>
+    <folder Name="SystemView">
+      <file file_name="../../../../../util/micrium/Tools/SystemView/SEGGER/SEGGER_RTT.c"/>
+      <file file_name="../../../../../util/micrium/Tools/SystemView/SEGGER/SEGGER_SYSVIEW.c"/>
+      <file file_name="../../../../../util/micrium/Tools/SystemView/Sample/OS/SEGGER_SYSVIEW_MicriumOSKernel.c"/>
+      <file file_name="../cfg/SEGGER_SYSVIEW_Config_MicriumOSKernel.c"/>
+    </folder>
+    <folder Name="Source">
+      <file file_name="../main.c"/>
+      <file file_name="../net/core/net_core.c"/>
+      <file file_name="../net/http/http_server_no_fs.c"/>
+      <file file_name="../net/http/http_server_init.c"/>
+      <file file_name="../graphics.c"/>
+      <file file_name="../common_declarations.h"/>
+      <file file_name="../displayconfigapp.h"/>
+    </folder>
+    <folder Name="http">
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/http/http.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/http/http_dict.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/http/server/http_server.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/http/server/http_server_conn.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/http/server/http_server_mem.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/http/server/http_server_priv.h"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/http/server/http_server_req.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/http/server/http_server_resp.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/http/server/http_server_sock.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/http/server/http_server_str.c"/>
+      <file file_name="../../../../../util/micrium/Micrium_OS/rtos/net/source/http/server/http_server_task.c"/>
+    </folder>
+    <folder Name="Libraries">
+      <file file_name="../libs/libopus_gcc.a"/>
+      <file file_name="../libs/libogg_gcc.a"/>
+      <file file_name="m"/>
+    </folder>
+
+    <folder Name="System Files">
+      <file file_name="$(StudioDir)/source/thumb_crt0.s"/>
+      <file file_name="$(TargetsDir)/EFM32/EFM32_Startup.s"/>
+      <file file_name="$(TargetsDir)/EFM32/EFM32_Target.js">
+        <configuration Name="Common" file_type="Reset Script"/>
+      </file>
+    </folder>
+  </project>
+  <configuration Name="THUMB Flash Debug" inherited_configurations="THUMB;Flash;Debug"/>
+  <configuration Name="THUMB Flash Release" inherited_configurations="THUMB;Flash;Release"/>
+  <configuration Name="THUMB" Platform="ARM" arm_instruction_set="THUMB" arm_library_instruction_set="THUMB" c_preprocessor_definitions="__THUMB" hidden="Yes"/>
+  <configuration Name="Flash" c_preprocessor_definitions="__FLASH_BUILD" hidden="Yes"/>
+  <configuration Name="Debug" build_debug_information="Yes" c_additional_options="-Wall;-Wextra;" c_preprocessor_definitions="DEBUG;DEBUG_EFM;RETARGET_VCOM;HAVE_CONFIG_H" gcc_optimization_level="None" hidden="Yes" link_include_startup_code="No"/>
+  <configuration Name="Release" build_debug_information="No" c_additional_options="-Wall;-Wextra;" c_preprocessor_definitions="DEBUG_EFM;RETARGET_VCOM;HAVE_CONFIG_H" gcc_optimization_level="Level 3" hidden="Yes" link_include_startup_code="No"/>
+  <configuration Name="Common" linker_printf_enabled="Yes"/>
+</solution>

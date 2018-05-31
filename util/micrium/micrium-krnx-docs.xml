@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contentItems
+xmlns="http://www.silabs.com/ss/ContentItem.ecore"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.silabs.com/ss/ContentItem.ecore file:/C:/Users/CAOWENS/Documents/ssv4/contentItems.xsd">
+  <contentItemData
+    priority="1"
+    category="Getting Started"
+    itemURI="https://doc.micrium.com/display/OSUM50000/What%27s+new+in+Micrium+OS+V5"
+    label="What's new in Micrium OS V5"
+    description="List of all the improvements from the µC products"
+  ></contentItemData>
+  <contentItemData
+    priority="2"
+    category="Getting Started"
+    itemURI="https://doc.micrium.com/display/OSUM50000/General+Concepts"
+    label="General Concepts"
+    description="Description of general concepts that are used throughout Micrium OS products"
+  ></contentItemData>
+  <contentItemData
+    priority="1"
+    category="Migration Guides"
+    itemURI="https://doc.micrium.com/pages/viewpage.action?pageId=29031649"
+    label="Kernel Migration Guide"
+    description="Migration guide to port an existing µC/OS-III application to Micrium OS Kernel"
+  ></contentItemData>
+  <contentItemData
+    priority="2"
+    category="Migration Guides"
+    itemURI="https://doc.micrium.com/display/OSUM50000/CPU+Migration+Guide"
+    label="CPU Migration Guide"
+    description="Migration guide to port an existing µC/CPU application to Micrium OS"
+  ></contentItemData>
+  <contentItemData
+    priority="3"
+    category="Migration Guides"
+    itemURI="https://doc.micrium.com/display/OSUM50000/Common+Migration+Guide"
+    label="Common Components Migration Guide"
+    description="Migration guide to port an existing application using µC/Clk, µC/LIB, µC/Common and/or µC/Shell to Micrium OS"
+  ></contentItemData>
+  <contentItemData
+    priority="1"
+    category="API References"
+    itemURI="https://doc.micrium.com/display/OSUM50000/Kernel+API"
+    label="Kernel API Reference"
+    description="API Reference for Micrium OS Kernel"
+  ></contentItemData>
+  <contentItemData
+    priority="4"
+    category="API References"
+    itemURI="https://doc.micrium.com/display/OSUM50000/IO+API"
+    label="IO API Reference"
+    description="API Reference for Micrium OS IO"
+  ></contentItemData>
+  <contentItemData
+    priority="2"
+    category="API References"
+    itemURI="https://doc.micrium.com/display/OSUM50000/CPU+API"
+    label="CPU API Reference"
+    description="API Reference for Micrium OS CPU"
+  ></contentItemData>
+  <contentItemData
+    priority="3"
+    category="API References"
+    itemURI="https://doc.micrium.com/display/OSUM50000/Common+API"
+    label="Common API Reference"
+    description="API Reference for Micrium OS Common"
+  ></contentItemData>
+</contentItems>

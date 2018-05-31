@@ -1,0 +1,45 @@
+#include PLATFORM_HEADER
+#include CONFIGURATION_HEADER
+#include EMBER_AF_API_STACK
+
+/** @brief  Application callback for an incoming UDP message.
+ *
+ * @param destination     IPV6 destination address
+ * @param source          IPV6 source address
+ * @param localPort       UDP source port
+ * @param remotePort      UDP destination port
+ * @param payload         UDP transport payload
+ * @param payloadLength   payload length
+ */
+void emberUdpHandler(const uint8_t *destination,
+                     const uint8_t *source,
+                     uint16_t localPort,
+                     uint16_t remotePort,
+                     const uint8_t *payload,
+                     uint16_t payloadLength)
+{
+}
+
+/** @brief  Application callback for an incoming UDP multicast.
+ *
+ * @param destination     IPV6 destination address
+ * @param source          IPV6 source address
+ * @param localPort       UDP source port
+ * @param remotePort      UDP destination port
+ * @param payload         UDP transport payload
+ * @param payloadLength   payload length
+ */
+void emberUdpMulticastHandler(const uint8_t *destination,
+                              const uint8_t *source,
+                              uint16_t localPort,
+                              uint16_t remotePort,
+                              const uint8_t *payload,
+                              uint16_t payloadLength)
+{
+  emberUdpHandler(destination,
+                  source,
+                  localPort,
+                  remotePort,
+                  payload,
+                  payloadLength);
+}

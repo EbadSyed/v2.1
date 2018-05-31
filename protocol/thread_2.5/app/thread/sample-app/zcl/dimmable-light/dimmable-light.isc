@@ -1,0 +1,462 @@
+#ISD afv6
+# Simplicity Studio version: 4.22.1.qualifier
+
+# Application configuration
+appId: thread
+frameworkRoot: app/thread
+architecture: EFR32MG12P432F1024GM48+RD-0098-0401+iar
+deviceName: dimmable-light
+generationDirectory: PATH(ISC_RELATIVE):.
+
+# Devices
+device: EFR32
+device: SoC
+device: Router
+device: ZCL/IP
+
+# Plugin configuration
+appPlugin: accelerometer-led=false
+appPlugin: adc=true
+appPlugin: address-configuration-debug=true
+appPlugin: antenna=false
+appPlugin: antenna-stub=true
+appPlugin: ash-v3=false
+appPlugin: ash-v3-stub=false
+appPlugin: basic-server=true
+appPlugin: battery-monitor=false
+appPlugin: bootload-cli=false
+appPlugin: bulb-pwm-driver=true
+appPlugin: bulb-ui=true
+appPlugin: button=true
+appPlugin: button-interface=false
+appPlugin: button-press=false
+appPlugin: button-stub=false
+appPlugin: buzzer=false
+appPlugin: buzzer-stub=true
+appPlugin: cjson=false
+appPlugin: cli=true
+appPlugin: coap-cli=false
+appPlugin: coap-debug=false
+appPlugin: coap-dispatch=true
+appPlugin: coexistence=false
+appPlugin: color-control-server=false
+appPlugin: command-interpreter2=true
+appPlugin: connection-manager-cli=true
+appPlugin: connection-manager-jib=true
+appPlugin: connection-manager-joob=false
+appPlugin: debug-channel=true
+appPlugin: debug-channel-stub=false
+appPlugin: debug-print=true
+appPlugin: dhcp-client=true
+appPlugin: dhcp-library=true
+appPlugin: dhcp-stub-library=false
+appPlugin: diagnostic=false
+appPlugin: diagnostic-stub=true
+appPlugin: dmp-demo-ui=false
+appPlugin: dns-cli=true
+appPlugin: dtls-auth-params=true
+appPlugin: dtls-cli=false
+appPlugin: eeprom=true
+appPlugin: eeprom-powerdown=false
+appPlugin: end-node-ui=false
+appPlugin: ext-device=false
+appPlugin: extdev=false
+appPlugin: ezradiopro=false
+appPlugin: fem-control=false
+appPlugin: generic-interrupt-control=false
+appPlugin: glib=false
+appPlugin: global-address-prefix-debug=false
+appPlugin: gpio-sensor=false
+appPlugin: groups-server=true
+appPlugin: hal-library=true
+appPlugin: hal-ncp-library=false
+appPlugin: heartbeat=false
+appPlugin: heartbeat-node-type=false
+appPlugin: host-network-management=false
+appPlugin: host-network-management-stub=false
+appPlugin: humidity-si7021-stub=false
+appPlugin: i2c-driver=false
+appPlugin: i2c-driver-stub=false
+appPlugin: icmp-cli=true
+appPlugin: icmp-debug=true
+appPlugin: identify-server=true
+appPlugin: idle-sleep=false
+appPlugin: illuminance-measurement-server=false
+appPlugin: illuminance-si1141-stub=false
+appPlugin: infrared-led=false
+appPlugin: key-matrix=false
+appPlugin: led=true
+appPlugin: led-blink=false
+appPlugin: led-dim-pwm=true
+appPlugin: led-rgb-pwm=false
+appPlugin: led-stub=false
+appPlugin: led-temp-pwm=false
+appPlugin: level-control-server=true
+appPlugin: libcoap=false
+appPlugin: linked-list=false
+appPlugin: log-cli=false
+appPlugin: main=true
+appPlugin: mbedtls-custom-library=false
+appPlugin: mbedtls-dotdot-library=false
+appPlugin: mbedtls-library=true
+appPlugin: mfglib-library=true
+appPlugin: mfglib-stub-library=false
+appPlugin: microphone-codec-msadpcm=false
+appPlugin: microphone-imaadpcm=false
+appPlugin: module-lna=false
+appPlugin: mpsi=false
+appPlugin: mpsi-ipc=false
+appPlugin: mpsi-storage=false
+appPlugin: ncp-library=false
+appPlugin: ncp-spi-link=false
+appPlugin: ncp-uart-link=false
+appPlugin: network-management-cli=true
+appPlugin: occupancy-pyd1698=false
+appPlugin: occupancy-pyd1698-stub=false
+appPlugin: occupancy-sensing-server=false
+appPlugin: on-off-server=true
+appPlugin: ota-bootload-client=true
+appPlugin: ota-bootload-client-policy=true
+appPlugin: ota-bootload-core=true
+appPlugin: ota-bootload-server=false
+appPlugin: ota-bootload-server-policy=false
+appPlugin: ota-bootload-storage-cli=true
+appPlugin: ota-bootload-storage-core=true
+appPlugin: ota-bootload-storage-eeprom=true
+appPlugin: ota-bootload-storage-unix=false
+appPlugin: pa=true
+appPlugin: paho.mqtt.c=false
+appPlugin: poll-control-client=false
+appPlugin: poll-control-server=false
+appPlugin: polling=false
+appPlugin: power-configuration-server=false
+appPlugin: power-meter-cs5463=false
+appPlugin: psstore=false
+appPlugin: pti=true
+appPlugin: rail-library=true
+appPlugin: rail-library-mp=false
+appPlugin: relative-humidity-measurement-server=false
+appPlugin: sb1-gesture-sensor=false
+appPlugin: scan-debug=false
+appPlugin: serial=true
+appPlugin: sim-eeprom1=true
+appPlugin: sim-eeprom2=false
+appPlugin: sim-eeprom2-1to2-upgrade=false
+appPlugin: sim-eeprom2-1to2-upgrade-stub=false
+appPlugin: slaac-client=true
+appPlugin: slot-manager=false
+appPlugin: stm32f103ret-library=false
+appPlugin: tamper-switch=false
+appPlugin: temperature-measurement-server=false
+appPlugin: temperature-si7053-stub=false
+appPlugin: thread-mbedtls-stack=false
+appPlugin: thread-stack=true
+appPlugin: thread-test-harness-cli=false
+appPlugin: transport-mqtt=false
+appPlugin: udp-cli=false
+appPlugin: udp-debug=false
+appPlugin: unix-library=false
+appPlugin: unix-netif-config=false
+appPlugin: version-debug=true
+appPlugin: zcl-core=true
+appPlugin: zcl-core-cli=true
+
+# Setup configurations
+{setupId:additionalFiles
+PATH(ISC_RELATIVE):dimmable-light-implementation.c
+}
+{setupId:boardHeader
+allowMissingHeader:false
+useHeaderInPlace:false
+em3585=BOARD,em35x/ist-a22-rgb,,
+EFR32MG1P732F256GM32=USE_HARDWARE_CONFIGURATOR,efr32/ist_a0085,,
+EFR32MG1P732F256IM32=BOARD,efr32/ist_a0085,,
+EFR32MG1P632F256GM32=BOARD,efr32/ist_a0085,,
+EFR32MG1P632F256IM32=BOARD,efr32/ist_a0085,,
+EFR32MG12P432F1024GM48+RD-0098-0401=USE_HARDWARE_CONFIGURATOR,,,
+EFR32MG12P432F1024IM48+RD-0098-0401=USE_HARDWARE_CONFIGURATOR,,,
+}
+{setupId:bookkeeping
+}
+{setupId:bootloader
+efr32~series[1]~device_configuration[1]=null,
+efr32~series[1]~device_configuration[2]=application,
+efr32~series[1]~device_configuration[3]=null,
+efr32~series[1]~device_configuration[4]=null,
+em3581=null,
+em3582=null,
+em3585=local-storage,
+em3586=null,
+em3587=null,
+em3588=null,
+em3591=null,
+em3592=null,
+em3595=null,
+em3596=null,
+em3597=null,
+em3598=null,
+efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[732]~flash[256K]~temp[G]~package[M]~pins[32]=null,
+efr32~family[M]~series[1]~device_configuration[1]~performance[V]~radio[732]~flash[256K]~temp[G]~package[M]~pins[32]=application,
+efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[732]~flash[256K]~temp[I]~package[M]~pins[32]=null,
+efr32~family[M]~series[1]~device_configuration[1]~performance[V]~radio[732]~flash[256K]~temp[I]~package[M]~pins[32]=application,
+efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[632]~flash[256K]~temp[G]~package[M]~pins[32]=application,
+efr32~family[M]~series[1]~device_configuration[1]~performance[V]~radio[632]~flash[256K]~temp[G]~package[M]~pins[32]=application,
+efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[632]~flash[256K]~temp[I]~package[M]~pins[32]=application,
+efr32~family[M]~series[1]~device_configuration[1]~performance[V]~radio[632]~flash[256K]~temp[I]~package[M]~pins[32]=application,
+efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[232]~flash[256K]~temp[G]~package[M]~pins[48]=application,
+efr32~family[M]~series[1]~device_configuration[1]~performance[B]~radio[132]~flash[256K]~temp[G]~package[M]~pins[32]=null,
+efr32~family[M]~series[1]~device_configuration[1]~performance[B]~radio[132]~flash[256K]~temp[G]~package[M]~pins[48]=null,
+efr32~family[M]~series[1]~device_configuration[1]~performance[B]~radio[232]~flash[256K]~temp[G]~package[M]~pins[32]=null,
+efr32~family[M]~series[1]~device_configuration[1]~performance[B]~radio[232]~flash[256K]~temp[G]~package[M]~pins[48]=application,
+efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[G]~package[M]~pins[32]=null,
+efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[G]~package[M]~pins[48]=null,
+efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[232]~flash[256K]~temp[G]~package[M]~pins[32]=null,
+efr32~family[M]~series[1]~device_configuration[1]~performance[V]~radio[132]~flash[256K]~temp[G]~package[M]~pins[32]=null,
+efr32~family[M]~series[1]~device_configuration[1]~performance[V]~radio[132]~flash[256K]~temp[G]~package[M]~pins[48]=null,
+efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]=null,
+efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[133]~flash[256K]~temp[G]~package[M]~pins[48]=null,
+efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[233]~flash[256K]~temp[G]~package[M]~pins[48]=null,
+efr32~family[M]~series[1]~device_configuration[2]~performance[P]~radio[432]~flash[1024K]~temp[I]~package[M]~pins[48]=application,
+}
+{setupId:callbackConfiguration
+emberResumeNetworkReturn:false
+emberJoinNetworkReturn:false
+emberResetNetworkStateReturn:false
+emberAfPluginIdleSleepOkToSleepCallback:false
+emberZclGetPublicKeyCallback:false
+emberZclGetDefaultReportingConfigurationCallback:false
+emberZclGetDefaultReportableChangeCallback:false
+emberZclNotificationCallback:false
+emberConnectionManagerJibGetJoinKeyCallback:false
+}
+{setupId:coapDispatch
+}
+{setupId:commandLineConfiguration
+on
+}
+{setupId:debugConfiguration
+on
+area name off
+appSerial=1
+compile,EMBER_AF_PLUGIN_ZCL_CORE
+enable,EMBER_AF_PLUGIN_ZCL_CORE
+}
+{setupId:eventConfiguration
+}
+{setupId:halOptions
+}
+{setupId:hwConfig
+featureLevel=1
+active=true
+lastHwConfFileUsed=PATH(STACK_RELATIVE):app/thread/sample-app/zcl/dimmable-light/efr32mg12p432f1024im48.hwconf
+}
+{setupId:information
+\{key:description
+Dimmable Light Sample Application
+
+Quality: Experimental - Useful for demonstration only.
+
+This is a ZCL over IP light application.  The application provides pwm control for a dimming function.  It is intended to be used with the border router reference design to demonstrate device commissioning with the Thread Group Commissioning App and routing between a Thread Network and adjacent IP networks.  Use the application with kits RD-0035-0601 (EM3585), RD-0085-0401 (EFR32MG1P732F256IM32), RD-0098-0401 (EFR32MG12P432F1024IM32), WSTK (EFR32) and EM35X-DEV (EM358x).
+
+For further information on these topics:
+  Architecture
+  Operation
+  Programming instructions
+  Command line interface descriptions and examples
+
+Refer to documents:
+  QSG102: Thread Border Router Add-On Kit Quick-Start Guide
+  UG116: Developing Custom Border Router Applications
+  UG252 - Lighting Reference Design Kit User's Guide (RD-0035-0601, RD-0085-0401, RD-0098-0401)
+  thread-framework-readme: command line interface description and examples
+\}
+}
+{setupId:macros
+-DRTCDRV_USE_LFRCO
+}
+{setupId:serial
+em3585=*0,*,*,*,*,*,*,1,false,*,*,*,*,*
+useHwConfigurator=true
+}
+{setupId:template
+simeepromSize=8192
+}
+{setupId:token
+}
+{setupId:zclip
+beginAttrList:OPTIONAL
+  cl:0x0000, at:0x0004, di:server, mf:0x0000
+  cl:0x0020, at:0x0004, di:server, mf:0x0000
+  cl:0x0020, at:0x0005, di:server, mf:0x0000
+  cl:0x0020, at:0x0006, di:server, mf:0x0000
+  cl:0x0300, at:0x0000, di:server, mf:0x0000
+  cl:0x0300, at:0x0001, di:server, mf:0x0000
+  cl:0x0300, at:0x0002, di:server, mf:0x0000
+  cl:0x0300, at:0x0003, di:server, mf:0x0000
+  cl:0x0300, at:0x0004, di:server, mf:0x0000
+  cl:0x0300, at:0x0007, di:server, mf:0x0000
+  cl:0x0300, at:0x0008, di:server, mf:0x0000
+endAttrList:OPTIONAL
+beginAttrList:SAVED_TO_FLASH
+  cl:0x0006, at:0x0000, di:server, mf:0x0000
+  cl:0x0008, at:0x0000, di:server, mf:0x0000
+endAttrList:SAVED_TO_FLASH
+beginAttributeDefaults
+cl:0x0006, at:0x0000, di:server, mf:0x0000 => 0x01
+cl:0x0008, at:0x0000, di:server, mf:0x0000 => 0x20
+endAttributeDefaults
+configuredNetwork:type:ZIGBEE_PRO, name:Primary
+beginEndpointType:Primary
+device:zcustom
+overrideClientCluster:0,no
+overrideClientCluster:1,no
+overrideClientCluster:2,no
+overrideClientCluster:3,yes
+overrideClientCluster:4,no
+overrideClientCluster:5,no
+overrideClientCluster:6,no
+overrideClientCluster:7,no
+overrideClientCluster:8,no
+overrideClientCluster:9,no
+overrideClientCluster:10,no
+overrideClientCluster:11,no
+overrideClientCluster:15,no
+overrideClientCluster:21,no
+overrideClientCluster:22,no
+overrideClientCluster:25,yes
+overrideClientCluster:26,no
+overrideClientCluster:27,no
+overrideClientCluster:32,yes
+overrideClientCluster:33,no
+overrideClientCluster:37,no
+overrideClientCluster:256,no
+overrideClientCluster:257,no
+overrideClientCluster:258,no
+overrideClientCluster:512,no
+overrideClientCluster:513,no
+overrideClientCluster:514,no
+overrideClientCluster:515,no
+overrideClientCluster:516,no
+overrideClientCluster:768,no
+overrideClientCluster:769,no
+overrideClientCluster:1024,no
+overrideClientCluster:1025,no
+overrideClientCluster:1026,no
+overrideClientCluster:1027,no
+overrideClientCluster:1028,no
+overrideClientCluster:1029,no
+overrideClientCluster:1030,yes
+overrideClientCluster:1280,no
+overrideClientCluster:1281,no
+overrideClientCluster:1282,no
+overrideClientCluster:1536,no
+overrideClientCluster:1537,no
+overrideClientCluster:1556,no
+overrideClientCluster:1557,no
+overrideClientCluster:1792,no
+overrideClientCluster:1793,no
+overrideClientCluster:1794,no
+overrideClientCluster:1795,no
+overrideClientCluster:1796,no
+overrideClientCluster:1797,no
+overrideClientCluster:1798,no
+overrideClientCluster:1799,no
+overrideClientCluster:1800,no
+overrideClientCluster:1801,no
+overrideClientCluster:1802,no
+overrideClientCluster:2048,no
+overrideClientCluster:2304,no
+overrideClientCluster:2305,no
+overrideClientCluster:2306,no
+overrideClientCluster:2307,no
+overrideClientCluster:2308,no
+overrideClientCluster:2309,no
+overrideClientCluster:2561,no
+overrideClientCluster:2562,no
+overrideClientCluster:2816,no
+overrideClientCluster:2817,no
+overrideClientCluster:2818,no
+overrideClientCluster:2819,no
+overrideClientCluster:2820,no
+overrideClientCluster:2821,no
+overrideClientCluster:4096,no
+overrideServerCluster:0,yes
+overrideServerCluster:1,no
+overrideServerCluster:2,no
+overrideServerCluster:3,yes
+overrideServerCluster:4,yes
+overrideServerCluster:5,no
+overrideServerCluster:6,yes
+overrideServerCluster:7,no
+overrideServerCluster:8,yes
+overrideServerCluster:9,no
+overrideServerCluster:10,no
+overrideServerCluster:11,no
+overrideServerCluster:15,no
+overrideServerCluster:21,no
+overrideServerCluster:22,no
+overrideServerCluster:25,no
+overrideServerCluster:26,no
+overrideServerCluster:27,no
+overrideServerCluster:32,no
+overrideServerCluster:33,no
+overrideServerCluster:37,no
+overrideServerCluster:256,no
+overrideServerCluster:257,no
+overrideServerCluster:258,no
+overrideServerCluster:512,no
+overrideServerCluster:513,no
+overrideServerCluster:514,no
+overrideServerCluster:515,no
+overrideServerCluster:516,no
+overrideServerCluster:768,no
+overrideServerCluster:769,no
+overrideServerCluster:1024,no
+overrideServerCluster:1025,no
+overrideServerCluster:1026,no
+overrideServerCluster:1027,no
+overrideServerCluster:1028,no
+overrideServerCluster:1029,no
+overrideServerCluster:1030,no
+overrideServerCluster:1280,no
+overrideServerCluster:1281,no
+overrideServerCluster:1282,no
+overrideServerCluster:1536,no
+overrideServerCluster:1537,no
+overrideServerCluster:1556,no
+overrideServerCluster:1557,no
+overrideServerCluster:1792,no
+overrideServerCluster:1793,no
+overrideServerCluster:1794,no
+overrideServerCluster:1795,no
+overrideServerCluster:1796,no
+overrideServerCluster:1797,no
+overrideServerCluster:1798,no
+overrideServerCluster:1799,no
+overrideServerCluster:1800,no
+overrideServerCluster:1801,no
+overrideServerCluster:1802,no
+overrideServerCluster:2048,no
+overrideServerCluster:2304,no
+overrideServerCluster:2305,no
+overrideServerCluster:2306,no
+overrideServerCluster:2307,no
+overrideServerCluster:2308,no
+overrideServerCluster:2309,no
+overrideServerCluster:2561,no
+overrideServerCluster:2562,no
+overrideServerCluster:2816,no
+overrideServerCluster:2817,no
+overrideServerCluster:2818,no
+overrideServerCluster:2819,no
+overrideServerCluster:2820,no
+overrideServerCluster:2821,no
+overrideServerCluster:4096,no
+endEndpointType
+configuredEndpoint:*ep:1,pi: 260,di:257,dv:0,ept:Primary,nwk:Primary
+}
+
+# Plugin options
+pluginOption(efr32): EMBER_AF_PLUGIN_HAL_CONFIG_USART0_FLOW_CONTROL,HAL_USART_FLOW_CONTROL_NONE
+pluginOption(efr32): EMBER_AF_PLUGIN_CONNECTION_MANAGER_JIB_RADIO_TX_POWER,19
+pluginOption(efr32): EMBER_AF_PLUGIN_CONNECTION_MANAGER_JOOB_RADIO_TX_POWER,19

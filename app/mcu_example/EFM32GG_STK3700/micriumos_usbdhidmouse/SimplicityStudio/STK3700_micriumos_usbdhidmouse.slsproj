@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="STK3700_micriumos_usbdhidmouse" boardCompatibility="brd2200a" partCompatibility=".*efm32gg990f1024.*" toolchainCompatibility="" contentRoot="../">
+  <module id="com.silabs.sdk.exx32.board">
+    <exclude pattern=".*" />
+  </module>
+  <module id="com.silabs.sdk.exx32.common.CMSIS">
+    <exclude pattern=".*" />
+  </module>
+  <module id="com.silabs.sdk.exx32.common.emlib">
+    <include pattern="emlib/em_assert.c" />
+    <include pattern="emlib/em_core.c" />
+    <include pattern="emlib/em_cmu.c" />
+    <include pattern="emlib/em_ebi.c" />
+    <include pattern="emlib/em_emu.c" />
+    <include pattern="emlib/em_gpio.c" />
+    <include pattern="emlib/em_system.c" />
+    <include pattern="emlib/em_usart.c" />
+  </module>
+  <module id="com.silabs.sdk.exx32.common.bsp">
+    <include pattern="BSP/bsp_bcc.c" />
+    <include pattern="BSP/bsp_stk.c" />
+    <include pattern="BSP/bsp_stk_leds.c" />
+    <include pattern="BSP/bsp_trace.c" />
+  </module>
+  <module id="com.silabs.sdk.exx32.common.drivers">
+    <include pattern="Drivers/retargetio.c" />
+    <include pattern="Drivers/retargetserial.c" />
+  </module>
+  <module id="com.silabs.sdk.exx32.part">
+    <include pattern="CMSIS/.*/startup_.*_.*.s" />
+    <include pattern="CMSIS/.*/system_.*.c" />
+  </module>
+  <module id="com.silabs.sdk.exx32.external.micriumos">
+    <include pattern="Micrium_OS/bsp/.*/bsp_cpu.c" />
+    <include pattern="Micrium_OS/bsp/.*/bsp_os.c" />
+    <include pattern="Micrium_OS/bsp/.*/bsp_usb_dev.c" />
+    <include pattern="Micrium_OS/rtos/.*/auth.c" />
+    <include pattern="Micrium_OS/rtos/.*/clk.c" />
+    <include pattern="Micrium_OS/rtos/.*/clk_cmd.c" />
+    <include pattern="Micrium_OS/rtos/.*/bitmap.c" />
+    <include pattern="Micrium_OS/rtos/.*/map.c" />
+    <include pattern="Micrium_OS/rtos/.*/slist.c" />
+    <include pattern="Micrium_OS/rtos/.*/common.c" />
+    <include pattern="Micrium_OS/rtos/.*/kal_kernel.c" />
+    <include pattern="Micrium_OS/rtos/.*/lib_ascii.c" />
+    <include pattern="Micrium_OS/rtos/.*/lib_math.c" />
+    <include pattern="Micrium_OS/rtos/.*/lib_mem.c" />
+    <include pattern="Micrium_OS/rtos/.*/lib_str.c" />
+    <include pattern="Micrium_OS/rtos/.*/rtos_err_str.c" />
+    <include pattern="Micrium_OS/rtos/.*/platform_mgr.c" />
+    <include pattern="Micrium_OS/rtos/.*/cpu_core.c" />
+    <include pattern="Micrium_OS/rtos/.*/armv7m_cpu_a.asm" />
+    <include pattern="Micrium_OS/rtos/.*/armv7m_cpu_c.c" />
+    <include pattern="Micrium_OS/rtos/.*/armv7m_cpu_a.S" />
+    <include pattern="Micrium_OS/rtos/.*/armv7m_cpu_int.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_core.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_cfg_app.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_dbg.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_flag.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_mem.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_mon.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_msg.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_mutex.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_prio.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_q.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_sem.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_stat.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_task.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_tick.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_time.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_tmr.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_var.c" />
+    <include pattern="Micrium_OS/rtos/.*/armv7m_os_cpu_a.asm" />
+    <include pattern="Micrium_OS/rtos/.*/armv7m_os_cpu_c.c" />
+    <include pattern="Micrium_OS/rtos/.*/armv7m_os_cpu_a.S" />
+    <include pattern="Tools/SystemView/.*/SEGGER_RTT.c" />
+    <include pattern="Tools/SystemView/.*/SEGGER_SYSVIEW.c" />
+    <include pattern="Tools/SystemView/.*/SEGGER_SYSVIEW_MicriumOSKernel.c" />
+  </module>
+  <module id="com.silabs.sdk.exx32.external.micriumos_usbd">
+    <include pattern="Micrium_OS/rtos/.*/usbd_drv_dwc_otg_fs.c" />
+    <include pattern="Micrium_OS/rtos/.*/usbd_hid.c" />
+    <include pattern="Micrium_OS/rtos/.*/usbd_hid_os.c" />
+    <include pattern="Micrium_OS/rtos/.*/usbd_hid_report.c" />
+    <include pattern="Micrium_OS/rtos/.*/usbd_core.c" />
+    <include pattern="Micrium_OS/rtos/.*/usbd_ep.c" />
+    <include pattern="Micrium_OS/rtos/.*/usbd_os.c" />
+    <include pattern="Micrium_OS/rtos/.*/usb_ctrlr.c" />
+  </module>
+  <macroDefinition name="DEBUG_EFM" languageCompatibility="c cpp" />
+  <macroDefinition name="RETARGET_VCOM" />
+  <includePath uri="../../../../util/micrium/Micrium_OS" />
+  <includePath uri="cfg" />
+  <includePath uri="." />
+  <folder name="CMSIS">
+    <file name="cmsis_wrapper.s" uri="../../../../util/micrium/Ports/CMSIS/GCC/cmsis_wrapper.s" toolchainCompatibility="com.silabs.ss.tool.ide.arm.toolchain.gnu.*" />
+    <file name="cmsis_wrapper.s" uri="../../../../util/micrium/Ports/CMSIS/IAR/cmsis_wrapper.s" toolchainCompatibility="com.silabs.ss.tool.ide.arm.toolchain.iar" />
+  </folder>
+  <folder name="SystemView">
+    <file name="SEGGER_SYSVIEW_Config_MicriumOSKernel.c" uri="cfg/SEGGER_SYSVIEW_Config_MicriumOSKernel.c" />
+  </folder>
+  <folder name="src">
+    <file name="ex_main.c" uri="ex_main.c" />
+    <file name="ex_common_init.c" uri="common/common/ex_common_init.c" />
+    <file name="ex_usbd_all.c" uri="usb/ex_usbd_all.c" />
+    <file name="ex_usbd_hid_mouse.c" uri="usb/ex_usbd_hid_mouse.c" />
+  </folder>
+</project>

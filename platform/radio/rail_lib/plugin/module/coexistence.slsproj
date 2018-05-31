@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project id="SDK.COEX.RAIL">
+  <folder name="coexistence">
+    <file name="coexistence-efr32.c" partCompatibility=".*efr32(b|f|m)g(1){0,1}(1|2|3|4)(b|p|v)(132|232|233|332|333|432|433|532|632|732|733|131|133|032|231|431|832|932)f(128|256|1024|512|64|32)(g|i)(m|j|l)(32|48|43|56|68|125) .*efr32(b|f|m)g(1){0,1}(1|2|3|4)(b|p|v)(132|232|233|332|333|432|433|532|632|732|733|131|133|032|231|431|832|932)f(128|256|1024|512|64|32)(g|i)(m|j|l)(32|48|43|56|68|125)" uri="$(sdkInstallationPath)/platform/base/radio/rail-lib/plugin/coexistence/coexistence-efr32.c"/>
+    <file name="coexistence.c" uri="$(sdkInstallationPath)/platform/base/radio/rail-lib/plugin/coexistence/coexistence.c"/>    
+  </folder>
+</project>

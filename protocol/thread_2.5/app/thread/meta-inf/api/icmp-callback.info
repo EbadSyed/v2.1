@@ -1,0 +1,11 @@
+#include PLATFORM_HEADER
+#include CONFIGURATION_HEADER
+#include EMBER_AF_API_STACK
+
+/** @brief  Application callback for an incoming ICMP message.
+ *
+ * @param ipHeader        Pointer to an IPV6 buffer
+ */
+void emberIncomingIcmpHandler(Ipv6Header *ipHeader)
+{
+}

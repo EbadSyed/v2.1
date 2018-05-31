@@ -1,0 +1,5 @@
+Gecko Platform 2.0.0
+  * Capacitive Sensing Library (CSLIB) support for EFM32 Giant Gecko 11
+  * LCD support for EFM32 Giant Gecko 11
+  * New SLEEP driver functionality for fast sleep mode re-entry and advanced application clock control
+  * ARM mbed TLS: updated to upstream release v2.5.1 and simplified Silicon Labs preemption plug-in

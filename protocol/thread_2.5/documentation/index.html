@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>Silicon Labs Thread Documentation</title>
+<body>
+
+<h2>Silicon Labs Thread Documentation</h2>
+
+<h3>Release Notes / Quick Start Guide</h3>
+<ul>
+<li><strong><a href="thread-release-notes.pdf">Silicon Labs Thread Release Notes</a></strong>
+  <p>Lists compatibility requirements and sources for all software components  in the development environment. Discusses the latest changes to the Silicon  Labs Thread stack (and associated utilities) including added/deleted/deprecated  features/API, and lists bugs that have been fixed  since the last release and any pending ones.
+</p>
+</li>
+<li><strong><a href="qsg113-efr32-thread.pdf">Getting Started with Silicon Labs Thread</a> -- QSG113</strong>
+  <p>Provides basic information on installing your development environment, and  configuring, building, and installing applications for the Mighty Gecko family  and EM35x using the Silicon Labs Thread stack.
+</p>
+</li>
+<li><strong><a href="../app/thread/doc/thread-framework-readme.txt">Silicon Labs Thread Framework README</a></strong>
+  <p>Describes the Silicon Labs Thread framework plugins and libraries, roughly divided into three categories: HAL, stack, and application.  
+</p>
+</li>
+</ul>
+<h3>Thread Fundamentals</h3>
+<ul>
+<li><strong><a href="ug103-11-fundamentals-thread.pdf">Fundamentals - Thread</a> -- UG103-11</strong>
+  <p>Includes a brief background on the emergence of Thread, provides a technology overview,  and describes some key features of Thread to consider when implementing a Thread solution.
+</p>
+</li>
+</ul>
+<h3>API References</h3>
+<ul>
+<li><strong><a href="Thread-Doxygen/index.html">Silicon Labs Thread API Reference Guide - HTML</a></strong>
+  <p>Contains a comprehensive  list of APIs used to interface to the Thread network. These APIs concern network management,  device and stack management (including management of stack tables, event scheduling, message  buffers and security), messaging, fragmentation, serial communication, token access, peripheral  access, bootload utilities and others.
+</p>
+</li>
+<li><strong><a href="thread-doxygen.pdf">Silicon Labs Thread API Reference Guide - PDF</a></strong>
+  <p>A PDF version of the Silicon Labs Thread API Reference.
+</p>
+</li>
+</ul>
+<h3>Application Development Fundamentals</h3>
+<ul>
+<li><strong><a href="ug103-01-fundamentals-wireless-network.pdf">Wireless Networking Fundamentals</a> -- UG103-01</strong>
+  <p>Introduces some fundamental concepts of wireless networking. These concepts are referred to in other  Fundamentals documents. If you are new to wireless networking, read this document first.
+</p>
+</li>
+<li><strong><a href="ug103-03-fundamentals-design-choices.pdf">Design Choices Fundamentals</a> -- UG103-03</strong>
+  <p>Discusses the major decisions that must be made about which wireless protocol you should use,  as well as additional decisions to be made if you are designing a ZigBee solution.
+</p>
+</li>
+<li><strong><a href="ug103-04-fundamentals-hal.pdf">HAL Fundamentals</a> -- UG103-04</strong>
+  <p>Silicon Labs HAL (Hardware Abstraction Layer) is program code between a  system's hardware and its software that provides a consistent interface  for applications that can run on several different hardware platforms. The HAL is designed for developers using EmberZNet PRO, EmberZNet RF4CE, and Silicon Labs Thread on the  Wireless Gecko (EFR32) portfolio and the EM3x-Based MCU family of products. 
+</p>
+</li>
+<li><strong><a href="ug103-06-fundamentals-bootloading.pdf">Bootloading Fundamentals</a> -- UG103-06</strong>
+  <p>Introduces bootloading for Silicon Labs networking devices. Discusses the Gecko Bootloader as well  as legacy Ember and Bluetooth bootloaders, and describes the file formats used by each. 
+</p>
+</li>
+<li><strong><a href="ug103-07-fundamentals-tokens.pdf">Tokens Fundamentals</a> -- UG103-07</strong>
+  <p>Describes tokens and shows how to use them in EmberZNet PRO, EmberZNet RF4CE, and Silicon Labs Thread  applications. It also discusses bindings, the ZigBee PRO application-defined associations between two  devices on a network.
+</p>
+</li>
+<li><strong><a href="ug103-08-fundamentals-tools.pdf">Tools Fundamentals</a> -- UG103-08</strong>
+  <p>Provides an overview of the toolchain used to develop, build, and deploy EmberZNet and Silicon Labs  Thread applications, and discusses some addition tools and utilities.  
+</p>
+</li>
+</ul>
+<h3>User Guides</h3>
+<ul>
+<li><strong><a href="ug104-test-debug-apps.pdf">Testing and Debugging Applications for the Silicon Labs EM35x and Mighty Gecko (EFR32MG) Platforms</a> -- UG104</strong>
+  <p>Describes strategies for testing and debugging  applications, including: 
+ hardware and application considerations, initial development testing, and lab 
+ testing. For additional information about later stages of programming and testing see application 
+ notes AN700, Manufacturing Test Guidelines, and AN718, Manufacturing Test Overview.
+</p>
+</li>
+<li><strong><a href="ug110-em35x-dev-kit-user-guide.pdf">EM35x Development Kit User Guide</a> -- UG110</strong>
+  <p>Describes the EM35x Development  Kit and explains how to set up its hardware and use the Debug Adapter (ISA3). Descriptions of some of the  software tools available are provided, along with examples of their use.
+</p>
+</li>
+<li><strong><a href="ug107-em35x-soc-utilities.pdf">ISA3 Utilities Guide</a> -- UG107</strong>
+  <p>Describes how to use the   standalone ISA3 utilities supplied with EmberZNet PRO and Silicon Labs Thread software. It also gives  a brief overview of the various file types that may be used.
+</p>
+</li>
+<li><strong><a href="ug162-simplicity-commander-reference-guide.pdf">Simplicity Commander Reference Guide</a> -- UG162</strong>
+  <p>Describes how and when to use Simplicity Commander's Command-Line Interface.   Only EFR32 is currently supported. EM3xx is not supported at this time.
+</p>
+</li>
+<li><strong><a href="ug115-ashv3-protocol-reference.pdf">ASHv3 Protocol Reference</a> -- UG115</strong>
+  <p>Describes the protocol used by the UART-based ASHv3 to reliably carry commands and responses between a host processor  and a network co-processor.
+</p>
+</li>
+<li><strong><a href="ug266-gecko-bootloader-user-guide.pdf">Silicon Labs Gecko Bootloader User's Guide</a> -- UG266</strong>
+  <p>Describes the high-level implementation of the Silicon Labs Gecko Bootloader for EFR32 SoCs and NCPs,  and provides information on how to get started using the Gecko Bootloader with Silicon Labs wireless protocol stacks. 
+</p>
+</li>
+<li><strong><a href="ThreadTestAppCliDocumentation.txt">Thread Test App CLI Reference Guide</a></strong>
+  <p>Describes the Command-Line Interface (CLI) available in the thread-test-app,  a compilable application used for simple CLI-based Thread testing, and testing  with the Thread Group Test Harness.
+</p>
+</li>
+<li><strong><a href="ug278-zcl-over-ip.pdf">Zigbee Cluster Library over IP User's Guide</a> -- UG278</strong>
+  <p>Provides information on getting started using zigbee Cluster Library over IP (ZCL/IP)  as an application layer with the Silicon Labs Thread stack. It provides information on ZCL/IP configuration,  using DTLS with ZCL/IP, and using the ZCL/IP OTA upgrade solution.
+</p>
+</li>
+</ul>
+<h3>Application Notes</h3>
+<ul>
+<li><strong><a href="an700-mfg-test-guidelines.pdf">Manufacturing Test Guidelines</a> -- AN700</strong>
+  <p>Details the different options for integrating RF testing and characterization into your standard test flows.
+</p>
+</li>
+<li><strong><a href="an703-simulated-eeprom.pdf">Using the Simulated EEPROM for the EM35x and Mighty Gecko Family SoC Platforms</a> -- AN703</strong>
+  <p>Describes how to use the simulated EEPROM in Silicon Labs' EM35x and Mighty Gecko (EFR32MG) platforms, gives an  overview of the internal design, and discusses design considerations. You should already be familiar with  the token system in the HAL. For more information on HAL and the token system, see the online HAL API documentation.
+</p>
+</li>
+<li><strong><a href="an709-acr-measurement.pdf">Adjacent Channel Rejection Measurements - For 802.15.4 radios</a> -- AN709</strong>
+  <p>Presents the method Silicon Labs uses to measure Adjacent channel rejection (ACR) on its IEEE 802.15.4-2003 compliant ICs, and compares it to other methods. ACR is a measure of how well a reciever performs on its frequency channel  when there is an interfering system in the vicinity operating on a nearby channel. 
+</p>
+</li>
+<li><strong><a href="an710-custom-nodes-em35x.pdf">Bringing Up Custom Devices for the EM35x SoC or NCP Platform</a> -- AN710</strong>
+  <p>Contains a list of Customer Information Block (CIB) tokens  and explains how to program/use the CIB, a special non-volatile area of Flash that contains information such as custom EUI64,  install code, certificates and other data that can only be programmed through an external interface such as JTAG serial wire. 
+</p>
+</li>
+<li><strong><a href="an715-using-em35x-adc.pdf">Using the EM35x ADC</a> -- AN715</strong>
+  <p>Describes how to use the EM35x Analog to Digital Converter (ADC), a first-order sigma-delta converter, gives an overview  of the internal design, discusses design considerations, and provides example code of fundamental usage.
+</p>
+</li>
+<li><strong><a href="an717-progamming-options-em35x.pdf">Programming Options - For the EM35x Platform</a> -- AN717</strong>
+  <p>Describes the various programming options available to EM35x series customers - the Debug Adapter (ISA3) for the  developer environment and the prototype and low-volume production environment, and gang programmers, in-system programmers (ISPs), and  in-circuit test (ICT) programming options for the high-volume production environment.
+</p>
+</li>
+<li><strong><a href="an718-mfg-test-overview.pdf">Manufacturing Test Overview</a> -- AN718</strong>
+  <p>Provides a high-level description of the different options for integrating RF testing and characterization into your standard  test flows. It is intended for customers who are moving from the early prototype development stage to the manufacturing production environment  and need assistance with manufacturing test. 
+</p>
+</li>
+<li><strong><a href="an740-using-em358-usb.pdf">Using the Ember EM358x/EM359x USB</a> -- AN740</strong>
+  <p>Provides key information for using the Ember EM358x USB. The goal of the EM358x USB is to only act as  COM port replacement  for UART-style functionality.
+</p>
+</li>
+<li><strong><a href="an760-using-legacy-standalone-bootloader.pdf">Using the Ember Standalone Bootloader</a> -- AN760</strong>
+  <p>For EFR32xG12 platforms and newer, see UG266: Silicon Labs Gecko Bootloader User Guide.  This describes using the legacy Ember Standalone Bootloader for EM3x and early EFR32 platforms. The Ember Standalone bootloader is a simple, dedicated program to facilitate input of new application/stack firmware via Xmodem upload  to a serial interface (SPI or UART) or via a proprietary, IEEE 802.15.4-based, single-hop MAC layer RF  protocol.
+</p>
+</li>
+<li><strong><a href="an844-ashv3-host-uart-iInterface-guide.pdf">Guide to Host/Network Co-Processor Communications Using Silicon Labs Thread and Connect</a> -- AN844</strong>
+  <p>Describes how to set up and test UART communication between a host and Network Co-Processor (NCP) using ASHv3-UART. It assumes  that you have a Raspberry Pi, USB cable (for UART communication), and a development board.
+</p>
+</li>
+<li><strong><a href="an912-spi-host-configuration.pdf">SPI Host Interfacing Guide for Thread</a> -- AN912</strong>
+  <p>Describes how to set up and test communication between a host and Network Co-Processor (NCP) using the SPI (Serial Peripheral Interface).  It assumes that you have a Raspberry Pi, jumper wires (for SPI communication), and a development board. It applies to Silicon Labs Thread stack version  1.0.4 or later.
+</p>
+</li>
+<li><strong><a href="an961-custom-nodes-efr32.pdf">Bringing Up Custom Devices for the Mighty Gecko and Flex Gecko Families</a> -- AN961</strong>
+  <p>Describes how to initialize a piece of custom hardware (a 'device') based on the Mighty Gecko and Flex Gecko families so that it  interfaces correctly with a network stack. The same procedures can be used to restore devices whose settings have been corrupted or erased.
+</p>
+</li>
+<li><strong><a href="an1010-customized-ncp.pdf">Building a Customized NCP Application</a> -- AN1010</strong>
+  <p>Provides instructions for configuring various aspects of an NCP application image using the Application Builder tool within  Simplicity Studio.
+</p>
+</li>
+<li><strong><a href="an1019-node-test.pdf">Using the NodeTest Application</a> -- AN1019</strong>
+  <p>Describes how to use NodeTest, a pre-built application supplied by Silicon Labs for the purpose of performing RF evaluation,  functional testing, and hardware validation. It contains RF test functions pertinent to IEEE 802.15.4-based radio configurations such as those used  by the Silicon Labs EmberZNet PRO and Silicon Labs Thread stacks on platforms such as the EM35x, Mighty Gecko, or Flex Gecko families.
+</p>
+</li>
+<li><strong><a href="an1017-coexistence-with-WiFi.pdf">ZigBee and Thread Coexistence with WiFi</a> -- AN1017</strong>
+  <p>Describes the impact of Wi-Fi on ZigBee and Thread, and methods to improve coexistence. First, methods to improve coexistence without direct  interaction between ZigBee/Thread and Wi-Fi radios are described (for both EM35x/EM358x and EFR32MG). Second, Silicon Labs's Packet Traffic  Arbitration (PTA) support to coordinate 2.5 GHz RF traffic for co-located ZigBee/Thread and Wi-Fi radios is described (for the EFR32MG only).
+</p>
+</li>
+<li><strong><a href="an1031-thread-network-scalability.pdf">Thread Large Network Scalability</a> -- AN1031</strong>
+  <p>Details methods and results for Thread large network scalability and performance testing. This testing focuses on the scalability of these  networks while carrying out unicast and multicast traffic typical of a large commercial installation. The methodology for performing the  benchmarking tests is defined to allow others to run the same tests. These results are intended to provide guidance on design practices  and principles as well as expected field performance results.
+</p>
+</li>
+<li><strong><a href="an1084-gecko-bootloader-emberznet-silicon-labs-thread.pdf">Using the Gecko Bootloader with EmberZNet and Silicon Labs Thread</a> -- AN1084</strong>
+  <p>Includes detailed information on using the Silicon Labs Gecko Bootloader with EmberZNet and Silicon Labs Thread. It supplements the general Gecko Bootloader implementation information provided in UG266: Silicon Labs Gecko Bootloader User's Guide. 
+</p>
+</li>
+<li><strong><a href="an1083-creating-using-secure-coap-connection-with-mbedtls.pdf">Creating and Using a Secure CoAP Connection with ARM's mbed TLS</a> -- AN1083</strong>
+  <p>Describes how to create and use a secure CoAP connection using ARM's  mbed TLS library. See UG278 for general information about secure CoAP and TLS. 
+</p>
+</li>
+<li><strong><a href="an1115-32-bit-device-peripheral-configuration-in-simplicity-studio.pdf">Configuring Peripherals for 32-Bit Devices in Simplicity Studio</a> -- AN1115</strong>
+  <p>Describes how to initialize and customize peripherals for 32-bit devices, both in the Simplicity IDE and using the  standalone Hardware Configurator tool. 
+</p>
+</li>
+</ul>
+</body>
+</html>

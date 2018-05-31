@@ -1,0 +1,40 @@
+{% import "common.template" as common %}
+
+
+Source files:
+*************
+{{ common.getSourceFiles(context, "", "") }}
+Header files:
+*************
+{{ common.getHeaderFiles(context, "", "") }}
+Precompiled libraries:
+**********************
+{{ common.getLibraryFiles(context, "", "") }}
+Include paths:
+**************
+{{ common.getIncludePaths(context, "", "") }}
+DashD macros:
+*************
+{{ common.getDashDMacros(context, "", "") }}
+Configuration macros:
+*************
+{{ common.getConfigurationMacros(context, "", "") }}
+Callbacks:
+**********
+{# {{ common.getCallbackPrototypes(context["CALLBACKS"], "", "")}} #}
+
+
+
+
+
+Aktualis architektura darabok:
+{% set list1 = context["ARCHITECTURE_ID"].split("+") %}
+{% set archList = [] %}
+{% for f in list1 %}
+  {% set list2 = f.split("~") %}
+  {%- for g in list2 -%}
+{{g}}
+  {% endfor %}
+{% endfor %}
+
+

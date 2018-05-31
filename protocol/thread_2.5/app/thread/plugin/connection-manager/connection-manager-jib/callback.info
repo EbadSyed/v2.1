@@ -1,0 +1,17 @@
+#include CONFIGURATION_HEADER
+#include EMBER_AF_API_CONNECTION_MANAGER_JIB
+
+/** @brief Get the fixed joining key
+ *
+ * This function will be called whenever the in band commissioning fixed joining
+ * key is needed by the connection manager.  The key will be set by this function
+ * using the joinKey parameter, and the size will be relayed by the return value.
+ * A return value of 0 indicates that the key has not been set, which will cause
+ * the connection manager to halt its connection attempt.
+ *
+ * @param joinKey A pointer to the fixed joining key
+ */
+uint8_t emberConnectionManagerJibGetJoinKeyCallback(uint8_t **joinKey)
+{
+  return 0;
+}

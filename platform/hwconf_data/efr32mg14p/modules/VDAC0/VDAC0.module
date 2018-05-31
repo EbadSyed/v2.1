@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='ASCII'?>
+<module:DocumentRoot xmlns:module="http://www.silabs.com/ss/hwconfig/module.ecore">
+  <module id="efr32.efr32mg14p.vdac0" label="VDAC0" name="VDAC0" description="" version="efr">
+    <properties>
+      <enumProperty label="SDK is taking control over this module" id="VDAC.usedbysdk.BOOL" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="False" value="0"/>
+        <enumValue label="True" value="1"/>
+      </enumProperty>
+      <enumProperty label="SDK is hiding this module" id="VDAC.hiddenbysdk.BOOL" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="False" value="0"/>
+        <enumValue label="True" value="1"/>
+      </enumProperty>
+      <enumProperty label="Show advanced options" id="VDAC.showadvanced.BOOL" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="False" value="0"/>
+        <enumValue label="True" value="1"/>
+      </enumProperty>
+      <stringProperty label="Owned by" id="VDAC.owner.STRING" defaultValue="" hidden="false" readonly="true" transient="true"/>
+      <stringProperty label="Custom name" id="VDAC.customname.STRING" defaultValue="" hidden="false" readonly="false"/>
+    </properties>
+    <propertyCategories>
+      <category label="">
+        <subCategory label="">
+          <propertyRef refId="VDAC.usedbysdk.BOOL"/>
+          <propertyRef refId="VDAC.hiddenbysdk.BOOL"/>
+          <propertyRef refId="VDAC.showadvanced.BOOL"/>
+          <propertyRef refId="VDAC.owner.STRING"/>
+          <propertyRef refId="VDAC.customname.STRING"/>
+        </subCategory>
+      </category>
+    </propertyCategories>
+    <signals/>
+  </module>
+</module:DocumentRoot>

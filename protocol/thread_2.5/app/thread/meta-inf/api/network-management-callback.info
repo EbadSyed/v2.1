@@ -1,0 +1,1047 @@
+#include PLATFORM_HEADER
+#include CONFIGURATION_HEADER
+#include EMBER_AF_API_STACK
+
+/** @brief  Reports an incoming beacon during an active scan. */
+void emberActiveScanHandler(const EmberMacBeaconData *beaconData)
+{
+}
+
+/** @brief
+ * This is called when a new address is configured on the application.
+ *
+ * If addressFlags is EMBER_LOCAL_ADDRESS, it means that the address configured
+ * is a Thread-local address.
+ *
+ * Otherwise, it means that the address assigned is a global address (DHCP or
+ * SLAAC).
+ *
+ * In either case, if the valid lifetime is zero, then the address is no
+ * longer available.
+ *
+ * @param address            the address
+ * @param preferredLifetime  the preferred lifetime of the address (in seconds)
+ * @param validLifetime      the valid lifetime of the address (in seconds)
+ * @param addressFlags       address configuration flags (see LocalServerFlag_e)
+ */
+void emberAddressConfigurationChangeHandler(const EmberIpv6Address *address,
+                                            uint32_t preferredLifetime,
+                                            uint32_t validLifetime,
+                                            uint8_t addressFlags)
+{
+}
+
+/** @brief A callback that indicates whether the attach process was
+ * successfully initiated via a prior call to ::emberAttachToNetwork().
+ * The status argument is either EMBER_SUCCESS, or EMBER_INVALID_CALL
+ * if attach was called when the network status was not
+ * EMBER_JOINED_NETWORK_NO_PARENT, or while an attach was underway.
+ */
+void emberAttachToNetworkReturn(EmberStatus status)
+{
+}
+
+/** @brief Return call for emberBecomeCommissioner().  The status is
+ * EMBER_SUCCESS if a petition was sent or EMBER_ERR_FATAL if some
+ * temporary resource shortage prevented doing so.
+ */
+void emberBecomeCommissionerReturn(EmberStatus status)
+{
+}
+
+/** @brief Provides the result of a call to emberChangeNodeType():
+ * either EMBER_SUCCESS, or EMBER_INVALID_CALL.
+ */
+void emberChangeNodeTypeReturn(EmberStatus status)
+{
+}
+
+/** @brief Provides the result of a call to emberAllowNativeCommissioner():
+ * either EMBER_SUCCESS or EMBER_INVALID_CALL.
+ */
+void emberAllowNativeCommissionerReturn(EmberStatus status)
+{
+}
+
+/** @brief Provides the result of a call to emberSetCommissionerKey():
+ * either EMBER_SUCCESS or EMBER_INVALID_CALL.
+ */
+void emberSetCommissionerKeyReturn(EmberStatus status)
+{
+}
+
+/** @brief Handler to let application know that a PSKc TLV was successfully set.
+ *
+ * @param pskc                   PSKc: 16 bytes in length
+ */
+void emberSetPskcHandler(const uint8_t *pskc)
+{
+}
+
+/** @brief Provides the result of a call to emberSetJoinKey():
+ * either EMBER_SUCCESS or EMBER_BAD_ARGUMENT.
+ */
+void emberSetJoinKeyReturn(EmberStatus status)
+{
+}
+
+/**
+ * @brief Provides the result of a call to emberCommissionNetwork.
+ *
+ * Returns EMBER_SUCCESS if successful
+ *         EMBER_BAD_ARGUMENT if any of the options are wrong
+ *         EMBER_INVALID_CALL if the node is already on a network
+ *
+ * @param status Whether the call to emberCommissionNetwork was successful
+ */
+void emberCommissionNetworkReturn(EmberStatus status)
+{
+}
+
+/** @brief Reports on the current commissioner state.
+ *
+ * @param flags    A combination of zero or more of the following:
+ * - EMBER_HAVE_COMMISSIONER           a commissioner is active in the network
+ * - EMBER_AM_COMMISSIONER             this device is the active commissioner
+ *                                     if emberStopCommissioning is called, then
+ *                                     this flag is not returned as we are open
+ *                                     to commissioner petitions
+ * - EMBER_JOINING_ENABLED             joining is enabled
+ * - EMBER_JOINING_WITH_EUI_STEERING   steering data restricts which devices can
+ *                                     join.  if not set, no restriction, any
+ *                                     device can join (significant only when
+ *                                     EMBER_JOINING_ENABLED is set)
+ *
+ * @param commissionerName    The name of the active commissioner, or
+ *                            NULL if there is none or the name is not
+ *                            known.
+ *
+ * @param commissionerNameLength    The length of commissonerName.
+ */
+void emberCommissionerStatusHandler(uint16_t flags,
+                                    const uint8_t *commissionerName,
+                                    uint8_t commissionerNameLength)
+{
+}
+
+/** @brief Provides the result of a call to ::emberConfigureGateway */
+void emberConfigureGatewayReturn(EmberStatus status)
+{
+}
+
+/** @brief Provides the result of a call to ::emberSetNdData */
+void emberSetNdDataReturn(EmberStatus status, uint16_t length)
+{
+}
+
+/** @brief Provides the result of a call to ::emberSetLocalNetworkData */
+void emberSetLocalNetworkDataReturn(EmberStatus status, uint16_t length)
+{
+}
+
+/** @brief Provides the result of a call to ::emberConfigureExternalRoute */
+void emberConfigureExternalRouteReturn(EmberStatus status)
+{
+}
+
+/** @brief A callback invoked to inform the application of the
+ * occurrence of an event defined by EmberCounterType, for example,
+ * transmissions and receptions at different layers of the stack.
+ *
+ * The application must define EMBER_APPLICATION_HAS_COUNTER_HANDLER
+ * in its CONFIGURATION_HEADER to use this.
+ * This function may be called in ISR context, so processing should
+ * be kept to a minimum.
+ *
+ * @param type       The type of the event.
+ * @param increment  Specify the increase in the counter's tally.
+ *
+ */
+void emberCounterHandler(EmberCounterType type, uint16_t increment)
+{
+}
+
+/** @brief A callback invoked to query the application for the
+ * countervalue of an event defined by EmberCounterType.
+ *
+ * The application must define EMBER_APPLICATION_HAS_COUNTER_VALUE_HANDLER
+ * in its CONFIGURATION_HEADER to use this.
+ *
+ * @param   type       The type of the event.
+ * @returns The counter's tally.
+ *
+ */
+uint16_t emberCounterValueHandler(EmberCounterType type)
+{
+  return 0;
+}
+
+/** @brief NCP handler called to process a custom message from the Host.
+ *
+ * @param message message received
+ * @param messageLength length of message
+ */
+void emberCustomHostToNcpMessageHandler(const uint8_t *message,
+                                        uint8_t messageLength)
+{
+}
+
+/** @brief Host handler called to process a custom message from the NCP.
+ *
+ * @param message message received
+ * @param messageLength length of message
+ */
+void emberCustomNcpToHostMessageHandler(const uint8_t *message,
+                                        uint8_t messageLength)
+{
+}
+
+/** @brief For a sleepy end device, report how long the chip went to deep sleep.
+ * In a NCP + host setup, the stack reports this to the host app.
+ */
+void emberDeepSleepCompleteHandler(uint16_t sleepDuration)
+{
+}
+
+/** @brief Provides the result of a call to emberDeepSleep(). */
+void emberDeepSleepReturn(EmberStatus status)
+{
+}
+
+/** @brief
+ * This is called when the stack knows about a new dhcp server or if
+ * a dhcp server has become unavailable.
+ *
+ * "available" means the DHCP server can offer us an address if
+ * requested.
+ *
+ * @param prefix                  dhcp server prefix
+ * @param prefixLengthInBits      length in bits of the prefix
+ * @param available               whether this dhcp server is available
+ */
+void emberDhcpServerChangeHandler(const uint8_t *prefix,
+                                  uint8_t prefixLengthInBits,
+                                  bool available)
+{
+}
+
+/** @brief  Reports the maximum RSSI value measured on the channel.
+ *
+ * @param channel  The 802.15.4 channel on which the RSSI value was measured.
+ *
+ * @param maxRssiValue  The maximum RSSI value measured (in units of dBm).
+ */
+void emberEnergyScanHandler(uint8_t channel, int8_t maxRssiValue)
+{
+}
+
+/** @brief This method is called any time an event is scheduled from within an
+ * ISR context. It can be used to determine when to stop a long running sleep
+ * to see what application or stack events now need to be processed.
+ * @param event The event that was scheduled by the ISR.
+ */
+void emberEventDelayUpdatedFromIsrHandler(Event *event)
+{
+}
+
+/** @brief
+ * This is called when the stack knows about a border router that has
+ * an external route to a prefix.
+ *
+ * @param prefix                  external route prefix
+ * @param prefixLengthInBits      length in bits of the prefix
+ * @param available               whether this external route is available.
+ */
+void emberExternalRouteChangeHandler(const uint8_t *prefix,
+                                     uint8_t prefixLengthInBits,
+                                     bool available)
+{
+}
+
+/** @brief A callback that indicates whether a prior call to
+ * ::emberFormNetwork() successfully initiated the form process.
+ * The status argument is either EMBER_SUCCSS, or EMBER_INVALID_CALL
+ * if resume was called when the network status was not EMBER_NO_NETWORK,
+ * or a scan was underway.
+ */
+void emberFormNetworkReturn(EmberStatus status)
+{
+}
+
+/** @brief
+ * Provides the result of a call to ::emberGetAntennaMode.
+ *
+ * @param status An EmberStatus value indicating success or the
+ *               reason for failure.
+ * @param mode the current antenna mode, 0-primary,
+ *             1-secondary, 2-toggle on tx ack fail
+ */
+void emberGetAntennaModeReturn(EmberStatus status,
+                               uint8_t mode)
+{
+}
+
+/** @brief Provides the result of a call to emberGetCcaThreshold(). */
+void emberGetCcaThresholdReturn(int8_t threshold)
+{
+}
+
+/** @brief
+ * Gets the token information for tokenId = EMBER_CHANNEL_CAL_DATA_TOKEN
+ *
+ * @param lna          [msb: cal needed? | bit 0-5: lna tune value]
+ * @param tempAtLna    [the temp (degC) when the LNA was calibrated]
+ * #param modDac       [msb: cal needed? | bit 0-5: modulation DAC tune value]
+ * @param tempAtModDac [the temp (degC) when the mod DAC was calibrated]
+ */
+void emberGetChannelCalDataTokenReturn(uint8_t lna,
+                                       int8_t tempAtLna,
+                                       uint8_t modDac,
+                                       int8_t tempAtModDac)
+{
+}
+
+/** @brief Provides the result of a call to emberGetCounter(). */
+void emberGetCounterReturn(EmberCounterType type, uint16_t value)
+{
+}
+
+/** @brief
+ * Provides the result of a call to ::emberGetCtune.
+ *
+ * @param tune   The current CTUNE value.
+ * @param status An EmberStatus value indicating success or the
+ *               reason for failure.
+ */
+void emberGetCtuneReturn(uint16_t tune,
+                         EmberStatus status)
+{
+}
+
+/** @brief Provides the result of a call to ::emberGetGlobalAddresses
+ *
+ * @param address             IPv6 global address
+ * @param preferredLifetime   Preferred lifetime (in seconds)
+ * @param validLifetime       Valid lifetime (in seconds)
+ * @param addressFlags        Address configuration flags (EMBER_GLOBAL_ADDRESS_*)
+ */
+void emberGetGlobalAddressReturn(const EmberIpv6Address *address,
+                                 uint32_t preferredLifetime,
+                                 uint32_t validLifetime,
+                                 uint8_t addressFlags)
+{
+}
+
+/** @brief Provides the result of a call to ::emberGetGlobalPrefix
+ *
+ * @param flags               Please ignore this param, it is currently unused.
+ *                            (returns 0)
+ * @param isStable            Stable or temporary prefix
+ * @param prefix              Border router prefix
+ * @param prefixLengthInBits  Prefix length in bits
+ * @param domainId            Provisioning domain ID
+ * @param preferredLifetime   Preferred lifetime (in seconds)
+ * @param validLifetime       Valid lifetime (in seconds)
+ */
+void emberGetGlobalPrefixReturn(uint8_t flags,
+                                bool isStable,
+                                const uint8_t *prefix,
+                                uint8_t prefixLengthInBits,
+                                uint8_t domainId,
+                                uint32_t preferredLifetime,
+                                uint32_t validLifetime)
+{
+}
+
+/** @brief
+ * Provides the result of a call to ::emberGetMfgToken.
+ *
+ * @param tokenId         Which manufacturing token read.
+ * @param status          An EmberStatus value indicating success or the
+ * @param tokenData       The manufacturing token data.
+ * @param tokenDataLength The length of the <i>tokenData</i> parameter in
+ *                        bytes.
+ */
+void emberGetMfgTokenReturn(EmberMfgTokenId tokenId,
+                            EmberStatus status,
+                            const uint8_t *tokenData,
+                            uint8_t tokenDataLength)
+{
+}
+
+/** @brief
+ * Provides the result of a call to ::emberGetNetworkData.
+ *
+ * The status value is one of:
+ *  - EMBER_SUCCESS
+ *  - EMBER_NETWORK_DOWN
+ *  - EMBER_BAD_ARGUMENT (the supplied buffer was too small)
+ *
+ * @param status
+ * @param networkData             location of the Network Data
+ * @param dataLength              length in bytes of the Network Data
+ */
+void emberGetNetworkDataReturn(EmberStatus status,
+                               uint8_t *networkData,
+                               uint16_t bufferLength)
+{
+}
+
+/** @brief Provides the result of a call to emberGetNetworkDataTlv().
+ *
+ * @param type the type of TLV returned. This is the same value as
+ * the value specified in the emberGetNetworkDataTlv() call.
+ * @param index the instance number of the TLV. This is the same value as
+ * the value specified in the emberGetNetworkDataTlv() call.
+ * @param versionNumber the network data version
+ * @param tlv the TLV corresponding to type or NULL.
+ * @param tlvLength length of tlv
+ */
+void emberGetNetworkDataTlvReturn(uint8_t typeByte,
+                                  uint8_t index,
+                                  uint8_t versionNumber,
+                                  const uint8_t *tlv,
+                                  uint8_t tlvLength)
+{
+}
+
+/** @brief
+ * Provides the result of a call to ::emberGetPtaEnable.
+ *
+ * @param enabled When true, indicates packet traffic arbitration
+ * is enabed. When false, indicates packet traffic arbitration is
+ * disabled.
+ */
+void emberGetPtaEnableReturn(bool enabled)
+{
+}
+
+/** @brief
+ * Provides the result of a call to ::emberGetPtaOptions.
+ *
+ * @param indicates packet traffic arbitration options
+ * bit field.
+ * Field                              Bit Position      Size(bits)
+ * RX retry timeout ms                0                 8
+ * Enable ack radio holdoff           8                 1
+ * Abort mid TX if grant is lost      9                 1
+ * TX request is high priority        10                1
+ * RX request is high prioirity       11                1
+ * RX retry request is high priority  12                1
+ * RX retry request is enabled        13                1
+ * Radio holdoff is enabled           14                1
+ * Toggle request on mac retransmit   15                1
+ * Reserved                           16                15
+ * Hold request across CCA failures   31                1
+ */
+void emberGetPtaOptionsReturn(uint32_t options)
+{
+}
+
+/** @brief Provides the result of a call to emberGetRadioPower() on the host. */
+void emberGetRadioPowerReturn(int8_t power)
+{
+}
+
+/** @brief Provides the result of a call to emberGetRipEntry(). */
+void emberGetRipEntryReturn(uint8_t index, const EmberRipEntry *entry)
+{
+}
+
+/** @brief Provides the result of a call to ::emberGetRoutingLocator
+ *
+ * @param rloc The Routing Locator as a full IPv6 address.
+ */
+void emberGetRoutingLocatorReturn(const EmberIpv6Address *rloc)
+{
+}
+
+/** @brief
+ * Provides the result of a call to ::emberGetStandaloneBootloaderInfo.
+ *
+ * @param version    BOOTLOADER_INVALID_VERSION if the standalone
+ *                   bootloader is not present, or the version of
+ *                   the installed standalone bootloader.
+ * @param platformId The value of PLAT on the node.
+ * @param microId    The value of MICRO on the node.
+ * @param phyId      The value of PHY on the node.
+ */
+void emberGetStandaloneBootloaderInfoReturn(uint16_t version,
+                                            uint8_t platformId,
+                                            uint8_t microId,
+                                            uint8_t phyId)
+{
+}
+
+/** @brief Provides the result of a call to emberGetTxPowerMode() on the host.
+ * @return the current tx power mode.
+ */
+void emberGetTxPowerModeReturn(uint16_t txPowerMode)
+{
+}
+
+/** @brief Provides the result of a call to emberGetVersions(). */
+void emberGetVersionsReturn(const uint8_t *versionName,
+                            uint16_t managementVersionNumber,
+                            uint16_t stackVersionNumber,
+                            uint16_t stackBuildNumber,
+                            EmberVersionType versionType,
+                            const uint8_t *buildTimestamp)
+{
+}
+
+/**
+ * @brief In a host/NCP setup, notifies the host to changes in the network parameters.
+ *
+ * @param parameters Current network parameters
+ * @param localEui64 The EUI64 of the Ember chip
+ * @param macExtendedId The extended MAC ID of the Ember chip
+ * @param networkStatus The current status of the network
+ */
+void emberHostStateHandler(const EmberNetworkParameters *parameters,
+                           const EmberEui64 *localEui64,
+                           const EmberEui64 *macExtendedId,
+                           EmberNetworkStatus networkStatus)
+{
+}
+
+/** @brief  Provides the result of a call to emberInit(). */
+void emberInitReturn(EmberStatus status)
+{
+}
+
+/** @brief  A callback that indicates whether the join process was successfully
+ * initiated via a prior call to ::emberJoinNetwork() or
+ * ::emberJoinCommissioned().  The possible EmberStatus values are:
+ * EMBER_SUCCESS, EMBER_BAD_ARGUMENT, or EMBER_INVALID_CALL (if join was called
+ * when the network status was something other than EMBER_NO_NETWORK).
+ */
+void emberJoinNetworkReturn(EmberStatus status)
+{
+}
+
+/** @brief
+ * Provides the result of a call to ::emberLaunchStandaloneBootloader.
+ *
+ * @param status An EmberStatus value indicating success or the
+ *               reason for failure.
+ */
+void emberLaunchStandaloneBootloaderReturn(EmberStatus status)
+{
+}
+
+/** @brief A callback invoked when the leader data changes.
+ *
+ * @param leaderData the leader data
+ */
+void emberLeaderDataHandler(const uint8_t *leaderData)
+{
+}
+
+/** @brief Application handler to define "passthrough" packets.
+ *
+ * @note This API is for SoCs only.
+ * @note The application must define
+ *       EMBER_APPLICATION_HAS_MAC_PASSTHROUGH_FILTER_HANDLER
+ *
+ * @param macHeader A pointer to the initial portion of the incoming MAC
+ *                  header, in the standard 802.15.4 format.  The first
+ *                  two bytes comprise the frame control, which dictates
+ *                  source / destination PAN and addressing formats.
+ *                  (See the MAC sublayer definition in the standards
+ *                   definition 802.15.4e/2012)
+ *
+ *                  The relevant bytes of the header are:
+ *  ----------------------------------------------------------------------
+ *  | octets: |  2  |  1  |  0/2    |   0/2/8   |   0/2   |   0/2/8  | 
+ *  ----------------------------------------------------------------------
+ *  |         | ctl | seq | dst.pan |  dst.addr | src.pan | src.addr | ...
+ *  ----------------------------------------------------------------------
+ *                  Note that subsequent MAC fields, and the MAC payload,
+ *                  may not yet be present at this point.
+ *
+ * @return true if the message is an application MAC passthrough message.
+ */
+bool emberMacPassthroughFilterHandler(uint8_t *macHeader)
+{
+  return false;
+}
+
+/** @brief Application handler to intercept "passthrough" packets and
+ * handle them at the application.
+ *
+ * @note This API is for SoCs only.
+ * @note The application must define
+ *       EMBER_APPLICATION_HAS_MAC_PASSTHROUGH_MESSAGE_HANDLER
+ *
+ * @param header The message buffer pointing to the full 802.15.4 frame
+ *               to be handled by the application.
+ */
+void emberMacPassthroughMessageHandler(PacketHeader header)
+{
+}
+
+/** @brief Application handler to filter 802.15.4 packets to be observed
+ * for signal strength.
+ *
+ * @note This API is for SoCs only.
+ * @note The application must define
+ *       EMBER_APPLICATION_HAS_RSSI_FILTER_HANDLER
+ *
+ * @param macHeader A pointer to the initial portion of the incoming MAC
+ *                  header, in the standard 802.15.4 format.  The first
+ *                  two bytes comprise the frame control, which dictates
+ *                  source / destination PAN and addressing formats.
+ *                  (See the MAC sublayer definition in the standards
+ *                   definition 802.15.4e/2012)
+ *
+ *                  The relevant bytes of the header are:
+ *  ----------------------------------------------------------------------
+ *  | octets: |  2  |  1  |  0/2    |   0/2/8   |   0/2   |   0/2/8  | 
+ *  ----------------------------------------------------------------------
+ *  |         | ctl | seq | dst.pan |  dst.addr | src.pan | src.addr | ...
+ *  ----------------------------------------------------------------------
+ *                  Note that subsequent MAC fields, and the MAC payload,
+ *                  may not yet be present at this point.
+ *
+ * @return true if the application wants to peek at the RSSI for this message.
+ */
+bool emberMacRssiFilterHandler(uint8_t *macHeader)
+{
+  return false;
+}
+
+/** @brief Gets the received signal strength indication (RSSI) for the
+ * last 802.15.4 packet received by the stack.
+ *
+ * @note This is called on the application for all packets that match
+ * the rule defined in ::emberMacRssiFilterHandler()
+ *
+ * The quantity referenced by currentRssi will contain the energy level
+ * (in units of dBm) observed during the last 802.15.4 packet received
+ * in that handler.
+ *
+ * @note This API is for SoCs only.
+ * @note The application must define
+ *       EMBER_APPLICATION_HAS_RSSI_FILTER_HANDLER
+ *
+ * @note This functionality is not available for packets such as 802.15.4
+ * data requests or acknowledgements.  Data requests must be handled quickly
+ * due to strict 15.4 timing requirements, and so the RSSI information is not
+ * recorded.  Similarly, 802.15.4 ACKs are handled by the hardware and the
+ * information does not make it up to the stack.
+ *
+ * @param currentRssi  The RSSI for the last incoming message processed.
+ */
+void emberMacRssiHandler(int8_t currentRssi)
+{
+}
+
+/** @brief
+ * This is called when the stack receives new Thread Network Data.
+ *
+ * @param networkData             the Network Data
+ * @param length                  length in bytes of the Network Data
+ */
+void emberNetworkDataChangeHandler(const uint8_t *networkData, uint16_t length)
+{
+}
+
+/** @brief  Reports a change to the network status.  For example, the network
+ * status changes while going through the joining process, or while reattaching
+ * to the network, which can happen for a variety of reasons.  In particular,
+ * after issuing a form, join, resume, or attach command, the application
+ * knows that the device is on the network and ready to communicate when
+ * this handler is called with a newNetworkStatus of
+ * EMBER_JOINED_NETWORK_ATTACHED.
+ *
+ * If the status handler is reporting a join failure, then the newNetworkStatus
+ * argument will have a value of EMBER_NO_NETWORK and the reason argument
+ * will contain an appropriate value.  For other network status reports, the
+ * reason argument does not apply and is set to EMBER_JOIN_FAILURE_REASON_NONE.
+ */
+void emberNetworkStatusHandler(EmberNetworkStatus newNetworkStatus,
+                               EmberNetworkStatus oldNetworkStatus,
+                               EmberJoinFailureReason reason)
+{
+}
+
+/** @brief  If implementing event-driven sleep on an NCP host, this method will
+ * return the bitmask indicating the stack's current tasks. (see enum above)
+ *
+ *  The mask ::EMBER_HIGH_PRIORITY_TASKS defines which tasks are high
+ *  priority.  Devices should not sleep if any high priority tasks are active.
+ *  Active tasks that are not high priority are waiting for
+ *  messages to arrive from other devices.  If there are active tasks,
+ *  but no high priority ones, the device may sleep but should periodically
+ *  wake up and call ::emberPollForData() in order to receive messages.  Parents
+ *  will hold messages for ::EMBER_INDIRECT_TRANSMISSION_TIMEOUT (in quarter
+ *  seconds) before discarding them.
+ *
+ * @return A bitmask of the stack's active tasks.
+ */
+void emberOkToNapReturn(uint8_t stateMask)
+{
+}
+
+/** @brief Provides the result of a call to emberPollForData().
+ * @param An EmberStatus value:
+ * - ::EMBER_SUCCESS      - The poll message has been submitted for transmission
+ * - ::EMBER_INVALID_CALL - The node is not a sleepy end device.
+ * - ::EMBER_NOT_JOINED   - The node is not part of a network.
+ */
+void emberPollForDataReturn(EmberStatus status)
+{
+}
+
+/** @brief
+ * Provides the result of a call to ::emberRadioGetRandomNumbers.
+ *
+ * @param status An EmberStatus value indicating success or the
+ *               reason for failure. When EMBER_SUCCESS is returned
+ *               ::rn and ::count will contain valid data.  ::rn
+                 and ::count are undefined when EMBER_SUCCESS is not
+ *               returned.
+ * @param rn the uint16_t random values
+ * @param count - the count of uint16_t values located at ::rn
+ */
+void emberRadioGetRandomNumbersReturn(EmberStatus status,
+                                      const uint16_t *rn,
+                                      uint8_t count)
+{
+}
+
+/** @brief
+ * Provides the result of a call to ::emberRequestDhcpAddress
+ *
+ * This call only indicates the status of the request (EMBER_ERR_FATAL if no
+ * DHCP server is found, and EMBER_SUCCESS otherwise).  The assigned IPv6
+ * address is returned via ::emberAddressConfigurationChangeHandler
+ *
+ * @param status                  Status of DHCP Address Request
+ * @param prefix                  Prefix requested in ::emberRequestDhcpAddress
+ * @param prefixLengthInBits      Prefix length in bits requested in
+ *                                ::emberRequestDhcpAddress
+ */
+void emberRequestDhcpAddressReturn(EmberStatus status,
+                                   const uint8_t *prefix,
+                                   uint8_t prefixLengthInBits)
+{
+}
+
+/** @brief
+ * Provides the result of a call to ::emberRequestSlaacAddress
+ *
+ * This call only indicates the status of the request (EMBER_ERR_FATAL if no
+ * SLAAC server is found, and EMBER_SUCCESS otherwise).  The assigned IPv6
+ * address is returned via ::emberAddressConfigurationChangeHandler
+ *
+ * @param status                  Status of SLAAC Address Request
+ * @param prefix                  Prefix requested in ::emberRequestSlaacAddress
+ * @param prefixLengthInBits      Prefix length in bits requested in
+ *                                ::emberRequestSlaacAddress
+ */
+void emberRequestSlaacAddressReturn(EmberStatus status,
+                                    const uint8_t *prefix,
+                                    uint8_t prefixLengthInBits)
+{
+}
+
+/** @brief  Notifies the application of a reset on the Ember chip
+ * due to the indicated cause.
+ */
+void emberResetMicroHandler(EmberResetCause cause)
+{
+}
+
+/** @brief Provides the result of a call to emberResetNetworkState(). */
+void emberResetNetworkStateReturn(EmberStatus status)
+{
+}
+
+/** @brief
+ * Provides the result of a call to emberResignGlobalAddress().
+ */
+void emberResignGlobalAddressReturn(EmberStatus status)
+{
+}
+
+/** @brief A callback that indicates whether a prior call to
+ * ::emberResumeNetwork() successfully initiated the resume process.
+ * The status argument is either EMBER_SUCCESS, or
+ * EMBER_INVALID_CALL if resume was called when the network status was
+ * not EMBER_SAVED_NETWORK, or while a scan was underway.
+ */
+void emberResumeNetworkReturn(EmberStatus status)
+{
+}
+
+/** @brief  Provides the status upon completion of a scan. */
+void emberScanReturn(EmberStatus status)
+{
+}
+
+/** @brief Provides the result of a call to emberSendSteeringData(). */
+void emberSendSteeringDataReturn(EmberStatus status)
+{
+}
+
+/** @brief
+ * Provides the result of a call to ::emberSetAntennaMode.
+ *
+ * @param EMBER_SUCCESS if antenna mode is configured as desired
+ * or EMBER_BAD_ARGUMENT if antenna mode is not supported.
+ */
+void emberSetAntennaModeReturn(EmberStatus status)
+{
+}
+
+/** @brief Provides the result of a call to emberSetCcaThreshold(). */
+void emberSetCcaThresholdReturn(EmberStatus status)
+{
+}
+
+/** @brief
+ * Provides the result of a call to ::emberSetCtune.
+ *
+ * @param status An EmberStatus value indicating success or the
+ *               reason for failure.
+ */
+void emberSetCtuneReturn(EmberStatus status)
+{
+}
+
+/** @brief
+ * Provides the result of a call to ::emberSetMfgToken.
+ *
+ * @param tokenId         Which manufacturing token set.
+ * @param status An EmberStatus value indicating success or the
+ *               reason for failure.
+ */
+void emberSetMfgTokenReturn(EmberMfgTokenId tokenId,
+                            EmberStatus status)
+{
+}
+
+/** @brief
+ * Provides the result of a call to ::emberSetPtaEnable.
+ *
+ * @param status An EmberStatus value indicating success or the
+ *               reason for failure.
+ */
+void emberSetPtaEnableReturn(EmberStatus status)
+{
+}
+
+/** @brief
+ * Provides the result of a call to ::emberSetPtaOptions.
+ *
+ * @param status An EmberStatus value indicating success or the
+ *               reason for failure.
+ */
+void emberSetPtaOptionsReturn(EmberStatus status)
+{
+}
+
+/** @brief
+ * Provides the result of a call to ::emberSetRadioHoldOff.
+ *
+ * @param status An EmberStatus value indicating success or the
+ *               reason for failure. EMBER_SUCCESS if Radio HoldOff
+ *               was configured as desired or EMBER_BAD_ARGUMENT
+ *               if requesting it be enabled but RHO has not been
+ *               configured by the BOARD_HEADER.
+ */
+void emberSetRadioHoldOffReturn(EmberStatus status)
+{
+}
+
+/** @brief Provides the result of a call to emberSetRadioPower() on the host. */
+void emberSetRadioPowerReturn(EmberStatus status)
+{
+}
+
+/** @brief Provides the result of a call to emberSetSecurityParameters(). */
+void emberSetSecurityParametersReturn(EmberStatus status)
+{
+}
+
+/** @brief Provides the result of a call to emberSetTxPowerMode() on the host. */
+void emberSetTxPowerModeReturn(EmberStatus status)
+{
+}
+
+/** @brief
+ * This is called when the stack knows about a new SLAAC prefix or if
+ * a SLAAC server has become unavailable.
+ *
+ * "available" means we can configure a SLAAC address.
+ *
+ * @param prefix                  SLAAC prefix
+ * @param prefixLengthInBits      length in bits of the prefix
+ * @param available               whether we can configure an address
+ */
+void emberSlaacServerChangeHandler(const uint8_t *prefix,
+                                   uint8_t prefixLengthInBits,
+                                   bool available)
+{
+}
+
+/** @brief Provides the result of a call to emberStackPollForData(). */
+void emberStackPollForDataReturn(EmberStatus status)
+{
+}
+
+/** @brief Callback to tell the host to start security commissioning
+ *
+ * @param address parent IP address, 16 bytes
+ */
+void emberStartHostJoinClientHandler(const uint8_t *parentAddress)
+{
+}
+
+/**
+ * @brief In a host/NCP setup, provides the result of a call to emberState() on the host.
+ *
+ * @param parameters Current network parameters
+ * @param localEui64 The EUI64 of the Ember chip
+ * @param macExtendedId The extended MAC ID of the Ember chip
+ * @param networkStatus The current status of the network
+ */
+void emberStateReturn(const EmberNetworkParameters *parameters,
+                      const EmberEui64 *localEui64,
+                      const EmberEui64 *macExtendedId,
+                      EmberNetworkStatus networkStatus)
+{
+}
+
+/** @brief
+ * This can be stubbed out on the SoC and host app.  It is used by the
+ * NCP to update security on the driver when it is instructed to switch
+ * the network key by an over the air update.
+ *
+ */
+void emberSwitchToNextNetworkKeyHandler(EmberStatus status)
+{
+}
+
+/** @brief Provides the result of a call to emberSwitchToNextNetworkKey(). */
+void emberSwitchToNextNetworkKeyReturn(EmberStatus status)
+{
+}
+
+/** @brief Provides the result of a call to emberSetDtlsDeviceCertificate().
+ *
+ * @param result
+ * - ::0      The certificate was set successfully.
+ * - ::result error code
+ *            - an EmberStatus value if using Silicon Labs TLS
+ *            - an mbed TLS error code if using mbed TLS library
+ *            (see mbedtls:include/mbedtls/ssl.h)
+ */
+void emberSetDtlsDeviceCertificateReturn(uint32_t result)
+{
+}
+
+/** @brief Provides the result of a call to emberSetDtlsPresharedKey().
+ *
+ * @param result
+ * - ::status An EmberStatus value
+ */
+void emberSetDtlsPresharedKeyReturn(EmberStatus status)
+{
+}
+
+/** @brief Provides the result of a call to emberOpenDtlsConnection().
+ *
+ * @param result error code
+ *        - an EmberStatus value if using Silicon Labs TLS
+ *        - an mbed TLS error code if using mbed TLS library
+ *        (see mbedtls:include/mbedtls/ssl.h)
+ * @param remoteAddress IPv6 address of the server
+ * @param localPort     local port
+ * @param remotePort    remote port
+ */
+void emberOpenDtlsConnectionReturn(uint32_t result,
+                                   const EmberIpv6Address *remoteAddress,
+                                   uint16_t localPort,
+                                   uint16_t remotePort)
+{
+}
+
+/** @brief Indicates to the application that a secure connection was
+ *         successfully established.
+ *
+ * @param flags         1 = server, 0 = client (possibly other info later)
+ * @param sessionId     sessionId used for secure CoAP transport
+ * @param localAddress  local IPv6 address
+ * @param remoteAddress remote IPv6 address
+ * @param localPort     local port
+ * @param remotePort    remote port
+ */
+void emberDtlsSecureSessionEstablished(uint8_t flags,
+                                       uint8_t sessionId,
+                                       const EmberIpv6Address *localAddress,
+                                       const EmberIpv6Address *remoteAddress,
+                                       uint16_t localPort,
+                                       uint16_t remotePort)
+{
+}
+
+/** @brief Provides the result of a call to emberGetSecureDtlsSessionId().
+ *
+ * @param sessionId     sessionId used for secure CoAP transport
+ * @param remoteAddress remote IPv6 address
+ * @param localPort     local port
+ * @param remotePort    remote port
+ */
+void emberGetSecureDtlsSessionIdReturn(uint8_t sessionId,
+                                       const EmberIpv6Address *remoteAddress,
+                                       uint16_t localPort,
+                                       uint16_t remotePort)
+{
+}
+
+/** @brief Provides the result of a call to emberCloseDtlsConnection(), or
+ *         indicates that the connection was closed on the other end.
+ *
+ * @param sessionId     sessionId used for secure CoAP transport.
+ * @param status
+ * - ::EMBER_SUCCESS      - Successfully closed the connection
+ * - ::EMBER_INVALID_CALL - Invalid session ID
+ * - ::EMBER_ERR_FATAL    - Fatal error closing the connection
+ */
+void emberCloseDtlsConnectionReturn(uint8_t sessionId, EmberStatus status)
+{
+}
+
+/** @brief Process a CoAP message received over an alternate transport.
+ *
+ * Called to process a CoAP message that arrived via DTLS or other
+ * alternative transport.  Only the address, port and transmit handler
+ * fields of `info` are used.  The token and ackData fields are
+ * ignored.
+ */
+void emberProcessCoap(const uint8_t *message,
+                      uint16_t messageLength,
+                      EmberCoapRequestInfo *info)
+{
+}
+
+/** @brief
+ * Callback informing the application running on the micro of interruptions 
+ * to normal processing. If ::busy is true, the micro will be busy processing
+ * and unavailable for an indefinite period of time. If ::busy is false, the
+ * micro has resumed normal operation.  The main use case is jpake crypto
+ * on EM3xx processors. This gives the application a chance to prepare for
+ * the pause in regular processing.
+ *
+ * This callback is not available on a host processor.
+ * Note that if ::busy is true, the micro may become busy as soon as this
+ * handler exits. In a host/ncp setup, one solution for informing the
+ * host is to implement this handler in your own xNCP image and use it to
+ * toggle the serial CTS line.
+ */
+void emberMicroBusyHandler(bool busy)
+{
+}

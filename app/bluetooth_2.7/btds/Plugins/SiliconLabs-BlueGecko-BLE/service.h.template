@@ -1,0 +1,99 @@
+/**
+* 
+***************************************************************************************************
+* <b> (C) Copyright 2016 Silicon Labs, http://www.silabs.com </b>
+***************************************************************************************************
+* This file is licensed under the Silabs License Agreement. See the file
+* "Silabs_License_Agreement.txt" for details. Before using this software for
+* any purpose, you must agree to the terms of that agreement.
+* 
+*/
+
+#ifndef __{{Name | Upcase | Replace:" ","_" | Replace:"-","_"}}_H
+#define __{{Name | Upcase | Replace:" ","_" | Replace:"-","_"}}_H
+
+/*******************************************************************************
+ *******************************   INCLUDES   **********************************
+ ******************************************************************************/
+#include <stdint.h>
+#include <stdbool.h>
+#include "native_gecko.h"
+
+{%- assign indicate_property = false -%}
+{%- for characteristic in Characteristics -%}
+{%- for charProps in characteristic.Properties -%}
+{%- if charProps.Indicate == 'Mandatory' or charProps.Notify == 'Mandatory' -%}
+{%- assign indicate_property = true -%}
+{%- endif -%}
+{%- endfor -%}
+{%- endfor -%}
+/*******************************************************************************
+ *******************************   DEFINES   ***********************************
+ ******************************************************************************/
+
+
+/*******************************************************************************
+ *****************************   PROTOTYPES   **********************************
+ ******************************************************************************/
+ 
+/*******************************************************************************
+ * @brief
+ *   Service {{Name}} initialization
+ * @return
+ *   None
+ ******************************************************************************/
+void {{Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_init(void);
+
+/*******************************************************************************
+ * @brief
+ *   Function to handle read data
+ * @param[in] evt
+ *   Gecko event
+ * @return
+ *   None
+ ******************************************************************************/
+extern void {{Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_readCallback(struct gecko_cmd_packet *evt);
+
+/*******************************************************************************
+ * @brief
+ *   Function to handle write data
+ * @param[in] evt
+ *   Gecko event
+ * @return
+ *   None
+ ******************************************************************************/
+extern void {{Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_writeCallback(struct gecko_cmd_packet *evt);
+
+/*******************************************************************************
+* @brief
+*   Function to handle characteristic write events when type="user" is not set
+* @param[in] evt
+*   Gecko event
+* @return
+*   None
+******************************************************************************/
+extern void {{Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_valueChangeCallback(struct gecko_cmd_packet *evt);
+
+/*******************************************************************************
+* @brief
+*   Function to handle disconnect event
+* @param[in] evt
+*   Gecko event
+* @return
+*   None
+******************************************************************************/
+extern void {{Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_disconnectEvent(struct gecko_cmd_packet *evt);
+
+{%- if indicate_property -%}
+/*******************************************************************************
+ * @brief
+ *   Function to handle gecko_evt_gatt_server_characteristic_status_id event
+ * @param[in] evt
+ *   Gecko event
+ * @return
+ *   None
+ ******************************************************************************/
+void {{Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_characteristicStatus(struct gecko_cmd_packet *evt);
+
+{%- endif -%}
+#endif //__{{Name | Upcase | Replace:" ","_" | Replace:"-","_"}}_H

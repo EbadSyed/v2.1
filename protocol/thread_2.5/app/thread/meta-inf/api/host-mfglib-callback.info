@@ -1,0 +1,160 @@
+#include PLATFORM_HEADER
+#include CONFIGURATION_HEADER
+#include EMBER_AF_API_STACK
+
+/** @brief This function provides the result of a call to mfglibEnd().
+ *
+ * @param status
+ * - ::EMBER_SUCCESS           if the mfg test mode has been exited.
+ * - ::EMBER_ERR_FATAL         if the mfg test mode cannot be exited.
+ * @param receiveCount The total number of packets received during the test.
+ */
+void mfglibEndReturn(EmberStatus status, uint32_t receiveCount)
+{
+}
+
+/** @brief This function provides the result of a call to mfglibGetChannel().
+ *
+ * @param channel The current channel.
+ */
+void mfglibGetChannelReturn(uint8_t channel)
+{
+}
+
+/** @brief This function provides the result of a call to mfglibGetOptions().
+ *
+ * @param options The current options based on the current test mode.
+ */
+void mfglibGetOptionsReturn(uint8_t options)
+{
+}
+
+/** @brief This function provides the result of a call to mfglibGetPowerMode().
+ *
+ * @param txPowerMode The current power mode setting.
+ */
+void mfglibGetPowerModeReturn(uint16_t txPowerMode)
+{
+}
+
+/** @brief This function provides the result of a call to mfglibGetPower().
+ *
+ * @param power The current power setting.
+ */
+void mfglibGetPowerReturn(int8_t power)
+{
+}
+
+/** @brief This function provides the result of a call to mfglibGetSynOffset().
+ *
+ * @param synthOffset The synth offset in 11.7kHz steps.
+ */
+void mfglibGetSynOffsetReturn(int8_t synthOffset)
+{
+}
+
+/** @brief RX Handler for the mfglib test library
+ *
+ * @param packet       incoming packet
+ * @param linkQuality  link quality as a numeric value
+ * @param rssi         RSSI in dBm
+ */
+void mfglibRxHandler(uint8_t *packet, uint8_t linkQuality, int8_t rssi)
+{
+}
+
+/** @brief This function provides the result of a call to mfglibSendPacket().
+ *
+ * @param status
+ * - ::EMBER_SUCCESS                 if the packet was sent.
+ * - ::EMBER_ERR_FATAL               if the mfg test mode is not available or
+ *                                   TONE or STREAM test is running.
+ */
+void mfglibSendPacketReturn(EmberStatus status)
+{
+}
+
+/** @brief This function provides the result of a call to mfglibSetChannel().
+ *
+ * @param status
+ * - ::EMBER_SUCCESS                 if the channel has been set.
+ * - ::EMBER_ERROR_INVALID_CHANNEL   if the channel requested is invalid.
+ * - ::EMBER_ERR_FATAL               if the mfg test mode is not available or
+ *                                   TONE or STREAM test is running.
+ */
+void mfglibSetChannelReturn(EmberStatus status)
+{
+}
+
+/** @brief This function provides the result of a call to mfglibSetOptions().
+ *
+ * @param status
+ * - ::EMBER_SUCCESS                 if the options have been set.
+ * - ::EMBER_BAD_ARGUMENT            if any options are unavailable.
+ * - ::EMBER_ERR_FATAL               if the mfg test mode is not available or TONE or STREAM test is running.
+ */
+void mfglibSetOptionsReturn(EmberStatus status)
+{
+}
+
+/** @brief This function provides the result of a call to mfglibSetPower().
+ *
+ * @param status
+ * - ::EMBER_SUCCESS                 if the power has been set.
+ * - ::EMBER_ERROR_INVALID_POWER     if the power requested is invalid.
+ * - ::EMBER_ERR_FATAL               if the mfg test mode is not available or
+ *                                   TONE or STREAM test is running.
+ */
+void mfglibSetPowerReturn(EmberStatus status)
+{
+}
+
+/** @brief This function provides the result of a call to mfglibStart().
+ *
+ * @param status
+ * - ::EMBER_SUCCESS              if the mfg test mode has been enabled.
+ * - ::EMBER_ERR_FATAL            if the mfg test mode is not available.
+ */
+void mfglibStartReturn(EmberStatus status)
+{
+}
+
+/** @brief This function provides the result of a call to mfglibStartStream().
+ *
+ * @param status
+ * - ::EMBER_SUCCESS          if the transmit stream has started.
+ * - ::EMBER_ERR_FATAL        if the stream cannot be started.
+ */
+void mfglibStartStreamReturn(EmberStatus status)
+{
+}
+
+/** @brief This function provides the result of a call to mfglibStartTone().
+ *
+ * @param status
+ * - ::EMBER_SUCCESS          if the transmit tone has started.
+ * - ::EMBER_ERR_FATAL        if the tone cannot be started.
+ */
+void mfglibStartToneReturn(EmberStatus status)
+{
+}
+
+/** @brief This function provides the result of a call to mfglibStopStream().
+ *
+ * @param status
+ * - ::EMBER_SUCCESS          if the transmit stream has stopped.
+ * - ::EMBER_ERR_FATAL        if the stream cannot be stopped.
+ */
+void mfglibStopStreamReturn(EmberStatus status)
+{
+}
+
+/** @brief This function provides the result of a call to mfglibStopTone().
+ *
+ * @param status
+ * - ::EMBER_SUCCESS          if the transmit tone has stopped.
+ * - ::EMBER_ERR_FATAL        if the tone cannot be stopped.
+ */
+void mfglibStopToneReturn(EmberStatus status)
+{
+}

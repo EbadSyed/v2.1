@@ -1,0 +1,220 @@
+border-router-mgmt-app {
+  name=Border Router Management App
+  dir=border-router-mgmt-app
+  isc=border-router-mgmt-app/border-router-mgmt-app.isc
+  include=border-router-mgmt-app-implementation.c
+  architecture=unix
+  The border-router-mgmt-app is a component of the Silicon Labs Border Router Reference Design for unix hosts, which demonstrates device commissioning with the Thread Group Commissioning App and routing between a Thread Network and adjacent IP networks.  Other components of the Border Router Reference Design include the ip-driver-app, the commission-proxy-app, and host IP-stack services and configurations.  Use the applications with kit RD-0004-0201
+}
+
+cap-sense-switch {
+  name=Capacitive Touch Sensing Switch
+  dir=zcl/cap-sense-switch
+  isc=zcl/cap-sense-switch/cap-sense-switch.isc
+  architecture=em3587,simulation
+  include=cap-sense-switch-implementation.c
+  This is a ZCL over IP sensor application.  The application provides open/close state of a magnetic reed switch and device tamper detection.  It is intended to be used with the Border Router Reference Design to demonstrate device commissioning with the Thread Group Commissioning App and routing between a Thread Network and adjacent IP networks.  Use the application with kit RD-0039-0201 (EM3587).  
+}
+
+client {
+  name=Client
+  dir=client-server/client
+  isc=client-server/client/client.isc
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+  include=client-implementation.c, .internal_hwconfig
+  This client application acts as a data sensor in a wireless sensor network.
+  It reports information to a server node that acts as a sink.
+}
+
+client-sleepy {
+  name=Client (Sleepy)
+  dir=client-server/client-sleepy
+  isc=client-server/client-sleepy/client-sleepy.isc
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+  include=client-sleepy-implementation.c, .internal_hwconfig
+  This client application acts as a sleepy data sensor in a wireless sensor
+  network.  It reports information to a server node that acts as a sink.
+}
+
+contact-sensor {
+  name=Contact Sensor
+  dir=zcl/contact-sensor
+  isc=zcl/contact-sensor/contact-sensor.isc
+  architecture=em3587
+  include=contact-sensor-implementation.c
+  This is a ZCL over IP sensor application.  The application provides open/close state of a magnetic reed switch and device tamper detection.  It is intended to be used with the Border Router Reference Design to demonstrate device commissioning with the Thread Group Commissioning App and routing between a Thread Network and adjacent IP networks.  Use the application with kit RD-0030-0201 (EM3587).
+}
+
+dimmable-light {
+  name=Dimmable Light
+  dir=zcl/dimmable-light
+  isc=zcl/dimmable-light/dimmable-light.isc
+  architecture=EFR32MG12P432F1024GM48,EFR32MG12P432F1024IM48,EFR32MG1P732F256GM32,EFR32MG1P732F256IM32,em3585,simulation
+  include=dimmable-light-implementation.c, .internal_hwconfig
+  This is a ZCL over IP light application.  The application provides pwm control for a dimming function.  It is intended to be used with the Border Router Reference Design to demonstrate device commissioning with the Thread Group Commissioning App and routing between a Thread Network and adjacent IP networks.  Use the application with kits RD-0035-0601 (EM3585), RD-0085-0401 (EFR32MG1P732F256IM32), RD-0098-0401 (EFR32MG12P432F1024IM32), WSTK (EFR32) and EM35X-DEV (EM358x).  
+
+}
+
+light {
+  name=Light (SoC)
+  dir=zcl/light
+  isc=zcl/light/light.isc
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+  include=light-implementation.c, .internal_hwconfig
+  demo.1.bin=zcl/light/efr32mg1p232f256gm48/light.s37
+  demo.1.arch=efr32mg1p232f256gm48+brd4151a
+  demo.2.bin=zcl/light/efr32mg1p132f256gm48/light.s37
+  demo.2.arch=efr32mg1p132f256gm48+brd4153a
+  demo.3.bin=zcl/light/efr32mg12p432f1024gl125-brd4161a/light.s37
+  demo.3.arch=efr32mg12p432f1024gl125+brd4161a
+  demo.4.bin=zcl/light/efr32mg12p332f1024gl125-brd4162a/light.s37
+  demo.4.arch=efr32mg12p332f1024gl125+brd4162a
+  This light application acts as a simple dimmable light in a ZCL network.  It
+  works with the switch sample application to demonstrate basic ZCL over IP
+  functionality in a Thread network.  A more complete example of a dimmable
+  light is available in the Dimmable Light reference design.
+}
+
+light-host {
+  name=Light (Host)
+  dir=zcl/light-host
+  isc=zcl/light-host/light-host.isc
+  architecture=unix
+  include=light-host-implementation.c
+  This light application acts as a simple dimmable light in a ZCL network.  It
+  works with the switch sample application to demonstrate basic ZCL over IP
+  functionality in a Thread network.  A more complete example of a dimmable
+  light is available in the Dimmable Light reference design.
+}
+
+ncp-spi {
+  name=NCP SPI
+  dir=ncp/ncp-spi
+  isc=ncp/ncp-spi/ncp-spi.isc
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+  include=.internal_hwconfig
+  This network coprocessor (NCP) application supports communication with a host
+  application over a SPI interface.  This NCP application can be built as
+  configured, or optionally can be augmented with customized extensions for
+  initialization, main loop processing, event definition/handling, and
+  messaging with the host.
+}
+
+ncp-uart-sw {
+  name=NCP UART (Software Flow Control)
+  dir=ncp/ncp-uart-sw
+  isc=ncp/ncp-uart-sw/ncp-uart-sw.isc
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+  include=.internal_hwconfig
+  This network coprocessor (NCP) application supports communication with a host
+  application over a UART interface with software flow control. This NCP
+  application can be built as configured, or optionally can be augmented with
+  customized extensions for initialization, main loop processing, event
+  definition/handling, and messaging with the host.
+}
+
+ncp-uart-hw {
+  name=NCP UART HW (Hardware Flow Control)
+  dir=ncp/ncp-uart-hw
+  isc=ncp/ncp-uart-hw/ncp-uart-hw.isc
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+  include=.internal_hwconfig
+  This network coprocessor (NCP) application supports communication with a host
+  application over a UART interface with hardware flow control. This NCP
+  application can be built as configured, or optionally can be augmented with
+  customized extensions for initialization, main loop processing, event
+  definition/handling, and messaging with the host.
+}
+
+occupancy-sensor {
+  name=Occupancy Sensor
+  dir=zcl/occupancy-sensor
+  isc=zcl/occupancy-sensor/occupancy-sensor.isc
+  architecture=EFR32MG1P232F256GM48,EFR32MG12P432F1024GM48,em3587,simulation
+  include=occupancy-sensor-implementation.c, .internal_hwconfig
+  This is a ZCL over IP sensor application.  The application provides occupancy sensing, temperature measurement, relative humidity measurement, and illuminance measurement.  It is intended to be used with the Border Router Reference Design to demonstrate device commissioning with the Thread Group Commissioning App and routing between a Thread Network and an adjacent IP networks.  Use the application with kits RD-0078-0201 (EFR32MG1P232F256GM48) and RD-0099-0201 (EFR32MG12P432F1024GM48).  
+}
+
+ota-server-host {
+  name=OTA Server (Host)
+  dir=zcl/ota-server-host
+  isc=zcl/ota-server-host/ota-server-host.isc
+  architecture=unix
+  include=ota-server-host-implementation.c
+  This application acts as a simple OTA server in a ZCL network.  It works with any device that implements the OTA Client plugin (such as the light or switch sample applications) to demonstrate basic ZCL over IP bootloading functionality in a Thread network.
+}
+
+sensor-actuator {
+  name=Sensor/Actuator
+  dir=zcl/sensor-actuator
+  isc=zcl/sensor-actuator/sensor-actuator.isc
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+  include=sensor-actuator-implementation.c, displayconfigapp.h, .internal_hwconfig
+  This ZCL over IP sensor and actuator application.  The application provides LED 0 and buzzer (EM35x-DEV only) control, and reports temperature and button 0 state.  It is intended to be used with the Border Router Reference Design to demonstrate device commissioning with the Thread Group Commissioning App and routing between a Thread Network and adjacent IP networks.   Use with kits WSTK (EFR32) and EM35x-DEV (EM358x).
+}
+
+server {
+  name=Server (SoC)
+  dir=client-server/server
+  isc=client-server/server/server.isc
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+  include=server-implementation.c, .internal_hwconfig
+  This server application acts as a data sink in a wireless sensor network.  It
+  collects information from client nodes that act as sensors.
+}
+
+server-host {
+  name=Server (Host)
+  dir=client-server/server-host
+  isc=client-server/server-host/server-host.isc
+  architecture=unix
+  include=getData.php,sensors.html,server-host-implementation.c
+  This server application acts as a data sink in a wireless sensor network.  It
+  collects information from client nodes that act as sensors.
+}
+
+smart-outlet {
+  name=Smart Outlet
+  dir=zcl/smart-outlet
+  isc=zcl/smart-outlet/smart-outlet.isc
+  architecture=EFR32MG1P232F256GM48,EFR32MG12P432F1024GM48,simulation
+  include=smart-outlet-implementation.c, .internal_hwconfig
+  This is a ZCL over IP sensor and actuator application.  The application provides outlet on/off control; over-current and over-temperature shutdown; and power, temperature, relative humidity and illuminance measurements.  It is intended to be used with the Border Router Reference Design to demonstrate device commissioning with the Thread Group Commissioning App and routing between a Thread Network and adjacent IP networks.  Use the application with kits RD-0051-0201 (EFR32MG1P232F256GM48) and RD-0100-0201 (EFR32MG12P432F1024GM48).
+}
+
+switch {
+  name=Switch
+  dir=zcl/switch
+  isc=zcl/switch/switch.isc
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+  include=switch-implementation.c, .internal_hwconfig
+  demo.1.bin=zcl/switch/efr32mg1p232f256gm48/switch.s37
+  demo.1.arch=efr32mg1p232f256gm48+brd4151a
+  demo.2.bin=zcl/switch/efr32mg1p132f256gm48/switch.s37
+  demo.2.arch=efr32mg1p132f256gm48+brd4153a
+  demo.3.bin=zcl/switch/efr32mg12p432f1024gl125-brd4161a/switch.s37
+  demo.3.arch=efr32mg12p432f1024gl125+brd4161a
+  demo.4.bin=zcl/switch/efr32mg12p332f1024gl125-brd4162a/switch.s37
+  demo.4.arch=efr32mg12p332f1024gl125+brd4162a
+  This switch application acts as a simple dimmer switch in a ZCL network.  It
+  works with the light sample application to demonstrate basic ZCL over IP
+  functionality in a Thread network.
+}
+
+test {
+  name=Test
+  dir=../test-app/test
+  isc=../test-app/test/test.isc
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+  include=test-implementation.c,.internal_hwconfig
+  SL Thread: This is a test application that is used in make test.
+}
+
+thread-test {
+  name=Thread Test Application
+  dir=thread-test/
+  isc=thread-test/thread-test.isc
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+  include=.internal_hwconfig
+  This is the Thread Test application built from the framework.  The Thread Test application is used to test the stack against the GRL Thread Test Harness.  This sample app uses the Thread Test Harness CLI plugin which implements all the CLI commands neccessary to run the harness.
+}

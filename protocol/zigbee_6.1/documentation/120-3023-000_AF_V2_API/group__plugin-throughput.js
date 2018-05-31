@@ -1,0 +1,8 @@
+var group__plugin_throughput =
+[
+    [ "EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_THROUGHPUT_PLUGIN_THROUGHPUT_DURATION", "group__plugin-throughput.html#gac3b33d5cbf0b97264e971e7d7cc2423b", null ],
+    [ "EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_THROUGHPUT_PLUGIN_THROUGHPUT_END", "group__plugin-throughput.html#ga3776689c423ee40e0a91aa51c793b426", null ],
+    [ "EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_THROUGHPUT_PLUGIN_THROUGHPUT_INFLIGHT", "group__plugin-throughput.html#ga80c46121449213217f21cad683dad853", null ],
+    [ "EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_THROUGHPUT_PLUGIN_THROUGHPUT_RESULT", "group__plugin-throughput.html#gab52c243ab807f168a191e38f02b587a2", null ],
+    [ "EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_THROUGHPUT_PLUGIN_THROUGHPUT_START", "group__plugin-throughput.html#ga99be6a34020314bb9fde192f2cade606", null ]
+];

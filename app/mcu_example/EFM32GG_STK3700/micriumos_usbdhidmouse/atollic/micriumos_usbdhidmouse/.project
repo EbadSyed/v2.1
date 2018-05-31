@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>micriumos_usbdhidmouse</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
+			<triggers>clean,full,incremental,</triggers>
+			<arguments>
+				<dictionary>
+					<key>?name?</key>
+					<value></value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.append_environment</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.buildArguments</key>
+					<value></value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.buildCommand</key>
+					<value>make</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.buildLocation</key>
+					<value>${workspace_loc:/micriumos_usbdhidmouse/Debug}</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.contents</key>
+					<value>org.eclipse.cdt.make.core.activeConfigSettings</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableAutoBuild</key>
+					<value>false</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableCleanBuild</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableFullBuild</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.stopOnError</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.useDefaultBuildCmd</key>
+					<value>true</value>
+				</dictionary>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.ScannerConfigBuilder</name>
+			<triggers>full,incremental,</triggers>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.cdt.core.cnature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+	</natures>
+	<linkedResources>
+<link>
+  <name>Include_Dependencies/cmsis_Include</name>
+  <type>2</type>
+  <locationURI>$%7BPARENT-6-PROJECT_LOC%7D/platform/CMSIS/Include</locationURI>
+</link>
+<link>
+  <name>Include_Dependencies/device_EFM32GG_Include</name>
+  <type>2</type>
+  <locationURI>$%7BPARENT-6-PROJECT_LOC%7D/platform/Device/SiliconLabs/EFM32GG/Include</locationURI>
+</link>
+<link>
+  <name>Include_Dependencies/emlib_inc</name>
+  <type>2</type>
+  <locationURI>$%7BPARENT-6-PROJECT_LOC%7D/platform/emlib/inc</locationURI>
+</link>
+<link>
+  <name>Include_Dependencies/bsp</name>
+  <type>2</type>
+  <locationURI>$%7BPARENT-6-PROJECT_LOC%7D/hardware/kit/common/bsp</locationURI>
+</link>
+<link>
+  <name>Include_Dependencies/drivers</name>
+  <type>2</type>
+  <locationURI>$%7BPARENT-6-PROJECT_LOC%7D/hardware/kit/common/drivers</locationURI>
+</link>
+<link>
+  <name>Include_Dependencies/kitconfig</name>
+  <type>2</type>
+  <locationURI>$%7BPARENT-6-PROJECT_LOC%7D/hardware/kit/EFM32GG_STK3700/config</locationURI>
+</link>
+<link>
+  <name>Include_Dependencies/os_path</name>
+  <type>2</type>
+  <locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS</locationURI>
+</link>
+<link>
+  <name>Include_Dependencies/os_path_bsp_siliconlabs_generic_include</name>
+  <type>2</type>
+  <locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/bsp/siliconlabs/generic/include</locationURI>
+</link>
+<link>
+  <name>Include_Dependencies/os_cfg</name>
+  <type>2</type>
+  <locationURI>$%7BPARENT-2-PROJECT_LOC%7D/cfg</locationURI>
+</link>
+<link>
+  <name>Include_Dependencies/os_path_rtos_cpu_include</name>
+  <type>2</type>
+  <locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/cpu/include</locationURI>
+</link>
+<link>
+  <name>Include_Dependencies/os_path_rtos_cpu_source_ports_armv7-m_armcc</name>
+  <type>2</type>
+  <locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/cpu/source/ports/armv7-m/armcc</locationURI>
+</link>
+<link>
+  <name>Include_Dependencies/systemview_SEGGER</name>
+  <type>2</type>
+  <locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Tools/SystemView/SEGGER</locationURI>
+</link>
+
+		<link>
+			<name>csdata</name>
+			<type>2</type>
+			<locationURI>PROJECT_LOC/.csdata</locationURI>
+		</link>
+		<link>
+			<name>CMSIS/startup_efm32gg.s</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/platform/Device/SiliconLabs/EFM32GG/Source/Atollic/startup_efm32gg.s</locationURI>
+		</link>
+		<link>
+			<name>CMSIS/system_efm32gg.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/platform/Device/SiliconLabs/EFM32GG/Source/system_efm32gg.c</locationURI>
+		</link>
+		<link>
+			<name>CMSIS/cmsis_wrapper.s</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Ports/CMSIS/GCC/cmsis_wrapper.s</locationURI>
+		</link>
+		<link>
+			<name>bsp/bsp_bcc.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/hardware/kit/common/bsp/bsp_bcc.c</locationURI>
+		</link>
+		<link>
+			<name>bsp/bsp_stk.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/hardware/kit/common/bsp/bsp_stk.c</locationURI>
+		</link>
+		<link>
+			<name>bsp/bsp_stk_leds.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/hardware/kit/common/bsp/bsp_stk_leds.c</locationURI>
+		</link>
+		<link>
+			<name>bsp/bsp_trace.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/hardware/kit/common/bsp/bsp_trace.c</locationURI>
+		</link>
+		<link>
+			<name>bsp/bsp_cpu.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/bsp/siliconlabs/generic/source/bsp_cpu.c</locationURI>
+		</link>
+		<link>
+			<name>bsp/bsp_os.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/bsp/siliconlabs/generic/source/bsp_os.c</locationURI>
+		</link>
+		<link>
+			<name>bsp/bsp_usb_dev.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/bsp/siliconlabs/generic/source/bsp_usb_dev.c</locationURI>
+		</link>
+		<link>
+			<name>emlib/em_assert.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/platform/emlib/src/em_assert.c</locationURI>
+		</link>
+		<link>
+			<name>emlib/em_core.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/platform/emlib/src/em_core.c</locationURI>
+		</link>
+		<link>
+			<name>emlib/em_cmu.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/platform/emlib/src/em_cmu.c</locationURI>
+		</link>
+		<link>
+			<name>emlib/em_ebi.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/platform/emlib/src/em_ebi.c</locationURI>
+		</link>
+		<link>
+			<name>emlib/em_emu.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/platform/emlib/src/em_emu.c</locationURI>
+		</link>
+		<link>
+			<name>emlib/em_gpio.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/platform/emlib/src/em_gpio.c</locationURI>
+		</link>
+		<link>
+			<name>emlib/em_system.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/platform/emlib/src/em_system.c</locationURI>
+		</link>
+		<link>
+			<name>emlib/em_usart.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/platform/emlib/src/em_usart.c</locationURI>
+		</link>
+		<link>
+			<name>common/auth.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/common/source/auth/auth.c</locationURI>
+		</link>
+		<link>
+			<name>common/clk.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/common/source/clk/clk.c</locationURI>
+		</link>
+		<link>
+			<name>common/clk_cmd.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/common/source/clk/clk_cmd.c</locationURI>
+		</link>
+		<link>
+			<name>common/bitmap.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/common/source/collections/bitmap.c</locationURI>
+		</link>
+		<link>
+			<name>common/map.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/common/source/collections/map.c</locationURI>
+		</link>
+		<link>
+			<name>common/slist.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/common/source/collections/slist.c</locationURI>
+		</link>
+		<link>
+			<name>common/common.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/common/source/common/common.c</locationURI>
+		</link>
+		<link>
+			<name>common/kal_kernel.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/common/source/kal/kal_kernel.c</locationURI>
+		</link>
+		<link>
+			<name>common/lib_ascii.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/common/source/lib/lib_ascii.c</locationURI>
+		</link>
+		<link>
+			<name>common/lib_math.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/common/source/lib/lib_math.c</locationURI>
+		</link>
+		<link>
+			<name>common/lib_mem.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/common/source/lib/lib_mem.c</locationURI>
+		</link>
+		<link>
+			<name>common/lib_str.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/common/source/lib/lib_str.c</locationURI>
+		</link>
+		<link>
+			<name>common/rtos_err_str.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/common/source/rtos/rtos_err_str.c</locationURI>
+		</link>
+		<link>
+			<name>common/platform_mgr.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/common/source/platform_mgr/platform_mgr.c</locationURI>
+		</link>
+		<link>
+			<name>cpu/cpu_core.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/cpu/source/cpu_core.c</locationURI>
+		</link>
+		<link>
+			<name>cpu/armv7m_cpu_a.S</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/ports/source/gnu/armv7m_cpu_a.S</locationURI>
+		</link>
+		<link>
+			<name>cpu/armv7m_cpu_c.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/ports/source/gnu/armv7m_cpu_c.c</locationURI>
+		</link>
+		<link>
+			<name>cpu/armv7m_cpu_int.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/ports/source/generic/armv7m_cpu_int.c</locationURI>
+		</link>
+		<link>
+			<name>drivers/usbd_drv_dwc_otg_fs.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/drivers/usb/source/device/usbd_drv_dwc_otg_fs.c</locationURI>
+		</link>
+		<link>
+			<name>drivers/retargetio.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/hardware/kit/common/drivers/retargetio.c</locationURI>
+		</link>
+		<link>
+			<name>drivers/retargetserial.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/hardware/kit/common/drivers/retargetserial.c</locationURI>
+		</link>
+		<link>
+			<name>kernel/os_core.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/kernel/source/os_core.c</locationURI>
+		</link>
+		<link>
+			<name>kernel/os_cfg_app.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/kernel/source/os_cfg_app.c</locationURI>
+		</link>
+		<link>
+			<name>kernel/os_dbg.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/kernel/source/os_dbg.c</locationURI>
+		</link>
+		<link>
+			<name>kernel/os_flag.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/kernel/source/os_flag.c</locationURI>
+		</link>
+		<link>
+			<name>kernel/os_mem.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/kernel/source/os_mem.c</locationURI>
+		</link>
+		<link>
+			<name>kernel/os_mon.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/kernel/source/os_mon.c</locationURI>
+		</link>
+		<link>
+			<name>kernel/os_msg.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/kernel/source/os_msg.c</locationURI>
+		</link>
+		<link>
+			<name>kernel/os_mutex.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/kernel/source/os_mutex.c</locationURI>
+		</link>
+		<link>
+			<name>kernel/os_prio.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/kernel/source/os_prio.c</locationURI>
+		</link>
+		<link>
+			<name>kernel/os_q.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/kernel/source/os_q.c</locationURI>
+		</link>
+		<link>
+			<name>kernel/os_sem.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/kernel/source/os_sem.c</locationURI>
+		</link>
+		<link>
+			<name>kernel/os_stat.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/kernel/source/os_stat.c</locationURI>
+		</link>
+		<link>
+			<name>kernel/os_task.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/kernel/source/os_task.c</locationURI>
+		</link>
+		<link>
+			<name>kernel/os_tick.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/kernel/source/os_tick.c</locationURI>
+		</link>
+		<link>
+			<name>kernel/os_time.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/kernel/source/os_time.c</locationURI>
+		</link>
+		<link>
+			<name>kernel/os_tmr.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/kernel/source/os_tmr.c</locationURI>
+		</link>
+		<link>
+			<name>kernel/os_var.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/kernel/source/os_var.c</locationURI>
+		</link>
+		<link>
+			<name>kernel/armv7m_os_cpu_a.S</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/ports/source/gnu/armv7m_os_cpu_a.S</locationURI>
+		</link>
+		<link>
+			<name>kernel/armv7m_os_cpu_c.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/ports/source/gnu/armv7m_os_cpu_c.c</locationURI>
+		</link>
+		<link>
+			<name>SystemView/SEGGER_RTT.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Tools/SystemView/SEGGER/SEGGER_RTT.c</locationURI>
+		</link>
+		<link>
+			<name>SystemView/SEGGER_SYSVIEW.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Tools/SystemView/SEGGER/SEGGER_SYSVIEW.c</locationURI>
+		</link>
+		<link>
+			<name>SystemView/SEGGER_SYSVIEW_MicriumOSKernel.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Tools/SystemView/Sample/OS/SEGGER_SYSVIEW_MicriumOSKernel.c</locationURI>
+		</link>
+		<link>
+			<name>SystemView/SEGGER_SYSVIEW_Config_MicriumOSKernel.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-2-PROJECT_LOC%7D/cfg/SEGGER_SYSVIEW_Config_MicriumOSKernel.c</locationURI>
+		</link>
+		<link>
+			<name>usb/usbd_hid.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/usb/source/device/class/usbd_hid.c</locationURI>
+		</link>
+		<link>
+			<name>usb/usbd_hid_os.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/usb/source/device/class/usbd_hid_os.c</locationURI>
+		</link>
+		<link>
+			<name>usb/usbd_hid_report.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/usb/source/device/class/usbd_hid_report.c</locationURI>
+		</link>
+		<link>
+			<name>usb/usbd_core.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/usb/source/device/core/usbd_core.c</locationURI>
+		</link>
+		<link>
+			<name>usb/usbd_ep.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/usb/source/device/core/usbd_ep.c</locationURI>
+		</link>
+		<link>
+			<name>usb/usbd_os.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/usb/source/device/core/usbd_os.c</locationURI>
+		</link>
+		<link>
+			<name>usb/usb_ctrlr.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-6-PROJECT_LOC%7D/util/micrium/Micrium_OS/rtos/usb/source/usb_ctrlr.c</locationURI>
+		</link>
+		<link>
+			<name>Source/ex_main.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-2-PROJECT_LOC%7D/ex_main.c</locationURI>
+		</link>
+		<link>
+			<name>Source/ex_common_init.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-2-PROJECT_LOC%7D/common/common/ex_common_init.c</locationURI>
+		</link>
+		<link>
+			<name>Source/ex_usbd_all.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-2-PROJECT_LOC%7D/usb/ex_usbd_all.c</locationURI>
+		</link>
+		<link>
+			<name>Source/ex_usbd_hid_mouse.c</name>
+			<type>1</type>
+			<locationURI>$%7BPARENT-2-PROJECT_LOC%7D/usb/ex_usbd_hid_mouse.c</locationURI>
+		</link>
+	</linkedResources>
+	<filteredResources>
+<filter>
+  <name>Include_Dependencies/cmsis_Include</name>
+  <type>5</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*.h</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/cmsis_Include</name>
+  <type>10</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/device_EFM32GG_Include</name>
+  <type>5</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*.h</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/device_EFM32GG_Include</name>
+  <type>10</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/emlib_inc</name>
+  <type>5</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*.h</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/emlib_inc</name>
+  <type>10</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/bsp</name>
+  <type>5</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*.h</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/bsp</name>
+  <type>10</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/drivers</name>
+  <type>5</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*.h</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/drivers</name>
+  <type>10</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/kitconfig</name>
+  <type>5</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*.h</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/kitconfig</name>
+  <type>10</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/os_path</name>
+  <type>5</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*.h</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/os_path</name>
+  <type>10</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/os_path_bsp_siliconlabs_generic_include</name>
+  <type>5</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*.h</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/os_path_bsp_siliconlabs_generic_include</name>
+  <type>10</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/os_cfg</name>
+  <type>5</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*.h</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/os_cfg</name>
+  <type>10</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/os_path_rtos_cpu_include</name>
+  <type>5</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*.h</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/os_path_rtos_cpu_include</name>
+  <type>10</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/os_path_rtos_cpu_source_ports_armv7-m_armcc</name>
+  <type>5</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*.h</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/os_path_rtos_cpu_source_ports_armv7-m_armcc</name>
+  <type>10</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/systemview_SEGGER</name>
+  <type>5</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*.h</arguments>
+  </matcher>
+</filter>
+<filter>
+  <name>Include_Dependencies/systemview_SEGGER</name>
+  <type>10</type>
+  <matcher>
+    <id>org.eclipse.ui.ide.multiFilter</id>
+    <arguments>1.0-name-matches-false-false-*</arguments>
+  </matcher>
+</filter>
+	</filteredResources>
+</projectDescription>

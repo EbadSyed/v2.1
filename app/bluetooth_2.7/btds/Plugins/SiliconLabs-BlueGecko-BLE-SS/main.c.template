@@ -1,0 +1,365 @@
+/**
+* 
+***************************************************************************************************
+* (C) Copyright 2016 Silicon Labs, http://www.silabs.com 
+***************************************************************************************************
+* This file is licensed under the Silabs License Agreement. See the file
+* "Silabs_License_Agreement.txt" for details. Before using this software for
+* any purpose, you must agree to the terms of that agreement.
+* 
+*/
+
+/*******************************************************************************
+ *******************************   INCLUDES   **********************************
+ ******************************************************************************/
+
+/* Standard library headers */
+#include <stdint.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdbool.h>
+
+/* Bluetooth stack headers */
+#include "bg_types.h"
+#include "native_gecko.h"
+#include "gecko_configuration.h"
+
+/* GATT database */
+#include "gatt_db.h"
+
+/* EM library (EMlib) */
+#include "em_system.h"
+#include "em_emu.h"
+#include "em_cmu.h"
+
+/* Application specific headers */
+#include "InitDevice.h"
+#include "ble_att_handler.h"
+
+/* Bluetooth services */
+{%- for service in Services -%}
+{%- assign createCode = true -%}
+{%- if createCode -%}
+#include "{{service.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}.h"
+{%- endif -%}
+{%- endfor -%}
+
+// Maximum number of simultanous BLE connections
+#define MAX_CONNECTIONS 1
+
+uint8_t bluetooth_stack_heap[DEFAULT_BLUETOOTH_HEAP(MAX_CONNECTIONS)];
+/* Gecko configuration parameters (see gecko_configuration.h) */
+
+static const gecko_configuration_t config=
+{  
+  .config_flags=0,
+  .sleep.flags=SLEEP_FLAGS_DEEP_SLEEP_ENABLE,			//EM2 sleep mode enabled
+  .bluetooth.max_connections=MAX_CONNECTIONS,			//Maximum Bluetooth connections
+  .bluetooth.heap=bluetooth_stack_heap,				//BT stack heap
+  .bluetooth.heap_size=sizeof(bluetooth_stack_heap), 		//BT stack heap size
+  .bluetooth.sleep_clock_accuracy = 100, // ppm
+  .gattdb=&bg_gattdb_data,					//GATT database
+  .ota.flags=0,
+  .ota.device_name_len=3,
+  .ota.device_name_ptr="OTA",
+
+};
+
+/* Flag for indicating DFU Reset must be performed */
+uint8_t boot_to_dfu = 0;
+
+/*******************************************************************************
+ *****************************   LOCAL FUNCTION   ******************************
+ ******************************************************************************/
+
+
+/*******************************************************************************
+ * @brief
+ *   BLE service initialization
+ * @param
+ *   None
+ * @return
+ *   None
+ ******************************************************************************/
+static void services_init(void)
+{
+  {%- for service in Services -%}
+  {%- assign createCode = true -%}
+  {%- if createCode -%}
+  // {{service.Name}}
+  {{service.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_init();
+  {%- endif -%}
+  {%- endfor -%}
+}
+
+/*******************************************************************************
+ *****************************   MAIN FUNCTION   *******************************
+ ******************************************************************************/
+void main()
+{
+  struct gecko_cmd_packet *evt;
+
+  // Initialize Default hardware interfaces
+  enter_DefaultMode_from_RESET();
+  
+  // Initialize the Bluetooth stack 
+  gecko_init(&config);
+
+
+  // Bluetooth services initialization
+  services_init();
+  
+  // Main event loop
+  while(1)
+  {
+    
+    // A Blocking Bluetooth stack event listner
+    // This will block and keep the device in EM2 power save mode, until BT events are received
+    evt = gecko_wait_event();
+    
+    // User handler
+    switch(BGLIB_MSG_ID(evt->header))
+    {
+      // --------------------------
+      // Device powered on or reset
+      // --------------------------
+    case gecko_evt_system_boot_id:
+      {
+        // Set advertising parameters - 1000ms interval, all channels used
+        gecko_cmd_le_gap_set_adv_parameters(0x1600, 0x1600, 0x07);
+        
+        // Start advertising
+        gecko_cmd_le_gap_set_mode(le_gap_general_discoverable, le_gap_undirected_connectable);
+        
+        // TODO:: Add custom initialization
+      }
+      break;
+      
+      // ---------------------------
+      // Bluetooth connection opened
+      // ---------------------------
+    case gecko_evt_le_connection_opened_id:
+      {
+        // Request connection parameters update according to Apple guidelines to save power while connected
+        // https://developer.apple.com/hardwaredrivers/BluetoothDesignGuidelines.pdf
+        // Min: 875ms, Max: 950ms, latency 1, timeout: 6000ms
+        //gecko_cmd_le_connection_set_parameters(evt->data.evt_le_connection_opened.connection, 0x02bc, 0x02f8, 0x0001, 0x0258);
+      }
+      break;
+      
+      // -----------------------------------
+      // Bluetooth connection closed or lost
+      // -----------------------------------
+    case gecko_evt_le_connection_closed_id:
+      {
+        // Service disconnect handlers
+        {%- for service in Services -%}
+        {%- assign createCode = true -%}
+        {%- if createCode -%}
+        //{{service.Name}}
+        {{service.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_disconnectEvent(evt);
+        {%- endif -%}
+        {%- endfor -%}
+        
+        // TODO:: Add your own code here if needed.
+        
+        if (boot_to_dfu) {
+          /* Enter to DFU OTA mode */
+          gecko_cmd_system_reset(2);
+        }
+        else {
+          /* Restart advertising after client has disconnected */
+          gecko_cmd_le_gap_set_mode(le_gap_general_discoverable, le_gap_undirected_connectable);
+        }      
+      }
+      break;
+      
+      // ---------------------------------------------------------------------------------------------------------
+      // This event is generated when a remote device tries to write a characteristic to the GATT database. 
+      // This event is ONLY generated for characteristics with type="user" and write="true" properties set. 
+      // By default the user="true" property is not set so gatt_characteristic_value() event is generated instead.
+      // ---------------------------------------------------------------------------------------------------------
+    case gecko_evt_gatt_server_user_write_request_id:
+      {
+        // The handle of the characteristic, which was written 
+        uint16_t handle = evt->data.evt_gatt_server_user_write_request.characteristic;
+        
+        // Service write handlers
+        {%- assign first_service = true -%}
+        {%- for service in Services -%}
+        {%- assign createCode = true -%}
+        {%- if createCode -%}
+        {%- if first_service -%}
+        // {{service.Name}} characteristics written
+        if (handle >= GATTDB_{{service.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{service.Characteristics[0].Name | Upcase | Replace:' ','_' | Replace:'-','_'}} && handle <= GATTDB_{{service.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{service.Characteristics.last.Name | Upcase | Replace:' ','_' | Replace:'-','_'}})
+        {
+          {{service.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_writeCallback(evt);
+        }
+        {%- assign first_service = false -%}
+        {%- else -%}
+        // {{service.Name}} characteristics written
+        else if (handle >= GATTDB_{{service.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{service.Characteristics[0].Name | Upcase | Replace:' ','_' | Replace:'-','_'}} && handle <= GATTDB_{{service.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{service.Characteristics.last.Name | Upcase | Replace:' ','_' | Replace:'-','_'}})
+        {
+          {{service.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_writeCallback(evt);
+        }
+        {%- endif -%}
+        {%- endif -%}
+        {%- endfor -%}
+                
+        if(handle==GATTDB_OTA_CONTROL)
+        {
+          boot_to_dfu = 1;      
+          /* Send response to Write Request */
+          gecko_cmd_gatt_server_send_user_write_response(
+            evt->data.evt_gatt_server_user_write_request.connection, 
+            GATTDB_OTA_CONTROL, 
+            bg_err_success);
+
+          /* Close connection to enter to DFU OTA mode */        
+          gecko_cmd_endpoint_close(evt->data.evt_gatt_server_user_write_request.connection);        
+        }
+
+        // TODO:: Add custom behaviour 
+      }
+      break;
+      
+      // -----------------------------------------------------------------------------------------------------
+      // This event is generated when a remote device tries to read a characteristic from the GATT database. 
+      // This event is ONLY generated for characteristics with type="user" and read="true" properties set. 
+      // By default the user="true" property is not set so the read response is automatically provided by the 
+      // Bluetooth stack.
+      // -----------------------------------------------------------------------------------------------------
+    case gecko_evt_gatt_server_user_read_request_id:
+      {
+  
+        // The handle of the characteristic, which was read 
+        uint16_t handle = evt->data.evt_gatt_server_user_read_request.characteristic;
+        
+        // Handle previous read operation for long characteristics
+        if (ble_attSendDataHandler(handle, evt->data.evt_gatt_server_user_read_request.offset))
+        {
+          // Event handled
+          break;
+        }
+        
+        // Service read handlers
+        {%- assign first_service = true -%}
+        {%- for service in Services -%}
+        {%- assign createCode = true -%}
+        {%- if createCode -%}
+        {%- if first_service -%}
+        // {{service.Name}} characteristics read
+        if (handle >= GATTDB_{{service.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{service.Characteristics[0].Name | Upcase | Replace:' ','_' | Replace:'-','_'}} && handle <= GATTDB_{{service.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{service.Characteristics.last.Name | Upcase | Replace:' ','_' | Replace:'-','_'}})
+        {
+          {{service.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_readCallback(evt);
+        }
+        {%- assign first_service = false -%}
+        {%- else -%}
+        // {{service.Name}} characteristics read
+        else if (handle >= GATTDB_{{service.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{service.Characteristics[0].Name | Upcase | Replace:' ','_' | Replace:'-','_'}} && handle <= GATTDB_{{service.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{service.Characteristics.last.Name | Upcase | Replace:' ','_' | Replace:'-','_'}})
+        {
+          {{service.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_readCallback(evt);
+        }
+        {%- endif -%}
+        {%- endif -%}
+        {%- endfor -%}
+        
+        // TODO:: Add custom implementation if needed
+      }
+      break;
+      
+      // ------------------------------------------------------------------------------------------
+      // This event is generated when a remote device writes a characteristic to the GATT database. 
+      // This event is only generated for characteristics where type="user" is NOT set. 
+      // ------------------------------------------------------------------------------------------
+    case gecko_evt_gatt_server_attribute_value_id:
+      {
+  
+        // The handle of the characteristic, which was written 
+        uint16_t handle = evt->data.evt_gatt_server_user_read_request.characteristic;
+        
+        {%- assign first_service = true -%}
+        {%- for service in Services -%}
+        {%- assign createCode = true -%}
+        {%- if createCode -%}
+        {%- if first_service -%}
+        // {{service.Name}} characteristics written
+        if (handle >= GATTDB_{{service.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{service.Characteristics[0].Name | Upcase | Replace:' ','_' | Replace:'-','_'}} && handle <= GATTDB_{{service.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{service.Characteristics.last.Name | Upcase | Replace:' ','_' | Replace:'-','_'}})
+        {
+          {{service.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_valueChangeCallback(evt);
+        }
+        {%- assign first_service = false -%}
+        {%- else -%}
+        // {{service.Name}} characteristics written
+        else if (handle >= GATTDB_{{service.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{service.Characteristics[0].Name | Upcase | Replace:' ','_' | Replace:'-','_'}} && handle <=GATTDB_{{service.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{service.Characteristics.last.Name | Upcase | Replace:' ','_' | Replace:'-','_'}})
+        {
+          {{service.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_valueChangeCallback(evt);
+        }
+        {%- endif -%}
+        {%- endif -%}
+        {%- endfor -%}
+  
+        // TODO:: Add custom implementation if needed
+      }
+      break;
+      
+      // --------------------------------------------------------------------------------------
+      // This event is generated when an attribute indication or notification status is changed
+      //---------------------------------------------------------------------------------------
+    case gecko_evt_gatt_server_characteristic_status_id:
+      {
+        {%- assign first_key = false -%}
+        {%- for service in Services -%}
+        {%- assign createCode = true -%}
+        {%- if createCode -%}
+        {%- assign indicate = false -%}
+        {%- for characteristic in service.Characteristics -%}
+        {%- for charProps in characteristic.Properties -%}
+        {%- if charProps.Indicate == 'Mandatory' or charProps.Notify == 'Mandatory' -%}
+        {%- assign indicate = true -%}
+        {%- endif -%}
+        {%- endfor -%}
+        {%- endfor -%}
+        {%- if indicate -%}
+        {%- if first_key == false -%}
+        {%- assign first_key = true -%}
+        
+        // The handle of the characteristic, which was canged 
+        uint16_t handle = evt->data.evt_gatt_server_characteristic_status.characteristic;
+        
+        // {{service.Name}} service indication or notification status changed
+        if (handle >= GATTDB_{{service.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{service.Characteristics[0].Name | Upcase | Replace:' ','_' | Replace:'-','_'}} && handle <= GATTDB_{{service.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{service.Characteristics.last.Name | Upcase | Replace:' ','_' | Replace:'-','_'}})
+        {
+          {{service.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_characteristicStatus(evt);
+        }    
+        {%- else -%}
+        else if (handle >= GATTDB_{{service.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{service.Characteristics[0].Name | Upcase | Replace:' ','_' | Replace:'-','_'}} && handle <= GATTDB_{{service.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{service.Characteristics.last.Name | Upcase | Replace:' ','_' | Replace:'-','_'}})
+        {
+          {{service.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_characteristicStatus(evt);
+        }
+        {%- endif -%}
+        {%- endif -%}
+        {%- endif -%}
+        {%- endfor -%}
+      }
+      break;
+      
+      // ---------------------------------------------
+      // Software timer expired and generated an event
+      // Start a software timer with gecko_cmd_hardware_set_lazy_soft_timer(...) or 
+      // gecko_cmd_hardware_set_soft_timer(...) commands
+      // ---------------------------------------------
+    case gecko_evt_hardware_soft_timer_id:
+      {
+      }
+      break;
+      
+      // ---------------------------
+      // Do nothing for other events
+      // ---------------------------
+    default:
+      break;
+    }
+  }
+}
+

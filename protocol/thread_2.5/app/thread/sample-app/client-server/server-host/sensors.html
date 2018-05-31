@@ -1,0 +1,72 @@
+<html>
+<head>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script type="text/javascript">
+    google.load('visualization', '1.1', {packages: ['corechart']});
+
+    // draw the chart on the first load then every 5 seconds afterward
+    google.setOnLoadCallback(drawChart);
+    setInterval(drawChart, 5000);
+
+    function drawChart() {
+      // Each time this function is called we'll cover over to the server
+      // using AJAX to retrieve the latest set of sensor readings.
+
+      var jsonString = $.ajax({
+          url: "getData.php",
+          dataType:"json",
+          async: false
+          }).responseText;
+
+      // Convert the data returned into the DataTable required by the Google
+      // Visualization API.
+
+      var jsonData = $.parseJSON(jsonString);
+      var clients = [];
+
+      for (i=0; i<jsonData.length; i++) {
+        // skipped any malformed entries
+        if (jsonData[i].length != 3) continue;
+        var client = jsonData[i][1];
+        if (clients.indexOf(client) == -1) {
+          clients.push(client);
+        }
+      }
+      clients.sort();
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('datetime', 'Time');
+      for (i=0; i<clients.length; i++) {
+        data.addColumn('number', clients[i]);
+      }
+
+      data.addRows(jsonData.length);
+      for (i=0; i<jsonData.length; i++) {
+        // skipped any malformed entries
+        if (jsonData[i].length != 3) continue;
+        var time = new Date(parseInt(jsonData[i][0]) * 1000);
+        var client = jsonData[i][1];
+        var value = parseInt(jsonData[i][2]) / 1000.0;
+        data.setCell(i, 0, time);
+        data.setCell(i, 1 + clients.indexOf(client), value);
+      }
+
+      var options = {
+        title: 'Temperature Sensors',
+        curveType: 'function',
+        vAxis: {title: "Degrees Celsius"},
+        interpolateNulls: true,
+        legend: { position: 'top', maxLines: 2 },
+        height: 1000
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('linechart_material'));
+      chart.draw(data, options);
+    }
+  </script>
+</head>
+<body>
+  <div id="linechart_material"></div>
+</body>
+</html>

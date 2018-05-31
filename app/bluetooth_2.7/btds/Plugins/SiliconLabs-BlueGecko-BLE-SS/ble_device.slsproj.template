@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:model="http://www.silabs.com/ss/Studio.ecore" name="ble_device"  partCompatibility="mcu.arm.efr32.bg1.efr32bg1b232f256gm48" boardCompatibility="brd4300a:0.0.0.A02" toolchainCompatibility="com.silabs.ss.tool.ide.arm.toolchain.iar" sdkCompatibility="com.silabs.sdk.stack.super" propertyScope="project" contentRoot=".">
+  <folder name=".externalToolBuilders" uri=".externalToolBuilders/" includeAllFiles="false" includeAllFolders="false">
+    <file name="BgBuild.launch"/>
+  </folder>
+  <prebuildStep>&quot;${StudioSdkPath}/protocol/bluetooth_2.7/bin/bgbuild.exe&quot; -g &quot;${workspace_loc:/${ProjName}/bgbuild/gatt.xml}&quot;</prebuildStep>
+  <includePath uri="../../../../protocol/bluetooth_2.7/ble_stack/inc/common/" />
+  <includePath uri="../../../../protocol/bluetooth_2.7/ble_stack/inc/soc/" />
+  <includePath uri="../../../../platform/emlib/inc/" />
+  <includePath uri="../../../../platform/emdrv/sleep/inc/" />
+  <includePath uri="../../../../platform/Device/SiliconLabs/EFR32BG1B/Include/" />
+  <includePath uri="../../../../platform/CMSIS/Include/" />
+  <includePath uri="bgbuild/" />
+  <includePath uri="src/" />
+  <includePath uri="." />
+  <libraryFile languageCompatibility="c" uri="../../../../platform/radio/rail_lib/autogen/librail_release/librail_efr32xg1_iar_release.a"/>
+  <libraryFile languageCompatibility="c" uri="../../../../protocol/bluetooth_2.7/lib/EFR32BG1B/IAR/libmbedtls.a"/>
+  <libraryFile languageCompatibility="c" uri="../../../../protocol/bluetooth_2.7/lib/EFR32BG1B/IAR/libbluetooth.a"/>
+  <libraryFile languageCompatibility="c" uri="../../../../protocol/bluetooth_2.7/lib/EFR32BG1B/IAR/libpsstore.a"/>
+  <libraryFile languageCompatibility="c" uri="../../../../protocol/bluetooth_2.7/lib/EFR32BG1B/IAR/binapploader.o"/>
+  <folder name="src">
+    <file name="main.c" uri="src/main.c" />
+    <file name="initDevice.h" uri="src/initDevice.h" />
+    <file name="initDevice.c" uri="src/initDevice.c" />
+    <file name="ble_att_handler.c" uri="src/ble_att_handler.c" />
+    <file name="ble_att_handler.h" uri="src/ble_att_handler.h" />
+
+{%- for service in Services -%}
+    <file name="{{service.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}.c" uri="src/{{service.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}.c" />
+    <file name="{{service.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}.h" uri="src/{{service.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}.h" />
+{%- endfor -%}
+  </folder>
+  <folder name="device">
+    <file name="startup_efr32bg1b.c" uri="../../../../platform/Device/SiliconLabs/EFR32BG1B/Source/IAR/startup_efr32bg1b.c" />
+    <file name="system_efr32bg1b.c" uri="../../../../platform/Device/SiliconLabs/EFR32BG1B/Source/system_efr32bg1b.c" />
+  </folder>
+  <folder name="emdrv">
+    <file name="sleep.c" uri="../../../../platform/emdrv/sleep/src/sleep.c" />
+  </folder>
+  <folder name="emlib">
+    <file name="em_gpio.c" uri="../../../../platform/emlib/src/em_gpio.c" />
+    <file name="em_i2c.c" uri="../../../../platform/emlib/src/em_i2c.c" />
+    <file name="em_rtcc.c" uri="../../../../platform/emlib/src/em_rtcc.c" />
+    <file name="em_usart.c" uri="../../../../platform/emlib/src/em_usart.c" />
+    <file name="em_cmu.c" uri="../../../../platform/emlib/src/em_cmu.c" />
+    <file name="em_adc.c" uri="../../../../platform/emlib/src/em_adc.c" />
+    <file name="em_system.c" uri="../../../../platform/emlib/src/em_system.c" />
+    <file name="em_core.c" uri="../../../../platform/emlib/src/em_core.c" />
+    <file name="em_cryotimer.c" uri="../../../../platform/emlib/src/em_cryotimer.c" />
+    <file name="em_crypto.c" uri="../../../../platform/emlib/src/em_crypto.c" />
+    <file name="em_emu.c" uri="../../../../platform/emlib/src/em_emu.c" />
+    <file name="em_msc.c" uri="../../../../platform/emlib/src/em_msc.c" />
+    <file name="em_rmu.c" uri="../../../../platform/emlib/src/em_rmu.c" />
+  </folder>
+  <folder name="bgbuild">
+    <file name="gatt.xml" uri="bgbuild/gatt.xml"/>
+    <file name="gatt_db.c" uri="bgbuild/gatt_db.c" />
+    <file name="gatt_db.h" uri="bgbuild/gatt_db.h" />
+  </folder>
+  <macroDefinition languageCompatibility="c" name="EFR32BG1B232F256GM48" />
+  <file name="bleDemo.icf" uri="bleDemo.icf"/>
+  <toolOption toolId="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.compiler.base" optionId="gnu.c.compiler.option.optimization.level" value="gnu.c.optimization.level.size"/>
+  <toolOption toolId="iar.arm.toolchain.linker.v5.4.0" optionId="iar.arm.toolchain.linker.option.icfFile.v5.4.0" value="${workspace_loc:/${ProjName}/bleDemo.icf}"/>
+  <toolOption toolId="iar.arm.toolchain.compiler.v5.4.1" optionId="iar.arm.toolchain.compiler.option.additionalUserOptions" value=""/>
+  <toolOption toolId="iar.arm.toolchain.project.exe.configuration.debug.toolchain.v5.4.0" optionId="iar.arm.toolchain.option.cpuCore.v5.4.0" value="iar.arm.toolchain.option.cpuCore.Cortex-M4F.v5.5.0"/>
+  <toolOption toolId="iar.arm.toolchain.project.exe.configuration.debug.toolchain.v5.4.0" optionId="iar.arm.toolchain.option.endianMode.v5.4.0" value="iar.arm.toolchain.option.endianMode.little.v5.4.0"/>
+  <toolOption toolId="iar.arm.toolchain.project.exe.configuration.debug.toolchain.v5.4.0" optionId="iar.arm.toolchain.option.bigEndianFormat.v5.4.0" value="iar.arm.toolchain.option.bigEndianFormat.BE32.v5.4.0"/>
+  <toolOption toolId="iar.arm.toolchain.project.exe.configuration.debug.toolchain.v5.4.0" optionId="iar.arm.toolchain.option.fpu.v5.4.0" value="iar.arm.toolchain.common.option.fpu.VFPv4.v5.5.0"/>
+  <toolOption toolId="iar.arm.toolchain.project.exe.configuration.debug.toolchain.v5.4.0" optionId="iar.arm.toolchain.option.useCMSIS.v6.2.2" value="false"/>
+  <toolOption toolId="iar.arm.toolchain.compiler.v5.4.1" optionId="iar.arm.toolchain.compiler.option.languageConformance.v6.1.0" value="iar.arm.toolchain.compiler.option.languageConformance.iarExtensions.v6.1.0"/>
+  <toolOption toolId="iar.arm.toolchain.compiler.v5.4.1" optionId="iar.arm.toolchain.compiler.option.cpuMode.v5.4.0" value="iar.arm.toolchain.compiler.option.cpuMode.thumb.v5.4.0"/>
+    <toolOption toolId="iar.arm.toolchain.linker.v5.4.0" optionId="iar.arm.toolchain.linker.option.extraOptions.v5.4.0" value="--no_range_reservations"/>
+    <toolOption toolId="iar.arm.toolchain.linker.v5.4.0" optionId="iar.arm.toolchain.linker.option.keep.v5.4.0">
+      <toolListOption value="__iar_program_start"/>
+    </toolOption>
+</project>

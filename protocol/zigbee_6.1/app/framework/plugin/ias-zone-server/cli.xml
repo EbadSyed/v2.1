@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<cli>
+  <group id="plugin-ias-zone-server" name="Plugin Commands: IAS Zone Server">
+    <description>
+  This plugin provides a set of CLI commands for managing the local IAS Zone server.
+    </description>
+  </group>
+  <command cli="plugin ias-zone-server info" functionName="emberAfPluginIasZoneServerInfoCommand" group="plugin-ias-zone-server">
+    <description>
+  Print current value of the following cluster attributes: zone type, zone state, zone status, zone id
+    </description>
+    <arg name="endpoint" type="INT8U" description = "The endpoint whose IAS Zone Cluster information is to be printed" />
+  </command>
+  <command cli="plugin ias-zone-server changeStatus" functionName="emberAfPluginIasZoneServerChangeStatusCommand" group="plugin-ias-zone-server">
+    <description>
+  Update the zone status attribute of a given endpoint's IAS Zone cluster to the given value
+    </description>
+    <arg name="newStatus" type="INT16U" description = "The new status to be written" />
+    <arg name="timeSinceOccurredSeconds" type="INT8U" description = "The amount time that has passed since the last update occurred (seconds)" />
+    <arg name="endpoint" type="INT8U" description = "The endpoint whose zone status attribute is to be updated" />
+  </command>
+</cli>

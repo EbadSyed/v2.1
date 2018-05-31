@@ -1,0 +1,1 @@
+"$4/jre/bin/java" -jar "$4/plugins/com.silabs.external.jython_2.7.0.201705012047-102/external_jython/2.7.0/jython-2.7.0.jar"  "$(dirname "$0")/switch-prebuild.py"

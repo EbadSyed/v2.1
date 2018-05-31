@@ -1,0 +1,262 @@
+#ISD afv6
+# Simplicity Studio version: 4.22.1.qualifier
+
+# Application configuration
+appId: thread
+frameworkRoot: app/thread
+architecture: unix
+deviceName: ota-server-host
+generationDirectory: PATH(ISC_RELATIVE):.
+
+# Devices
+device: Unix
+device: Host
+device: Router
+device: ZCL/IP
+
+# Plugin configuration
+appPlugin: accelerometer-led=false
+appPlugin: adc=false
+appPlugin: address-configuration-debug=true
+appPlugin: antenna=false
+appPlugin: antenna-stub=false
+appPlugin: ash-v3=false
+appPlugin: ash-v3-stub=false
+appPlugin: basic-server=true
+appPlugin: battery-monitor=false
+appPlugin: bootload-cli=true
+appPlugin: bulb-pwm-driver=false
+appPlugin: bulb-ui=false
+appPlugin: button=false
+appPlugin: button-interface=false
+appPlugin: button-press=false
+appPlugin: button-stub=true
+appPlugin: buzzer=false
+appPlugin: buzzer-stub=false
+appPlugin: cjson=false
+appPlugin: cli=true
+appPlugin: coap-cli=true
+appPlugin: coap-debug=false
+appPlugin: coap-dispatch=true
+appPlugin: coexistence=false
+appPlugin: color-control-server=false
+appPlugin: command-interpreter2=true
+appPlugin: connection-manager-cli=false
+appPlugin: connection-manager-jib=false
+appPlugin: connection-manager-joob=false
+appPlugin: debug-channel=false
+appPlugin: debug-channel-stub=false
+appPlugin: debug-print=true
+appPlugin: dhcp-client=true
+appPlugin: dhcp-library=false
+appPlugin: dhcp-stub-library=false
+appPlugin: diagnostic=false
+appPlugin: diagnostic-stub=false
+appPlugin: dmp-demo-ui=false
+appPlugin: dns-cli=false
+appPlugin: dtls-auth-params=false
+appPlugin: dtls-cli=false
+appPlugin: eeprom=false
+appPlugin: eeprom-powerdown=false
+appPlugin: end-node-ui=false
+appPlugin: ext-device=false
+appPlugin: extdev=false
+appPlugin: ezradiopro=false
+appPlugin: fem-control=false
+appPlugin: generic-interrupt-control=false
+appPlugin: glib=false
+appPlugin: global-address-prefix-debug=true
+appPlugin: gpio-sensor=false
+appPlugin: groups-server=true
+appPlugin: hal-library=false
+appPlugin: hal-ncp-library=false
+appPlugin: heartbeat=false
+appPlugin: heartbeat-node-type=false
+appPlugin: host-network-management=true
+appPlugin: host-network-management-stub=false
+appPlugin: humidity-si7021-stub=false
+appPlugin: i2c-driver=false
+appPlugin: i2c-driver-stub=false
+appPlugin: icmp-cli=true
+appPlugin: icmp-debug=true
+appPlugin: identify-server=true
+appPlugin: idle-sleep=false
+appPlugin: illuminance-measurement-server=false
+appPlugin: illuminance-si1141-stub=false
+appPlugin: infrared-led=false
+appPlugin: key-matrix=false
+appPlugin: led=false
+appPlugin: led-blink=false
+appPlugin: led-dim-pwm=false
+appPlugin: led-rgb-pwm=false
+appPlugin: led-stub=true
+appPlugin: led-temp-pwm=false
+appPlugin: level-control-server=true
+appPlugin: libcoap=false
+appPlugin: linked-list=false
+appPlugin: log-cli=false
+appPlugin: main=true
+appPlugin: mbedtls-custom-library=false
+appPlugin: mbedtls-dotdot-library=false
+appPlugin: mbedtls-library=false
+appPlugin: mfglib-library=true
+appPlugin: mfglib-stub-library=false
+appPlugin: microphone-codec-msadpcm=false
+appPlugin: microphone-imaadpcm=false
+appPlugin: module-lna=false
+appPlugin: mpsi=false
+appPlugin: mpsi-ipc=false
+appPlugin: mpsi-storage=false
+appPlugin: ncp-library=false
+appPlugin: ncp-spi-link=false
+appPlugin: ncp-uart-link=false
+appPlugin: network-management-cli=true
+appPlugin: occupancy-pyd1698=false
+appPlugin: occupancy-pyd1698-stub=false
+appPlugin: occupancy-sensing-server=false
+appPlugin: on-off-server=true
+appPlugin: ota-bootload-client=false
+appPlugin: ota-bootload-client-policy=false
+appPlugin: ota-bootload-core=true
+appPlugin: ota-bootload-server=true
+appPlugin: ota-bootload-server-policy=true
+appPlugin: ota-bootload-storage-cli=true
+appPlugin: ota-bootload-storage-core=true
+appPlugin: ota-bootload-storage-eeprom=false
+appPlugin: ota-bootload-storage-unix=true
+appPlugin: pa=false
+appPlugin: paho.mqtt.c=false
+appPlugin: poll-control-client=false
+appPlugin: poll-control-server=false
+appPlugin: polling=false
+appPlugin: power-configuration-server=false
+appPlugin: power-meter-cs5463=false
+appPlugin: psstore=false
+appPlugin: pti=false
+appPlugin: rail-library=false
+appPlugin: rail-library-mp=false
+appPlugin: relative-humidity-measurement-server=false
+appPlugin: sb1-gesture-sensor=false
+appPlugin: scan-debug=true
+appPlugin: serial=true
+appPlugin: sim-eeprom1=false
+appPlugin: sim-eeprom2=false
+appPlugin: sim-eeprom2-1to2-upgrade=false
+appPlugin: sim-eeprom2-1to2-upgrade-stub=false
+appPlugin: slaac-client=true
+appPlugin: slot-manager=false
+appPlugin: stm32f103ret-library=false
+appPlugin: tamper-switch=false
+appPlugin: temperature-measurement-server=false
+appPlugin: temperature-si7053-stub=false
+appPlugin: thread-mbedtls-stack=false
+appPlugin: thread-stack=false
+appPlugin: thread-test-harness-cli=false
+appPlugin: transport-mqtt=false
+appPlugin: udp-cli=true
+appPlugin: udp-debug=true
+appPlugin: unix-library=true
+appPlugin: unix-netif-config=false
+appPlugin: version-debug=true
+appPlugin: zcl-core=true
+appPlugin: zcl-core-cli=true
+
+# Setup configurations
+{setupId:additionalFiles
+PATH(ISC_RELATIVE):ota-server-host-implementation.c
+}
+{setupId:boardHeader
+allowMissingHeader:false
+useHeaderInPlace:false
+}
+{setupId:bookkeeping
+}
+{setupId:bootloader
+}
+{setupId:callbackConfiguration
+emberAfNetworkStatusCallback:false
+emberResumeNetworkReturn:false
+emberCommissionNetworkReturn:false
+emberJoinNetworkReturn:false
+emberResetNetworkStateReturn:false
+emberAfPluginIdleSleepOkToSleepCallback:false
+emberZclGetPublicKeyCallback:false
+emberZclIdentifyServerStartIdentifyingCallback:false
+emberZclIdentifyServerStopIdentifyingCallback:false
+}
+{setupId:coapDispatch
+}
+{setupId:commandLineConfiguration
+on
+}
+{setupId:debugConfiguration
+on
+area name off
+appSerial=1
+}
+{setupId:eventConfiguration
+stateEventControl,stateEventHandler
+}
+{setupId:halOptions
+}
+{setupId:hwConfig
+featureLevel=1
+active=true
+}
+{setupId:information
+\{key:description
+OTA Server (HOST) Sample application
+
+At startup, the sample application will automatically start network operations.  If the node is starting for the first time, it will join a network based on fixed, pre-configured parameters.  If it had already joined a network previously, it will simply resume network operations using the network parameters stored in non-volatile memory in the stack.
+
+This application will provide OTA Server functionality to devices on the network. The server can host various firmware types for a variety of devices. The OTA files need to be placed in the same folder as the host is called from. There is no naming requirement as the server scans all files in the current folder for valid OTA files. When a query for the next image arrives, the server will respond with the latest image version that it found.
+
+The light and switch sample applications both contain OTA Bootload Client support, meaning that they support over-the-air upgrades by way of the OTA Bootload Cluster. Both the light and switch will automatically start OTA Bootload operations once on a network. See the OTA Bootload Client Policy plugin for a simple configuration interface to the OTA Bootload Cluster.
+
+All application code is contained in the ota-server-host-implementation.c file within the application directory.
+\}
+}
+{setupId:macros
+-DEMBER_COMMAND_BUFFER_LENGTH=250
+}
+{setupId:serial
+em317=0,false,*,*,*,*,*
+em341=0,false,*,*,*,*,*
+em342=0,false,*,*,*,*,*
+em346=0,false,*,*,*,*,*
+em351=0,false,*,*,*,*,*
+em355=0,false,*,*,*,*,*
+em3555=0,false,*,*,*,*,*
+em357=0,false,*,*,*,*,*
+em357p2p=0,false,*,*,*,*,*
+em3581=0,false,*,*,*,*,*
+em3582=0,false,*,*,*,*,*
+em3585=0,false,*,*,*,*,*
+em3586=0,false,*,*,*,*,*
+em3587=0,false,*,*,*,*,*
+em3588=0,false,*,*,*,*,*
+em3591=0,false,*,*,*,*,*
+em3592=0,false,*,*,*,*,*
+em3595=0,false,*,*,*,*,*
+em3596=0,false,*,*,*,*,*
+em3597=0,false,*,*,*,*,*
+em3598=0,false,*,*,*,*,*
+sky66107=0,false,*,*,*,*,*
+simulation=0,false,*,*,*,*,*
+efr32=0,false,*,*,*,*,*
+}
+{setupId:template
+}
+{setupId:token
+}
+{setupId:zclip
+configuredNetwork:type:ZIGBEE_PRO, name:Primary
+beginEndpointType:Primary
+device:HA-light
+overrideServerCluster:25,yes
+endEndpointType
+configuredEndpoint:*ep:1,pi: -1,di:-1,dv:0,ept:Primary,nwk:Primary
+}
+
+# Plugin options
+pluginOption(unix): EMBER_AF_PLUGIN_UNIX_LIBRARY_TOKEN_SUPPORT,true

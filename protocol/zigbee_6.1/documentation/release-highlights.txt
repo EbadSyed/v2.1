@@ -1,0 +1,3 @@
+
+What's new in EmberZNet 6.1.0.0:
+  * Minor Bug Fixes

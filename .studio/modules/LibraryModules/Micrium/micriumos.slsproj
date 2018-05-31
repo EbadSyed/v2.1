@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project id="com.silabs.sdk.exx32.external.micriumos" label="Micrium OS" contentRoot="$(sdkInstallationPath:default())/util/micrium">
+  <property key="category" value="efm32|Middleware"/>
+  <includePath uri="Micrium_OS" />
+
+  <!-- ARMv7-M Port files GCC-->
+  <file name="Micrium_OS/rtos/ports/source/gnu/armv7m_cpu_a.S" uri="Micrium_OS/rtos/ports/source/gnu/armv7m_cpu_a.S" partCompatibility="-::ARMCore==CORTEX_M0+" toolchainCompatibility="gcc" />
+  <file name="Micrium_OS/rtos/ports/source/gnu/armv7m_cpu_c.c" uri="Micrium_OS/rtos/ports/source/gnu/armv7m_cpu_c.c" partCompatibility="-::ARMCore==CORTEX_M0+" toolchainCompatibility="gcc" />
+  <file name="Micrium_OS/rtos/ports/source/gnu/armv7m_os_cpu_a.S" uri="Micrium_OS/rtos/ports/source/gnu/armv7m_os_cpu_a.S" partCompatibility="-::ARMCore==CORTEX_M0+" toolchainCompatibility="gcc" />
+  <file name="Micrium_OS/rtos/ports/source/gnu/armv7m_os_cpu_c.c" uri="Micrium_OS/rtos/ports/source/gnu/armv7m_os_cpu_c.c" partCompatibility="-::ARMCore==CORTEX_M0+" toolchainCompatibility="gcc" />
+  <file name="Ports/CMSIS/GCC/cmsis_wrapper.s" uri="Ports/CMSIS/GCC/cmsis_wrapper.s" toolchainCompatibility="gcc" />
+
+  <!-- ARMv7-M Port files IAR-->
+  <file name="Micrium_OS/rtos/ports/source/iar/armv7m_cpu_a.asm" uri="Micrium_OS/rtos/ports/source/iar/armv7m_cpu_a.asm" partCompatibility="-::ARMCore==CORTEX_M0+" toolchainCompatibility="iar" />
+  <file name="Micrium_OS/rtos/ports/source/iar/armv7m_cpu_c.c" uri="Micrium_OS/rtos/ports/source/iar/armv7m_cpu_c.c" partCompatibility="-::ARMCore==CORTEX_M0+" toolchainCompatibility="iar" />
+  <file name="Micrium_OS/rtos/ports/source/iar/armv7m_os_cpu_a.asm" uri="Micrium_OS/rtos/ports/source/iar/armv7m_os_cpu_a.asm" partCompatibility="-::ARMCore==CORTEX_M0+" toolchainCompatibility="iar" />
+  <file name="Micrium_OS/rtos/ports/source/iar/armv7m_os_cpu_c.c" uri="Micrium_OS/rtos/ports/source/iar/armv7m_os_cpu_c.c" partCompatibility="-::ARMCore==CORTEX_M0+" toolchainCompatibility="iar" />
+  <file name="Ports/CMSIS/IAR/cmsis_wrapper.s" uri="Ports/CMSIS/IAR/cmsis_wrapper.s" toolchainCompatibility="iar" />
+
+  <!-- Toolchain independent port files -->
+  <file name="Micrium_OS/rtos/ports/source/generic/armv7m_cpu_int.c" uri="Micrium_OS/rtos/ports/source/generic/armv7m_cpu_int.c" partCompatibility="-::ARMCore==CORTEX_M0+" />
+
+  <folder name="Micrium_OS/rtos/common" uri="Micrium_OS/rtos/common" />
+  <folder name="Micrium_OS/rtos/cpu/include" uri="Micrium_OS/rtos/cpu/include" />
+  <folder name="Micrium_OS/rtos/cpu/source" uri="Micrium_OS/rtos/cpu/source" includeAllFiles="true" includeAllFolders="false" />
+  <folder name="Micrium_OS/rtos/kernel/include" uri="Micrium_OS/rtos/kernel/include" />
+  <folder name="Micrium_OS/rtos/kernel/source" includeAllFiles="true" includeAllFolders="false" />
+
+  <!-- BSP -->
+  <includePath uri="Micrium_OS/bsp/siliconlabs/generic/include" />
+  <folder name="Micrium_OS/bsp/siliconlabs/generic/source" uri="Micrium_OS/bsp/siliconlabs/generic/source" />
+
+  <!-- SystemView -->
+  <includePath uri="Tools/SystemView/SEGGER" />
+  <includePath uri="Tools/SystemView/Config" />
+  <folder name="Tools/SystemView" uri="Tools/SystemView" />
+
+</project>

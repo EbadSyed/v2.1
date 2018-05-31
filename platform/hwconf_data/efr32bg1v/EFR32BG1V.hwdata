@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='ASCII'?>
+<contentItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.silabs.com/ss/ContentItem.ecore" xsi:schemaLocation="http://www.silabs.com/ss/ContentItem.ecore contentItems.xsd">
+  <contentItem id="EFR32BG1V132F128GJ43">
+    <property key="partCompatibility" value="mcu.arm.efr32.bg1.efr32bg1v132f128gj43"/>
+    <property key="installationPath" value="efr32bg1v132f128gj43/EFR32BG1V132F128GJ43.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v132f128gj43.extension">
+    <property key="installationPath" value="efr32bg1v132f128gj43/EFR32BG1V132F128GJ43.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.efr32bg1v132f128gj43.portio">
+    <property key="installationPath" value="efr32bg1v132f128gj43/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32BG1V132F128GM32">
+    <property key="partCompatibility" value="mcu.arm.efr32.bg1.efr32bg1v132f128gm32"/>
+    <property key="installationPath" value="efr32bg1v132f128gm32/EFR32BG1V132F128GM32.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v132f128gm32.extension">
+    <property key="installationPath" value="efr32bg1v132f128gm32/EFR32BG1V132F128GM32.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.efr32bg1v132f128gm32.portio">
+    <property key="installationPath" value="efr32bg1v132f128gm32/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32BG1V132F128GM48">
+    <property key="partCompatibility" value="mcu.arm.efr32.bg1.efr32bg1v132f128gm48"/>
+    <property key="installationPath" value="efr32bg1v132f128gm48/EFR32BG1V132F128GM48.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v132f128gm48.extension">
+    <property key="installationPath" value="efr32bg1v132f128gm48/EFR32BG1V132F128GM48.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.efr32bg1v132f128gm48.portio">
+    <property key="installationPath" value="efr32bg1v132f128gm48/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32BG1V132F256GJ43">
+    <property key="partCompatibility" value="mcu.arm.efr32.bg1.efr32bg1v132f256gj43"/>
+    <property key="installationPath" value="efr32bg1v132f256gj43/EFR32BG1V132F256GJ43.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v132f256gj43.extension">
+    <property key="installationPath" value="efr32bg1v132f256gj43/EFR32BG1V132F256GJ43.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.efr32bg1v132f256gj43.portio">
+    <property key="installationPath" value="efr32bg1v132f256gj43/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32BG1V132F256GM32">
+    <property key="partCompatibility" value="mcu.arm.efr32.bg1.efr32bg1v132f256gm32"/>
+    <property key="installationPath" value="efr32bg1v132f256gm32/EFR32BG1V132F256GM32.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v132f256gm32.extension">
+    <property key="installationPath" value="efr32bg1v132f256gm32/EFR32BG1V132F256GM32.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.efr32bg1v132f256gm32.portio">
+    <property key="installationPath" value="efr32bg1v132f256gm32/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32BG1V132F256GM48">
+    <property key="partCompatibility" value="mcu.arm.efr32.bg1.efr32bg1v132f256gm48"/>
+    <property key="installationPath" value="efr32bg1v132f256gm48/EFR32BG1V132F256GM48.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v132f256gm48.extension">
+    <property key="installationPath" value="efr32bg1v132f256gm48/EFR32BG1V132F256GM48.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.efr32bg1v132f256gm48.portio">
+    <property key="installationPath" value="efr32bg1v132f256gm48/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32BG1V132F256IM32">
+    <property key="partCompatibility" value="mcu.arm.efr32.bg1.efr32bg1v132f256im32"/>
+    <property key="installationPath" value="efr32bg1v132f256im32/EFR32BG1V132F256IM32.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v132f256im32.extension">
+    <property key="installationPath" value="efr32bg1v132f256im32/EFR32BG1V132F256IM32.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.efr32bg1v132f256im32.portio">
+    <property key="installationPath" value="efr32bg1v132f256im32/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.cmu">
+    <property key="installationPath" value="modules/CMU/CMU.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.prs">
+    <property key="installationPath" value="modules/PRS/PRS.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.timer0">
+    <property key="installationPath" value="modules/TIMER0/TIMER0.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.timer1">
+    <property key="installationPath" value="modules/TIMER1/TIMER1.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.usart0">
+    <property key="installationPath" value="modules/USART0/USART0.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.usart1">
+    <property key="installationPath" value="modules/USART1/USART1.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.leuart0">
+    <property key="installationPath" value="modules/LEUART0/LEUART0.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.letimer0">
+    <property key="installationPath" value="modules/LETIMER0/LETIMER0.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.pcnt0">
+    <property key="installationPath" value="modules/PCNT0/PCNT0.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.i2c0">
+    <property key="installationPath" value="modules/I2C0/I2C0.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.acmp0">
+    <property key="installationPath" value="modules/ACMP0/ACMP0.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.acmp1">
+    <property key="installationPath" value="modules/ACMP1/ACMP1.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.gpio">
+    <property key="installationPath" value="modules/GPIO/GPIO.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.pti">
+    <property key="installationPath" value="modules/PTI/PTI.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.adc0">
+    <property key="installationPath" value="modules/ADC0/ADC0.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.idac0">
+    <property key="installationPath" value="modules/IDAC0/IDAC0.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.lfxo">
+    <property key="installationPath" value="modules/LFXO/LFXO.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.dcdc">
+    <property key="installationPath" value="modules/DCDC/DCDC.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.emu">
+    <property key="installationPath" value="modules/EMU/EMU.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.pa">
+    <property key="installationPath" value="modules/PA/PA.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.wdog">
+    <property key="installationPath" value="modules/WDOG/WDOG.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.antdiv">
+    <property key="installationPath" value="modules/ANTDIV/ANTDIV.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.batterymon">
+    <property key="installationPath" value="modules/BATTERYMON/BATTERYMON.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.btl_button">
+    <property key="installationPath" value="modules/BTL_BUTTON/BTL_BUTTON.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.bulbpwm">
+    <property key="installationPath" value="modules/BULBPWM/BULBPWM.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.bulbpwm_color">
+    <property key="installationPath" value="modules/BULBPWM_COLOR/BULBPWM_COLOR.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.button">
+    <property key="installationPath" value="modules/BUTTON/BUTTON.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.coex">
+    <property key="installationPath" value="modules/COEX/COEX.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.cs5463">
+    <property key="installationPath" value="modules/CS5463/CS5463.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.extflash">
+    <property key="installationPath" value="modules/EXTFLASH/EXTFLASH.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.ezradiopro">
+    <property key="installationPath" value="modules/EZRADIOPRO/EZRADIOPRO.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.i2csensor">
+    <property key="installationPath" value="modules/I2CSENSOR/I2CSENSOR.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.ioexp">
+    <property key="installationPath" value="modules/IOEXP/IOEXP.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.led">
+    <property key="installationPath" value="modules/LED/LED.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.lna">
+    <property key="installationPath" value="modules/LNA/LNA.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.pyd1698">
+    <property key="installationPath" value="modules/PYD1698/PYD1698.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.serial">
+    <property key="installationPath" value="modules/SERIAL/SERIAL.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.spidisplay">
+    <property key="installationPath" value="modules/SPIDISPLAY/SPIDISPLAY.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.spincp">
+    <property key="installationPath" value="modules/SPINCP/SPINCP.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.uartncp">
+    <property key="installationPath" value="modules/UARTNCP/UARTNCP.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.vcom">
+    <property key="installationPath" value="modules/VCOM/VCOM.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32bg1v.vuart">
+    <property key="installationPath" value="modules/VUART/VUART.module"/>
+  </contentItem>
+</contentItems>

@@ -1,0 +1,279 @@
+<?xml version='1.0' encoding='ASCII'?>
+<contentItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.silabs.com/ss/ContentItem.ecore" xsi:schemaLocation="http://www.silabs.com/ss/ContentItem.ecore contentItems.xsd">
+  <contentItem id="EFR32MG1B131F256GM32">
+    <property key="partCompatibility" value="mcu.arm.efr32.mg1.efr32mg1b131f256gm32"/>
+    <property key="installationPath" value="efr32mg1b131f256gm32/EFR32MG1B131F256GM32.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b131f256gm32.extension">
+    <property key="installationPath" value="efr32mg1b131f256gm32/EFR32MG1B131F256GM32.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.efr32mg1b131f256gm32.portio">
+    <property key="installationPath" value="efr32mg1b131f256gm32/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32MG1B131F256GM48">
+    <property key="partCompatibility" value="mcu.arm.efr32.mg1.efr32mg1b131f256gm48"/>
+    <property key="installationPath" value="efr32mg1b131f256gm48/EFR32MG1B131F256GM48.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b131f256gm48.extension">
+    <property key="installationPath" value="efr32mg1b131f256gm48/EFR32MG1B131F256GM48.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.efr32mg1b131f256gm48.portio">
+    <property key="installationPath" value="efr32mg1b131f256gm48/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32MG1B132F256GJ43">
+    <property key="partCompatibility" value="mcu.arm.efr32.mg1.efr32mg1b132f256gj43"/>
+    <property key="installationPath" value="efr32mg1b132f256gj43/EFR32MG1B132F256GJ43.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b132f256gj43.extension">
+    <property key="installationPath" value="efr32mg1b132f256gj43/EFR32MG1B132F256GJ43.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.efr32mg1b132f256gj43.portio">
+    <property key="installationPath" value="efr32mg1b132f256gj43/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32MG1B132F256GM32">
+    <property key="partCompatibility" value="mcu.arm.efr32.mg1.efr32mg1b132f256gm32"/>
+    <property key="installationPath" value="efr32mg1b132f256gm32/EFR32MG1B132F256GM32.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b132f256gm32.extension">
+    <property key="installationPath" value="efr32mg1b132f256gm32/EFR32MG1B132F256GM32.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.efr32mg1b132f256gm32.portio">
+    <property key="installationPath" value="efr32mg1b132f256gm32/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32MG1B132F256GM48">
+    <property key="partCompatibility" value="mcu.arm.efr32.mg1.efr32mg1b132f256gm48"/>
+    <property key="installationPath" value="efr32mg1b132f256gm48/EFR32MG1B132F256GM48.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b132f256gm48.extension">
+    <property key="installationPath" value="efr32mg1b132f256gm48/EFR32MG1B132F256GM48.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.efr32mg1b132f256gm48.portio">
+    <property key="installationPath" value="efr32mg1b132f256gm48/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32MG1B231F256GM32">
+    <property key="partCompatibility" value="mcu.arm.efr32.mg1.efr32mg1b231f256gm32"/>
+    <property key="installationPath" value="efr32mg1b231f256gm32/EFR32MG1B231F256GM32.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b231f256gm32.extension">
+    <property key="installationPath" value="efr32mg1b231f256gm32/EFR32MG1B231F256GM32.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.efr32mg1b231f256gm32.portio">
+    <property key="installationPath" value="efr32mg1b231f256gm32/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32MG1B231F256GM48">
+    <property key="partCompatibility" value="mcu.arm.efr32.mg1.efr32mg1b231f256gm48"/>
+    <property key="installationPath" value="efr32mg1b231f256gm48/EFR32MG1B231F256GM48.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b231f256gm48.extension">
+    <property key="installationPath" value="efr32mg1b231f256gm48/EFR32MG1B231F256GM48.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.efr32mg1b231f256gm48.portio">
+    <property key="installationPath" value="efr32mg1b231f256gm48/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32MG1B232F256GJ43">
+    <property key="partCompatibility" value="mcu.arm.efr32.mg1.efr32mg1b232f256gj43"/>
+    <property key="installationPath" value="efr32mg1b232f256gj43/EFR32MG1B232F256GJ43.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b232f256gj43.extension">
+    <property key="installationPath" value="efr32mg1b232f256gj43/EFR32MG1B232F256GJ43.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.efr32mg1b232f256gj43.portio">
+    <property key="installationPath" value="efr32mg1b232f256gj43/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32MG1B232F256GM32">
+    <property key="partCompatibility" value="mcu.arm.efr32.mg1.efr32mg1b232f256gm32"/>
+    <property key="installationPath" value="efr32mg1b232f256gm32/EFR32MG1B232F256GM32.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b232f256gm32.extension">
+    <property key="installationPath" value="efr32mg1b232f256gm32/EFR32MG1B232F256GM32.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.efr32mg1b232f256gm32.portio">
+    <property key="installationPath" value="efr32mg1b232f256gm32/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32MG1B232F256GM48">
+    <property key="partCompatibility" value="mcu.arm.efr32.mg1.efr32mg1b232f256gm48"/>
+    <property key="installationPath" value="efr32mg1b232f256gm48/EFR32MG1B232F256GM48.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b232f256gm48.extension">
+    <property key="installationPath" value="efr32mg1b232f256gm48/EFR32MG1B232F256GM48.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.efr32mg1b232f256gm48.portio">
+    <property key="installationPath" value="efr32mg1b232f256gm48/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32MG1B232F256IM48">
+    <property key="partCompatibility" value="mcu.arm.efr32.mg1.efr32mg1b232f256im48"/>
+    <property key="installationPath" value="efr32mg1b232f256im48/EFR32MG1B232F256IM48.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b232f256im48.extension">
+    <property key="installationPath" value="efr32mg1b232f256im48/EFR32MG1B232F256IM48.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.efr32mg1b232f256im48.portio">
+    <property key="installationPath" value="efr32mg1b232f256im48/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32MG1B632F256GM32">
+    <property key="partCompatibility" value="mcu.arm.efr32.mg1.efr32mg1b632f256gm32"/>
+    <property key="installationPath" value="efr32mg1b632f256gm32/EFR32MG1B632F256GM32.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b632f256gm32.extension">
+    <property key="installationPath" value="efr32mg1b632f256gm32/EFR32MG1B632F256GM32.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.efr32mg1b632f256gm32.portio">
+    <property key="installationPath" value="efr32mg1b632f256gm32/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32MG1B632F256IM32">
+    <property key="partCompatibility" value="mcu.arm.efr32.mg1.efr32mg1b632f256im32"/>
+    <property key="installationPath" value="efr32mg1b632f256im32/EFR32MG1B632F256IM32.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b632f256im32.extension">
+    <property key="installationPath" value="efr32mg1b632f256im32/EFR32MG1B632F256IM32.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.efr32mg1b632f256im32.portio">
+    <property key="installationPath" value="efr32mg1b632f256im32/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32MG1B732F256GM32">
+    <property key="partCompatibility" value="mcu.arm.efr32.mg1.efr32mg1b732f256gm32"/>
+    <property key="installationPath" value="efr32mg1b732f256gm32/EFR32MG1B732F256GM32.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b732f256gm32.extension">
+    <property key="installationPath" value="efr32mg1b732f256gm32/EFR32MG1B732F256GM32.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.efr32mg1b732f256gm32.portio">
+    <property key="installationPath" value="efr32mg1b732f256gm32/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFR32MG1B732F256IM32">
+    <property key="partCompatibility" value="mcu.arm.efr32.mg1.efr32mg1b732f256im32"/>
+    <property key="installationPath" value="efr32mg1b732f256im32/EFR32MG1B732F256IM32.device"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b732f256im32.extension">
+    <property key="installationPath" value="efr32mg1b732f256im32/EFR32MG1B732F256IM32.deviceextension"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.efr32mg1b732f256im32.portio">
+    <property key="installationPath" value="efr32mg1b732f256im32/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.cmu">
+    <property key="installationPath" value="modules/CMU/CMU.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.prs">
+    <property key="installationPath" value="modules/PRS/PRS.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.timer0">
+    <property key="installationPath" value="modules/TIMER0/TIMER0.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.timer1">
+    <property key="installationPath" value="modules/TIMER1/TIMER1.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.usart0">
+    <property key="installationPath" value="modules/USART0/USART0.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.usart1">
+    <property key="installationPath" value="modules/USART1/USART1.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.leuart0">
+    <property key="installationPath" value="modules/LEUART0/LEUART0.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.letimer0">
+    <property key="installationPath" value="modules/LETIMER0/LETIMER0.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.pcnt0">
+    <property key="installationPath" value="modules/PCNT0/PCNT0.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.i2c0">
+    <property key="installationPath" value="modules/I2C0/I2C0.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.acmp0">
+    <property key="installationPath" value="modules/ACMP0/ACMP0.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.acmp1">
+    <property key="installationPath" value="modules/ACMP1/ACMP1.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.gpio">
+    <property key="installationPath" value="modules/GPIO/GPIO.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.pti">
+    <property key="installationPath" value="modules/PTI/PTI.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.adc0">
+    <property key="installationPath" value="modules/ADC0/ADC0.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.idac0">
+    <property key="installationPath" value="modules/IDAC0/IDAC0.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.lfxo">
+    <property key="installationPath" value="modules/LFXO/LFXO.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.dcdc">
+    <property key="installationPath" value="modules/DCDC/DCDC.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.emu">
+    <property key="installationPath" value="modules/EMU/EMU.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.pa">
+    <property key="installationPath" value="modules/PA/PA.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.wdog">
+    <property key="installationPath" value="modules/WDOG/WDOG.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.antdiv">
+    <property key="installationPath" value="modules/ANTDIV/ANTDIV.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.batterymon">
+    <property key="installationPath" value="modules/BATTERYMON/BATTERYMON.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.btl_button">
+    <property key="installationPath" value="modules/BTL_BUTTON/BTL_BUTTON.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.bulbpwm">
+    <property key="installationPath" value="modules/BULBPWM/BULBPWM.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.bulbpwm_color">
+    <property key="installationPath" value="modules/BULBPWM_COLOR/BULBPWM_COLOR.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.button">
+    <property key="installationPath" value="modules/BUTTON/BUTTON.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.coex">
+    <property key="installationPath" value="modules/COEX/COEX.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.cs5463">
+    <property key="installationPath" value="modules/CS5463/CS5463.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.extflash">
+    <property key="installationPath" value="modules/EXTFLASH/EXTFLASH.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.ezradiopro">
+    <property key="installationPath" value="modules/EZRADIOPRO/EZRADIOPRO.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.i2csensor">
+    <property key="installationPath" value="modules/I2CSENSOR/I2CSENSOR.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.ioexp">
+    <property key="installationPath" value="modules/IOEXP/IOEXP.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.led">
+    <property key="installationPath" value="modules/LED/LED.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.lna">
+    <property key="installationPath" value="modules/LNA/LNA.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.pyd1698">
+    <property key="installationPath" value="modules/PYD1698/PYD1698.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.serial">
+    <property key="installationPath" value="modules/SERIAL/SERIAL.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.spidisplay">
+    <property key="installationPath" value="modules/SPIDISPLAY/SPIDISPLAY.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.spincp">
+    <property key="installationPath" value="modules/SPINCP/SPINCP.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.uartncp">
+    <property key="installationPath" value="modules/UARTNCP/UARTNCP.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.vcom">
+    <property key="installationPath" value="modules/VCOM/VCOM.module"/>
+  </contentItem>
+  <contentItem id="efr32.efr32mg1b.vuart">
+    <property key="installationPath" value="modules/VUART/VUART.module"/>
+  </contentItem>
+</contentItems>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<iarUserArgVars>
+  <group active="true" name="BLE SDK">
+    <variable>
+      <name>BLUETOOTH_APP_PATH</name>
+      <value>$PROJ_DIR$/../../../app/bluetooth_2.7</value>
+    </variable>
+    <variable>
+      <name>BLUETOOTH_PROTOCOL_PATH</name>
+      <value>$PROJ_DIR$/../../../../../protocol/bluetooth_2.7</value>
+    </variable>
+    <variable>
+      <name>CMSIS_PATH</name>
+      <value>$PROJ_DIR$/../../../../../platform/CMSIS</value>
+    </variable>
+    <variable>
+      <name>DEVICE_PATH</name>
+      <value>$PROJ_DIR$/../../../../../platform/Device</value>
+    </variable>
+    <variable>
+      <name>EMLIB_PATH</name>
+      <value>$PROJ_DIR$/../../../../../platform/emlib</value>
+    </variable>
+    <variable>
+      <name>EMDRV_PATH</name>
+      <value>$PROJ_DIR$/../../../../../platform/emdrv</value>
+    </variable>
+    <variable>
+      <name>GLIB_PATH</name>
+      <value>$PROJ_DIR$/../../../../../platform/middleware/glib</value>
+    </variable>
+    <variable>
+      <name>KIT_PATH</name>
+      <value>$PROJ_DIR$/../../../../../hardware/kit</value>
+    </variable>
+    <variable>
+      <name>RAIL_LIB_PATH</name>
+      <value>$PROJ_DIR$/../../../../../platform/radio/rail_lib</value>
+    </variable>
+  </group>
+</iarUserArgVars>

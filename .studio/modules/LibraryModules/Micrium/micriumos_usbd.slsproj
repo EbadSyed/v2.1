@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project id="com.silabs.sdk.exx32.external.micriumos_usbd" label="Micrium OS USB Device" contentRoot="$(sdkInstallationPath:default())/util/micrium">
+  <property key="category" value="efm32|Middleware"/>
+  <includePath uri="Micrium_OS" />
+
+  <folder name="Micrium_OS/rtos/usb/source/device" uri="Micrium_OS/rtos/usb/source/device" />
+  <folder name="Micrium_OS/rtos/usb/source" uri="Micrium_OS/rtos/usb/source" includeAllFiles="true" includeAllFolders="false" />
+
+  <!-- USB Device driver -->
+  <file name="Micrium_OS/rtos/drivers/usb/source/device/usbd_drv_dwc_otg_fs.c" uri="Micrium_OS/rtos/drivers/usb/source/device/usbd_drv_dwc_otg_fs.c"/>
+
+</project>

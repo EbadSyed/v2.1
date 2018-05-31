@@ -1,0 +1,555 @@
+{
+  "BOARD_FEATURES": {
+    "BRD4100A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "I2C_SENSOR", 
+        "I2C_SENSOR_HW_EN", 
+        "LCD", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32BG1P232F256GM48"
+    }, 
+    "BRD4101B": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "I2C_SENSOR", 
+        "IOEXPANDER", 
+        "LCD", 
+        "LED_BUTTON_ON_SAME_PIN", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32BG1B232F256GJ43"
+    }, 
+    "BRD4103A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "EXP_HEADER_USART3", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32BG12P332F1024GL125"
+    }, 
+    "BRD4104A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32BG13P632F512GM48"
+    }, 
+    "BRD4105A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32BG14P732F256GM48"
+    }, 
+    "BRD4150A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG1P233F256GM48"
+    }, 
+    "BRD4150B": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PA_HIGH_POWER", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG1P233F256GM48"
+    }, 
+    "BRD4150C": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG1P133F256GM48"
+    }, 
+    "BRD4151A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "I2C_SENSOR", 
+        "I2C_SENSOR_HW_EN", 
+        "LCD", 
+        "LFXO", 
+        "PA_HIGH_POWER", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG1P232F256GM48"
+    }, 
+    "BRD4153A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "I2C_SENSOR", 
+        "I2C_SENSOR_HW_EN", 
+        "LCD", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG1P132F256GM48"
+    }, 
+    "BRD4158A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PA_HIGH_POWER", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG13P733F512GM48"
+    }, 
+    "BRD4159A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG13P632F512GM48"
+    }, 
+    "BRD4160A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "I2C_SENSOR", 
+        "I2C_SENSOR_HW_EN", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH"
+      ], 
+      "Part": "EFR32MG1P132F256GM48"
+    }, 
+    "BRD4161A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "EXP_HEADER_USART3", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PA_HIGH_POWER", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG12P432F1024GL125"
+    }, 
+    "BRD4162A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "EXP_HEADER_USART3", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG12P332F1024GL125"
+    }, 
+    "BRD4163A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "EXP_HEADER_USART3", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG12P433F1024GL125"
+    }, 
+    "BRD4164A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "EXP_HEADER_USART3", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PA_HIGH_POWER", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG12P433F1024GL125"
+    }, 
+    "BRD4165B": {
+      "Features": [
+        "BOARD", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PTI", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG13P832F512IM48"
+    }, 
+    "BRD4166A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "I2C_SENSOR", 
+        "I2C_SENSOR_HW_EN", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH"
+      ], 
+      "Part": "EFR32MG12P332F1024GL125"
+    }, 
+    "BRD4167A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG13P733F512GM48"
+    }, 
+    "BRD4168A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PA_HIGH_POWER", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG13P732F512GM48"
+    }, 
+    "BRD4169A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG14P733F256GM48"
+    }, 
+    "BRD4169B": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PA_HIGH_POWER", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG14P733F256GM48"
+    }, 
+    "BRD4300AREVA02": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "I2C_SENSOR", 
+        "I2C_SENSOR_HW_EN", 
+        "LCD", 
+        "LED_BUTTON_ON_SAME_PIN", 
+        "LFXO", 
+        "PTI", 
+        "VCOM"
+      ], 
+      "Part": "EFR32BG1B232F256GM48"
+    }, 
+    "BRD4300AREVA03": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "I2C_SENSOR", 
+        "I2C_SENSOR_HW_EN", 
+        "LCD", 
+        "LED_BUTTON_ON_SAME_PIN", 
+        "LFXO", 
+        "PTI", 
+        "VCOM"
+      ], 
+      "Part": "EFR32BG1B232F256GM48"
+    }, 
+    "BRD4300C": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LED_BUTTON_ON_SAME_PIN", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32BG1B232F256GM48"
+    }, 
+    "BRD4301A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "I2C_SENSOR", 
+        "LED_BUTTON_ON_SAME_PIN", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32BG1B132F256GM32"
+    }, 
+    "BRD4302A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32BG1B232F256GM56"
+    }, 
+    "BRD4303A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32BG1B232F256GM56"
+    }, 
+    "BRD4304A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LED_BUTTON_ON_SAME_PIN", 
+        "LFXO", 
+        "LNA", 
+        "PA_HIGH_POWER", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG12P432F1024GM48"
+    }, 
+    "BRD4305A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LED_BUTTON_ON_SAME_PIN", 
+        "LFXO", 
+        "PA_HIGH_POWER", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32BG13P732F512GM51"
+    }, 
+    "BRD4305C": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LED_BUTTON_ON_SAME_PIN", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32BG13P632F512GM51"
+    }, 
+    "BRD4305D": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LED_BUTTON_ON_SAME_PIN", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG13P632F512GM51"
+    }, 
+    "BRD4305E": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LED_BUTTON_ON_SAME_PIN", 
+        "LFXO", 
+        "PA_HIGH_POWER", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG13P732F512GM51"
+    }, 
+    "BRD4306A": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LED_BUTTON_ON_SAME_PIN", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32BG13P632F512GM48"
+    }, 
+    "BRD4306B": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LED_BUTTON_ON_SAME_PIN", 
+        "LFXO", 
+        "PA_HIGH_POWER", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32BG13P732F512GM48"
+    }, 
+    "BRD4306C": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LED_BUTTON_ON_SAME_PIN", 
+        "LFXO", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG13P632F512GM48"
+    }, 
+    "BRD4306D": {
+      "Features": [
+        "BOARD", 
+        "DCDC", 
+        "DISPEN_SENSEN_ON_SAME_PIN", 
+        "I2C_SENSOR", 
+        "LCD", 
+        "LED_BUTTON_ON_SAME_PIN", 
+        "LFXO", 
+        "PA_HIGH_POWER", 
+        "PTI", 
+        "SPI_FLASH", 
+        "VCOM"
+      ], 
+      "Part": "EFR32MG13P732F512GM48"
+    }, 
+    "RD-0057-0101": {
+      "Features": [], 
+      "Part": "EFR32BG1B232F256GM48"
+    }
+  }
+}

@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='ASCII'?>
+<contentItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.silabs.com/ss/ContentItem.ecore" xsi:schemaLocation="http://www.silabs.com/ss/ContentItem.ecore contentItems.xsd">
+  <contentItem id="EFM32PG12B500F1024GL125">
+    <property key="partCompatibility" value="mcu.arm.efm32.pg12.efm32pg12b500f1024gl125"/>
+    <property key="installationPath" value="efm32pg12b500f1024gl125/EFM32PG12B500F1024GL125.device"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b500f1024gl125.extension">
+    <property key="installationPath" value="efm32pg12b500f1024gl125/EFM32PG12B500F1024GL125.deviceextension"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.efm32pg12b500f1024gl125.portio">
+    <property key="installationPath" value="efm32pg12b500f1024gl125/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFM32PG12B500F1024GM48">
+    <property key="partCompatibility" value="mcu.arm.efm32.pg12.efm32pg12b500f1024gm48"/>
+    <property key="installationPath" value="efm32pg12b500f1024gm48/EFM32PG12B500F1024GM48.device"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b500f1024gm48.extension">
+    <property key="installationPath" value="efm32pg12b500f1024gm48/EFM32PG12B500F1024GM48.deviceextension"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.efm32pg12b500f1024gm48.portio">
+    <property key="installationPath" value="efm32pg12b500f1024gm48/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFM32PG12B500F1024IL125">
+    <property key="partCompatibility" value="mcu.arm.efm32.pg12.efm32pg12b500f1024il125"/>
+    <property key="installationPath" value="efm32pg12b500f1024il125/EFM32PG12B500F1024IL125.device"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b500f1024il125.extension">
+    <property key="installationPath" value="efm32pg12b500f1024il125/EFM32PG12B500F1024IL125.deviceextension"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.efm32pg12b500f1024il125.portio">
+    <property key="installationPath" value="efm32pg12b500f1024il125/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFM32PG12B500F1024IM48">
+    <property key="partCompatibility" value="mcu.arm.efm32.pg12.efm32pg12b500f1024im48"/>
+    <property key="installationPath" value="efm32pg12b500f1024im48/EFM32PG12B500F1024IM48.device"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b500f1024im48.extension">
+    <property key="installationPath" value="efm32pg12b500f1024im48/EFM32PG12B500F1024IM48.deviceextension"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.efm32pg12b500f1024im48.portio">
+    <property key="installationPath" value="efm32pg12b500f1024im48/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFM32PG12B500F512GL125">
+    <property key="partCompatibility" value="mcu.arm.efm32.pg12.efm32pg12b500f512gl125"/>
+    <property key="installationPath" value="efm32pg12b500f512gl125/EFM32PG12B500F512GL125.device"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b500f512gl125.extension">
+    <property key="installationPath" value="efm32pg12b500f512gl125/EFM32PG12B500F512GL125.deviceextension"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.efm32pg12b500f512gl125.portio">
+    <property key="installationPath" value="efm32pg12b500f512gl125/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="EFM32PG12B500F512GM48">
+    <property key="partCompatibility" value="mcu.arm.efm32.pg12.efm32pg12b500f512gm48"/>
+    <property key="installationPath" value="efm32pg12b500f512gm48/EFM32PG12B500F512GM48.device"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b500f512gm48.extension">
+    <property key="installationPath" value="efm32pg12b500f512gm48/EFM32PG12B500F512GM48.deviceextension"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.efm32pg12b500f512gm48.portio">
+    <property key="installationPath" value="efm32pg12b500f512gm48/PORTIO.portio"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.cmu">
+    <property key="installationPath" value="modules/CMU/CMU.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.prs">
+    <property key="installationPath" value="modules/PRS/PRS.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.timer0">
+    <property key="installationPath" value="modules/TIMER0/TIMER0.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.timer1">
+    <property key="installationPath" value="modules/TIMER1/TIMER1.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.wtimer0">
+    <property key="installationPath" value="modules/WTIMER0/WTIMER0.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.wtimer1">
+    <property key="installationPath" value="modules/WTIMER1/WTIMER1.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.usart0">
+    <property key="installationPath" value="modules/USART0/USART0.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.usart1">
+    <property key="installationPath" value="modules/USART1/USART1.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.usart2">
+    <property key="installationPath" value="modules/USART2/USART2.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.usart3">
+    <property key="installationPath" value="modules/USART3/USART3.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.leuart0">
+    <property key="installationPath" value="modules/LEUART0/LEUART0.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.letimer0">
+    <property key="installationPath" value="modules/LETIMER0/LETIMER0.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.pcnt0">
+    <property key="installationPath" value="modules/PCNT0/PCNT0.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.pcnt1">
+    <property key="installationPath" value="modules/PCNT1/PCNT1.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.pcnt2">
+    <property key="installationPath" value="modules/PCNT2/PCNT2.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.i2c0">
+    <property key="installationPath" value="modules/I2C0/I2C0.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.i2c1">
+    <property key="installationPath" value="modules/I2C1/I2C1.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.acmp0">
+    <property key="installationPath" value="modules/ACMP0/ACMP0.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.acmp1">
+    <property key="installationPath" value="modules/ACMP1/ACMP1.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.lesense">
+    <property key="installationPath" value="modules/LESENSE/LESENSE.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.gpio">
+    <property key="installationPath" value="modules/GPIO/GPIO.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.pti">
+    <property key="installationPath" value="modules/PTI/PTI.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.adc0">
+    <property key="installationPath" value="modules/ADC0/ADC0.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.idac0">
+    <property key="installationPath" value="modules/IDAC0/IDAC0.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.vdac0">
+    <property key="installationPath" value="modules/VDAC0/VDAC0.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.csen0">
+    <property key="installationPath" value="modules/CSEN0/CSEN0.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.lfxo">
+    <property key="installationPath" value="modules/LFXO/LFXO.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.dcdc">
+    <property key="installationPath" value="modules/DCDC/DCDC.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.emu">
+    <property key="installationPath" value="modules/EMU/EMU.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.wdog">
+    <property key="installationPath" value="modules/WDOG/WDOG.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.btl_button">
+    <property key="installationPath" value="modules/BTL_BUTTON/BTL_BUTTON.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.button">
+    <property key="installationPath" value="modules/BUTTON/BUTTON.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.extflash">
+    <property key="installationPath" value="modules/EXTFLASH/EXTFLASH.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.i2csensor">
+    <property key="installationPath" value="modules/I2CSENSOR/I2CSENSOR.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.ioexp">
+    <property key="installationPath" value="modules/IOEXP/IOEXP.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.led">
+    <property key="installationPath" value="modules/LED/LED.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.serial">
+    <property key="installationPath" value="modules/SERIAL/SERIAL.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.spidisplay">
+    <property key="installationPath" value="modules/SPIDISPLAY/SPIDISPLAY.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.spincp">
+    <property key="installationPath" value="modules/SPINCP/SPINCP.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.uartncp">
+    <property key="installationPath" value="modules/UARTNCP/UARTNCP.module"/>
+  </contentItem>
+  <contentItem id="efm32.efm32pg12b.vcom">
+    <property key="installationPath" value="modules/VCOM/VCOM.module"/>
+  </contentItem>
+</contentItems>

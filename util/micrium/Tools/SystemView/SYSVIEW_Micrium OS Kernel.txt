@@ -1,0 +1,50 @@
+#
+# OS Options
+#
+Option    ReversePriority
+#
+# Types for parameter formatters
+#
+NamedType OSErr 0=RTOS_ERR_NONE
+NamedType OSErr 41=RTOS_ERR_OS_SCHED_LOCKED
+NamedType OSErr 42=RTOS_ERR_OS_TASK_WAITING
+NamedType OSErr 43=RTOS_ERR_OS_TASK_SUSPENDED
+NamedType OSErr 44=RTOS_ERR_OS_ILLEGAL_RUN_TIME
+NamedType OSErr 45=RTOS_ERR_OS_OBJ_DEL
+NamedType OSErr 46=RTOS_ERR_OS
+#
+# Task States
+#
+TaskState 0xFF 0=Ready, 1=Delayed or Timeout, 2=Pending, 3=Pending with Timeout, 4=Suspended, 5=Suspended with Timeout, 6=Suspended and Pending, 7=Suspended and Pending with Timeout, 255=Deleted
+#
+# API Functions
+#
+33     OSTickCtr++                      OSTickCtr=%u
+34     OSISRRegister                    isr_id=%u
+35     OSTaskQCreate                    p_msg_q=%I
+36     OSTaskQPost                      p_msg_q=%I        | Returns %OSErr
+37     OSTaskQPend                      p_msg_q=%I        | Returns %OSErr
+38     OSTaskSemCreate                  p_tcb=%I
+39     OSTaskSemPost                    p_tcb=%I          | Returns %OSErr
+40     OSTaskSemPend                    p_tcb=%I          | Returns %OSErr
+41     OSMutexCreate                    p_mutex=%I
+42     OSMutexDel                       p_mutex=%I        | Returns %OSErr
+43     OSMutexPost                      p_mutex=%I        | Returns %OSErr
+44     OSMutexPend                      p_mutex=%I        | Returns %OSErr
+45     OS_TaskPrioInherit               p_tcb=%t prio=%u
+46     OS_TaskPrioDisinherit            p_tcb=%t prio=%u
+47     OSSemCreate                      p_sem=%I
+48     OSSemDel                         p_sem=%I          | Returns %OSErr
+49     OSSemPost                        p_sem=%I          | Returns %OSErr
+50     OSSemPend                        p_sem=%I          | Returns %OSErr
+51     OSQCreate                        p_q=%I
+52     OSQDel                           p_q=%I            | Returns %OSErr
+53     OSQPost                          p_q=%I            | Returns %OSErr
+54     OSQPend                          p_q=%I            | Returns %OSErr
+55     OSFlagCreate                     p_grp=%I
+56     OSFlagDel                        p_grp=%I          | Returns %OSErr
+57     OSFlagPost                       p_grp=%I          | Returns %OSErr
+58     OSFlagPend                       p_grp=%I          | Returns %OSErr
+59     OSMemCreate                      p_mem=%I
+60     OSMemPut                         p_mem=%I          | Returns %OSErr
+61     OSMemGet                         p_mem=%I          | Returns %OSErr

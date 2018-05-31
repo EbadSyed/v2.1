@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project id="com.silabs.sdk.exx32.external.micriumos_usbh" label="Micrium OS USB Host" contentRoot="$(sdkInstallationPath:default())/util/micrium">
+  <property key="category" value="efm32|Middleware"/>
+  <includePath uri="Micrium_OS" />
+
+  <folder name="Micrium_OS/rtos/usb/source/host" uri="Micrium_OS/rtos/usb/source/host" />
+  <folder name="Micrium_OS/rtos/usb/source" uri="Micrium_OS/rtos/usb/source" includeAllFiles="true" includeAllFolders="false" />
+
+  <!-- USB Host driver -->
+  <file name="Micrium_OS/rtos/drivers/usb/source/host_pbhcds/usbh_pbhcd_dwc_otg_fs.c" uri="Micrium_OS/rtos/drivers/usb/source/host_pbhcds/usbh_pbhcd_dwc_otg_fs.c"/>
+
+</project>

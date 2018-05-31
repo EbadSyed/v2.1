@@ -1,0 +1,346 @@
+/**
+* 
+***************************************************************************************************
+* <b> (C) Copyright 2016 Silicon Labs, http://www.silabs.com </b>
+***************************************************************************************************
+* This file is licensed under the Silabs License Agreement. See the file
+* "Silabs_License_Agreement.txt" for details. Before using this software for
+* any purpose, you must agree to the terms of that agreement.
+* 
+*/
+
+/*******************************************************************************
+ *******************************   INCLUDES   **********************************
+ ******************************************************************************/
+#include "{{Name | Downcase | Replace:" ","_" | Replace:"-","_"}}.h"
+#include "ble_att_handler.h"
+#include "native_gecko.h"
+#include "gatt_db.h"
+#include <string.h>
+#include <stdio.h>
+
+#define ATT_WRITE_NOT_PERMITTED 0x03
+
+{%- assign indicate_property = false -%}
+{%- for characteristic in Characteristics -%}
+{%- for charProps in characteristic.Properties -%}
+{%- if charProps.Indicate == 'Mandatory' or charProps.Notify == 'Mandatory' -%}
+{%- assign indicate_property = true -%}
+{%- endif -%}
+{%- endfor -%}
+{%- endfor -%}
+{%- assign write_code_support = false -%}
+{%- for characteristic in Characteristics -%}
+{%- for property in characteristic.Properties -%}
+{%- if property.Write == 'Mandatory' -%}
+{%- assign write_code_support = true -%}
+{%- endif -%}
+{%- endfor -%}
+{%- endfor -%}
+/*******************************************************************************
+ *******************************   DEFINES   ***********************************
+ ******************************************************************************/
+// TODO:: Fill const values
+{%- for characteristic in Characteristics -%}
+{%- if characteristic.Fields[0].Format == 'utf8s' -%}
+static const uint8_t * {{characteristic.Name | Upcase | Replace:" ","_" | Replace:"-","_"}}_STRING = "xxxx";
+{%- endif -%}
+{%- endfor -%} 
+ 
+/*******************************************************************************
+ *******************************   TYPEDEFS   **********************************
+ ******************************************************************************/
+typedef struct
+{
+  {%- for characteristic in Characteristics -%}
+  {%- if characteristic.Fields[0].Format == 'boolean' -%}
+  bool {{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}};
+  {%- elsif characteristic.Fields[0].Format == 'uint8' or characteristic.Fields[0].Format == 'uint16' or characteristic.Fields[0].Format == 'uint32' or characteristic.Fields[0].Format == 'uint64' -%}
+  {{characteristic.Fields[0].Format}}_t {{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}};
+  {%- elsif characteristic.Fields[0].Format == '8bit' -%}
+  uint8_t {{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}};
+  {%- elsif characteristic.Fields[0].Format == '16bit' -%}
+  uint16_t {{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}};
+  {%- elsif characteristic.Fields[0].Format == '32bit' -%}
+  uint32_t {{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}};
+  {%- elsif characteristic.Fields[0].Format == 'sint8' or characteristic.Fields[0].Format == 'sint16' or characteristic.Fields[0].Format == 'sint32' or characteristic.Fields[0].Format == 'sint64' -%}
+  {{characteristic.Fields[0].Format | Remove:'s'}}_t {{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}};
+  {%- elsif characteristic.Fields[0].Format == 'FLOAT' -%}
+  float {{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}};
+  {%- elsif characteristic.Fields[0].Format == 'float32' -%}
+  double {{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}};
+  {%- elsif characteristic.Fields[0].Format == 'utf8s' -%}
+  const uint8_t * {{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}};
+  {%- else -%}
+  //TODO:: not supported value type - requires manual handling
+  //{{characteristic.Fields[0].Format}} {{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}};
+  {%- endif -%}
+  {%- endfor -%}
+} {{Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_t;
+ 
+/*******************************************************************************
+ *****************************   LOCAL DATA   **********************************
+ ******************************************************************************/
+static {{Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_t serviceData;
+ 
+/*******************************************************************************
+ **************************   GLOBAL FUNCTIONS   *******************************
+ ******************************************************************************/
+ 
+/*******************************************************************************
+ * @brief
+ *   Service {{Name}} initialization
+ * @return
+ *   None
+ ******************************************************************************/
+void {{Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_init(void)
+{
+  {%- for characteristic in Characteristics -%}
+  {%- assign read_support = false -%}
+  {%- for property in characteristic.Properties -%}
+  {%- if property.Read == 'Mandatory' -%}
+  {%- assign read_support = true -%}
+  {%- endif -%}
+  {%- endfor -%} 
+  {%- if read_support -%}
+  // {{characteristic.Name}}  
+  {%- if characteristic.Fields[0].Format == 'utf8s' -%}
+  serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}} = {{characteristic.Name | Upcase | Replace:" ","_" | Replace:"-","_"}}_STRING;
+  gecko_cmd_gatt_server_write_attribute_value(GATTDB_{{Name | Upcase | Replace:" ","_" | Replace:"-","_"}}_{{characteristic.Name | Upcase | Replace:" ","_" | Replace:"-","_"}}, 0, strlen(serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}), serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}});
+  {%- elsif characteristic.Fields[0].Format == 'uint8' or characteristic.Fields[0].Format == 'uint16' or characteristic.Fields[0].Format == 'uint32' or characteristic.Fields[0].Format == 'uint64' -%}
+  serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}} = 0;
+  gecko_cmd_gatt_server_write_attribute_value(GATTDB_{{Name | Upcase | Replace:" ","_" | Replace:"-","_"}}_{{characteristic.Name | Upcase | Replace:" ","_" | Replace:"-","_"}}, 0, sizeof(serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}), (const uint8_t *)&serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}});
+  {%- elsif characteristic.Fields[0].Format == '8bit' -%}
+  serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}} = 0;
+  gecko_cmd_gatt_server_write_attribute_value(GATTDB_{{Name | Upcase | Replace:" ","_" | Replace:"-","_"}}_{{characteristic.Name | Upcase | Replace:" ","_" | Replace:"-","_"}}, 0, sizeof(serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}), (const uint8_t *)&serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}});
+  {%- elsif characteristic.Fields[0].Format == '16bit' -%}
+  serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}} = 0;
+  gecko_cmd_gatt_server_write_attribute_value(GATTDB_{{Name | Upcase | Replace:" ","_" | Replace:"-","_"}}_{{characteristic.Name | Upcase | Replace:" ","_" | Replace:"-","_"}}, 0, sizeof(serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}), (const uint8_t *)&serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}});
+  {%- elsif characteristic.Fields[0].Format == '32bit' -%}
+  serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}} = 0;
+  gecko_cmd_gatt_server_write_attribute_value(GATTDB_{{Name | Upcase | Replace:" ","_" | Replace:"-","_"}}_{{characteristic.Name | Upcase | Replace:" ","_" | Replace:"-","_"}}, 0, sizeof(serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}), (const uint8_t *)&serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}});
+  {%- elsif characteristic.Fields[0].Format == 'sint8' or characteristic.Fields[0].Format == 'sint16' or characteristic.Fields[0].Format == 'sint32' or characteristic.Fields[0].Format == 'sint64' -%}
+  serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}} = 0;
+  gecko_cmd_gatt_server_write_attribute_value(GATTDB_{{Name | Upcase | Replace:" ","_" | Replace:"-","_"}}_{{characteristic.Name | Upcase | Replace:" ","_" | Replace:"-","_"}}, 0, sizeof(serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}), (const uint8_t *)&serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}});
+  {%- elsif characteristic.Fields[0].Format == 'FLOAT' -%}
+  serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}} = 0;
+  gecko_cmd_gatt_server_write_attribute_value(GATTDB_{{Name | Upcase | Replace:" ","_" | Replace:"-","_"}}_{{characteristic.Name | Upcase | Replace:" ","_" | Replace:"-","_"}}, 0, sizeof(serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}), (const uint8_t *)&serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}});
+  {%- elsif characteristic.Fields[0].Format == 'float32' -%}
+  serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}} = 0;
+  gecko_cmd_gatt_server_write_attribute_value(GATTDB_{{Name | Upcase | Replace:" ","_" | Replace:"-","_"}}_{{characteristic.Name | Upcase | Replace:" ","_" | Replace:"-","_"}}, 0, sizeof(serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}), (const uint8_t *)&serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}});
+  {%- elsif characteristic.Fields[0].Format == 'utf8s' -%}
+  serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}} = 0;
+  gecko_cmd_gatt_server_write_attribute_value(GATTDB_{{Name | Upcase | Replace:" ","_" | Replace:"-","_"}}_{{characteristic.Name | Upcase | Replace:" ","_" | Replace:"-","_"}}, 0, sizeof(serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}), (const uint8_t *)&serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}});
+  {%- else -%}
+  //TODO:: not supported value type - requires manual handling
+  //serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}} = {{characteristic.Name | Upcase | Replace:" ","_" | Replace:"-","_"}}_STRING;
+  //gecko_cmd_gatt_server_write_attribute_value(GATTDB_{{Name | Upcase | Replace:" ","_" | Replace:"-","_"}}_{{characteristic.Name | Upcase | Replace:" ","_" | Replace:"-","_"}}, 0, sizeof(serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}), serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}});
+  {%- endif -%}
+  {%- endif -%}
+  {%- endfor -%}
+  //TODO:: Add suitable initialization for service
+}
+
+/*******************************************************************************
+* @brief
+*   Function to handle characteristic read events by a remote device, when 
+*   read="true" and type="user" options are set for the characteristic in the GATT database.
+*   If type="user" is not set the response is automatically provided by the Bluetooth stack.
+* @param[in] evt
+*   Gecko event
+* @return
+*   None
+******************************************************************************/
+void {{Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_readCallback(struct gecko_cmd_packet *evt)
+{
+  uint16_t characteristicSize = 0;
+  const uint8_t *characteristicPtr = NULL;
+  
+  // TODO:: Add your own code here.
+  
+  switch(evt->data.evt_gatt_server_user_read_request.characteristic)
+  {
+    {%- for characteristic in Characteristics -%}
+    {%- assign read_support = false -%}
+    {%- for property in characteristic.Properties -%}
+    {%- if property.Read == 'Mandatory' -%}
+    {%- assign read_support = true -%}
+    {%- endif -%}
+    {%- endfor -%}
+    {%- if read_support -%}
+    // {{characteristic.Name}} value read
+  case GATTDB_{{Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{characteristic.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}:
+    {
+      {%- if characteristic.Fields[0].Format == 'utf8s' -%}
+      characteristicSize = strlen((const char *)serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}});
+      characteristicPtr = serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}};
+      {%- else -%}
+      characteristicSize = sizeof(serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}});
+      characteristicPtr = (const uint8_t *)&serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}};
+      {%- endif -%}
+    }
+    break;
+    {%- endif -%}  
+    {%- endfor -%}
+    // Do nothing
+  default:
+    break;
+  }
+  
+  // Send response
+  ble_attSendData(evt->data.evt_gatt_server_user_read_request.connection,
+                  evt->data.evt_gatt_server_user_read_request.characteristic,
+                  characteristicPtr, characteristicSize);
+}
+
+/*******************************************************************************
+* @brief
+*   Function to handle characteristic write events by a remote device, when 
+*   write="true" and type="user" options are set for the characteristic in the GATT database.
+*   If type="user" is not set {{Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_valueChangeCallback() is generated instead.
+* @param[in] evt
+*   Gecko event
+* @return
+*   None
+******************************************************************************/
+void {{Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_writeCallback(struct gecko_cmd_packet *evt)
+{
+  {%- if write_code_support -%}  
+  uint8_t responseCode = 0;
+  switch(evt->data.evt_gatt_server_user_write_request.characteristic)
+  {
+    {%- for characteristic in Characteristics -%}
+    {%- assign write_support = false -%}
+    {%- for property in characteristic.Properties -%}
+    {%- if property.Write == 'Mandatory' -%}
+    {%- assign write_support = true -%}
+    {%- endif -%}
+    {%- endfor -%}   
+    {%- if write_support -%}  
+    // {{characteristic.Name}} characteristic written
+  case GATTDB_{{Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{characteristic.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}:
+    {
+      {%- if characteristic.Fields[0].Format == 'uint8' or characteristic.Fields[0].Format == 'sint8' or characteristic.Fields[0].Format == 'boolean' -%}    
+      serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}} = evt->data.evt_gatt_server_user_write_request.value.data[0];
+      {%- else -%}
+      memcpy((uint8_t *)&serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}, evt->data.evt_gatt_server_user_write_request.value.data, evt->data.evt_gatt_server_user_write_request.value.len);
+      {%- endif -%}
+      // TODO:: Add your own code here.
+    }
+    break; 
+    {%- endif -%}
+    {%- endfor -%}
+    
+    // Write opertion not permitted by default
+  default:
+    {
+      responseCode = ATT_WRITE_NOT_PERMITTED;
+    }
+    break;
+  }
+  
+  // TODO:: Add your own code here.
+  
+  // Send response
+  gecko_cmd_gatt_server_send_user_write_response(evt->data.evt_gatt_server_user_write_request.connection,
+                                                 evt->data.evt_gatt_server_user_write_request.characteristic,
+                                                 responseCode);
+  {%- else -%}
+  // This service doesn't support write operation - return error response - write not permitted
+  gecko_cmd_gatt_server_send_user_write_response(evt->data.evt_gatt_server_user_write_request.connection,
+                                                 evt->data.evt_gatt_server_user_write_request.characteristic,
+                                                 ATT_WRITE_NOT_PERMITTED);
+   {%- endif -%}                                                 
+}
+
+/*******************************************************************************
+* @brief
+*   Function to handle characteristic write events when type="user" is not set
+* @param[in] evt
+*   Gecko event
+* @return
+*   None
+******************************************************************************/
+void {{Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_valueChangeCallback(struct gecko_cmd_packet *evt)
+{
+  {%- if write_code_support -%}  
+  uint8_t responseCode = 0;
+  switch(evt->data.evt_gatt_server_user_write_request.characteristic)
+  {
+    {%- for characteristic in Characteristics -%}
+    {%- assign write_support = false -%}
+    {%- for property in characteristic.Properties -%}
+    {%- if property.Write == 'Mandatory' -%}
+    {%- assign write_support = true -%}
+    {%- endif -%}
+    {%- endfor -%} 
+    {%- if write_support -%} 
+    // {{characteristic.Name}} characteristic written
+  case GATTDB_{{Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{characteristic.Name | Upcase | Replace:' ','_' | Replace:'-','_'}}:
+    {
+      {%- if characteristic.Fields[0].Format == 'uint8' or characteristic.Fields[0].Format == 'sint8' or characteristic.Fields[0].Format == 'boolean' -%}     
+      serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}} = evt->data.evt_gatt_server_user_write_request.value.data[0];
+      {%- else -%}
+      memcpy((uint8_t *)&serviceData.{{characteristic.Name | Downcase | Replace:" ","_" | Replace:"-","_"}}, evt->data.evt_gatt_server_user_write_request.value.data, evt->data.evt_gatt_server_user_write_request.value.len);
+      {%- endif -%}
+      // TODO:: Add your own code here.
+    }
+    break;
+  
+    {%- endif -%}
+    {%- endfor -%}
+  }
+  // TODO:: Add your own code here.
+  {%- else -%}
+  // This service does not have any writable characteristics
+  {%- endif -%}                                           
+}
+
+/*******************************************************************************
+* @brief
+*   Function to handle Bluetooth disconnect events.
+* @param[in] evt
+*   Gecko event
+* @return
+*   None
+******************************************************************************/
+void {{Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_disconnectEvent(struct gecko_cmd_packet *evt)
+{
+
+  // TODO:: Add your own code here.
+}
+
+{%- if indicate_property -%}
+/*******************************************************************************
+* @brief
+*   Function to handle gecko_evt_gatt_server_characteristic_status_id event. This is 
+*   generated when characteristic indication or notification status changes.
+* @param[in] evt
+*   Gecko event
+* @return
+*   None
+******************************************************************************/
+void {{Name | Downcase | Replace:" ","_" | Replace:"-","_"}}_characteristicStatus(struct gecko_cmd_packet *evt)
+{
+  {%- for characteristic in Characteristics -%}
+  {%- for charProps in characteristic.Properties -%}
+  {%- if charProps.Indicate == 'Mandatory' or charProps.Notify == 'Mandatory' -%}
+  // Notification or Indication status changed for {{characteristic.Name}}
+  if (evt->data.evt_gatt_server_characteristic_status.characteristic == GATTDB_{{Name | Upcase | Replace:' ','_' | Replace:'-','_'}}_{{characteristic.Name | Upcase | Replace:' ','_' | Replace:'-','_'}} 
+      && evt->data.evt_gatt_server_characteristic_status.status_flags == gatt_server_client_config )
+  {
+    if (evt->data.evt_gatt_server_characteristic_status.client_config_flags) // Notification or Indication - enabled 
+    {
+      // TODO:: Add your own code here.
+    }
+    else // Notification or Indication - disabled
+    {
+      // TODO:: Add your own code here.
+    }
+  }
+  {%- endif -%}
+  {%- endfor -%}
+  {%- endfor -%}
+}
+
+{%- endif -%}

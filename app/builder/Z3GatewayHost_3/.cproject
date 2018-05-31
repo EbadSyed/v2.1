@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="com.silabs.ss.framework.project.core.noToolChain.stockConfig#com.silabs.ss.framework.project.core.noToolChain:0.0.0">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.silabs.ss.framework.project.core.noToolChain.stockConfig#com.silabs.ss.framework.project.core.noToolChain:0.0.0" moduleId="org.eclipse.cdt.core.settings" name="(No toolchain) - None Toolchain Configuration">
+				<macros>
+					<stringMacro name="StudioSdkPath" type="VALUE_PATH_DIR" value="${StudioSdkPathFromID:com.silabs.sdk.stack.super:2.1.0._165520035}"/>
+					<stringMacro name="StudioToolchainPath" type="VALUE_PATH_DIR" value="${StudioToolchainPathFromID:com.silabs.ss.framework.project.core.noToolChain:0.0.0}"/>
+				</macros>
+				<externalSettings/>
+				<extensions>
+					<extension id="com.silabs.ss.framework.debugger.core.HEX" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.silabs.ss.framework.debugger.core.EBL" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.silabs.ss.framework.debugger.core.GBL" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.silabs.ss.framework.debugger.core.BIN" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.silabs.ss.framework.debugger.core.S37" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule buildConfig.stockConfigId="com.silabs.ss.framework.project.core.noToolChain.stockConfig#com.silabs.ss.framework.project.core.noToolChain:0.0.0" cppBuildConfig.builtinIncludes="" cppBuildConfig.builtinLibraryFiles="" cppBuildConfig.builtinLibraryNames="" cppBuildConfig.builtinLibraryObjects="" cppBuildConfig.builtinLibraryPaths="" cppBuildConfig.builtinMacros="" moduleId="com.silabs.ss.framework.ide.project.core.cpp" projectCommon.buildArtifactType="EXE" projectCommon.referencedModules="[]" projectCommon.toolchainId="com.silabs.ss.framework.project.core.noToolChain:0.0.0"/>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildProperties="" description="" id="com.silabs.ss.framework.project.core.noToolChain.stockConfig#com.silabs.ss.framework.project.core.noToolChain:0.0.0" name="(No toolchain) - None Toolchain Configuration" parent="org.eclipse.cdt.build.core.prefbase.cfg">
+					<folderInfo id="com.silabs.ss.framework.project.core.noToolChain.stockConfig#com.silabs.ss.framework.project.core.noToolChain:0.0.0." name="/" resourcePath="">
+						<toolChain id="org.eclipse.cdt.build.core.prefbase.toolchain.105664461" name="No ToolChain" resourceTypeBasedDiscovery="false" superClass="org.eclipse.cdt.build.core.prefbase.toolchain">
+							<targetPlatform binaryParser="com.silabs.ss.framework.debugger.core.BIN;com.silabs.ss.framework.debugger.core.HEX;com.silabs.ss.framework.debugger.core.S37;com.silabs.ss.framework.debugger.core.EBL;com.silabs.ss.framework.debugger.core.GBL" id="org.eclipse.cdt.build.core.prefbase.toolchain.105664461.722798652" name=""/>
+							<builder buildPath="${workspace_loc:/${ProjName}}/.makefile" id="org.eclipse.cdt.build.core.settings.default.builder.1477928364" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" parallelBuildOn="false" superClass="org.eclipse.cdt.build.core.settings.default.builder"/>
+							<tool id="org.eclipse.cdt.build.core.settings.holder.libs.567606371" name="holder for library settings" superClass="org.eclipse.cdt.build.core.settings.holder.libs"/>
+							<tool id="org.eclipse.cdt.build.core.settings.holder.1838819325" name="GNU C++ with IAR extensions" superClass="org.eclipse.cdt.build.core.settings.holder">
+								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.1796493420" languageId="com.iar.cdt.arm.language.IARcpp" languageName="GNU C++ with IAR extensions" sourceContentType="org.eclipse.cdt.core.cxxSource,org.eclipse.cdt.core.cxxHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.build.core.settings.holder.1342817058" name="Assembly" superClass="org.eclipse.cdt.build.core.settings.holder">
+								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.171793537" languageId="org.eclipse.cdt.core.assembly" languageName="Assembly" sourceContentType="org.eclipse.cdt.core.asmSource" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.build.core.settings.holder.628766696" name="GNU C" superClass="org.eclipse.cdt.build.core.settings.holder">
+								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.506343214" languageId="org.eclipse.cdt.core.gcc" languageName="GNU C" sourceContentType="org.eclipse.cdt.core.cSource,org.eclipse.cdt.core.cHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.build.core.settings.holder.530863322" name="IAR Assembly" superClass="org.eclipse.cdt.build.core.settings.holder">
+								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.319281484" languageId="com.iar.cdt.arm.language.asm" languageName="IAR Assembly" sourceContentType="com.iar.cdt.arm.toolchain.asmSource" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="build/exe/ota-files" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="com.silabs.ss.framework.project.core.noToolChain.stockConfig#com.silabs.ss.framework.project.core.noToolChain:0.0.0 - UNIX">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.silabs.ss.framework.project.core.noToolChain.stockConfig#com.silabs.ss.framework.project.core.noToolChain:0.0.0 - UNIX" moduleId="org.eclipse.cdt.core.settings" name="(No toolchain) Toolchain Configuration - UNIX">
+				<macros>
+					<stringMacro name="StudioSdkPath" type="VALUE_PATH_DIR" value="${StudioSdkPathFromID:com.silabs.sdk.stack.super:2.1.0._165520035}"/>
+					<stringMacro name="StudioToolchainPath" type="VALUE_PATH_DIR" value="${StudioToolchainPathFromID:com.silabs.ss.framework.project.core.noToolChain:0.0.0}"/>
+				</macros>
+				<externalSettings/>
+				<extensions>
+					<extension id="com.silabs.ss.framework.debugger.core.HEX" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.silabs.ss.framework.debugger.core.EBL" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.silabs.ss.framework.debugger.core.GBL" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.silabs.ss.framework.debugger.core.BIN" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="com.silabs.ss.framework.debugger.core.S37" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule buildConfig.needsApplyStock="true" buildConfig.stockConfigId="com.silabs.ss.framework.project.core.noToolChain.stockConfig#com.silabs.ss.framework.project.core.noToolChain:0.0.0" cppBuildConfig.builtinIncludes="" cppBuildConfig.builtinLibraryFiles="" cppBuildConfig.builtinLibraryNames="" cppBuildConfig.builtinLibraryObjects="" cppBuildConfig.builtinLibraryPaths="" cppBuildConfig.builtinMacros="" moduleId="com.silabs.ss.framework.ide.project.core.cpp" projectCommon.boardIds="com.silabs.board.none:0.0.0" projectCommon.buildArtifactType="EXE" projectCommon.partId="host.pc" projectCommon.referencedModules="[]" projectCommon.sdkId="com.silabs.sdk.stack.super:2.1.0._165520035" projectCommon.toolchainId="com.silabs.ss.framework.project.core.noToolChain:0.0.0"/>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildProperties="" description="" id="com.silabs.ss.framework.project.core.noToolChain.stockConfig#com.silabs.ss.framework.project.core.noToolChain:0.0.0 - UNIX" name="(No toolchain) Toolchain Configuration - UNIX" parent="org.eclipse.cdt.build.core.prefbase.cfg">
+					<folderInfo id="com.silabs.ss.framework.project.core.noToolChain.stockConfig#com.silabs.ss.framework.project.core.noToolChain:0.0.0 - UNIX." name="/" resourcePath="">
+						<toolChain id="org.eclipse.cdt.build.core.prefbase.toolchain.1690664213" name="No ToolChain" resourceTypeBasedDiscovery="false" superClass="org.eclipse.cdt.build.core.prefbase.toolchain">
+							<targetPlatform binaryParser="com.silabs.ss.framework.debugger.core.BIN;com.silabs.ss.framework.debugger.core.HEX;com.silabs.ss.framework.debugger.core.S37;com.silabs.ss.framework.debugger.core.EBL;com.silabs.ss.framework.debugger.core.GBL" id="org.eclipse.cdt.build.core.prefbase.toolchain.1690664213.1337351738" name=""/>
+							<builder buildPath="${workspace_loc:/${ProjName}}/.makefile" id="org.eclipse.cdt.build.core.settings.default.builder.88659319" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" parallelBuildOn="false" superClass="org.eclipse.cdt.build.core.settings.default.builder"/>
+							<tool id="org.eclipse.cdt.build.core.settings.holder.libs.2034811363" name="holder for library settings" superClass="org.eclipse.cdt.build.core.settings.holder.libs"/>
+							<tool id="org.eclipse.cdt.build.core.settings.holder.773261833" name="GNU C++ with IAR extensions" superClass="org.eclipse.cdt.build.core.settings.holder">
+								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.165814288" languageId="com.iar.cdt.arm.language.IARcpp" languageName="GNU C++ with IAR extensions" sourceContentType="org.eclipse.cdt.core.cxxSource,org.eclipse.cdt.core.cxxHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.build.core.settings.holder.1395928970" name="Assembly" superClass="org.eclipse.cdt.build.core.settings.holder">
+								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.1628705366" languageId="org.eclipse.cdt.core.assembly" languageName="Assembly" sourceContentType="org.eclipse.cdt.core.asmSource" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.build.core.settings.holder.870805897" name="GNU C" superClass="org.eclipse.cdt.build.core.settings.holder">
+								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.139328718" languageId="org.eclipse.cdt.core.gcc" languageName="GNU C" sourceContentType="org.eclipse.cdt.core.cSource,org.eclipse.cdt.core.cHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.build.core.settings.holder.1135940379" name="IAR Assembly" superClass="org.eclipse.cdt.build.core.settings.holder">
+								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.81533323" languageId="com.iar.cdt.arm.language.asm" languageName="IAR Assembly" sourceContentType="com.iar.cdt.arm.toolchain.asmSource" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="build/exe/ota-files" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule generalProj.esf.protocolIds="com.silabs.sdk.stack.super:2.1.0._165520035.com.silabs.sdk.stack.znet:6.1.0.0_1205437291" generalProj.esf.protocolNames="znet" moduleId="com.silabs.ss.framework.ide.project.core.cpp" project.generation="36" projectCommon.boardIds="com.silabs.board.none:0.0.0" projectCommon.importModeId="LINK_LIBRARIES" projectCommon.partId="com.silabs.part.none" projectCommon.sdkId="com.silabs.sdk.stack.super:2.1.0._165520035"/>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="Z3GatewayHost_3.com.silabs.ss.framework.ide.project.core.cdt.cdtMbsProjectType.687322176" name="SLS CDT Project" projectType="com.silabs.ss.framework.ide.project.core.cdt.cdtMbsProjectType"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="com.silabs.ss.framework.project.core.noToolChain.stockConfig#com.silabs.ss.framework.project.core.noToolChain:0.0.0">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.silabs.ss.framework.project.core.noToolChain.stockConfig#com.silabs.ss.framework.project.core.noToolChain:0.0.0 - UNIX">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+</cproject>

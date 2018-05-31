@@ -1,0 +1,65 @@
+api(buffer-management) {
+  name=buffer-management
+  callbacks=api/buffer-management-callback.info
+}
+
+api(coap) {
+  name=coap
+  callbacks=api/coap-callback.info
+}
+
+api(coap-diagnostic) {
+  name=coap-diagnostic
+  callbacks=api/coap-diagnostic-callback.info
+}
+
+api(connection-manager) {
+  name=connection-manager
+  callbacks=api/connection-manager-callback.info
+}
+
+api(host-mfglib) {
+  name=host-mfglib
+  callbacks=api/host-mfglib-callback.info
+}
+
+api(icmp) {
+  name=icmp
+  callbacks=api/icmp-callback.info
+}
+
+api(main) {
+  name=Main
+  callbacks=api/main-callback.info
+}
+
+api(network-management) {
+  name=network-management
+  callbacks=api/network-management-callback.info
+}
+
+api(power-meter) {
+  name=Power Meter
+  callbacks=$PLUGIN/power-meter-callback.info
+}
+
+api(sim-eeprom) {
+  name=Simulated EEPROM
+  callbacks=$HAL/config/sim-eeprom-callback.info
+}
+
+api(stack-info) {
+  name=stack-info
+  callbacks=api/stack-info-callback.info
+}
+
+# TODO: EMIPSTACK-356.
+api(thread-debug) {
+  name=tcp
+  callbacks=api/thread-debug-callback.info
+}
+
+api(udp) {
+  name=udp
+  callbacks=api/udp-callback.info
+}

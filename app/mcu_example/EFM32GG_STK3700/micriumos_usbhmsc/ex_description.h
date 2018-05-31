@@ -1,0 +1,2 @@
+
+#define  EX_FS_MEDIA_POLL_INIT_AVAIL

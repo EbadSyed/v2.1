@@ -1,0 +1,53 @@
+#include PLATFORM_HEADER
+
+/** @brief UpdateStarted
+ *
+ * Called when an OTA upgrade starts.
+ *
+ * @param manufacturerId   Ver.: always
+ * @param imageTypeId      Ver.: always
+ * @param firmwareVersion  Ver.: always
+ * @param maxDataSize      Ver.: always
+ * @param offset           Ver.: always
+ */
+void emberAfPluginOtaServerUpdateStartedCallback(uint16_t manufacturerId,
+                                                 uint16_t imageTypeId,
+                                                 int32u firmwareVersion,
+                                                 uint8_t maxDataSize,
+                                                 int32u offset)
+{
+}
+
+/** @brief OTA Server Block Sent Callback
+ *
+ * This function will be called when a block is sent to a device.
+ *
+ * @param actualLength      Ver.: always
+ * @param manufacturerId    Ver.: always
+ * @param imageTypeId       Ver.: always
+ * @param firmwareVersion   Ver.: always
+ */
+void emberAfPluginOtaServerBlockSentCallback(uint8_t actualLength,
+                                             uint16_t manufacturerId,
+                                             uint16_t imageTypeId,
+                                             int32u firmwareVersion)
+{
+}
+
+/** @brief OTA Server Update Complete Callback
+ *
+ * This function will be called when an OTA update has finished.
+ *
+ * @param manufacturerId  ManufacturerId.
+ * @param imageTypeId  Image Type Id.
+ * @param firmwareVersion  Firmware Version.
+ * @param source  Source node id.
+ * @param status  Status of update.
+ */
+void emberAfPluginOtaServerUpdateCompleteCallback(uint16_t manufacturerId,
+                                                  uint16_t imageTypeId,
+                                                  uint32_t firmwareVersion,
+                                                  EmberNodeId source,
+                                                  uint8_t status)
+{
+}

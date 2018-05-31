@@ -1,0 +1,2 @@
+32-bit MCU SDK 5.3.5.0:
+  * Please note that because this is a patch, it will trigger the removal of older MCU SDK 5.3.x releases

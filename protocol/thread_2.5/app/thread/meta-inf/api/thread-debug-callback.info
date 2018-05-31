@@ -1,0 +1,138 @@
+/** @brief Callback for a debug command.  Provides the result of
+ * ::emberAddAddressData
+ */
+void emberAddAddressDataReturn(uint16_t shortId)
+{
+}
+
+/** @brief Callback for a debug command.  Provides the result of
+ * ::emberAssertInfo
+ */
+void emberAssertInfoReturn(const uint8_t *fileName, uint32_t lineNumber)
+{
+}
+
+/** @brief Callback for a debug command.  Provides the result of
+ * ::emberClearAddressCache
+ */
+void emberClearAddressCacheReturn(void)
+{
+}
+
+/** @brief Callback for a debug command.  Provides the result of
+ * ::emberConfigUart
+ */
+void emberConfigUartReturn(void)
+{
+}
+
+/** @brief Callback for a debug command.  Provides the result of
+ * ::emberEcho
+ */
+void emberEchoReturn(const uint8_t *data, uint8_t length)
+{
+}
+
+/** @brief Callback for a debug command.  Provides the result of
+ * ::emberGetMulticastEntry
+ */
+void emberGetMulticastEntryReturn(uint8_t lastSequence,
+                                  uint8_t windowBitmask,
+                                  uint8_t dwellQs,
+                                  const uint8_t *seed)
+{
+}
+
+/** @brief Callback for a debug command.  Provides the result of
+ * ::emberGetNetworkKeyInfo
+ */
+void emberGetNetworkKeyInfoReturn(EmberStatus status,
+                                  uint32_t sequence,
+                                  uint8_t state)
+{
+}
+
+/** @brief Callback for a debug command.  Provides the result of
+ * ::emberGetNodeStatus
+ */
+void emberGetNodeStatusReturn(EmberStatus status,
+                              uint8_t ripId,
+                              EmberNodeId nodeId,
+                              uint8_t parentRipId,
+                              EmberNodeId parentId,
+                              const uint8_t *networkFragmentIdentifier,
+                              uint32_t networkFrameCounter)
+{
+}
+
+/** @brief Callback for a debug command.  Provides the result of
+ * ::emberLookupAddressData
+ */
+void emberLookupAddressDataReturn(uint16_t shortId)
+{
+}
+
+/** @brief Callback for a debug command.  Provides the result of
+ * ::emberNcpUdpStormComplete
+ */
+void emberNcpUdpStormCompleteHandler(void)
+{
+}
+
+/** @brief Callback for a debug command.  Provides the result of
+ * ::emberNcpUdpStorm
+ */
+void emberNcpUdpStormReturn(EmberStatus status)
+{
+}
+
+/** @brief Callback for a debug command.  Provides the result of
+ * ::emberResetNcpAsh
+ */
+void emberResetNcpAshReturn(void)
+{
+}
+
+/** @brief Callback for a debug command.  Provides the result of
+ * ::emberSendDone
+ */
+void emberSendDoneReturn(void)
+{
+}
+
+/** @brief Callback for a debug command.  Provides the result of
+ * ::emberSetRandomizeMacExtendedId
+ */
+void emberSetRandomizeMacExtendedIdReturn(void)
+{
+}
+
+/** @brief Callback for a debug command.  Provides the result of
+ * ::emberSetWakeupSequenceNumber
+ */
+void emberSetWakeupSequenceNumberReturn(void)
+{
+}
+
+/** @brief Callback for a debug command.  Provides the result of
+ * ::emberStartUartStorm
+ */
+void emberStartUartStormReturn(void)
+{
+}
+
+/** @brief Callback for a debug command.  Provides the result of
+ * ::emberStopUartStorm
+ */
+void emberStopUartStormReturn(void)
+{
+}
+
+/** @brief Callback for a debug command.  Provides the result of
+ * ::emberUartSpeedTest
+ */
+void emberUartSpeedTestReturn(uint32_t totalBytesSent,
+                              uint32_t payloadBytesSent,
+                              uint32_t timeout)
+{
+}

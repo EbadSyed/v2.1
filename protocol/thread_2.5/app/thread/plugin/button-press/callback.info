@@ -1,0 +1,20 @@
+#include PLATFORM_HEADER
+#include CONFIGURATION_HEADER
+#include EMBER_AF_API_BUTTON_PRESS
+
+/** @brief A callback called when a button is pressed. It is sometimes called
+ * in ISR context.
+ *
+ * @appusage Must be implemented by the application.  This function should
+ * contain the functionality to be executed in response to a button press, or
+ * callbacks to the appropriate functionality.
+ *
+ * @param button  The button which was pressed, either BUTTON0 or BUTTON1
+ * as defined in the appropriate BOARD_HEADER.
+ *
+ * @param press  Either EMBER_SINGLE_PRESS if it was a single press, or
+ * EMBER_DOUBLE_PRESS if it was a double press.
+ */
+void emberButtonPressIsr(uint8_t button, EmberButtonPress press)
+{
+}

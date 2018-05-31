@@ -1,0 +1,12 @@
+#include PLATFORM_HEADER
+
+/** @brief Main Application Entry Point
+ *
+ * This callback provides the main application entry point for an NCP
+ * application.
+ */
+int main(MAIN_FUNCTION_PARAMETERS);
+
+void emberAfCounterHandler(EmberCounterType type, EmberCounterInfo info)
+{
+}

@@ -1,0 +1,276 @@
+#ISD afv6
+# Simplicity Studio version: 4.22.1.qualifier
+
+# Application configuration
+appId: thread
+frameworkRoot: app/thread
+architecture: em3588+iar
+deviceName: ncp-uart-sw
+generationDirectory: PATH(ISC_RELATIVE):.
+
+# Devices
+device: EM3xx
+device: NCP
+device: NCP UART
+
+# Plugin configuration
+appPlugin: accelerometer-led=false
+appPlugin: adc=true
+appPlugin: address-configuration-debug=false
+appPlugin: antenna=false
+appPlugin: antenna-stub=true
+appPlugin: ash-v3=true
+appPlugin: ash-v3-stub=false
+appPlugin: basic-server=false
+appPlugin: battery-monitor=false
+appPlugin: bootload-cli=false
+appPlugin: bulb-pwm-driver=false
+appPlugin: bulb-ui=false
+appPlugin: button=false
+appPlugin: button-interface=false
+appPlugin: button-press=false
+appPlugin: button-stub=true
+appPlugin: buzzer=false
+appPlugin: buzzer-stub=true
+appPlugin: cjson=false
+appPlugin: cli=false
+appPlugin: coap-cli=false
+appPlugin: coap-debug=false
+appPlugin: coap-dispatch=false
+appPlugin: coexistence=false
+appPlugin: color-control-server=false
+appPlugin: command-interpreter2=true
+appPlugin: connection-manager-cli=false
+appPlugin: connection-manager-jib=false
+appPlugin: connection-manager-joob=false
+appPlugin: debug-channel=true
+appPlugin: debug-channel-stub=false
+appPlugin: debug-print=true
+appPlugin: dhcp-client=false
+appPlugin: dhcp-library=true
+appPlugin: dhcp-stub-library=false
+appPlugin: diagnostic=true
+appPlugin: diagnostic-stub=false
+appPlugin: dmp-demo-ui=false
+appPlugin: dns-cli=false
+appPlugin: dtls-auth-params=true
+appPlugin: dtls-cli=false
+appPlugin: eeprom=false
+appPlugin: eeprom-powerdown=false
+appPlugin: end-node-ui=false
+appPlugin: ext-device=false
+appPlugin: extdev=false
+appPlugin: ezradiopro=false
+appPlugin: fem-control=false
+appPlugin: generic-interrupt-control=false
+appPlugin: glib=false
+appPlugin: global-address-prefix-debug=false
+appPlugin: gpio-sensor=false
+appPlugin: groups-server=false
+appPlugin: hal-library=false
+appPlugin: hal-ncp-library=true
+appPlugin: heartbeat=false
+appPlugin: heartbeat-node-type=true
+appPlugin: host-network-management=false
+appPlugin: host-network-management-stub=false
+appPlugin: humidity-si7021-stub=false
+appPlugin: i2c-driver=false
+appPlugin: i2c-driver-stub=false
+appPlugin: icmp-cli=false
+appPlugin: icmp-debug=false
+appPlugin: identify-server=false
+appPlugin: idle-sleep=false
+appPlugin: illuminance-measurement-server=false
+appPlugin: illuminance-si1141-stub=false
+appPlugin: infrared-led=false
+appPlugin: key-matrix=false
+appPlugin: led=true
+appPlugin: led-blink=false
+appPlugin: led-dim-pwm=false
+appPlugin: led-rgb-pwm=false
+appPlugin: led-stub=false
+appPlugin: led-temp-pwm=false
+appPlugin: level-control-server=false
+appPlugin: libcoap=false
+appPlugin: linked-list=false
+appPlugin: log-cli=false
+appPlugin: main=false
+appPlugin: mbedtls-custom-library=false
+appPlugin: mbedtls-dotdot-library=false
+appPlugin: mbedtls-library=true
+appPlugin: mfglib-library=true
+appPlugin: mfglib-stub-library=false
+appPlugin: microphone-codec-msadpcm=false
+appPlugin: microphone-imaadpcm=false
+appPlugin: module-lna=false
+appPlugin: mpsi=false
+appPlugin: mpsi-ipc=false
+appPlugin: mpsi-storage=false
+appPlugin: ncp-library=true
+appPlugin: ncp-spi-link=false
+appPlugin: ncp-uart-link=true
+appPlugin: network-management-cli=false
+appPlugin: occupancy-pyd1698=false
+appPlugin: occupancy-pyd1698-stub=false
+appPlugin: occupancy-sensing-server=false
+appPlugin: on-off-server=false
+appPlugin: ota-bootload-client=false
+appPlugin: ota-bootload-client-policy=false
+appPlugin: ota-bootload-core=false
+appPlugin: ota-bootload-server=false
+appPlugin: ota-bootload-server-policy=false
+appPlugin: ota-bootload-storage-cli=false
+appPlugin: ota-bootload-storage-core=false
+appPlugin: ota-bootload-storage-eeprom=false
+appPlugin: ota-bootload-storage-unix=false
+appPlugin: pa=false
+appPlugin: paho.mqtt.c=false
+appPlugin: poll-control-client=false
+appPlugin: poll-control-server=false
+appPlugin: polling=false
+appPlugin: power-configuration-server=false
+appPlugin: power-meter-cs5463=false
+appPlugin: psstore=false
+appPlugin: pti=false
+appPlugin: rail-library=true
+appPlugin: rail-library-mp=false
+appPlugin: relative-humidity-measurement-server=false
+appPlugin: sb1-gesture-sensor=false
+appPlugin: scan-debug=false
+appPlugin: serial=false
+appPlugin: sim-eeprom1=true
+appPlugin: sim-eeprom2=false
+appPlugin: sim-eeprom2-1to2-upgrade=false
+appPlugin: sim-eeprom2-1to2-upgrade-stub=false
+appPlugin: slaac-client=false
+appPlugin: slot-manager=false
+appPlugin: stm32f103ret-library=false
+appPlugin: tamper-switch=false
+appPlugin: temperature-measurement-server=false
+appPlugin: temperature-si7053-stub=false
+appPlugin: thread-mbedtls-stack=false
+appPlugin: thread-stack=true
+appPlugin: thread-test-harness-cli=false
+appPlugin: transport-mqtt=false
+appPlugin: udp-cli=false
+appPlugin: udp-debug=false
+appPlugin: unix-library=false
+appPlugin: unix-netif-config=false
+appPlugin: version-debug=false
+appPlugin: zcl-core=false
+appPlugin: zcl-core-cli=false
+
+# Setup configurations
+{setupId:additionalFiles
+}
+{setupId:boardHeader
+allowMissingHeader:false
+useHeaderInPlace:false
+EFR32MG1P132F256GM48=BOARD,efr32/brd4153a,,
+EFR32MG1P232F256GM48=BOARD,efr32/brd4151a,,
+EFR32MG1P233F256GM48=BOARD,efr32/brd4150a,,
+em3581=BOARD,em35x/dev0680uart,,
+em3582=BOARD,em35x/dev0680uart,,
+em3585=BOARD,em35x/dev0680uart,,
+em3586=BOARD,em35x/dev0680uart,,
+em3587=BOARD,em35x/dev0680uart,,
+em3588=BOARD,em35x/dev0680uart,,
+em3591=BOARD,em35x/ncp_uart_sc1,,
+em3592=BOARD,em35x/ncp_uart_sc1,,
+em3595=BOARD,em35x/ncp_uart_sc1,,
+em3596=BOARD,em35x/ncp_uart_sc1,,
+em3597=BOARD,em35x/ncp_uart_sc1,,
+em3598=BOARD,em35x/ncp_uart_sc1,,
+}
+{setupId:bookkeeping
+}
+{setupId:bootloader
+efr32~series[1]~device_configuration[1]=standalone,
+efr32~series[1]~device_configuration[2]=standalone,
+efr32~series[1]~device_configuration[3]=standalone,
+efr32~series[1]~device_configuration[4]=standalone,
+em3581=standalone,
+em3582=standalone,
+em3585=standalone,
+em3586=standalone,
+em3587=standalone,
+em3588=standalone,
+em3591=standalone,
+em3592=standalone,
+em3595=standalone,
+em3596=standalone,
+em3597=standalone,
+em3598=standalone,
+}
+{setupId:callbackConfiguration
+}
+{setupId:coapDispatch
+}
+{setupId:commandLineConfiguration
+off
+}
+{setupId:debugConfiguration
+on
+area name off
+appSerial=1
+}
+{setupId:eventConfiguration
+}
+{setupId:genConfig
+}
+{setupId:halOptions
+}
+{setupId:hwConfig
+featureLevel=1
+active=true
+}
+{setupId:information
+\{key:description
+NCP UART Application
+
+This network coprocessor (NCP) application supports communication with a host application over a UART interface with software flow control. This NCP application can be built as configured, or optionally can be augmented with customizations for target hardware, initialization, main loop processing, event definition/handling, and messaging with the host.
+
+As configured, this NCP UART application is the basis for building the corresponding binary ncp-uart images delivered with the Silicon Labs Thread stack.
+
+Refer to the Silicon Labs Thread documentation for more information about NCP customization.
+\}
+}
+{setupId:macros
+-DDEBUG
+}
+{setupId:serial
+em3581=*0,*,*,*,*,*,*
+em3582=*0,*,*,*,*,*,*
+em3585=*0,*,*,*,*,*,*
+em3586=*0,*,*,*,*,*,*
+em3587=*0,*,*,*,*,*,*
+em3588=*0,*,*,*,*,*,*
+em3591=*0,*,*,*,*,*,*
+em3592=*0,*,*,*,*,*,*
+em3595=*0,*,*,*,*,*,*
+em3596=*0,*,*,*,*,*,*
+em3597=*0,*,*,*,*,*,*
+em3598=*0,*,*,*,*,*,*
+}
+{setupId:template
+simeepromSize=8192
+}
+{setupId:token
+}
+{setupId:zclip
+configuredNetwork:type:ZIGBEE_PRO, name:Primary
+beginEndpointType:Primary
+device:HA-onoff
+endEndpointType
+configuredEndpoint:ep:1,pi: -1,di:-1,dv:0,ept:Primary,nwk:Primary
+}
+
+# Plugin options
+pluginOption(em3588): EMBER_APPLICATION_USES_SOFTWARE_FLOW_CONTROL,true
+pluginOption(efr32): EMBER_AF_PLUGIN_HAL_CONFIG_VUART_ENABLE,1
+pluginOption(efr32~device_configuration[1]): EMBER_AF_PLUGIN_HAL_CONFIG_USART0_FLOW_CONTROL,HAL_USART_FLOW_CONTROL_SW
+pluginOption(efr32~device_configuration[3]): EMBER_AF_PLUGIN_HAL_CONFIG_USART0_FLOW_CONTROL,HAL_USART_FLOW_CONTROL_SW
+pluginOption(efr32~device_configuration[2]): EMBER_AF_PLUGIN_HAL_CONFIG_USART0_ENABLE,0
+pluginOption(efr32~device_configuration[2]): EMBER_AF_PLUGIN_HAL_CONFIG_USART0_FLOW_CONTROL,HAL_USART_FLOW_CONTROL_NONE
+pluginOption(efr32~device_configuration[2]): EMBER_AF_PLUGIN_HAL_CONFIG_USART3_ENABLE,1
+pluginOption(efr32~device_configuration[2]): EMBER_AF_PLUGIN_HAL_CONFIG_USART3_FLOW_CONTROL,HAL_USART_FLOW_CONTROL_SW

@@ -1,0 +1,19 @@
+#include CONFIGURATION_HEADER
+#include EMBER_AF_API_CONNECTION_MANAGER
+
+/** @brief Connection attempt completed.
+ *
+ * This function is called when an attempt to connect to a network has
+ * completed.  It will convery the result of an attempt to join a network using
+ * the emberConnectionManagerStartConnect function.  The status will be one of
+ * the following values:
+ *
+ * EMBER_CONNECTION_MANAGER_STATUS_CONNECTED: The device succesfully attached to
+ * the network.
+ * EMBER_CONNECTION_MANAGER_STATUS_TIMED_OUT: The device was unable to join the
+ * network after attempting the number of times specified in the connection
+ * manager plugin options.
+ */
+void emberConnectionManagerConnectCompleteCallback(EmberConnectionManagerConnectionStatus status)
+{
+}

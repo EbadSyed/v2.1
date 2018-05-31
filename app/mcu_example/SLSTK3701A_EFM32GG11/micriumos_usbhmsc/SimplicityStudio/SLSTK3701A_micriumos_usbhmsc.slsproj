@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SLSTK3701A_micriumos_usbhmsc" boardCompatibility="brd2204a" partCompatibility=".*efm32gg11b820f2048gl192.*" toolchainCompatibility="" contentRoot="../">
+  <module id="com.silabs.sdk.exx32.board">
+    <exclude pattern=".*" />
+  </module>
+  <module id="com.silabs.sdk.exx32.common.CMSIS">
+    <exclude pattern=".*" />
+  </module>
+  <module id="com.silabs.sdk.exx32.common.emlib">
+    <include pattern="emlib/em_assert.c" />
+    <include pattern="emlib/em_core.c" />
+    <include pattern="emlib/em_cmu.c" />
+    <include pattern="emlib/em_ebi.c" />
+    <include pattern="emlib/em_emu.c" />
+    <include pattern="emlib/em_gpio.c" />
+    <include pattern="emlib/em_system.c" />
+    <include pattern="emlib/em_usart.c" />
+  </module>
+  <module id="com.silabs.sdk.exx32.common.bsp">
+    <include pattern="BSP/bsp_bcc.c" />
+    <include pattern="BSP/bsp_stk.c" />
+    <include pattern="BSP/bsp_stk_leds.c" />
+    <include pattern="BSP/bsp_trace.c" />
+  </module>
+  <module id="com.silabs.sdk.exx32.common.drivers">
+    <include pattern="Drivers/retargetio.c" />
+    <include pattern="Drivers/retargetserial.c" />
+  </module>
+  <module id="com.silabs.sdk.exx32.part">
+    <include pattern="CMSIS/.*/startup_.*_.*.s" />
+    <include pattern="CMSIS/.*/system_.*.c" />
+  </module>
+  <module id="com.silabs.sdk.exx32.external.micriumos">
+    <include pattern="Micrium_OS/bsp/.*/bsp_cpu.c" />
+    <include pattern="Micrium_OS/bsp/.*/bsp_os.c" />
+    <include pattern="Micrium_OS/bsp/.*/bsp_usb_host_pbhcd.c" />
+    <include pattern="Micrium_OS/rtos/.*/auth.c" />
+    <include pattern="Micrium_OS/rtos/.*/clk.c" />
+    <include pattern="Micrium_OS/rtos/.*/clk_cmd.c" />
+    <include pattern="Micrium_OS/rtos/.*/bitmap.c" />
+    <include pattern="Micrium_OS/rtos/.*/map.c" />
+    <include pattern="Micrium_OS/rtos/.*/slist.c" />
+    <include pattern="Micrium_OS/rtos/.*/common.c" />
+    <include pattern="Micrium_OS/rtos/.*/kal_kernel.c" />
+    <include pattern="Micrium_OS/rtos/.*/lib_ascii.c" />
+    <include pattern="Micrium_OS/rtos/.*/lib_math.c" />
+    <include pattern="Micrium_OS/rtos/.*/lib_mem.c" />
+    <include pattern="Micrium_OS/rtos/.*/lib_str.c" />
+    <include pattern="Micrium_OS/rtos/.*/rtos_err_str.c" />
+    <include pattern="Micrium_OS/rtos/.*/platform_mgr.c" />
+    <include pattern="Micrium_OS/rtos/.*/cpu_core.c" />
+    <include pattern="Micrium_OS/rtos/.*/armv7m_cpu_a.asm" />
+    <include pattern="Micrium_OS/rtos/.*/armv7m_cpu_c.c" />
+    <include pattern="Micrium_OS/rtos/.*/armv7m_cpu_a.S" />
+    <include pattern="Micrium_OS/rtos/.*/armv7m_cpu_int.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_core.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_cfg_app.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_dbg.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_flag.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_mem.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_mon.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_msg.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_mutex.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_prio.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_q.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_sem.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_stat.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_task.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_tick.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_time.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_tmr.c" />
+    <include pattern="Micrium_OS/rtos/.*/os_var.c" />
+    <include pattern="Micrium_OS/rtos/.*/armv7m_os_cpu_a.asm" />
+    <include pattern="Micrium_OS/rtos/.*/armv7m_os_cpu_c.c" />
+    <include pattern="Micrium_OS/rtos/.*/armv7m_os_cpu_a.S" />
+    <include pattern="Micrium_OS/rtos/.*/op_lock.c" />
+    <include pattern="Tools/SystemView/.*/SEGGER_RTT.c" />
+    <include pattern="Tools/SystemView/.*/SEGGER_SYSVIEW.c" />
+    <include pattern="Tools/SystemView/.*/SEGGER_SYSVIEW_MicriumOSKernel.c" />
+  </module>
+  <module id="com.silabs.sdk.exx32.external.micriumos_usbh">
+    <include pattern="Micrium_OS/rtos/.*/usbh_pbhcd_dwc_otg_fs.c" />
+    <include pattern="Micrium_OS/rtos/.*/usbh_core.c" />
+    <include pattern="Micrium_OS/rtos/.*/usbh_core_dev.c" />
+    <include pattern="Micrium_OS/rtos/.*/usbh_core_ep.c" />
+    <include pattern="Micrium_OS/rtos/.*/usbh_core_hub.c" />
+    <include pattern="Micrium_OS/rtos/.*/usbh_core_class.c" />
+    <include pattern="Micrium_OS/rtos/.*/usbh_core_config.c" />
+    <include pattern="Micrium_OS/rtos/.*/usbh_core_fnct.c" />
+    <include pattern="Micrium_OS/rtos/.*/usbh_core_if.c" />
+    <include pattern="Micrium_OS/rtos/.*/usbh_pbhci.c" />
+    <include pattern="Micrium_OS/rtos/.*/usbh_msc.c" />
+    <include pattern="Micrium_OS/rtos/.*/usbh_class_common.c" />
+  </module>
+  <module id="com.silabs.sdk.exx32.external.micriumos_usbd">
+    <include pattern="Micrium_OS/rtos/.*/usb_ctrlr.c" />
+  </module>
+  <module id="com.silabs.sdk.exx32.external.micriumos_fs">
+    <include pattern="Micrium_OS/rtos/.*/fs_storage.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_blk_dev.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_media.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_ramdisk.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_scsi.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_obj.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_utils.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_core.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_core_buddy_alloc.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_core_cache.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_core_list.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_core_vol.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_core_partition.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_core_job_sched.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_core_op.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_core_unicode.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_core_dir.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_core_working_dir.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_core_posix.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_fat.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_fat_dir.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_fat_entry.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_fat_file.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_fat_lfn.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_fat_journal.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_fat_vol.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_fat_fatxx.c" />
+    <include pattern="Micrium_OS/rtos/.*/fs_sys.c" />
+  </module>
+  <macroDefinition name="DEBUG_EFM" languageCompatibility="c cpp" />
+  <macroDefinition name="RETARGET_VCOM" />
+  <macroDefinition name="RETARGET_UART0" />
+  <includePath uri="../../../../util/micrium/Micrium_OS" />
+  <includePath uri="cfg" />
+  <includePath uri="." />
+  <folder name="CMSIS">
+    <file name="cmsis_wrapper.s" uri="../../../../util/micrium/Ports/CMSIS/GCC/cmsis_wrapper.s" toolchainCompatibility="com.silabs.ss.tool.ide.arm.toolchain.gnu.*" />
+    <file name="cmsis_wrapper.s" uri="../../../../util/micrium/Ports/CMSIS/IAR/cmsis_wrapper.s" toolchainCompatibility="com.silabs.ss.tool.ide.arm.toolchain.iar" />
+  </folder>
+  <folder name="SystemView">
+    <file name="SEGGER_SYSVIEW_Config_MicriumOSKernel.c" uri="cfg/SEGGER_SYSVIEW_Config_MicriumOSKernel.c" />
+  </folder>
+  <folder name="src">
+    <file name="ex_main.c" uri="ex_main.c" />
+    <file name="ex_common_init.c" uri="common/common/ex_common_init.c" />
+    <file name="ex_fs.c" uri="fs/ex_fs.c" />
+    <file name="ex_fs.h" uri="fs/ex_fs.h" />
+    <file name="ex_fs_media_poll.c" uri="fs/ex_fs_media_poll.c" />
+    <file name="ex_fs_media_poll.h" uri="fs/ex_fs_media_poll.h" />
+    <file name="ex_fs_utils.h" uri="fs/ex_fs_utils.h" />
+    <file name="ex_usbh.c" uri="usb/host/ex_usbh.c" />
+    <file name="ex_usbh_msc.c" uri="usb/host/ex_usbh_msc.c" />
+  </folder>
+  <toolOption toolId="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.assembler.base" optionId="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.assembler.flags" value="-c -x assembler-with-cpp -mfloat-abi=softfp -mfpu=fpv4-sp-d16 "/>
+</project>

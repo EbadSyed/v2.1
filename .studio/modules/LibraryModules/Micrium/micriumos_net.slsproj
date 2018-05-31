@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project id="com.silabs.sdk.exx32.external.micriumos_net" label="Micrium OS Net" contentRoot="$(sdkInstallationPath:default())/util/micrium">
+  <property key="category" value="efm32|Middleware"/>
+  <includePath uri="Micrium_OS" />
+
+  <folder name="Micrium_OS/rtos/net" uri="Micrium_OS/rtos/net" />
+
+  <!-- Ethernet MAC and PHY driver -->
+  <file name="Micrium_OS/rtos/drivers/net/source/net_drv_ether_gem.c" uri="Micrium_OS/rtos/drivers/net/source/net_drv_ether_gem.c" />
+  <file name="Micrium_OS/rtos/drivers/net/source/net_drv_phy_generic.c" uri="Micrium_OS/rtos/drivers/net/source/net_drv_phy_generic.c" />
+
+</project>

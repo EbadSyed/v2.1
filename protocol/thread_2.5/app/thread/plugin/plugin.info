@@ -1,0 +1,1323 @@
+pluginDirectory=.
+
+# Stack-related libraries.
+
+plugin(host-network-management) {
+  name=Host Network Management
+  description=host-network-management
+  category=Stack
+  quality=production
+  root=$FRAMEWORK/../..
+
+  architecture=unix
+
+  # TODO: thread-debug should be removed.  See EMIPSTACK-356.
+  providedApis=buffer-management,buffer-queue,coap-diagnostic,coap,event-queue,event,host-network-management,icmp,management-client,network-management,stack,thread-debug,tmsp,udp
+  api.buffer-management.header=stack/framework/buffer-management.h
+  api.buffer-queue.header=stack/framework/buffer-queue.h
+  api.coap.header=stack/include/coap.h
+  api.event-queue.header=stack/framework/event-queue.h
+  api.event.header=stack/include/event.h
+  api.icmp.header=stack/include/icmp.h
+  api.management-client.header=stack/ip/host/management-client.h
+  api.network-management.header=stack/include/network-management.h
+  api.stack.header=stack/include/ember.h
+  api.tmsp.header=app/tmsp/tmsp-enum.h
+  api.udp.header=stack/include/udp.h
+
+  requiredApis=command-interpreter2
+
+  app/coap/coap-host.c
+  app/coap/coap.c
+  app/ip-ncp/binary-management.c
+  app/ip-ncp/host-stream.c
+  app/tmsp/tmsp-frame-utilities.c
+  app/tmsp/tmsp-host-utilities.c
+  app/tmsp/tmsp-host.c
+  app/util/serial/command-interpreter2-binary.c
+  stack/config/ember-ip-configuration.c
+  stack/core/log.c
+  stack/framework/buffer-management.c
+  stack/framework/buffer-queue.c
+  stack/framework/byte-utilities.c
+  stack/framework/event-control.c
+  stack/framework/event-queue.c
+  stack/ip/host/host-address-table.c
+  stack/ip/host/host-app-utilities.c
+  stack/ip/host/host-listener-table.c
+  stack/ip/host/management-client.c
+  stack/ip/host/unix-icmp-wrapper.c
+  stack/ip/host/unix-ip-utilities.c
+  stack/ip/host/unix-listeners.c
+  stack/ip/host/unix-udp-wrapper.c
+  stack/ip/ip-address.c
+  stack/ip/tls/mbedtls/mbedtls-host-stubs.c
+  stack/ip/tls/native-test-util.c
+  stack/ip/tls/psk-table.c
+  stack/ip/tls/tls-sha256.c
+
+  implementedCallbacks=emberHostStateHandler
+
+  options=securityToHost
+
+  securityToHost.name=Host handles security
+  securityToHost.description=Indicates whether the host handles security.
+  securityToHost.type=BOOLEAN
+  securityToHost.default=FALSE
+  securityToHost.define=EMBER_APPLICATION_HAS_SECURITY_TO_HOST
+
+  setup(commandLineConfiguration) {
+    exit, exitCommand
+  }
+
+  setup(bookkeeping) {
+    init=emCoapInitialize
+    main=parseManagementArguments
+  }
+
+  setup(macros) {
+    -DEMBER_APPLICATION_HAS_GET_VERSIONS
+  }
+}
+
+plugin(mbedtls-library) {
+  name=mbed TLS Cryptographic Library
+  description=This library includes the cryptographic algorithms to support J-PAKE.  SSL/DTLS capabilities are not included.
+  category=Stack
+  quality=production
+  root=$MBEDTLS
+
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+
+  providedApis=mbedtls
+
+  files(mbedtls-crypto-interface) {
+    $FRAMEWORK/../../stack/ip/tls/jpake-ecc-mbedtls.c
+    $FRAMEWORK/../../stack/ip/tls/ecdh-ecc-mbedtls.c
+    $FRAMEWORK/../../stack/ip/tls/ecc-mbedtls-util.c
+  }
+
+  files(mbedtls-crypto-support) {
+    library/asn1parse.c
+    library/asn1write.c
+    library/bignum.c
+    library/ecdh.c
+    library/ecdsa.c
+    library/ecjpake.c
+    library/ecp.c
+    library/ecp_curves.c
+    library/md.c
+    library/md_wrap.c
+    library/sha256.c
+  }
+
+  files(mbedtls-hardware-crypto-ecjpake) {
+    sl_crypto/src/crypto_ecp.c
+    sl_crypto/src/crypto_management.c
+    sl_crypto/src/crypto_sha.c
+  }
+
+  precompiled(efr32) {
+    file=$FRAMEWORK/../../build/mbedtls-library-cortexm3-$--toolchainName--$-$--chipFamily;L--$-rail/mbedtls-library.a
+    $mbedtls-crypto-interface
+    $mbedtls-crypto-support
+    $mbedtls-hardware-crypto-ecjpake
+  }
+
+  precompiled(em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598) {
+    file=$FRAMEWORK/../../build/mbedtls-library-cortexm3-iar-$--partNumber;L--$-em3xx/mbedtls-library.a
+    $mbedtls-crypto-interface
+    $mbedtls-crypto-support
+  }
+
+  precompiled(simulation) {
+    file=$FRAMEWORK/../../build/mbedtls-library-unix-gcc-simulation-simulation/mbedtls-library.a
+    $mbedtls-crypto-interface
+    $mbedtls-crypto-support
+  }
+}
+
+plugin(mbedtls-dotdot-library) {
+  name=mbed TLS Library
+  description=This library includes the cryptographic algorithms to support J-PAKE, SSL/DTLS capabilities, and X.509 certificate support.
+  category=Stack
+  quality=production
+  root=$MBEDTLS
+
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation,unix
+
+  providedApis=dtls,mbedtls-custom
+  requiredApis=dtls-auth-params
+
+  files(mbedtls-interface) {
+    $FRAMEWORK/../../stack/ip/tls/mbedtls/mbedtls.c
+    $FRAMEWORK/../../stack/ip/tls/mbedtls/mbedtls-client.c
+    $FRAMEWORK/../../stack/ip/tls/mbedtls/mbedtls-net.c
+    $FRAMEWORK/../../stack/ip/tls/mbedtls/mbedtls-server.c
+    $FRAMEWORK/../../stack/ip/tls/mbedtls/mbedtls-stack.c
+  }
+
+  files(mbedtls-support) {
+    library/aes.c
+    library/aesni.c
+    library/arc4.c
+    library/asn1parse.c
+    library/asn1write.c
+    library/base64.c
+    library/bignum.c
+    library/blowfish.c
+    library/camellia.c
+    library/ccm.c
+    library/certs.c
+    library/cipher.c
+    library/cipher_wrap.c
+    library/ctr_drbg.c
+    library/debug.c
+    library/des.c
+    library/dhm.c
+    library/ecdh.c
+    library/ecdsa.c
+    library/ecjpake.c
+    library/ecp.c
+    library/ecp_curves.c
+    library/entropy.c
+    library/entropy_poll.c
+    library/error.c
+    library/gcm.c
+    library/havege.c
+    library/hmac_drbg.c
+    library/md.c
+    library/md2.c
+    library/md4.c
+    library/md5.c
+    library/md_wrap.c
+    library/memory_buffer_alloc.c
+    library/net_sockets.c
+    library/oid.c
+    library/padlock.c
+    library/pem.c
+    library/pk.c
+    library/pk_wrap.c
+    library/pkcs11.c
+    library/pkcs12.c
+    library/pkcs5.c
+    library/pkparse.c
+    library/pkwrite.c
+    library/ripemd160.c
+    library/rsa.c
+    library/sha1.c
+    library/sha256.c
+    library/sha512.c
+    library/ssl_cache.c
+    library/ssl_ciphersuites.c
+    library/ssl_cli.c
+    library/ssl_cookie.c
+    library/ssl_srv.c
+    library/ssl_ticket.c
+    library/ssl_tls.c
+    library/threading.c
+    library/timing.c
+    library/version.c
+    library/version_features.c
+    library/x509.c
+    library/x509_create.c
+    library/x509_crl.c
+    library/x509_crt.c
+    library/x509_csr.c
+    library/x509write_crt.c
+    library/x509write_csr.c
+    library/xtea.c
+  }
+
+  files(mbedtls-hardware-crypto) {
+    sl_crypto/src/crypto_aes.c
+    sl_crypto/src/crypto_ecp.c
+    sl_crypto/src/crypto_management.c
+    sl_crypto/src/crypto_sha.c
+    sl_crypto/src/trng.c
+  }
+
+  precompiled(efr32) {
+    file=$FRAMEWORK/../../build/mbedtls-dotdot-library-cortexm3-$--toolchainName--$-$--chipFamily;L--$-rail/mbedtls-dotdot-library.a
+    $mbedtls-interface
+    $mbedtls-support
+    $mbedtls-hardware-crypto
+  }
+
+  precompiled(em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598) {
+    file=$FRAMEWORK/../../build/mbedtls-dotdot-library-cortexm3-iar-$--partNumber;L--$-em3xx/mbedtls-dotdot-library.a
+    $mbedtls-interface
+    $mbedtls-support
+  }
+
+  precompiled(simulation) {
+    file=$FRAMEWORK/../../build/mbedtls-dotdot-library-unix-gcc-simulation-simulation/mbedtls-dotdot-library.a
+    $mbedtls-interface
+    $mbedtls-support
+  }
+
+  setup(additionalFiles) {
+    PATH(ABSOLUTE):$MBEDTLS/include
+  }
+
+  setup(macros) {
+    -DMBEDTLS_CONFIG_FILE="stack/ip/tls/mbedtls/config.h"
+    -DEMBER_MBEDTLS_STACK
+  }
+}
+
+plugin(mbedtls-custom-library) {
+  name=mbed TLS Custom Library
+  description=This library includes the cryptographic algorithms to support J-PAKE, and SSL/DTLS support to minimally meet Thread stack requirements.
+  category=Stack
+  quality=production
+  root=$MBEDTLS
+
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation,unix
+
+  providedApis=dtls,mbedtls-custom
+  requiredApis=dtls-auth-params
+
+  files(mbedtls-interface) {
+    $FRAMEWORK/../../stack/ip/tls/mbedtls/mbedtls.c
+    $FRAMEWORK/../../stack/ip/tls/mbedtls/mbedtls-client.c
+    $FRAMEWORK/../../stack/ip/tls/mbedtls/mbedtls-net.c
+    $FRAMEWORK/../../stack/ip/tls/mbedtls/mbedtls-server.c
+    $FRAMEWORK/../../stack/ip/tls/mbedtls/mbedtls-stack.c
+  }
+
+  files(mbedtls-support) {
+    library/aes.c
+    library/aesni.c
+    library/arc4.c
+    library/asn1parse.c
+    library/asn1write.c
+    library/base64.c
+    library/bignum.c
+    library/blowfish.c
+    library/camellia.c
+    library/ccm.c
+    library/certs.c
+    library/cipher.c
+    library/cipher_wrap.c
+    library/ctr_drbg.c
+    library/debug.c
+    library/des.c
+    library/dhm.c
+    library/ecdh.c
+    library/ecdsa.c
+    library/ecjpake.c
+    library/ecp.c
+    library/ecp_curves.c
+    library/entropy.c
+    library/entropy_poll.c
+    library/error.c
+    library/gcm.c
+    library/havege.c
+    library/hmac_drbg.c
+    library/md.c
+    library/md2.c
+    library/md4.c
+    library/md5.c
+    library/md_wrap.c
+    library/memory_buffer_alloc.c
+    library/net_sockets.c
+    library/oid.c
+    library/padlock.c
+    library/pem.c
+    library/pk.c
+    library/pk_wrap.c
+    library/pkcs11.c
+    library/pkcs12.c
+    library/pkcs5.c
+    library/pkparse.c
+    library/pkwrite.c
+    library/ripemd160.c
+    library/rsa.c
+    library/sha1.c
+    library/sha256.c
+    library/sha512.c
+    library/ssl_cache.c
+    library/ssl_ciphersuites.c
+    library/ssl_cli.c
+    library/ssl_cookie.c
+    library/ssl_srv.c
+    library/ssl_ticket.c
+    library/ssl_tls.c
+    library/threading.c
+    library/timing.c
+    library/version.c
+    library/version_features.c
+    library/x509.c
+    library/x509_create.c
+    library/x509_crl.c
+    library/x509_crt.c
+    library/x509_csr.c
+    library/x509write_crt.c
+    library/x509write_csr.c
+    library/xtea.c
+  }
+
+  files(mbedtls-hardware-crypto) {
+    sl_crypto/src/crypto_aes.c
+    sl_crypto/src/crypto_ecp.c
+    sl_crypto/src/crypto_management.c
+    sl_crypto/src/crypto_sha.c
+    sl_crypto/src/trng.c
+  }
+
+  $mbedtls-interface
+  $mbedtls-support
+  $mbedtls-hardware-crypto                   (efr32)
+
+  setup(additionalFiles) {
+    PATH(ABSOLUTE):$MBEDTLS/include
+    PATH(ABSOLUTE):$MBEDTLS/sl_crypto/include
+  }
+
+  options=configPath
+
+  configPath.name=mbed TLS configuration header
+  configPath.description=Path to mbed TLS configuration header
+  configPath.type=FILE
+  configPath.default=PATH(FRAMEWORK_RELATIVE):../../stack/ip/tls/mbedtls/config.h
+  configPath.macro=-DMBEDTLS_CONFIG_FILE
+
+  conditions=validConfigPath
+
+  validConfigPath.expression=!configPath.equals("")
+  validConfigPath.message="Users must specify a configuration header for the mbed TLS Library."
+
+  setup(macros) {
+    -DEMBER_MBEDTLS_STACK
+  }
+}
+
+plugin(dhcp-library) {
+  name=DHCP Library
+  description=This library includes DHCP functionality.
+  category=Stack
+  quality=production
+  root=$FRAMEWORK/../..
+
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+
+  providedApis=dhcp
+
+  files(dhcp-library-common) {
+    stack/ip/dhcp-address-table.c
+    stack/ip/dhcp-client.c
+    stack/ip/dhcp-server.c
+    stack/ip/dhcp.c
+  }
+
+  $dhcp-library-common
+
+  precompiled(efr32) {
+    file=build/dhcp-library-cortexm3-$--toolchainName--$-$--chipFamily;L--$-rail/dhcp-library.a
+    $dhcp-library-common
+  }
+
+  precompiled(em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598) {
+    file=build/dhcp-library-cortexm3-iar-$--partNumber;L--$-em3xx/dhcp-library.a
+    $dhcp-library-common
+  }
+
+  precompiled(simulation) {
+    file=build/dhcp-library-unix-gcc-simulation-simulation/dhcp-library.a
+    $dhcp-library-common
+  }
+}
+
+plugin(dhcp-stub-library) {
+  name=DHCP Stub Library
+  description=Stub library for DHCP.
+  category=Stack
+  quality=production
+  root=$FRAMEWORK/../..
+
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+
+  providedApis=dhcp
+
+  files(dhcp-stub-library-common) {
+    stack/ip/dhcp-stub.c
+  }
+
+  $dhcp-stub-library-common
+
+  precompiled(efr32) {
+    file=build/dhcp-stub-library-cortexm3-$--toolchainName--$-$--chipFamily;L--$-rail/dhcp-stub-library.a
+    $dhcp-stub-library-common
+  }
+
+  precompiled(em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598) {
+    file=build/dhcp-stub-library-cortexm3-iar-$--partNumber;L--$-em3xx/dhcp-stub-library.a
+    $dhcp-stub-library-common
+  }
+
+  precompiled(simulation) {
+    file=build/dhcp-stub-library-unix-gcc-simulation-simulation/dhcp-stub-library.a
+    $dhcp-stub-library-common
+  }
+}
+
+plugin(mfglib-library) {
+  name=Manufacturing Library
+  description=This library provides support for various manufacturing test APIs.
+  category=Stack
+  quality=production
+  root=$HAL/../phy
+
+  providedApis=host-mfglib,mfglib
+  api.host-mfglib.header=$FRAMEWORK/../../stack/include/mfglib.h
+  api.host-mfglib.condition=conf.architectureMatches("unix")
+  api.mfglib.header=$FRAMEWORK/../../stack/include/mfglib.h
+
+  requiredApis=hal,tmsp
+  api.tmsp.condition=conf.architectureMatches("unix")
+
+  files(mfglib-library-common) {
+    mfglib.c
+  }
+
+  $mfglib-library-common                       (efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation)
+
+  $FRAMEWORK/../../stack/ip/host/host-mfglib.c (unix)
+
+  precompiled(efr32) {
+    file=$FRAMEWORK/../../build/mfglib-library-cortexm3-$--toolchainName--$-$--chipFamily;L--$-rail/mfglib-library.a
+    $mfglib-library-common
+  }
+
+  precompiled(em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598) {
+    file=$FRAMEWORK/../../build/mfglib-library-cortexm3-iar-$--partNumber;L--$-em3xx/mfglib-library.a
+    $mfglib-library-common
+  }
+
+  precompiled(simulation) {
+    file=$FRAMEWORK/../../build/mfglib-library-unix-gcc-simulation-simulation/mfglib-library.a
+    $mfglib-library-common
+  }
+
+  setup(macros) {
+    -DMFGLIB
+  }
+}
+
+plugin(mfglib-stub-library) {
+  name=Manufacturing Stub Library
+  description=Stub implementation of the manufacturing library.
+  category=Stack
+  quality=stub
+  root=$HAL../phy
+
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+
+  providedApis=mfglib
+  api.mfglib.header=$FRAMEWORK/../../stack/include/mfglib.h
+
+  files(mfglib-stub-library-common) {
+    mfglib-stub.c
+  }
+
+  $mfglib-stub-library-common
+
+  precompiled(efr32) {
+    file=$FRAMEWORK/../../build/mfglib-stub-library-cortexm3-$--toolchainName--$-$--chipFamily;L--$-rail/mfglib-stub-library.a
+    $mfglib-stub-library-common
+  }
+
+  precompiled(em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598) {
+    file=$FRAMEWORK/../../build/mfglib-stub-library-cortexm3-iar-$--partNumber;L--$-em3xx/mfglib-stub-library.a
+    $mfglib-stub-library-common
+  }
+
+  precompiled(simulation) {
+    file=$FRAMEWORK/../../build/mfglib-stub-library-unix-gcc-simulation-simulation/mfglib-stub-library.a
+    $mfglib-stub-library-common
+  }
+}
+
+plugin(thread-stack) {
+  name=Thread Stack Library with Silicon Labs TLS support
+  description=This provides the Thread networking layer, with support for mbed TLS crypto, and SSL/DTLS done via Silicon Labs TLS code..
+  category=Stack
+  quality=production
+  root=$FRAMEWORK/../..
+
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+
+  # TODO: thread-debug should be removed.  See EMIPSTACK-356.
+  providedApis=buffer-management,buffer-queue,child,coap-diagnostic,coap,dispatch,dtls,event-queue,event,icmp,network-management,stack-info,stack,tcp,thread-debug,udp-peer,udp,virtual-uart
+  api.buffer-management.header=stack/framework/buffer-management.h
+  api.buffer-queue.header=stack/framework/buffer-queue.h
+  api.child.header=stack/include/child.h
+  api.coap-diagnostic.header=stack/include/coap-diagnostic.h
+  api.coap.header=stack/include/coap.h
+  api.event-queue.header=stack/framework/event-queue.h
+  api.event.header=stack/include/event.h
+  api.icmp.header=stack/include/icmp.h
+  api.network-management.header=stack/include/network-management.h
+  api.stack-info.header=stack/include/stack-info.h
+  api.stack.header=stack/include/ember.h
+  api.tcp.header=stack/include/tcp.h
+  api.udp-peer.header=stack/include/udp-peer.h
+  api.udp.header=stack/include/udp.h
+
+  requiredApis=antenna,debug-channel,dtls-auth-params,hal,mbedtls,dhcp,rail-library,system-timer,token
+
+  files(thread-stack-common) {
+    $HAL/../phy/child-table.c
+    $HAL/../phy/phy-util.c
+    $HAL/../phy/plugin/duty-cycle/duty-cycle-stub.c
+    app/coap/coap-stack.c
+    app/coap/coap.c
+    stack/core/ip-stack.c
+    stack/core/log.c
+    stack/framework/buffer-malloc.c
+    stack/framework/buffer-management.c
+    stack/framework/buffer-queue.c
+    stack/framework/byte-utilities.c
+    stack/framework/debug.c
+    stack/framework/eui64.c
+    stack/framework/event-control.c
+    stack/framework/event-queue.c
+    stack/framework/ip-packet-header.c
+    stack/ip/6lowpan-header.c
+    stack/ip/address-cache.c
+    stack/ip/address-management.c
+    stack/ip/association.c
+    stack/ip/coap-diagnostic-stack.c
+    stack/ip/commission-dataset.c
+    stack/ip/commission.c
+    stack/ip/connection.c
+    stack/ip/context-table.c
+    stack/ip/dispatch.c
+    stack/ip/distributed-key-management.c
+    stack/ip/fragment.c
+    stack/ip/global-prefix.c
+    stack/ip/icmp-simple.c
+    stack/ip/icmp.c
+    stack/ip/ip-address.c
+    stack/ip/ip-header.c
+    stack/ip/jit.c
+    stack/ip/local-server-data.c
+    stack/ip/mle.c
+    stack/ip/multicast.c
+    stack/ip/network-data.c
+    stack/ip/network-fragmentation.c
+    stack/ip/rip-neighbor.c
+    stack/ip/rip.c
+    stack/ip/router-selection.c
+    stack/ip/tcp-stub.c
+    stack/ip/thread-key-stretch.c
+    stack/ip/tls/certificate.c
+    stack/ip/tls/dtls-join.c
+    stack/ip/tls/dtls.c
+    stack/ip/tls/psk-table.c
+    stack/ip/tls/tls-api.c
+    stack/ip/tls/tls-ccm-record.c
+    stack/ip/tls/tls-debug.c
+    stack/ip/tls/tls-ecc.c
+    stack/ip/tls/tls-handshake-crypto.c
+    stack/ip/tls/tls-handshake.c
+    stack/ip/tls/tls-jpake.c
+    stack/ip/tls/tls-public-key.c
+    stack/ip/tls/tls-record-util.c
+    stack/ip/tls/tls-session-state.c
+    stack/ip/tls/tls-sha256.c
+    stack/ip/transport-header.c
+    stack/ip/udp-simple.c
+    stack/ip/udp.c
+    stack/ip/zigbee/child-aging.c
+    stack/ip/zigbee/child-data.c
+    stack/ip/zigbee/join.c
+    stack/mac/802.15.4/802-15-4-ccm.c
+    stack/mac/802.15.4/command.c
+    stack/mac/802.15.4/ip-mac-header.c
+    stack/mac/802.15.4/ip-mac-receive.c
+    stack/mac/802.15.4/mac-arbiter.c
+    stack/mac/802.15.4/mac-header-util.c
+    stack/mac/802.15.4/mac-indirect.c
+    stack/mac/802.15.4/mac-phy.c
+    stack/mac/802.15.4/mac.c
+    stack/mac/802.15.4/scan.c
+    stack/mac/802.15.4/wakeup-stubs.c
+    stack/routing/util/retry.c
+    stack/routing/util/unicast-table.c
+  }
+
+  files(thread-stack-efr32) {
+    $EMLIB/src/em_crypto.c
+    $HAL/../phy/pro2class/phy-config-MHz.c
+    $HAL/../phy/pro2class/radio_config_em3xxx_2.4GHz.c
+    $HAL/../phy/pro2class/radio_config_Si4468_863MHz.c
+    $HAL/../phy/pro2class/radio_config_Si4468_915MHz.c
+    $HAL/../phy/rail/phy.c
+    $HAL/../phy/rail/symbol-timer.c
+    stack/platform/micro/cortexm3/efm32/aes.c
+  }
+
+  files(thread-stack-em3xx) {
+    $HAL/../phy/em250class/analogue-cell-bias.c
+    $HAL/../phy/em250class/analogue-filter.c
+    $HAL/../phy/em250class/analogue-lna.c
+    $HAL/../phy/em250class/analogue-mod-dac.c
+    $HAL/../phy/em250class/analogue-vco.c
+    $HAL/../phy/em250class/analogue.c
+    $HAL/../phy/em250class/phy-common.c
+    $HAL/../phy/em250class/symbol-timer.c
+    $HAL/../phy/em3xx/phy.c
+    stack/platform/micro/cortexm3/aes.c
+    stack/platform/micro/generic/cal-pads.c
+  }
+
+  files(thread-stack-simulation) {
+    $HAL/../phy/em250/hardware-mac-sim.c
+    $HAL/../phy/em250/phy.c
+    $HAL/../phy/em250class/phy-common-stub.c
+    stack/core/parcel.c
+    stack/platform/micro/generic/aes.c
+  }
+
+  $thread-stack-common
+  $thread-stack-efr32                   (efr32)
+  $thread-stack-em3xx                   (em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598))
+  $thread-stack-simulation              (simulation)
+
+  $HAL/plugin/debug/rtt/SEGGER_RTT.c    (efr32)
+  stack/config/ember-ip-configuration.c
+
+  precompiled(efr32) {
+    file=build/thread-stack-cortexm3-$--toolchainName--$-$--chipFamily;L--$-rail/thread-stack.a
+    $thread-stack-common
+    $thread-stack-efr32
+  }
+
+  precompiled(em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598) {
+    file=build/thread-stack-cortexm3-iar-$--partNumber;L--$-em3xx/thread-stack.a
+    $thread-stack-common
+    $thread-stack-em3xx
+  }
+
+  precompiled(simulation) {
+    file=build/thread-stack-unix-gcc-simulation-simulation/thread-stack.a
+    $thread-stack-common
+    $thread-stack-simulation
+  }
+
+  setup(macros) {
+    -DHAVE_TLS_JPAKE
+    -DHAVE_TLS_PSK
+    -DHAVE_TLS_ECDHE_ECDSA
+    -DDEBUG_LEVEL=FULL_DEBUG
+  }
+}
+
+plugin(thread-mbedtls-stack) {
+  name=Thread Stack Library with mbed TLS support
+  description=This provides the Thread networking layer, with support for using mbed TLS for both crypto and SSL/DTLS.
+  category=Stack
+  quality=production
+  root=$FRAMEWORK/../..
+
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+
+  # TODO: thread-debug should be removed.  See EMIPSTACK-356.
+  providedApis=buffer-management,buffer-queue,child,coap-diagnostic,coap,dispatch,event-queue,event,icmp,network-management,stack-info,stack,tcp,thread-debug,udp-peer,udp,virtual-uart
+  api.buffer-management.header=stack/framework/buffer-management.h
+  api.buffer-queue.header=stack/framework/buffer-queue.h
+  api.child.header=stack/include/child.h
+  api.coap-diagnostic.header=stack/include/coap-diagnostic.h
+  api.coap.header=stack/include/coap.h
+  api.event-queue.header=stack/framework/event-queue.h
+  api.event.header=stack/include/event.h
+  api.icmp.header=stack/include/icmp.h
+  api.network-management.header=stack/include/network-management.h
+  api.stack-info.header=stack/include/stack-info.h
+  api.stack.header=stack/include/ember.h
+  api.tcp.header=stack/include/tcp.h
+  api.udp-peer.header=stack/include/udp-peer.h
+  api.udp.header=stack/include/udp.h
+
+  requiredApis=antenna,debug-channel,hal,mbedtls-custom,dhcp,rail-library,system-timer,token
+
+  files(thread-mbedtls-stack-common) {
+    $HAL/../phy/child-table.c
+    $HAL/../phy/phy-util.c
+    $HAL/../phy/plugin/duty-cycle/duty-cycle-stub.c
+    app/coap/coap-stack.c
+    app/coap/coap.c
+    stack/core/ip-stack.c
+    stack/core/log.c
+    stack/framework/buffer-malloc.c
+    stack/framework/buffer-management.c
+    stack/framework/buffer-queue.c
+    stack/framework/byte-utilities.c
+    stack/framework/debug.c
+    stack/framework/eui64.c
+    stack/framework/event-control.c
+    stack/framework/event-queue.c
+    stack/framework/ip-packet-header.c
+    stack/ip/6lowpan-header.c
+    stack/ip/address-cache.c
+    stack/ip/address-management.c
+    stack/ip/association.c
+    stack/ip/coap-diagnostic-stack.c
+    stack/ip/commission-dataset.c
+    stack/ip/commission.c
+    stack/ip/connection.c
+    stack/ip/context-table.c
+    stack/ip/dispatch.c
+    stack/ip/distributed-key-management.c
+    stack/ip/fragment.c
+    stack/ip/global-prefix.c
+    stack/ip/icmp-simple.c
+    stack/ip/icmp.c
+    stack/ip/ip-address.c
+    stack/ip/ip-header.c
+    stack/ip/jit.c
+    stack/ip/local-server-data.c
+    stack/ip/mle.c
+    stack/ip/multicast.c
+    stack/ip/network-data.c
+    stack/ip/network-fragmentation.c
+    stack/ip/rip-neighbor.c
+    stack/ip/rip.c
+    stack/ip/router-selection.c
+    stack/ip/tcp-stub.c
+    stack/ip/thread-key-stretch.c
+    stack/ip/tls/dtls-join.c
+    stack/ip/tls/dtls-stub.c
+    stack/ip/tls/psk-only-stubs.c
+    stack/ip/tls/tls-debug.c
+    stack/ip/tls/tls-jpake.c
+    stack/ip/tls/tls-record-stubs.c
+    stack/ip/tls/tls-sha256.c
+    stack/ip/transport-header.c
+    stack/ip/udp-simple.c
+    stack/ip/udp.c
+    stack/ip/zigbee/child-aging.c
+    stack/ip/zigbee/child-data.c
+    stack/ip/zigbee/join.c
+    stack/mac/802.15.4/802-15-4-ccm.c
+    stack/mac/802.15.4/command.c
+    stack/mac/802.15.4/ip-mac-header.c
+    stack/mac/802.15.4/ip-mac-receive.c
+    stack/mac/802.15.4/mac-arbiter.c
+    stack/mac/802.15.4/mac-header-util.c
+    stack/mac/802.15.4/mac-indirect.c
+    stack/mac/802.15.4/mac-phy.c
+    stack/mac/802.15.4/mac.c
+    stack/mac/802.15.4/scan.c
+    stack/mac/802.15.4/wakeup-stubs.c
+    stack/routing/util/retry.c
+    stack/routing/util/unicast-table.c
+  }
+
+  files(thread-mbedtls-stack-efr32) {
+    $EMLIB/src/em_crypto.c
+    $HAL/../phy/pro2class/phy-config-MHz.c
+    $HAL/../phy/pro2class/radio_config_em3xxx_2.4GHz.c
+    $HAL/../phy/pro2class/radio_config_Si4468_863MHz.c
+    $HAL/../phy/pro2class/radio_config_Si4468_915MHz.c
+    $HAL/../phy/rail/phy.c
+    $HAL/../phy/rail/symbol-timer.c
+    stack/platform/micro/cortexm3/efm32/aes.c
+  }
+
+  files(thread-mbedtls-stack-em3xx) {
+    $HAL/../phy/em250class/analogue-cell-bias.c
+    $HAL/../phy/em250class/analogue-filter.c
+    $HAL/../phy/em250class/analogue-lna.c
+    $HAL/../phy/em250class/analogue-mod-dac.c
+    $HAL/../phy/em250class/analogue-vco.c
+    $HAL/../phy/em250class/analogue.c
+    $HAL/../phy/em250class/phy-common.c
+    $HAL/../phy/em250class/symbol-timer.c
+    $HAL/../phy/em3xx/phy.c
+    stack/platform/micro/cortexm3/aes.c
+    stack/platform/micro/generic/cal-pads.c
+  }
+
+  files(thread-mbedtls-stack-simulation) {
+    $HAL/../phy/em250/hardware-mac-sim.c
+    $HAL/../phy/em250/phy.c
+    $HAL/../phy/em250class/phy-common-stub.c
+    stack/core/parcel.c
+    stack/platform/micro/generic/aes.c
+  }
+
+  $thread-mbedtls-stack-common
+  $thread-mbedtls-stack-efr32                   (efr32)
+  $thread-mbedtls-stack-em3xx                   (em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598))
+  $thread-mbedtls-stack-simulation              (simulation)
+
+  $HAL/plugin/debug/rtt/SEGGER_RTT.c    (efr32)
+  stack/config/ember-ip-configuration.c
+
+  precompiled(efr32) {
+    file=build/thread-mbedtls-stack-cortexm3-$--toolchainName--$-$--chipFamily;L--$-rail/thread-mbedtls-stack.a
+    $thread-mbedtls-stack-common
+    $thread-mbedtls-stack-efr32
+  }
+
+  precompiled(em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598) {
+    file=build/thread-mbedtls-stack-cortexm3-iar-$--partNumber;L--$-em3xx/thread-mbedtls-stack.a
+    $thread-mbedtls-stack-common
+    $thread-mbedtls-stack-em3xx
+  }
+
+  precompiled(simulation) {
+    file=build/thread-mbedtls-stack-unix-gcc-simulation-simulation/thread-mbedtls-stack.a
+    $thread-mbedtls-stack-common
+    $thread-mbedtls-stack-simulation
+  }
+
+  setup(macros) {
+    -DHAVE_TLS_JPAKE
+    -DHAVE_TLS_ECDHE_ECDSA
+    -DDEBUG_LEVEL=FULL_DEBUG
+    -DEMBER_MBEDTLS_STACK
+  }
+}
+
+# I/O plugins.
+
+plugin(command-interpreter2) {
+  name=Command Interpreter
+  description=Processes commands coming from the serial port.
+  category=I/O
+  quality=production
+  root=$FRAMEWORK/../util/serial
+
+  providedApis=command-interpreter2
+  api.command-interpreter2.header=command-interpreter2.h
+
+  requiredApis=printf,serial
+
+  command-interpreter2-error.c
+  command-interpreter2-util.c
+  command-interpreter2.c
+
+  setup(bookkeeping) {
+    init=emberCommandReaderInit
+  }
+
+  setup(commandLineConfiguration) {
+    help, emberPrintCommandTable
+  }
+}
+
+plugin(serial) {
+  name=Serial
+  description=High-level serial communication functions.
+  category=I/O
+  quality=production
+  root=$FRAMEWORK/../util/serial
+
+  providedApis=printf,serial
+  providedApis.serial.header=$HAL/plugin/serial/serial.h
+
+  requiredApis=hal,system-timer
+
+  setup(hwConfig) {
+    dependentHwConfModules=SERIAL,USART0,USART1,USART2,USART3,USART4,USART5,LEUART0,LEUART1
+  }
+
+  $HAL/plugin/serial/ember-printf.c       (efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation)
+  $HAL/plugin/serial/serial.c             (efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation)
+  simple-linux-serial.c                   (unix)
+
+  setup(bookkeeping) {
+    tick=emberSerialBufferTick
+  }
+}
+
+# NCP plugins.
+
+plugin(ncp-library) {
+  name=NCP Library
+  description=This library provides the functionality for an NCP application to communicate with a host.
+  category=Stack
+  quality=production
+  root=$FRAMEWORK/../..
+
+  architecture=efr32,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+
+  providedApis=main,printf,serial
+  api.serial.header=$HAL/plugin/serial/serial.h
+
+  requiredApis=command-interpreter2,event,hal,mfglib,system-timer
+
+  setup(hwConfig) {
+    dependentHwConfModules=SERIAL
+  }
+
+  files(ncp-library-common) {
+    app/ip-ncp/ip-modem-app.c
+    app/ip-ncp/ip-modem-link.c
+    app/ip-ncp/ncp-deep-sleep.c
+    app/ip-ncp/ncp-emapi.c
+    app/ip-ncp/ncp-events.c
+    app/ip-ncp/ncp-mfglib.c
+    app/ip-ncp/serial-link.c
+    app/tmsp/tmsp-ncp-utilities.c
+    app/util/ip/print-utilities.c
+  }
+
+  $ncp-library-common
+
+  $HAL/plugin/serial/ember-printf.c
+  app/ip-ncp/binary-management.c
+  app/ip-ncp/management-serial.c
+  app/tmsp/tmsp-frame-utilities.c
+  app/tmsp/tmsp-ncp.c
+  app/util/serial/command-interpreter2-binary.c
+
+  implementedCallbacks= \
+    emberActiveScanHandler, \
+    emberAddAddressDataReturn, \
+    emberAddressConfigurationChangeHandler, \
+    emberAllocateMemoryForPacketHandler, \
+    emberAllowNativeCommissionerReturn, \
+    emberAssertInfoReturn, \
+    emberAttachToNetworkReturn, \
+    emberBecomeCommissionerReturn, \
+    emberChangeNodeTypeReturn, \
+    emberClearAddressCacheReturn, \
+    emberCoapRequestHandler, \
+    emberCommissionerStatusHandler, \
+    emberCommissionNetworkReturn, \
+    emberConfigUartReturn, \
+    emberConfigureExternalRouteReturn, \
+    emberConfigureGatewayReturn, \
+    emberCounterHandler, \
+    emberCounterValueHandler, \
+    emberDeepSleepCompleteHandler, \
+    emberDeepSleepReturn, \
+    emberDhcpServerChangeHandler, \
+    emberDiagnosticAnswerHandler, \
+    emberEchoReturn, \
+    emberEnergyScanHandler, \
+    emberEventDelayUpdatedFromIsrHandler, \
+    emberExternalRouteChangeHandler, \
+    emberFormNetworkReturn, \
+    emberFreeMemoryForPacketHandler, \
+    emberGetAntennaModeReturn, \
+    emberGetCcaThresholdReturn, \
+    emberGetChannelCalDataTokenReturn, \
+    emberGetCounterReturn, \
+    emberGetCtuneReturn, \
+    emberGetGlobalAddressReturn, \
+    emberGetGlobalPrefixReturn, \
+    emberGetMfgTokenReturn, \
+    emberGetMulticastEntryReturn, \
+    emberGetNetworkDataReturn, \
+    emberGetNetworkDataTlvReturn, \
+    emberGetNetworkKeyInfoReturn, \
+    emberGetNodeStatusReturn, \
+    emberGetPtaEnableReturn, \
+    emberGetPtaOptionsReturn, \
+    emberGetRadioPowerReturn, \
+    emberGetRipEntryReturn, \
+    emberGetRoutingLocatorReturn, \
+    emberGetStandaloneBootloaderInfoReturn, \
+    emberGetTxPowerModeReturn, \
+    emberGetVersionsReturn, \
+    emberHostStateHandler, \
+    emberIncomingIcmpHandler, \
+    emberInitReturn, \
+    emberJoinNetworkReturn, \
+    emberLaunchStandaloneBootloaderReturn, \
+    emberLeaderDataHandler, \
+    emberLookupAddressDataReturn, \
+    emberMacPassthroughFilterHandler, \
+    emberMacPassthroughMessageHandler, \
+    emberMarkApplicationBuffersHandler, \
+    emberNcpUdpStormCompleteHandler, \
+    emberNcpUdpStormReturn, \
+    emberNetworkDataChangeHandler, \
+    emberNetworkStatusHandler, \
+    emberOkToNapReturn, \
+    emberPollForDataReturn, \
+    emberSetPskcHandler, \
+    emberRadioGetRandomNumbersReturn, \
+    emberRequestDhcpAddressReturn, \
+    emberRequestSlaacAddressReturn, \
+    emberResetMicroHandler, \
+    emberResetNcpAshReturn, \
+    emberResetNetworkStateReturn, \
+    emberResignGlobalAddressReturn, \
+    emberResumeNetworkReturn, \
+    emberScanReturn, \
+    emberSendDoneReturn, \
+    emberSendSteeringDataReturn, \
+    emberSetAntennaModeReturn, \
+    emberSetCcaThresholdReturn, \
+    emberSetCommissionerKeyReturn, \
+    emberSetCtuneReturn, \
+    emberSetJoinKeyReturn, \
+    emberSetLocalNetworkDataReturn, \
+    emberSetMfgTokenReturn, \
+    emberSetNdDataReturn, \
+    emberSetPtaEnableReturn, \
+    emberSetPtaOptionsReturn, \
+    emberSetRadioHoldOffReturn, \
+    emberSetRadioPowerReturn, \
+    emberSetSecurityParametersReturn, \
+    emberSetTxPowerModeReturn, \
+    emberSlaacServerChangeHandler, \
+    emberStackPollForDataReturn, \
+    emberStartHostJoinClientHandler, \
+    emberStartUartStormReturn, \
+    emberStateReturn, \
+    emberStopUartStormReturn, \
+    emberSwitchToNextNetworkKeyHandler, \
+    emberSwitchToNextNetworkKeyReturn, \
+    emberUartSpeedTestReturn, \
+    main
+
+  precompiled(efr32) {
+    file=build/ncp-library-cortexm3-$--toolchainName--$-$--chipFamily;L--$-rail/ncp-library.a
+    $ncp-library-common
+  }
+
+  precompiled(em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598) {
+    file=build/ncp-library-cortexm3-iar-$--partNumber;L--$-em3xx/ncp-library.a
+    $ncp-library-common
+  }
+
+  precompiled(simulation) {
+    file=build/ncp-library-unix-gcc-simulation-simulation/ncp-library.a
+    $ncp-library-common
+  }
+
+  setup(bookkeeping) {
+    includes=EMBER_AF_API_STACK
+    provides=main,init,tick
+
+    provides.main=void emberAfMain(MAIN_FUNCTION_PARAMETERS)
+    provides.main.arguments=MAIN_FUNCTION_ARGUMENTS
+    provides.main.0=emberAfMainCallback
+
+    provides.init=void emberAfInit(void)
+    provides.init.0=emberAfInitCallback
+
+    provides.tick=void emberAfTick(void)
+    provides.tick.0=emberAfTickCallback
+  }
+
+  setup(macros) {
+    -DMULTIPLE_COMMAND_INTERPRETERS
+    -DEMBER_APPLICATION_HAS_APP_NAME
+    -DEMBER_MANAGEMENT_SERIAL
+  }
+}
+
+plugin(ncp-spi-link) {
+  name=NCP SPI Link
+  description=SPI functionality for network coprocessors (NCPs).
+  category=HAL
+  quality=production
+  root=$HAL/micro/cortexm3
+
+  architecture=efr32,em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598
+
+  setup(hwConfig) {
+    dependentHwConfModules=SPINCP
+  }
+
+  $FRAMEWORK/../ip-ncp/spi-link-adapter.c
+  spi-protocol2.c                      (em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598)
+}
+
+plugin(ncp-uart-link) {
+  name=NCP UART Link
+  description=UART functionality for network coprocessors (NCPs).
+  category=HAL
+  quality=production
+  root=$HAL/micro/cortexm3
+
+  architecture=efr32,em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+
+  setup(hwConfig) {
+    dependentHwConfModules=UARTNCP
+  }
+
+  uart-link.c       (em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation)
+  uart-sim.c        (simulation)
+
+  options=swFlowControl,xOnXOff
+
+  swFlowControl.name=Use software flow control
+  swFlowControl.description=Use software flow control.
+  swFlowControl.type=BOOLEAN
+  swFlowControl.default=FALSE
+  swFlowControl.define=EMBER_APPLICATION_USES_SOFTWARE_FLOW_CONTROL
+  swflowControl.enabledIf=!conf.architectureMatches("efr32")
+
+  xOnXOff.name=xOnXOff
+  xOnXOff.description=xOnXOff
+  xOnXOff.type=BOOLEAN
+  xOnXOff.default=swFlowControl
+  xOnXOff.hidden=TRUE
+  xOnXOff.define=EMBER_SERIAL1_XONXOFF
+  xOnXOff.override(efr32)=FALSE
+  xOnXOff.enabledIf=!conf.architectureMatches("efr32")
+}
+
+# HAL plugins.
+
+plugin(ash-v3) {
+  name=ASHv3
+  description=ASHv3 Functionality for reliable serial communication.
+  category=HAL
+  quality=production
+  root=$HAL
+
+  architecture=efr32,em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+
+  providedApis=ash-v3
+  api.ash-v3.header=micro/generic/ash-v3.h
+
+  requiredApis=hal
+
+  micro/generic/ash-v3.c
+
+  callbacks=config/ash-v3-callback.info
+}
+
+plugin(ash-v3-stub) {
+  name=ASHv3 Stub
+  description=Stub for ASHv3 for images that don't need it.
+  category=HAL
+  quality=stub
+  root=$HAL
+
+  architecture=efr32,em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+
+  providedApis=ash-v3
+  api.ash-v3.header=micro/generic/ash-v3.h
+
+  micro/generic/ash-v3-stubs.c
+}
+
+plugin(hal-ncp-library) {
+  name=HAL NCP Library
+  description=Common functionality for network coprocessors (NCPs).
+  category=HAL
+  quality=production
+  root=$HAL
+
+  architecture=efr32,em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation
+
+  providedApis=aes,crc,endian,hal,random,system-timer,token-cortexm3,token
+  api.crc.header=micro/crc.h
+  api.endian.header=micro/endian.h
+  api.hal.header=hal.h
+  api.random.header=micro/random.h
+  api.system-timer.header=micro/system-timer.h
+  api.token-cortexm3.header=micro/cortexm3/token.h
+  api.token-cortexm3.condition=conf.architectureMatches("efr32,em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598")
+  api.token.header=micro/token.h
+
+  requiredApis=adc,serial,sim-eeprom
+
+  # TODO: What else is required for EFR32?
+
+  files(hal-library-efr32) {
+    micro/cortexm3/efm32/clocks.c
+    micro/cortexm3/efm32/context-switch-v7m.s79
+    micro/cortexm3/efm32/cstartup-$--toolchainName--$.c
+    micro/cortexm3/efm32/flash.c
+    micro/cortexm3/efm32/micro-common-internal.c
+    micro/cortexm3/efm32/micro-internal.c
+    micro/cortexm3/efm32/register-access.c
+    micro/cortexm3/efm32/system-timer.c
+  }
+
+  files(hal-library-em3xx) {
+    micro/cortexm3/caladc.c
+    micro/cortexm3/clocks.c
+    micro/cortexm3/context-switch.s79
+    micro/cortexm3/em35x/cstartup-iar.c
+    micro/cortexm3/flash.c
+    micro/cortexm3/micro-common-internal.c
+    micro/cortexm3/micro-internal.c
+    micro/cortexm3/spmr.s79
+    micro/cortexm3/system-timer.c
+  }
+
+  files(hal-library-simulation) {
+    micro/generic/aes/rijndael-alg-fst.c
+    micro/generic/aes/rijndael-api-fst.c
+  }
+
+  $hal-library-efr32                                 (efr32)
+  $hal-library-em3xx                                 (em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598)
+  $hal-library-simulation                            (simulation)
+
+  $FRAMEWORK/../../tool/simulator/child/child-main.c (simulation)
+  $FRAMEWORK/../../tool/simulator/child/timer.c      (simulation)
+  $FRAMEWORK/../../tool/simulator/child/uart.c       (simulation)
+  micro/cortexm3/assert-crash-handlers.c             (em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598)
+  micro/cortexm3/cstartup-common.c                   (em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598)
+  micro/cortexm3/efm32/assert-crash-handlers.c       (efr32)
+  micro/cortexm3/efm32/cstartup-common.c             (efr32)
+  micro/cortexm3/efm32/faults-v7m.s79                (efr32)
+  micro/cortexm3/efm32/hal-config.c                  (efr32)
+  micro/cortexm3/efm32/hal-config-gpio.c             (efr32)
+  micro/cortexm3/efm32/isr-stubs.s79                 (efr32)
+  micro/cortexm3/efm32/mfg-token.c                   (efr32)
+  micro/cortexm3/efm32/micro-common.c                (efr32)
+  micro/cortexm3/efm32/micro.c                       (efr32)
+  micro/cortexm3/efm32/mpu.c                         (efr32)
+  micro/cortexm3/efm32/sleep-efm32.c                 (efr32)
+  micro/cortexm3/efm32/token.c                       (efr32)
+  micro/cortexm3/faults.s79                          (em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598)
+  micro/cortexm3/isr-stubs.s79                       (em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598)
+  micro/cortexm3/mfg-token.c                         (em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598)
+  micro/cortexm3/micro-common.c                      (em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598)
+  micro/cortexm3/micro.c                             (em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598)
+  micro/cortexm3/mpu.c                               (em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598)
+  micro/cortexm3/sleep.c                             (em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598)
+  micro/cortexm3/token.c                             (em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598)
+  micro/generic/crc.c                                (efr32,em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598)
+  micro/generic/endian.c                             (efr32,em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598,simulation)
+  micro/generic/mem-util.c                           (efr32,em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598)
+  micro/generic/random.c                             (efr32,em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598)
+  micro/generic/token-def.c                          (efr32,em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598)
+  micro/generic/token-ram.c                          (simulation)
+  micro/unix/simulation/bootloader.c                 (simulation) # TODO: Should this be added by the bootloader setup?
+  micro/unix/simulation/crc-sim.c                    (simulation) # TODO: Can we use micro/generic/crc.c instead?
+  micro/unix/simulation/fake-eeprom.c                (simulation)
+  micro/unix/simulation/micro.c                      (simulation)
+  micro/unix/simulation/random-sim.c                 (simulation)
+  micro/unix/simulation/symbol-timer-sim.c           (simulation)
+  micro/unix/simulation/system-timer-sim.c           (simulation)
+  plugin/coexistence/coexistence-em3xx.c             (em341,em342,em346,em351,em355,em3555,em357,em3581,em3582, em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598)
+
+  # TODO: hal-ncp-library will someday need these callbacks (EMIPSTACK-415).
+  #callbacks=config/hal-callback.info
+
+  precompiled(efr32) {
+    file=$FRAMEWORK/../../build/hal-library-cortexm3-$--toolchainName--$-$--chipFamily;L--$-rail/hal-library.a
+    $hal-library-efr32
+  }
+
+  precompiled(em341,em342,em346,em351,em355,em3555,em357,em3581,em3582,em3585,em3586,em3587,em3588,em3591,em3592,em3595,em3596,em3597,em3598) {
+    file=$FRAMEWORK/../../build/hal-library-cortexm3-iar-$--partNumber;L--$-em3xx/hal-library.a
+    $hal-library-em3xx
+  }
+
+  precompiled(simulation) {
+    file=$FRAMEWORK/../../build/hal-library-unix-gcc-simulation-simulation/hal-library.a
+    $hal-library-simulation
+  }
+
+  setup(macros){
+    -DEMLIB_USER_CONFIG
+  }
+}

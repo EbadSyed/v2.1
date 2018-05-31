@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project id="SDK.HAL.COEX.BLE">
+  <module id="SDK.HAL.GPIOINTERRUPT.BLE"/>
+
+  <libraryFile  toolchainCompatibility="gcc" name="coex"/>
+
+  <libraryFile partCompatibility=".*efr32bg1p.*" toolchainCompatibility="iar" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32BG1P/EABI/libcoex.a" />
+  <libraryPath partCompatibility=".*efr32bg1p.*" toolchainCompatibility="gcc" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32BG1P/GCC/" />
+  <libraryFile partCompatibility=".*efr32mg12p.*" toolchainCompatibility="iar" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32MG12P/EABI/libcoex.a" />
+  <libraryPath partCompatibility=".*efr32mg12p.*" toolchainCompatibility="gcc" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32MG12P/GCC/" />
+  <libraryFile partCompatibility=".*efr32bg12p.*" toolchainCompatibility="iar" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32BG12P/EABI/libcoex.a" />
+  <libraryPath partCompatibility=".*efr32bg12p.*" toolchainCompatibility="gcc" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32BG12P/GCC/" />
+  <libraryFile partCompatibility=".*efr32mg14p.*" toolchainCompatibility="iar" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32MG14P/EABI/libcoex.a" />
+  <libraryPath partCompatibility=".*efr32mg14p.*" toolchainCompatibility="gcc" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32MG14P/GCC/" />
+  <libraryFile partCompatibility=".*efr32bg1v.*" toolchainCompatibility="iar" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32BG1V/EABI/libcoex.a" />
+  <libraryPath partCompatibility=".*efr32bg1v.*" toolchainCompatibility="gcc" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32BG1V/GCC/" />
+  <libraryFile partCompatibility=".*efr32mg13p.*" toolchainCompatibility="iar" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32MG13P/EABI/libcoex.a" />
+  <libraryPath partCompatibility=".*efr32mg13p.*" toolchainCompatibility="gcc" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32MG13P/GCC/" />
+  <libraryFile partCompatibility=".*efr32bg1b.*" toolchainCompatibility="iar" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32BG1B/EABI/libcoex.a" />
+  <libraryPath partCompatibility=".*efr32bg1b.*" toolchainCompatibility="gcc" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32BG1B/GCC/" />
+  <libraryFile partCompatibility=".*efr32mg1p.*" toolchainCompatibility="iar" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32MG1P/EABI/libcoex.a" />
+  <libraryPath partCompatibility=".*efr32mg1p.*" toolchainCompatibility="gcc" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32MG1P/GCC/" />
+  <libraryFile partCompatibility=".*efr32bg13p.*" toolchainCompatibility="iar" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32BG13P/EABI/libcoex.a" />
+  <libraryPath partCompatibility=".*efr32bg13p.*" toolchainCompatibility="gcc" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32BG13P/GCC/" />
+  <libraryFile partCompatibility=".*efr32bg14p.*" toolchainCompatibility="iar" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32BG14P/EABI/libcoex.a" />
+  <libraryPath partCompatibility=".*efr32bg14p.*" toolchainCompatibility="gcc" uri="$(sdkInstallationPath)/protocol/bluetooth_2.7/lib/EFR32BG14P/GCC/" />
+</project>

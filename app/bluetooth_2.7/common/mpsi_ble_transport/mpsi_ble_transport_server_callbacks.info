@@ -1,0 +1,67 @@
+
+
+#include COMMON_HEADER
+
+// Called when an MPSI message is received succesfully
+void bleMpsiTransportLongMessageReceived(uint8_t *buffer, uint8_t len)
+{
+  (void)buffer;
+  (void)len;
+  return;
+}
+
+// Called when an MPSI message is received with CRC failure
+void bleMpsiTransportLongMessageReceptionCrcFail(void)
+{
+  return;
+}                                                              
+
+// Called when an MPSI message is sent succesfully
+void bleMpsiTransportLongMessageSent(void)
+{
+  return;
+}
+
+// Called when an MPSI message is sent with CRC failure
+void bleMpsiTransportLongMessageSendingCrcFail(void)
+{
+  return;
+}
+
+// Called when bonding confirmation is requested
+void bleMpsiTransportConfirmBonding(struct gecko_cmd_packet *evt)
+{
+  printf("Client: Confirm bonding to new device!\n");
+  gecko_cmd_sm_bonding_confirm(evt->data.evt_sm_confirm_bonding.connection, 1u);
+  return;
+}
+
+// Called when passkey confirmation is requested
+void bleMpsiTransportConfirmPasskey(struct gecko_cmd_packet *evt)
+{
+  printf("Client: Confirm Passkey: %d !\n", evt->data.evt_sm_confirm_passkey.passkey);
+  gecko_cmd_sm_passkey_confirm(evt->data.evt_sm_confirm_bonding.connection, 1u);
+  return;
+}
+
+// Called when OTA-DFU transaction is requested to start by the remove client
+int8_t bleMpsiTransportOtaDfuTransactionBegin(uint8_t len, uint8_t *data)
+{
+  (void)data;
+  return;
+}
+
+// Called when OTA-DFU transaction is finished by the remove client
+void bleMpsiTransportOtaDfuTransactionFinish(uint32_t totalLen)
+{
+  (void)len;
+  return;
+}
+
+// Called when OTA-DFU data is received
+int8_t bleMpsiTransportOtaDfuDataReceived(uint8_t len, uint8_t *data)
+{
+  (void)len;
+  (void)data;
+  return;
+}

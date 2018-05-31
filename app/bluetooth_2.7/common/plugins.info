@@ -1,0 +1,80 @@
+#
+# This plugin.info file is for plugins that are supported for 
+# both SOC and NCP host sample applications
+#
+
+plugin(mpsi_ble_transport_server) {
+  name=MPSI BLE Transport - Server
+  description=This plugin implements the transport layer for the MPSI message transaction over BLE for server role devices.
+  category=Multiprotocol
+  quality=development
+  root=$BLUETOOTH_APP/common/mpsi_ble_transport
+
+  architecture=efr32
+
+  providedApis=mpsi_ble_transport_server
+
+  sourceFiles=mpsi_ble_transport_server.c
+
+  headerFiles=mpsi_ble_transport_server.h
+
+  callbacks=mpsi_ble_transport_server_callbacks.info 
+
+#  setup(bookkeeping) {
+#    init=emberAfPluginMpsiStorageInitCallback
+#  }
+
+
+}
+
+plugin(stack_bridge) {
+  name=Stack Bridge
+  description=This plugin provides solutions for cross-stack integration.
+  category=Utility
+  quality=development
+  root=$BLUETOOTH_APP/common/stack_bridge
+
+  architecture=efr32
+
+  providedApis=stack_bridge
+
+  headerFiles=common_includes.h,stack_bridge.h
+
+  setup(macros) {
+    -DCOMMON_HEADER="common_includes.h"
+    -DPLATFORM_HEADER=COMMON_HEADER
+    -DEMBER_STACK_BLE
+  }
+
+}
+
+plugin(command_interpreter_handler) {
+  name=Command Interpreter Handler
+  description=Handler for the command interpreter.
+  category=Utility
+  architecture=efr32
+  root=$BLUETOOTH_APP/common/user_command
+
+  requiredApis=serial,command-interpreter
+  providedApis=command-interpreter-handler
+
+  sourceFiles=user_command.c
+
+  headerFiles=user_command.h
+
+}
+
+plugin(crc16_ccitt) {
+  name=CRC16 CCITT
+  description=Software implemented CRC-16-CCITT cyclic-redundancy check algorithm.
+  category=Utility
+  architecture=efr32
+  root=$BLUETOOTH_APP/common/crc
+
+  providedApis=crc16
+
+  sourceFiles=crc16.c
+
+  headerFiles=crc16.h
+
+}

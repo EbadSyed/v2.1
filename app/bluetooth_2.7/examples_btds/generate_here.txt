@@ -1,0 +1,2 @@
+The Output of BTDS Generation must be placed here under a project specific folder:
+.\<project_folder>\

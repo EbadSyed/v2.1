@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='ASCII'?>
+<module:DocumentRoot xmlns:module="http://www.silabs.com/ss/hwconfig/module.ecore">
+  <module id="efm32.efm32jg12b.csen0" label="CSEN0" name="CSEN0" description="" version="efm">
+    <properties>
+      <enumProperty label="SDK is taking control over this module" id="CSEN.usedbysdk.BOOL" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="False" value="0"/>
+        <enumValue label="True" value="1"/>
+      </enumProperty>
+      <enumProperty label="SDK is hiding this module" id="CSEN.hiddenbysdk.BOOL" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="False" value="0"/>
+        <enumValue label="True" value="1"/>
+      </enumProperty>
+      <enumProperty label="Show advanced options" id="CSEN.showadvanced.BOOL" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="False" value="0"/>
+        <enumValue label="True" value="1"/>
+      </enumProperty>
+      <stringProperty label="Owned by" id="CSEN.owner.STRING" defaultValue="" hidden="false" readonly="true" transient="true"/>
+      <stringProperty label="Custom name" id="CSEN.customname.STRING" defaultValue="" hidden="false" readonly="false"/>
+    </properties>
+    <propertyCategories>
+      <category label="">
+        <subCategory label="">
+          <propertyRef refId="CSEN.usedbysdk.BOOL"/>
+          <propertyRef refId="CSEN.hiddenbysdk.BOOL"/>
+          <propertyRef refId="CSEN.showadvanced.BOOL"/>
+          <propertyRef refId="CSEN.owner.STRING"/>
+          <propertyRef refId="CSEN.customname.STRING"/>
+        </subCategory>
+      </category>
+    </propertyCategories>
+    <signals/>
+  </module>
+</module:DocumentRoot>

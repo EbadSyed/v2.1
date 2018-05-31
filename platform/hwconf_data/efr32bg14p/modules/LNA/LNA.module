@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='ASCII'?>
+<module:DocumentRoot xmlns:module="http://www.silabs.com/ss/hwconfig/module.ecore">
+  <module id="efr32.efr32bg14p.lna" label="LNA" name="LNA" description="" version="efr">
+    <properties>
+      <enumProperty label="SDK is taking control over this module" id="LNA.usedbysdk.BOOL" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="False" value="0"/>
+        <enumValue label="True" value="1"/>
+      </enumProperty>
+      <enumProperty label="SDK is hiding this module" id="LNA.hiddenbysdk.BOOL" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="False" value="0"/>
+        <enumValue label="True" value="1"/>
+      </enumProperty>
+      <enumProperty label="Show advanced options" id="LNA.showadvanced.BOOL" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="False" value="0"/>
+        <enumValue label="True" value="1"/>
+      </enumProperty>
+      <stringProperty label="Owned by" id="LNA.owner.STRING" defaultValue="" hidden="false" readonly="true" transient="true"/>
+      <enumProperty label="External LNA TX/RX PRS channel" description="PRS channel for TX/RX LNA control" id="LNA.BSP_LNA_TXRX_CHANNEL.ENUM" defaultValueIndex="0" hidden="false" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+        <enumValue label="CH0" value="0"/>
+        <enumValue label="CH1" value="1"/>
+        <enumValue label="CH2" value="2"/>
+        <enumValue label="CH3" value="3"/>
+        <enumValue label="CH4" value="4"/>
+        <enumValue label="CH5" value="5"/>
+        <enumValue label="CH6" value="6"/>
+        <enumValue label="CH7" value="7"/>
+        <enumValue label="CH8" value="8"/>
+        <enumValue label="CH9" value="9"/>
+        <enumValue label="CH10" value="10"/>
+        <enumValue label="CH11" value="11"/>
+      </enumProperty>
+      <stringProperty label="PRS channel output pin" description="No PRS channel selected" id="LNA.prs_disabled_chn_LNA_TXRX_pin.STRING" defaultValue="" hidden="false" readonly="true"/>
+      <enumProperty label="PRS channel 0 output pin" id="LNA.BSP_LNA_TXRX0.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 1 output pin" id="LNA.BSP_LNA_TXRX1.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 2 output pin" id="LNA.BSP_LNA_TXRX2.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 3 output pin" id="LNA.BSP_LNA_TXRX3.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 4 output pin" id="LNA.BSP_LNA_TXRX4.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 5 output pin" id="LNA.BSP_LNA_TXRX5.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 6 output pin" id="LNA.BSP_LNA_TXRX6.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 7 output pin" id="LNA.BSP_LNA_TXRX7.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 8 output pin" id="LNA.BSP_LNA_TXRX8.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 9 output pin" id="LNA.BSP_LNA_TXRX9.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 10 output pin" id="LNA.BSP_LNA_TXRX10.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 11 output pin" id="LNA.BSP_LNA_TXRX11.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="External LNA sleep PRS channel" description="PRS channel for external LNA sleep control" id="LNA.BSP_LNA_SLEEP_CHANNEL.ENUM" defaultValueIndex="0" hidden="false" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+        <enumValue label="CH0" value="0"/>
+        <enumValue label="CH1" value="1"/>
+        <enumValue label="CH2" value="2"/>
+        <enumValue label="CH3" value="3"/>
+        <enumValue label="CH4" value="4"/>
+        <enumValue label="CH5" value="5"/>
+        <enumValue label="CH6" value="6"/>
+        <enumValue label="CH7" value="7"/>
+        <enumValue label="CH8" value="8"/>
+        <enumValue label="CH9" value="9"/>
+        <enumValue label="CH10" value="10"/>
+        <enumValue label="CH11" value="11"/>
+      </enumProperty>
+      <stringProperty label="PRS channel output pin" description="No PRS channel selected" id="LNA.prs_disabled_chn_LNA_SLEEP_pin.STRING" defaultValue="" hidden="false" readonly="true"/>
+      <enumProperty label="PRS channel 0 output pin" id="LNA.BSP_LNA_SLEEP0.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 1 output pin" id="LNA.BSP_LNA_SLEEP1.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 2 output pin" id="LNA.BSP_LNA_SLEEP2.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 3 output pin" id="LNA.BSP_LNA_SLEEP3.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 4 output pin" id="LNA.BSP_LNA_SLEEP4.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 5 output pin" id="LNA.BSP_LNA_SLEEP5.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 6 output pin" id="LNA.BSP_LNA_SLEEP6.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 7 output pin" id="LNA.BSP_LNA_SLEEP7.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 8 output pin" id="LNA.BSP_LNA_SLEEP8.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 9 output pin" id="LNA.BSP_LNA_SLEEP9.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 10 output pin" id="LNA.BSP_LNA_SLEEP10.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+      <enumProperty label="PRS channel 11 output pin" id="LNA.BSP_LNA_SLEEP11.PIN" defaultValueIndex="0" hidden="true" readonly="false">
+        <enumValue label="Disabled" value="Disabled"/>
+      </enumProperty>
+    </properties>
+    <propertyCategories>
+      <category label="">
+        <subCategory label="">
+          <propertyRef refId="LNA.usedbysdk.BOOL"/>
+          <propertyRef refId="LNA.hiddenbysdk.BOOL"/>
+          <propertyRef refId="LNA.showadvanced.BOOL"/>
+          <propertyRef refId="LNA.owner.STRING"/>
+          <propertyRef refId="LNA.BSP_LNA_TXRX_CHANNEL.ENUM"/>
+          <propertyRef refId="LNA.prs_disabled_chn_LNA_TXRX_pin.STRING"/>
+          <propertyRef refId="LNA.BSP_LNA_TXRX0.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_TXRX1.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_TXRX2.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_TXRX3.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_TXRX4.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_TXRX5.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_TXRX6.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_TXRX7.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_TXRX8.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_TXRX9.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_TXRX10.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_TXRX11.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_SLEEP_CHANNEL.ENUM"/>
+          <propertyRef refId="LNA.prs_disabled_chn_LNA_SLEEP_pin.STRING"/>
+          <propertyRef refId="LNA.BSP_LNA_SLEEP0.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_SLEEP1.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_SLEEP2.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_SLEEP3.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_SLEEP4.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_SLEEP5.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_SLEEP6.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_SLEEP7.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_SLEEP8.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_SLEEP9.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_SLEEP10.PIN"/>
+          <propertyRef refId="LNA.BSP_LNA_SLEEP11.PIN"/>
+        </subCategory>
+      </category>
+    </propertyCategories>
+    <signals/>
+  </module>
+</module:DocumentRoot>

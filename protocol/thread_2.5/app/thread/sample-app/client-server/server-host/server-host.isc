@@ -1,0 +1,309 @@
+#ISD afv6
+# Simplicity Studio version: 4.22.1.qualifier
+
+# Application configuration
+appId: thread
+frameworkRoot: app/thread
+architecture: unix
+deviceName: server-host
+generationDirectory: PATH(ISC_RELATIVE):.
+
+# Devices
+device: Unix
+device: Host
+device: Router
+
+# Plugin configuration
+appPlugin: accelerometer-led=false
+appPlugin: adc=false
+appPlugin: address-configuration-debug=false
+appPlugin: antenna=false
+appPlugin: antenna-stub=false
+appPlugin: ash-v3=false
+appPlugin: ash-v3-stub=false
+appPlugin: basic-server=false
+appPlugin: battery-monitor=false
+appPlugin: bootload-cli=true
+appPlugin: bulb-pwm-driver=false
+appPlugin: bulb-ui=false
+appPlugin: button=false
+appPlugin: button-interface=false
+appPlugin: button-press=false
+appPlugin: button-stub=false
+appPlugin: buzzer=false
+appPlugin: buzzer-stub=false
+appPlugin: cjson=false
+appPlugin: cli=true
+appPlugin: coap-cli=true
+appPlugin: coap-debug=false
+appPlugin: coap-dispatch=true
+appPlugin: coexistence=false
+appPlugin: color-control-server=false
+appPlugin: command-interpreter2=true
+appPlugin: connection-manager-cli=false
+appPlugin: connection-manager-jib=false
+appPlugin: connection-manager-joob=false
+appPlugin: debug-channel=false
+appPlugin: debug-channel-stub=false
+appPlugin: debug-print=true
+appPlugin: dhcp-client=true
+appPlugin: dhcp-library=false
+appPlugin: dhcp-stub-library=false
+appPlugin: diagnostic=false
+appPlugin: diagnostic-stub=false
+appPlugin: dmp-demo-ui=false
+appPlugin: dns-cli=false
+appPlugin: dtls-auth-params=true
+appPlugin: dtls-cli=true
+appPlugin: eeprom=false
+appPlugin: eeprom-powerdown=false
+appPlugin: end-node-ui=false
+appPlugin: ext-device=false
+appPlugin: extdev=false
+appPlugin: ezradiopro=false
+appPlugin: fem-control=false
+appPlugin: generic-interrupt-control=false
+appPlugin: glib=false
+appPlugin: global-address-prefix-debug=true
+appPlugin: gpio-sensor=false
+appPlugin: groups-server=false
+appPlugin: hal-library=false
+appPlugin: hal-ncp-library=false
+appPlugin: heartbeat=false
+appPlugin: heartbeat-node-type=false
+appPlugin: host-network-management=true
+appPlugin: host-network-management-stub=false
+appPlugin: humidity-si7021-stub=false
+appPlugin: i2c-driver=false
+appPlugin: i2c-driver-stub=false
+appPlugin: icmp-cli=true
+appPlugin: icmp-debug=true
+appPlugin: identify-server=false
+appPlugin: idle-sleep=false
+appPlugin: illuminance-measurement-server=false
+appPlugin: illuminance-si1141-stub=false
+appPlugin: infrared-led=false
+appPlugin: key-matrix=false
+appPlugin: led=false
+appPlugin: led-blink=false
+appPlugin: led-dim-pwm=false
+appPlugin: led-rgb-pwm=false
+appPlugin: led-stub=false
+appPlugin: led-temp-pwm=false
+appPlugin: level-control-server=false
+appPlugin: libcoap=false
+appPlugin: linked-list=false
+appPlugin: log-cli=false
+appPlugin: main=true
+appPlugin: mbedtls-custom-library=true
+appPlugin: mbedtls-dotdot-library=false
+appPlugin: mbedtls-library=false
+appPlugin: mfglib-library=true
+appPlugin: mfglib-stub-library=false
+appPlugin: microphone-codec-msadpcm=false
+appPlugin: microphone-imaadpcm=false
+appPlugin: module-lna=false
+appPlugin: mpsi=false
+appPlugin: mpsi-ipc=false
+appPlugin: mpsi-storage=false
+appPlugin: ncp-library=false
+appPlugin: ncp-spi-link=false
+appPlugin: ncp-uart-link=false
+appPlugin: network-management-cli=true
+appPlugin: occupancy-pyd1698=false
+appPlugin: occupancy-pyd1698-stub=false
+appPlugin: occupancy-sensing-server=false
+appPlugin: on-off-server=false
+appPlugin: ota-bootload-client=false
+appPlugin: ota-bootload-client-policy=false
+appPlugin: ota-bootload-core=false
+appPlugin: ota-bootload-server=false
+appPlugin: ota-bootload-server-policy=false
+appPlugin: ota-bootload-storage-cli=false
+appPlugin: ota-bootload-storage-core=false
+appPlugin: ota-bootload-storage-eeprom=false
+appPlugin: ota-bootload-storage-unix=false
+appPlugin: pa=false
+appPlugin: paho.mqtt.c=false
+appPlugin: poll-control-client=false
+appPlugin: poll-control-server=false
+appPlugin: polling=false
+appPlugin: power-configuration-server=false
+appPlugin: power-meter-cs5463=false
+appPlugin: psstore=false
+appPlugin: pti=false
+appPlugin: rail-library=false
+appPlugin: rail-library-mp=false
+appPlugin: relative-humidity-measurement-server=false
+appPlugin: sb1-gesture-sensor=false
+appPlugin: scan-debug=true
+appPlugin: serial=true
+appPlugin: sim-eeprom1=false
+appPlugin: sim-eeprom2=false
+appPlugin: sim-eeprom2-1to2-upgrade=false
+appPlugin: sim-eeprom2-1to2-upgrade-stub=false
+appPlugin: slaac-client=true
+appPlugin: slot-manager=false
+appPlugin: stm32f103ret-library=false
+appPlugin: tamper-switch=false
+appPlugin: temperature-measurement-server=false
+appPlugin: temperature-si7053-stub=false
+appPlugin: thread-mbedtls-stack=false
+appPlugin: thread-stack=false
+appPlugin: thread-test-harness-cli=false
+appPlugin: transport-mqtt=false
+appPlugin: udp-cli=true
+appPlugin: udp-debug=true
+appPlugin: unix-library=true
+appPlugin: unix-netif-config=false
+appPlugin: version-debug=true
+appPlugin: zcl-core=false
+appPlugin: zcl-core-cli=false
+
+# Setup configurations
+{setupId:additionalFiles
+PATH(ISC_RELATIVE):server-host-implementation.c
+}
+{setupId:boardHeader
+allowMissingHeader:false
+useHeaderInPlace:false
+}
+{setupId:bookkeeping
+}
+{setupId:bootloader
+}
+{setupId:callbackConfiguration
+emberAfMainCallback:false
+emberAfNetworkStatusCallback:false
+emberResumeNetworkReturn:false
+emberSetSecurityParametersReturn:false
+emberFormNetworkReturn:false
+emberAddressConfigurationChangeHandler:false
+emberCommissionerStatusHandler:false
+emberBecomeCommissionerReturn:false
+emberSendSteeringDataReturn:false
+emberResetNetworkStateReturn:false
+}
+{setupId:coapDispatch
+POST, client/report, clientReportHandler
+}
+{setupId:commandLineConfiguration
+on
+expect,expectCommand,bb*,unlocked
+advertise,advertiseCommand,,unlocked
+}
+{setupId:debugConfiguration
+on
+area name off
+appSerial=1
+}
+{setupId:eventConfiguration
+stateEventControl,stateEventHandler
+}
+{setupId:genConfig
+}
+{setupId:halOptions
+}
+{setupId:hwConfig
+featureLevel=1
+active=true
+}
+{setupId:information
+\{key:description
+Client/Server Sample Applications
+
+The client and server applications demonstrate basic Thread network functionality for a wireless sensor network.  This server application acts as a data sink and collects information from client nodes that act as sensors.  The client and server communicate using the Constrained Application Protocol (CoAP) at the application layer, with UDP serving as the transport layer.  CoAP and UDP are provided by the Silicon Labs Thread stack.
+
+At startup, the server will automatically start network operations.  If the node is starting for the first time, it will form a new network called "client/server."  If it had already formed a network previously, it will simply resume network operations using the network parameters stored in non-volatile memory in the stack.  After forming or resuming, the application establishes itself as the commissioning device of the network.  This means the server is responsible for allowing other devices to join the network.
+
+The server sends advertisement messages to the network at regular intervals using multicast transmission.  The advertisements, sent as CoAP POST requests to the "server/advertise" URI, inform clients in the network about the presence of the server.  When a client without a server receives the advertisement, it will begin sending sensor data to the server.  Sensor data are sent as CoAP POST requests to the "client/report" URI, and are unicast directly to the server.  In these examples, the sensor data are the current temperature, as provided by the temperature sensor on the development board of the client nodes.
+
+Before attempting to join the network, the client nodes print their unique join key to the console.  This key must be provided to the commissioner (i.e., the server) before the client will be able to join the network.  For example, when joining, the client will display a message such as:
+
+Joining network "client/server" with EUI64 >0134047823560034 and join key "174F5B07"
+
+In this example, "174F5B07" is the unique join key for the client and 0134047823560034 is the EUI64 of the client.  The join key can be provided to the server and joining can be enabled via the following CLI command:
+
+expect "174F5B07"
+
+If the EUI64 of the client is known, it can be specified in order to further assist in joining the correct node:
+
+expect "174F5B07" \\{0134047823560034\\}
+
+It is important to note that each client will have a different join key.  It is essential that the server be informed of the exact join key used by the client.  If the join key is not provided to the server, or if an incorrect key is provided, the client will not be able to join.
+
+The server host sample application can communicate with the NCP using either SPI or UART.  With SPI, the spi-server and ip-driver-app utility programs are used to interact with the NCP.  With UART, only the ip-driver-app utility program is used.  spi-server will run itself in the background.  ip-driver-app runs in the foreground by default, but it can be run in the background using shell job control features.
+
+In the examples below, THREAD_HOME refers to the location where the Silicon Labs Thread stack is installed and PROJECT_HOME refers to the location where your project was generated by AppBuilder.
+
+The following commands will compile and run the spi-server and ip-driver-app utilities and the sample application, in order to connect to an NCP using SPI:
+
+$ cd THREAD_HOME/tool/spi-server
+$ make
+$ sudo ./spi-server.sh 4951 spidev0.0 22 23 24 0xFF 8 --nolog
+$ cd ../..
+$ make -f app/ip-ncp/ip-driver-app.mak
+$ sudo ./build/ip-driver-app/ip-driver-app -s -u 4951 -t tun0 -m 4901 &
+$ cd PROJECT_HOME
+$ make
+$ sudo ./build/exe/server-host -m 4901
+
+The --nolog flag can be omitted if debug output is required.
+
+The following commands will compile and run the ip-driver-app utility and the sample application, in order to connect to an NCP using UART:
+
+$ cd THREAD_HOME
+$ make -f app/ip-ncp/ip-driver-app.mak
+$ sudo build/ip-driver-app/ip-driver-app -u /dev/ttyUSB0 -t tun0 -m 4901 &
+$ cd PROJECT_HOME
+$ make
+$ sudo ./build/exe/server-host -m 4901
+
+This example assumes the NCP is connected by USB and identified as /dev/ttyUSB0.  USB NCPs may also appear as /dev/ttyUSBx or /dev/ttyACMx, where x is some integer; other types of UART connections will appear differently. Additionally specify "-f [r,x]" to configure the serial port for hardware flow control(r) or software flow control(x) NCPs.
+
+All application code is contained in the server-host-implementation.c file within the application directory.
+\}
+}
+{setupId:macros
+REPORTS_CSV="/var/www/reports.csv"
+}
+{setupId:serial
+em317=0,false,*,*,*,*,*
+em341=0,false,*,*,*,*,*
+em342=0,false,*,*,*,*,*
+em346=0,false,*,*,*,*,*
+em351=0,false,*,*,*,*,*
+em355=0,false,*,*,*,*,*
+em3555=0,false,*,*,*,*,*
+em357=0,false,*,*,*,*,*
+em357p2p=0,false,*,*,*,*,*
+em3581=0,false,*,*,*,*,*
+em3582=0,false,*,*,*,*,*
+em3585=0,false,*,*,*,*,*
+em3586=0,false,*,*,*,*,*
+em3587=0,false,*,*,*,*,*
+em3588=0,false,*,*,*,*,*
+em3591=0,false,*,*,*,*,*
+em3592=0,false,*,*,*,*,*
+em3595=0,false,*,*,*,*,*
+em3596=0,false,*,*,*,*,*
+em3597=0,false,*,*,*,*,*
+em3598=0,false,*,*,*,*,*
+sky66107=0,false,*,*,*,*,*
+simulation=0,false,*,*,*,*,*
+efr32=0,false,*,*,*,*,*
+}
+{setupId:template
+}
+{setupId:token
+}
+{setupId:zclip
+configuredNetwork:type:ZIGBEE_PRO, name:Primary
+beginEndpointType:Primary
+device:HA-onoff
+endEndpointType
+configuredEndpoint:ep:1,pi: -1,di:-1,dv:0,ept:Primary,nwk:Primary
+}
+
+# Plugin options
+pluginOption(em3588): EMBER_AF_PLUGIN_DTLS_AUTH_PARAMS_CERT_PATH,PATH(ABSOLUTE):$FRAMEWORK/plugin/dtls-auth-params/sample-dotdot-certificates.c

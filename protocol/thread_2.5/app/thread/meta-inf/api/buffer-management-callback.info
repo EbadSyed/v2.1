@@ -1,0 +1,39 @@
+#include PLATFORM_HEADER
+#include CONFIGURATION_HEADER
+#include EMBER_AF_API_STACK
+
+/** @brief This function can be used to hook an external memory allocator into
+ * the stack. It will be called when we need to allocate large packets.
+ *
+ * If a value other than NULL is returned that pointer will be used to store
+ * packet data. You must also fill in the objectRef parameter with whatever
+ * reference you would like passed to the emberFreeMemoryForPacketHandler()
+ * when we're done with this memory. If you set the objectRef to NULL then
+ * the free handler will not be called.
+ *
+ * @param size       size of packet data
+ * @param objectRef  Reference of the memory to be used in
+ *                   emberFreeMemoryForPacketHandler
+ *
+ * @return pointer that stores the packet data
+ */
+void *emberAllocateMemoryForPacketHandler(uint32_t size, void **objectRef)
+{
+  return NULL;
+}
+
+/** @brief This handler is called when freeing memory allocated with
+ * ::emberAllocateMemoryForPacketHandler
+ *
+ * @param objectRef Reference used in ::emberAllocateMemoryForPacketHandler
+ */
+void emberFreeMemoryForPacketHandler(void *objectRef)
+{
+}
+
+/** @brief Applications that use buffers must mark them by defining
+ * this function.  The stack uses this when reclaiming unused buffers.
+ */
+void emberMarkApplicationBuffersHandler(void)
+{
+}

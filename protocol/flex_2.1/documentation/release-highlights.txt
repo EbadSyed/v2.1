@@ -1,0 +1,14 @@
+
+What's new in Flex 2.1.0.0:
+  
+  RAIL:
+    * Updated to RAIL library v2.2.0
+    * Added a simple RAIL light and switch application
+    * Fixed build issues with RAIL Range Test example application
+    * Various bug fixes
+  
+  Connect:
+    * Added MAC Mode Device example applications
+    * Added IEEE 802.15.4 MAC security level 4 support
+    * Added SimEE v2 non-volitile memory support
+    * Various bug fixes

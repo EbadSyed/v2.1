@@ -1,0 +1,155 @@
+/**
+* 
+***************************************************************************************************
+* <b> (C) Copyright 2016 Silicon Labs, http://www.silabs.com </b>
+***************************************************************************************************
+* This file is licensed under the Silabs License Agreement. See the file
+* "Silabs_License_Agreement.txt" for details. Before using this software for
+* any purpose, you must agree to the terms of that agreement.
+* 
+*/
+
+/*******************************************************************************
+*******************************   INCLUDES   **********************************
+******************************************************************************/
+#include "ble_att_handler.h"
+#include "native_gecko.h"
+#include <string.h>
+#include <stdio.h>
+
+
+/*******************************************************************************
+*******************************   DEFINES   ***********************************
+******************************************************************************/
+/**
+*  buffer size = maximum ble characteristic length(64)
+*                       + tag size(16)
+*/
+#define ATT_BUFFER_SIZE    64
+#define ATT_INVALID_OFFSET 0x07
+/*******************************************************************************
+*******************************   TYPEDEFS   **********************************
+******************************************************************************/
+typedef struct
+{
+  uint8_t connection;
+  uint16_t attHandle;
+  uint16_t bytesToSend;
+  uint16_t currentPosition;
+  uint8_t buffer[ATT_BUFFER_SIZE];
+  uint16_t maxPayload;
+} ble_att_handler_t;
+
+/*******************************************************************************
+*****************************   LOCAL DATA   **********************************
+******************************************************************************/
+static ble_att_handler_t bleAttHandler = {.maxPayload = 22};
+
+/*******************************************************************************
+* @brief
+*   Send data over BLE. It automatically handle sending long charactiristics.
+* @param[in] connection
+*   connection id
+* @param[in] attHandle
+*   characteristic handle
+* @param[in] data
+*   pointer to data to send
+* @param[in] len
+*   size of data to send
+* @return
+*   None
+******************************************************************************/
+void ble_attSendData(uint8_t connection, uint16_t attHandle, const uint8_t *data, uint16_t len)
+{
+  uint8_t bytesToSend;
+  
+  if ( len < bleAttHandler.maxPayload)
+  {
+    bytesToSend = len;
+  }
+  else
+  {
+    bytesToSend = bleAttHandler.maxPayload;
+    bleAttHandler.connection = connection;
+    bleAttHandler.attHandle = attHandle;
+    bleAttHandler.bytesToSend = len;
+    bleAttHandler.currentPosition = bleAttHandler.maxPayload;
+    memcpy(bleAttHandler.buffer, data, len);
+  }
+  
+  // Send response
+  gecko_cmd_gatt_server_send_user_read_response(connection,
+                                                attHandle,
+                                                bg_err_bt_error_success,
+                                                bytesToSend,
+                                                data);
+}
+
+/*******************************************************************************
+* @brief
+*   Function handle sending long characterictic value
+* @param[in] attHandle
+*   characteristic handle
+* @param[in] offset
+*   offset for reading data
+* @return
+*   Return true if event was handled, in other case return false
+******************************************************************************/
+bool ble_attSendDataHandler(uint16_t attHandle, uint16_t offset)
+{
+  if (attHandle == bleAttHandler.attHandle)
+  {
+    uint8_t bytesToSend;
+    if( offset != bleAttHandler.currentPosition)
+    {
+      // Send response that offset is invalid
+      gecko_cmd_gatt_server_send_user_read_response(bleAttHandler.connection,
+                                                    attHandle,
+                                                    ATT_INVALID_OFFSET,
+                                                    0,
+                                                    NULL);
+      return true;
+      
+    }
+    
+    bytesToSend = bleAttHandler.bytesToSend  - bleAttHandler.currentPosition;
+    
+    if ( bytesToSend < bleAttHandler.maxPayload)
+    {
+      // Last packet - clear attribute handle
+      bleAttHandler.attHandle = 0;
+    }
+    else
+    {
+      bytesToSend = bleAttHandler.maxPayload;
+    }
+    // Send response
+    gecko_cmd_gatt_server_send_user_read_response(bleAttHandler.connection,
+                                                  attHandle,
+                                                  bg_err_bt_error_success,
+                                                  bytesToSend,
+                                                  &bleAttHandler.buffer[bleAttHandler.currentPosition]);
+    // Set new position
+    bleAttHandler.currentPosition += bytesToSend;
+    // Event handled
+    return true;
+  }
+  else
+  {
+    // Event not handled
+    return false;
+  }
+}
+
+/*******************************************************************************
+* @brief
+*   Function set supported MTU size for attribute handling data
+* @param[in] mtuSize
+*   MTU size
+* @return
+*   None
+******************************************************************************/
+void ble_setMTUSize(uint16_t mtuSize)
+{
+  bleAttHandler.maxPayload = mtuSize - 1;
+}

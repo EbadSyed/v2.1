@@ -1,0 +1,18 @@
+#include PLATFORM_HEADER
+#include CONFIGURATION_HEADER
+#include EMBER_AF_API_STACK
+
+/**
+ * @brief Application callback for emberSendDiagnosticQuery().
+ *
+ * @param status The return status.
+ * @param remoteAddress   The remote address that sent the answer.
+ * @param payload The raw payload.
+ * @param payloadLength payload's length.
+ */
+void emberDiagnosticAnswerHandler(EmberStatus status,
+                                  const EmberIpv6Address *remoteAddress,
+                                  const uint8_t *payload,
+                                  uint8_t payloadLength)
+{
+}
