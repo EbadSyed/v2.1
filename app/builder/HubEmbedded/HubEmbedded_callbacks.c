@@ -54,7 +54,7 @@ void send_message(void)
 {
 	EmberApsFrame customApsFrame;
 	customApsFrame.profileId = 0x0104;
-	customApsFrame.clusterId = 0x0998;
+	customApsFrame.clusterId = 0x0999;
 	customApsFrame.sourceEndpoint = emberAfEndpointFromIndex(0);
 	customApsFrame.destinationEndpoint = 0x01;
 	customApsFrame.options = EMBER_APS_OPTION_RETRY|\
@@ -89,7 +89,7 @@ void set_temp(void)
 {
 	EmberApsFrame customApsFrame;
 	customApsFrame.profileId = 0x0104;
-	customApsFrame.clusterId = 0x07387;
+	customApsFrame.clusterId = 0x7388;
 	customApsFrame.sourceEndpoint = emberAfEndpointFromIndex(0);
 	customApsFrame.destinationEndpoint = 0x01;
 	customApsFrame.options = EMBER_APS_OPTION_RETRY|\
