@@ -35,7 +35,9 @@ static void printNextKeyCommand(void);
 static void versionCommand(void);
 static void setTxPowerCommand(void);
 void send_message(void);
-
+void set_temp(void);
+void send_level(void);
+void motor_trouble(void);
 //custom commands are defined here
 //refer to https://www.silabs.com/documents/public/user-guides/UG102.pdf for detail
 
@@ -47,15 +49,88 @@ EmberCommandEntry emberAfCustomCommands[] = {
   emberCommandEntryAction("version", versionCommand, "", ""),
   emberCommandEntryAction("txPower", setTxPowerCommand, "s", ""),
   emberCommandEntryAction("sendkey", send_message,"vuu",""),
+  emberCommandEntryAction("settemp", set_temp,"vuu",""),
+  emberCommandEntryAction("sendlevel", send_level,"vu",""),
+  emberCommandEntryAction("motortrouble", motor_trouble,"v",""),
   emberCommandEntryTerminator()
 };
+
+
+void motor_trouble(void)
+{
+	EmberApsFrame customApsFrame;
+	customApsFrame.profileId = 0x0104;
+	customApsFrame.clusterId = 0x9103;
+	customApsFrame.sourceEndpoint = emberAfEndpointFromIndex(0);
+	customApsFrame.destinationEndpoint = 0x01;
+	customApsFrame.options = EMBER_APS_OPTION_RETRY|\
+							 EMBER_APS_OPTION_SOURCE_EUI64|\
+							 EMBER_APS_OPTION_ENABLE_ROUTE_DISCOVERY|\
+							 EMBER_APS_OPTION_DESTINATION_EUI64;
+
+	//arguments passed input
+	int16u destination = (int16u)emberSignedCommandArgument(0);
+
+	//int8u p3 = (int8u)emberSignedCommandArgument(3);
+	//int8u p4 = (int8u)emberSignedCommandArgument(4);
+
+	//int16u destination = 0x675F;
+	int8u testBuffer[7] = {0x00,0x00,0xFF,0x11,0x14,0x00,0x00};
+	// 0 = framCounter
+	// 1 = seq
+	// 2 =command id
+	testBuffer[1] = emberAfNextSequence();
+
+	emberAfSendUnicast(EMBER_OUTGOING_DIRECT,
+	                                destination,
+	                                &customApsFrame,
+	                                sizeof(testBuffer),
+					testBuffer);
+
+}
+
+
+//send unicast message to node
+void send_level(void)
+{
+	EmberApsFrame customApsFrame;
+	customApsFrame.profileId = 0x0104;
+	customApsFrame.clusterId = 0x9102;
+	customApsFrame.sourceEndpoint = emberAfEndpointFromIndex(0);
+	customApsFrame.destinationEndpoint = 0x01;
+	customApsFrame.options = EMBER_APS_OPTION_RETRY|\
+							 EMBER_APS_OPTION_SOURCE_EUI64|\
+							 EMBER_APS_OPTION_ENABLE_ROUTE_DISCOVERY|\
+							 EMBER_APS_OPTION_DESTINATION_EUI64;
+
+//arguments passed input
+	int16u destination = (int16u)emberSignedCommandArgument(0);
+	int8u level = (int8u)emberSignedCommandArgument(1);
+
+	//int8u p3 = (int8u)emberSignedCommandArgument(3);
+	//int8u p4 = (int8u)emberSignedCommandArgument(4);
+
+	//int16u destination = 0x675F;
+	int8u testBuffer[7] = {0x00,0x00,0xFF,0x11,0x14,0x00,level};
+	// 0 = framCounter
+	// 1 = seq
+	// 2 =command id
+	testBuffer[1] = emberAfNextSequence();
+
+	emberAfSendUnicast(EMBER_OUTGOING_DIRECT,
+	                                destination,
+	                                &customApsFrame,
+	                                sizeof(testBuffer),
+					testBuffer);
+
+}
 
 //send unicast message to node
 void send_message(void)
 {
 	EmberApsFrame customApsFrame;
 	customApsFrame.profileId = 0x0104;
-	customApsFrame.clusterId = 0x0998;
+	customApsFrame.clusterId = 0x0999;
 	customApsFrame.sourceEndpoint = emberAfEndpointFromIndex(0);
 	customApsFrame.destinationEndpoint = 0x01;
 	customApsFrame.options = EMBER_APS_OPTION_RETRY|\
@@ -81,10 +156,44 @@ void send_message(void)
 	                                destination,
 	                                &customApsFrame,
 	                                sizeof(testBuffer),
-									testBuffer);
+					testBuffer);
 
 }
 
+//send unicast message to node
+void set_temp(void)
+{
+	EmberApsFrame customApsFrame;
+	customApsFrame.profileId = 0x0104;
+	customApsFrame.clusterId = 0x7388;
+	customApsFrame.sourceEndpoint = emberAfEndpointFromIndex(0);
+	customApsFrame.destinationEndpoint = 0x01;
+	customApsFrame.options = EMBER_APS_OPTION_RETRY|\
+							 EMBER_APS_OPTION_SOURCE_EUI64|\
+							 EMBER_APS_OPTION_ENABLE_ROUTE_DISCOVERY|\
+							 EMBER_APS_OPTION_DESTINATION_EUI64;
+
+//arguments passed input
+	int16u destination = (int16u)emberSignedCommandArgument(0);
+	int8u set_temperature_u = (int8u)emberSignedCommandArgument(1);
+	int8u set_temperature_l = (int8u)emberSignedCommandArgument(2);
+	//int8u p3 = (int8u)emberSignedCommandArgument(3);
+	//int8u p4 = (int8u)emberSignedCommandArgument(4);
+
+	//int16u destination = 0x675F;
+	int8u testBuffer[7] = {0x00,0x00,0xFF,0x11,0x14,set_temperature_u,set_temperature_l};
+	// 0 = framCounter
+	// 1 = seq
+	// 2 =command id
+	testBuffer[1] = emberAfNextSequence();
+
+	emberAfSendUnicast(EMBER_OUTGOING_DIRECT,
+	                                destination,
+	                                &customApsFrame,
+	                                sizeof(testBuffer),
+					testBuffer);
+
+}
 
 //// ******* test of token dump code
 
